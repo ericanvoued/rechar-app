@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="login-wrap" hide-tabs>
+    <div class="logo"><img src="assets/img/logo.svg" alt=""></div>
+    <div class="form-wrap">
+      <form class="input-wrap" [formGroup]="LoginForm">
+        <div class="input-item">
+          <div class="form-item mb0">
+            <input type="text" placeholder="手机/用户名/邮箱" maxlength="40" formControlName="username" class="form-input login-user" required>
+            <ion-icon text-right name="checkmark-circle" *ngIf="LoginForm.controls.username.dirty && LoginForm.controls.username.valid"></ion-icon>
+          </div>
+          <div class="form-remind">
+            <div *ngIf="(!LoginForm.controls.username.valid)  && (LoginForm.controls.username.dirty)">用户名格式不对，请重新输入</div>
+          </div>
+        </div>
+        <div class="input-item">
+          <div class="form-item mb0">
+            <input type="password" placeholder="密码6-16位" maxlength="20" formControlName="password" class="form-input login-password" autocomplete="off" required>
+            <ion-icon text-right name="checkmark-circle" *ngIf="LoginForm.controls.password.dirty && LoginForm.controls.password.valid"></ion-icon>
+          </div>
+          <div class="form-remind">
+            <div *ngIf="(!LoginForm.controls.password.valid) && (LoginForm.controls.password.dirty)">请输入6-16位密码</div>
+          </div>
+        </div>
+      </form>
+      <div class="form-login">
+        <button ion-button round full>立即登陆</button>
+      </div>
+      <div class="remember-password clear">
+        <!--<label>-->
+        <!--<ion-checkbox class="check-box"></ion-checkbox>-->
+        <!--<ion-label class="member-password">记住用户名</ion-label>-->
+        <!--</label>-->
+        <!--<div class="forget-password">忘记密码?</div>-->
+      </div>
+    </div>
+    <div class="copy-right">
+      © 2014 博猫游戏版权所有 菲律宾政府合法博彩牌照认证<br>博猫游戏郑重提示：彩票有风险，投注需谨慎，不向未满18周岁的青少年出售彩票
+    </div>
+  </div>
+</ion-content>

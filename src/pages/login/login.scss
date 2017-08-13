@@ -1,0 +1,79 @@
+page-login {
+  .content-ios{
+    background: url("../../assets/img/login-bg.jpg") no-repeat center center;
+    background-size: cover;
+  }
+  .login-user{
+    background: url("../../assets/img/login-user.png") no-repeat 11px center;
+  }
+  .login-password{
+    background: url("../../assets/img/login-password.png") no-repeat 11px center;
+  }
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 18% 0 8% 0;
+    img{
+      width: 75%;
+      height: 75%;
+    }
+  }
+  .form-wrap{
+    margin-top: 2%;
+    padding:0 10%;
+    position: relative;
+    .input-wrap{
+      margin: 12% auto;
+      .input-item{
+        display: block;
+        height: 50px;
+        margin: 10px auto;
+        .form-item{
+          display: flex;
+          align-items: center;
+          height: 40px;
+          margin-left: 6%;
+          input{
+            height: 40px;
+            width: 90%;
+            margin-right: 2%;
+            padding-left: 40px;
+            line-height: 32px;
+            border: 2px solid #979797;
+            color: #fff;
+
+          }
+          input:focus{
+            border: 2px solid orange;
+          }
+          ion-icon {
+            color: green;
+            font-size: 20px;
+          }
+        }
+        .form-remind div{
+          display: flex;
+          justify-content: center;
+          margin: 1px auto;
+          color: red;
+          font-size: 6px;
+        }
+      }
+    }
+  }
+  .form-login{
+    margin: 0 5%;
+    button{
+      background-color: orange;
+      font-weight: bold;
+    }
+  }
+  .copy-right{
+    position: absolute;
+    bottom: 3%;
+    margin: 0 8%;
+    color: #f4f4f4;
+    font-size: 6px;
+  }
+}
