@@ -1,0 +1,17 @@
+{
+  "isSuccess": 1,
+  "type": "loginSuccess",
+  "Msg": "\u767b\u5f55\u6210\u529f",
+  "data": {
+    "available": "94.5",
+    "jsessionid": null,
+    "user_id": "43090",
+    "username": "testtvd001",
+    "nickname": "tvd",
+    "user_type": 1,
+    "is_tester": "1",
+    "is_set_fund_password": 1,
+    "unread_msg_count": 0,
+    "token": "uk9ZswIRWYIdKWmx93k3apeplMuDBH4Y2KuvkLlV"
+  }
+}
