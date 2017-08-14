@@ -1,5 +1,5 @@
 export class Config {
-  static baseurl = "http://www.qupaimobile.com";
+  static baseurl = "http://localhost:8181";
   // static baseurl = "";
   static bankcardIconMap = {
     "中国工商银行": "assets/img/bank/gongshang.svg",

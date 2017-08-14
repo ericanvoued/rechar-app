@@ -9,6 +9,7 @@ import {GlobalShareProvider} from '../providers/global-share/global-share';
 import {HttpClientProvider} from '../providers/http-client/http-client';
 import {HttpModule} from "@angular/http";
 
+
 @NgModule({
   declarations: [
     MyApp
