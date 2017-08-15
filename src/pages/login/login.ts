@@ -22,20 +22,15 @@ export class LoginPage {
   user: any;
 
   constructor(private loginservice: LoginServiceProvider, private share: GlobalShareProvider, public modalCtrl: ModalController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
-    if(this.checkUser())
-      this.login(this.share.store.get("app_user"));
     this.LoginForm = fb.group({
       username: ['', Validators.pattern(/(^[a-zA-Z][\w\d]{2,19}$)|(^1[0-9]{10}$)|(^[a-zA-Z0-9][a-zA-Z0-9_\.\-]*\@[a-zA-Z0-9][a-zA-Z0-9\-]*(\.[a-zA-Z0-9]{2,4}){1,3}$)/)],
       password: ['', Validators.pattern(/^[a-zA-Z0-9`\-=\[\];,./~!@#$%^*()_+}{:?]{6,16}$/)]
     });
-  }
-
-  checkUser() {
-    return !!this.share.store.get("app_user");
+    this.memoryLogin();
   }
 
   async login(localData) {
-    let data = await this.loginservice.loginAction({username: localData.username, password: localData.password});
+    let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
       this.clearAndStore(localData);
       this.navCtrl.setRoot('HomePage');
@@ -44,18 +39,39 @@ export class LoginPage {
     }
   }
 
-  clearAndStore(data){
+  clearAndStore(data) {
     this.LoginForm.reset();
-    this.share.store.set("app_user",data);
+    this.share.store.set("app_user", data);
+    localStorage.expired = Date.now();
   }
 
-  userLogin(){
+  formLogin() {
     if (this.LoginForm.valid) {
-      let data={username:this.LoginForm.controls.username.value,password:this.LoginForm.controls.password.value};
-      this.login(data);
+      this.login(this.getFormData());
     } else {
       this.share.presentToast('请完善资料后再提交');
     }
   }
 
+  getFormData() {
+    let {username, password} = this.LoginForm.controls;
+    return {username: username.value, password: password.value};
+  }
+
+  memoryLogin() {
+    if (this.checkUser() && this.checkTime())
+      this.login(this.share.store.get("app_user"));
+  }
+
+  checkUser() {
+    return !!this.share.store.get("app_user");
+  }
+
+  checkTime() {
+    let timeBefore = localStorage.expired;
+    let timeAfter = Date.now();
+    if (timeAfter - timeBefore > 1800000)
+      localStorage.expired = timeAfter;
+    return timeAfter - timeBefore > 1800000;
+  }
 }

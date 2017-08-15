@@ -11,11 +11,11 @@ export class HttpClientProvider {
   baseUrl = Config.baseurl
   public options = new RequestOptions({withCredentials: true});
 
-  constructor( public http: Http, public share: GlobalShareProvider) {
+  constructor(public http: Http, public share: GlobalShareProvider) {
 
   }
 
-  get(url): Promise<any> {
+  get (url): Promise<any> {
     return this.doSubmitAction(url);
   }
 
@@ -23,39 +23,42 @@ export class HttpClientProvider {
     return this.doSubmitAction(url, data);
   }
 
-  autoLoginOutId:any;
+  autoLoginOutId: any;
+
   async logout() {
-     this.share.store.remove('userinfo');
-     this.share.store.remove('userlogindata');
+    this.share.store.remove('app_user');
+    this.share.store.remove('userlogindata');
     this.share.usr = null;
     this.share.presentToast("您太久没有操作，帐号已自动退出");
     setTimeout(() => {
       location.reload();
-    },1000);
+    }, 1000);
   }
-  beforeRequest(){
+
+  beforeRequest() {
     let a = localStorage.expired;
     let b = Date.now();
-    if((b-a)>1800000){
+    if ((b - a) > 1800000) {
       localStorage.expired = Date.now();
       this.logout()
     }
-    return (b-a)>1800000;
+    return (b - a) > 1800000;
   }
+
   private doSubmitAction(url, data?): Promise<any> {
     clearTimeout(this.autoLoginOutId);
-    this.autoLoginOutId=setTimeout(()=>this.logout(),1800000);
+    this.autoLoginOutId = setTimeout(() => this.logout(), 1800000);
 
     return new Promise((resolve, reject) => {
-      if(this.beforeRequest()){
-        resolve({status:1});
+      if (this.beforeRequest()) {
+        resolve({status: 1});
         return;
       }
 
       if (data) {
         return this.http.post(this.baseUrl + url, data).map(res => res.json()).subscribe((data) => {
           if (data.status != 0) {
-            console.log("后台错误信息输出：",data.msg);
+            console.log("后台错误信息输出：", data.msg);
 
           } else if (data.status == 1) {
             this.logout();
