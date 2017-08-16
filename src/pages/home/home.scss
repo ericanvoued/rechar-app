@@ -1,125 +1,60 @@
 page-home {
-  .banner {
-    position: relative;
+  .sscbg{
+    background: #1A1D2E;
   }
-  .notice-grid {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: rgba(39, 35, 32, 0.72);
-    z-index: 11;
-    color: $white;
-    padding: 0 10px;
-    .col {
-      padding: 0;
-    }
-  }
-  .slides {
-    height: auto;
-  }
-  .swiper-slide img {
-    width: 100%;
-  }
-  .swiper-container-horizontal > .swiper-pagination-bullets {
-    bottom: 40px;
-  }
-  .swiper-pagination-bullet {
-    background: $white;
-    opacity: 0.5;
-  }
-  .swiper-pagination-bullet-active {
-    background: $white;
-    opacity: 1;
-  }
-  .game-title {
-    padding: 10px;
-  }
-  .game-list {
-    padding: 0 4px;
-  }
-  .game-li {
-    float: left;
-    width: 50%;
-  }
-  .game-con {
-    position: relative;
-    margin: 0 2px 8px;
-    .pic {
-      width: 100%;
-      height: 100px;
-    }
-    .text {
-      font-size: 16px;
-      color: $white;
-      letter-spacing: -0.39px;
-      line-height: 14px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  .new-game {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-top: 10px;
-  }
-  .new-game::-webkit-scrollbar {
-    display: none;
-  }
-  .new-game-ul {
-    white-space: nowrap;
-    font-size: 0;
-  }
-  .new-game-li {
+  .notice {
+    line-height: 40px;
+    padding: 0 4%;
     display: inline-block;
+    span {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-left:6px;
+      position: relative;
+      top: 1px;
+    }
+  }
+  .lottery-con {
+    padding: 0 2% 10px;
+  }
+  .lottery-title {
+    padding:6px 4% 0;
+    color: #fff;
+    line-height: 38px;
+    .icon-bianmincaipiao {
+      font-size: 2.6rem;
+    }
+    span {
+      margin-left:6px;
+    }
+    .home-more{
+      float: right;
+      .icon-fanhui{
+        color: #aaa;
+        font-size: 2.2rem;
+        -webkit-transform: rotate(180deg)!important;
+        -moz-transform: rotate(180deg)!important;
+        -ms-transform: rotate(180deg)!important;
+        -o-transform: rotate(180deg)!important;
+        transform: rotate(180deg)!important;
+      }
+    }
+  }
+  .swiper-container-horizontal > .swiper-pagination{
+    bottom: 5px;
+    display: block!important;
+  }
+  .home-money{
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  .home-btn{
+    color: #262731;
+    background: #FFBE00;
+    height: 28px;
+    line-height: 28px;
     padding: 0 10px;
-    .text {
-      color: #262626;
-      margin-top: 4px;
-      font-size: 1.4rem;
-    }
-  }
-  .search {
-    margin: 10px 10px 0;
-    border-radius: 20px;
-    background: #eee;
-    .input {
-      background: url("../../assets/img/search.svg") no-repeat 12px 50%;
-      padding: 10px 45px;
-      line-height: 20px;
-      color: #000;
-      font-size: 1.5rem;
-      border: none;
-    }
-  }
-  .vacant {
-    height: 8px;
-    background: $bg-gray;
-    margin: 10px 0;
-  }
-
-  .search-game {
-    padding: 0 5px;
-    margin-bottom: 10px;
-  }
-  .search-game-li {
-    width: 33.33%;
-    float: left;
-  }
-  .search-game-con {
-    margin: 0 5px 10px;
-    .pic {
-      width: 100%;
-    }
-    .text {
-      color: $black;
-      background: $white;
-      box-shadow: 0 1px 4px 0 rgba(179, 179, 179, 0.5);
-      line-height: 32px;
-      text-align: center;
-    }
+    font-size: 1.2rem;
+    border-radius: 14px;
   }
 }
