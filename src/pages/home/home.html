@@ -1,45 +1,47 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+  <ion-navbar class="clear">
+    <button ion-button menuToggle="left" class="side-icon">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <global-banner></global-banner>
+    <div class="header-m">
+      <a class="header-logo">
+        <img src="assets/img/home-logo.svg" width=90 alt="">
+      </a>
+      <div class="fr">
+        <span class="home-money">￥{{userbalance.balance.available}}</span>
+        <a class="home-btn" [navPush]="RechargePage">存款</a>
+      </div>
+    </div>
+    <div class="header-record" (click)="gamerecordFetch()" menuToggle="right">
+      <i class="iconfont icon-jilu"></i>
+    </div>
   </ion-navbar>
 </ion-header>
-<ion-content class="white-bg">
 
-  <div class="banner">
-    <ion-slides loop="true" autoplay="4000" pager="true">
-      <ion-slide *ngFor="let v of share?.banner"><img *ngIf="share?.homedata?.dom" src="{{(share?.homedata?.dom+v)}}" alt=""></ion-slide>
-    </ion-slides>
-    <ion-grid class="notice-grid">
-      <ion-row *ngIf="!share.usr">
-        <ion-col col-8 text-center align-self-center>{{share.homedata?.showMsg}}</ion-col>
-        <ion-col col-4 text-right align-self-center>
-          <button ion-button color="danger" small navPush="RegisterPage">立即注册</button>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngIf="share.usr">
-        <ion-col col-8 text-center align-self-center>{{share.homedata?.showMsg}}</ion-col>
-        <ion-col col-4 text-right align-self-center>
-          <button ion-button color="danger" small (click)="goPage('RechargeWayPage')">马上存款</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-content>
+  <div style="height: 1px;" [class.sscbg]="ccc" ></div>
+  <div class="notice" [navPush]="NoticeListPage"><img src="assets/img/notice-icon.svg" alt=""><span>{{activityService.recordList.data[0]?.title}}</span></div>
+  <ion-slides [options]="mySlideOptions">
+    <ion-slide *ngFor="let banner of activityService.bannderData"><img src="{{banner.pic_url}}" alt=""></ion-slide>
+
+    <ion-slide *ngIf="!activityService.bannderData?.length"><img src="assets/img/banner01.jpg" alt=""></ion-slide>
+
+  </ion-slides>
+  <div class="lottery-title clear">
+    <i class="iconfont icon-bianmincaipiao"></i><span>彩票大厅</span>
+    <!--<span class="home-more" [navPush]="LotteryMorePage"><i class="iconfont icon-fanhui"></i></span>-->
   </div>
-  <div class="game-title">
-    <img src="assets/img/game-title.svg" alt="">
-    <span>老虎机游戏</span>
+  <div class="lottery-con">
+    <ul class="sort-list clear">
+      <li class="sort-li" *ngFor="let items of gamelist.nowData">
+        <div class="sort-a" (click)="items.haschildren ? '' : goforwordGame(items,items.haschildren)">
+          <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span
+          class="sort-span">{{items.name}}</span>
+        </div>
+        <div class="sort-drop clear" *ngIf="items.haschildren">
+          <a class="definite-sort" *ngFor="let minitems of items.children" (touchstart)="goforwordGame(minitems,$event)">{{minitems.name}}</a>
+        </div>
+      </li>
+    </ul>
   </div>
-  <ul class="game-list clear">
-    <li class="game-li" *ngFor="let v of share.agents?.agents" (click)="goPage('GameHomePage',v)">
-      <div class="game-con">
-        <img src="{{(share.homedata?.dom+share.agents?.img_file+v.img_name)}}" class="pic" alt="">
-        <div class="text">{{v.name}}</div>
-      </div>
-    </li>
-  </ul>
 </ion-content>
-<ion-footer>
-  <global-page-footer></global-page-footer>
-</ion-footer>
