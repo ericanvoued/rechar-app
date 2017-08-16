@@ -46,40 +46,28 @@ export class HttpClientProvider {
   private doSubmitAction(url, data?): Promise<any> {
     clearTimeout(this.autoLoginOutId);
     this.autoLoginOutId = setTimeout(() => this.logout(), 1800000);
-
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       if (this.beforeRequest()) {
-        resolve({status: 1});
+        resolve({isSuccess: 0});
         return;
       }
-
       if (data) {
         return this.http.post(this.baseUrl + url, data).map(res => res.json()).subscribe((data) => {
-          if (data.status != 0 && data.status != 1) {
-            console.log("后台错误信息输出：", data.msg);
-          } else if (data.status == 1) {
-            this.logout();
-          }
           resolve(data);
           this.share.hidepresentLoadingDefault();
         }, (e) => {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
-          reject(e);
+          resolve(e);
         });
       } else {
         return this.http.get(this.baseUrl + url).map(res => res.json()).subscribe((data) => {
-          if (data.status != 0) {
-            reject(data);
-            this.share.presentToast(data.msg);
-          } else {
-            resolve(data);
-          }
+          resolve(data);
           this.share.hidepresentLoadingDefault();
         }, (e) => {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
-          reject(e);
+          resolve(e);
         });
       }
     });
