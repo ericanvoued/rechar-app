@@ -1,79 +1,63 @@
 page-login {
-  .content-ios{
-    background: url("../../assets/img/login-bg.jpg") no-repeat center center;
-    background-size: cover;
+  .form-wrap {
+    margin-top: 13%;
+    padding: 0 12%;
   }
-  .login-user{
-    background: url("../../assets/img/login-user.png") no-repeat 11px center;
+  .form-login {
+    margin-top: 5%;
   }
-  .login-password{
-    background: url("../../assets/img/login-password.png") no-repeat 11px center;
+  .member-password {
+    color: #c6c6c6;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
   }
-  .logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 18% 0 8% 0;
-    img{
-      width: 75%;
-      height: 75%;
+  .remember-password {
+    padding: 12px 6px;
+  }
+  .check-box {
+    vertical-align: middle;
+    .checkbox-checked {
+      background: #fff;
+      border-color: #C6C6C6;
+    }
+    .checkbox-checked .checkbox-inner {
+      border-color: #707070;
     }
   }
-  .form-wrap{
-    margin-top: 2%;
-    padding:0 10%;
-    position: relative;
-    .input-wrap{
-      margin: 12% auto;
-      .input-item{
-        display: block;
-        height: 50px;
-        margin: 10px auto;
-        .form-item{
-          display: flex;
-          align-items: center;
-          height: 40px;
-          margin-left: 6%;
-          input{
-            height: 40px;
-            width: 90%;
-            margin-right: 2%;
-            padding-left: 40px;
-            line-height: 32px;
-            border: 2px solid #979797;
-            color: #fff;
-
-          }
-          input:focus{
-            border: 2px solid orange;
-          }
-          ion-icon {
-            color: green;
-            font-size: 20px;
-          }
-        }
-        .form-remind div{
-          display: flex;
-          justify-content: center;
-          margin: 1px auto;
-          color: red;
-          font-size: 6px;
-        }
-      }
+  .check-box > div {
+    border: 2px solid #c6c6c6 !important;
+  }
+  .forget-password {
+    color: #c6c6c6;
+    float: right;
+  }
+  @media screen and (orientation: portrait) {
+    //竖屏
+  }
+  //横屏样式
+  //@media screen and (orientation: landscape) {
+  //}
+  @media screen and (max-height: 500px) {
+    .form-item {
+      border: 1px solid #999;
+    }
+    .copy-right {
+      display: none;
+    }
+    .logo {
+      display: none;
     }
   }
-  .form-login{
-    margin: 0 5%;
-    button{
-      background-color: orange;
-      font-weight: bold;
-    }
+  .form-remind {
+    color: red;
   }
-  .copy-right{
+  ion-icon {
     position: absolute;
-    bottom: 3%;
-    margin: 0 8%;
-    color: #f4f4f4;
-    font-size: 6px;
+    right: -20px;
+    top: 50%;
+    left: auto;
+    margin-top: -0.6em;
+    color: green;
   }
 }
