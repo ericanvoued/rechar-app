@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 import {Config} from "../../config/config";
 import {GlobalShareProvider} from "../global-share/global-share";
 
-
 @Injectable()
 export class HttpClientProvider {
   baseUrl = Config.baseurl
@@ -27,12 +26,11 @@ export class HttpClientProvider {
 
   async logout() {
     this.share.store.remove('app_user');
-    this.share.store.remove('userlogindata');
     this.share.usr = null;
     this.share.presentToast("您太久没有操作，帐号已自动退出");
     setTimeout(() => {
       location.reload();
-    }, 1000);
+    }, 3000);
   }
 
   beforeRequest() {
@@ -40,7 +38,7 @@ export class HttpClientProvider {
     let b = Date.now();
     if ((b - a) > 1800000) {
       localStorage.expired = Date.now();
-      this.logout()
+      this.logout();
     }
     return (b - a) > 1800000;
   }
@@ -57,9 +55,8 @@ export class HttpClientProvider {
 
       if (data) {
         return this.http.post(this.baseUrl + url, data).map(res => res.json()).subscribe((data) => {
-          if (data.status != 0) {
+          if (data.status != 0 && data.status != 1) {
             console.log("后台错误信息输出：", data.msg);
-
           } else if (data.status == 1) {
             this.logout();
           }
@@ -86,8 +83,6 @@ export class HttpClientProvider {
         });
       }
     });
-
-
   }
 }
 

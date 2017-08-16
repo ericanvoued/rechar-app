@@ -1,0 +1,24 @@
+<!-- Generated template for the GlobalBannerComponent component -->
+<ion-grid no-padding>
+  <ion-row>
+    <ion-col text-left>
+      <div class="right-border">
+        <img src="assets/img/logo.svg" (click)="goPage('HomePage')" alt="">
+      </div>
+    </ion-col>
+    <ion-col text-right>
+      <div class="left-border" *ngIf="!share.usr">
+        <a (click)="goPage('RegisterPage')">注册</a>
+        <span>|</span>
+        <a (click)="login()">登陆</a>
+      </div>
+      <div class="left-border" *ngIf="share.usr">
+        <a (click)="youhui()">领优惠</a>
+        <span>|</span>
+        <a (click)="goPage('RechargeWayPage')">充值</a>
+      </div>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+

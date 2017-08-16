@@ -1,18 +1,45 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>home</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <global-banner></global-banner>
   </ion-navbar>
-
 </ion-header>
+<ion-content class="white-bg">
 
-
-<ion-content padding>
-
+  <div class="banner">
+    <ion-slides loop="true" autoplay="4000" pager="true">
+      <ion-slide *ngFor="let v of share?.banner"><img *ngIf="share?.homedata?.dom" src="{{(share?.homedata?.dom+v)}}" alt=""></ion-slide>
+    </ion-slides>
+    <ion-grid class="notice-grid">
+      <ion-row *ngIf="!share.usr">
+        <ion-col col-8 text-center align-self-center>{{share.homedata?.showMsg}}</ion-col>
+        <ion-col col-4 text-right align-self-center>
+          <button ion-button color="danger" small navPush="RegisterPage">立即注册</button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="share.usr">
+        <ion-col col-8 text-center align-self-center>{{share.homedata?.showMsg}}</ion-col>
+        <ion-col col-4 text-right align-self-center>
+          <button ion-button color="danger" small (click)="goPage('RechargeWayPage')">马上存款</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="game-title">
+    <img src="assets/img/game-title.svg" alt="">
+    <span>老虎机游戏</span>
+  </div>
+  <ul class="game-list clear">
+    <li class="game-li" *ngFor="let v of share.agents?.agents" (click)="goPage('GameHomePage',v)">
+      <div class="game-con">
+        <img src="{{(share.homedata?.dom+share.agents?.img_file+v.img_name)}}" class="pic" alt="">
+        <div class="text">{{v.name}}</div>
+      </div>
+    </li>
+  </ul>
 </ion-content>
+<ion-footer>
+  <global-page-footer></global-page-footer>
+</ion-footer>
