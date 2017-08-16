@@ -59,7 +59,7 @@ export class LoginPage {
   }
 
   memoryLogin() {
-    if (this.checkUser() && this.checkTime())
+    if (this.checkTime())
       this.login(this.share.store.get("app_user"));
   }
 
@@ -70,8 +70,8 @@ export class LoginPage {
   checkTime() {
     let timeBefore = localStorage.expired;
     let timeAfter = Date.now();
-    if (timeAfter - timeBefore > 1800000)
+    if ((timeAfter - timeBefore) > 1800000)
       localStorage.expired = timeAfter;
-    return timeAfter - timeBefore > 1800000;
+    return (timeAfter - timeBefore) > 1800000;
   }
 }
