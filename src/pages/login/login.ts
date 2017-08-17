@@ -32,7 +32,7 @@ export class LoginPage {
   async login(localData) {
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
-      this.share._token = data.data.token;
+      localStorage.token = data.data.token;
       this.clearAndStore(localData);
       this.navCtrl.setRoot('HomePage');
     } else {
@@ -71,8 +71,11 @@ export class LoginPage {
   checkTime() {
     let timeBefore = localStorage.expired;
     let timeAfter = Date.now();
-    if ((timeAfter - timeBefore) > 1800000)
+    if(!timeBefore) timeBefore=0;
+    if ((timeAfter - timeBefore) > 1800000){
+      localStorage.token="";
       localStorage.expired = timeAfter;
+    }
     return (timeAfter - timeBefore) > 1800000;
   }
 }

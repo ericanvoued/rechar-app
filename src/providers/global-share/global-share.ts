@@ -11,7 +11,7 @@ import {LoadingController, ToastController} from "ionic-angular";
 */
 @Injectable()
 export class GlobalShareProvider {
-  private loading: any;
+  loading: any;
   usr: any;
   _token:any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {

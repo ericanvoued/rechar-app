@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { GamerecordComponent } from './gamerecord/gamerecord';
+import { MoreComponent } from './more/more';
+import { MyPopOverComponent } from './my-pop-over/my-pop-over';
 @NgModule({
-	declarations: [GamerecordComponent],
+	declarations: [MoreComponent,
+    MyPopOverComponent],
 	imports: [],
-	exports: [GamerecordComponent]
+	exports: [MoreComponent,
+    MyPopOverComponent]
 })
 export class ComponentsModule {}

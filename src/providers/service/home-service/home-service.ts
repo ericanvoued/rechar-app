@@ -5,7 +5,7 @@ import {GlobalShareProvider} from "../../global-share/global-share";
 
 @Injectable()
 export class HomeServiceProvider {
-  parameters: {
+  parameters = {
     _token: '',
     page: 1,
     end: '',
@@ -13,29 +13,35 @@ export class HomeServiceProvider {
     bet_status: 1,
     lottery_id: ''
   };
-
-  constructor(private client: HttpClientProvider, private share: GlobalShareProvider) {
-
+  dataGroup: any;
+  banners: any;
+  balance: any;
+  notice={data:[]};
+  constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
 
-  getUserBalance(): Promise<any> {
-    return this.client.get('/mobileh5-users/user-account-info');
+  async getUserBalance(): Promise<any> {
+    let balance = await this.client.get('/mobileh5-users/user-account-info');
+    this.balance = balance.data;
   }
 
-  postRemoteServer(): Promise<any> {
-    return this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters());
+  async postRemoteServer(): Promise<any> {
+    let notice = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters());
+    this.notice.data = notice.data;
   }
 
-  getRemoteServer(): Promise<any> {
-    return this.client.get('/mobileh5-announcements/');
+  async getRemoteServer(): Promise<any> {
+    let notice = await this.client.get('/mobileh5-announcements/');
+    this.notice.data = notice.data.cmsarticle;
   }
 
-  getBannerRemoteServer(): Promise<any> {
-    return this.client.get('/mobileh5-announcements/banner');
+  async getBannerRemoteServer(): Promise<any> {
+    let banners = await this.client.get('/mobileh5-announcements/banner');
+    this.banners = banners.data;
   }
 
-  postLotteryServer() {
-    let inData = this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
+  async postLotteryServer() {
+    let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
     let dataGroup = [{name: "时时彩系列", nav: "SSC|60", time: null, group: []}, {
       name: "11选5系列",
       nav: "11Y",
@@ -47,7 +53,6 @@ export class HomeServiceProvider {
       time: null,
       group: []
     }, {name: "快三系列", nav: "K3", time: null, group: []}];
-
     for (let k in inData) {
       if (inData[k].name && inData[k].nav) {
         for (let v in dataGroup) {
@@ -59,7 +64,7 @@ export class HomeServiceProvider {
         }
       }
     }
-    return dataGroup;
+    this.dataGroup = dataGroup;
   }
 
   inStr(strB, strA) {
@@ -73,8 +78,7 @@ export class HomeServiceProvider {
   }
 
   getParameters() {
-    this.parameters._token = this.share._token;
+    this.parameters._token = localStorage.token;
     return this.parameters;
   }
-
 }
