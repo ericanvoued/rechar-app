@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+</head>
+<body>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body,html{
+    width: 100%;
+    height: 100%;
+  }
+  iframe {
+    width: 100%;
+    display: block;
+    height: 100%;
+    background: none;
+    border: none;
+  }
+</style>
+
+<iframe id="online"></iframe>
+
+<!--<?php $sInfoValue = ('userId='.Session::get('user_id').'&loginname='.Session::get('username').'&name='.Session::get('username').'&hashCode=&amp;timestamp='.time());-->
+
+<!--<script type="text/javascript">-->
+  <!--$(".online-server").on("click" , function(){-->
+    <!--var url = "https://vp9.live800.com/live800/chatClient/chatbox.jsp?companyID=80000041&configID=2083&codeType=custom&info=("+"{{ $sInfoValue }}" +")";-->
+    <!--window.open(url,"_blank","height=700,width=900");-->
+  <!--})-->
+<!--</script>-->
+
+<script>
+  window.addEventListener('message', function (event) {
+
+    online.src = "https://vp9.live800.com/live800/chatClient/chatbox.jsp?companyID=80000041&configID=2083&codeType=custom&info=loginname="+event.data.username+"&name="+event.data.username+"&hashCode=&amp;timestamp="+Date.now();
+  });</script>
+
+</body>
+</html>
