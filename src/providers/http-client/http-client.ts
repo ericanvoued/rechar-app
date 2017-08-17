@@ -11,7 +11,6 @@ export class HttpClientProvider {
   public options = new RequestOptions({withCredentials: true});
 
   constructor(public http: Http, public share: GlobalShareProvider) {
-
   }
 
   get (url): Promise<any> {
@@ -59,7 +58,7 @@ export class HttpClientProvider {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
           resolve(e);
-        });
+        })
       } else {
         return this.http.get(this.baseUrl + url).map(res => res.json()).subscribe((data) => {
           resolve(data);
@@ -68,9 +67,9 @@ export class HttpClientProvider {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
           resolve(e);
-        });
+        })
       }
-    });
+    })
   }
 }
 
