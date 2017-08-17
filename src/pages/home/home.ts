@@ -16,10 +16,10 @@ export class HomePage {
   banners: any;
   lottery:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
-    this.balance = this.homeService.getUserBalance();
-    this.notice=this.homeService.getRemoteServer();
-    this.banners=this.homeService.getBannerRemoteServer();
-    this.lottery=this.homeService.postLotteryServer();
+    // this.balance = this.homeService.getUserBalance();
+    // this.notice=this.homeService.getRemoteServer();
+    // this.banners=this.homeService.getBannerRemoteServer();
+    // this.lottery=this.homeService.postLotteryServer();
     clearInterval(this.cccInterval);
     this.cccInterval = setInterval(() => {
       this.ccc = !this.ccc;

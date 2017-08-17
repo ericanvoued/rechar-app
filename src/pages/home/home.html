@@ -8,7 +8,7 @@
         <img src="assets/img/home-logo.svg" width=90 alt="">
       </a>
       <div class="fr">
-        <span class="home-money">￥{{balance.data.available}}</span>
+        <span class="home-money">￥{{balance?.data?.available}}</span>
         <a class="home-btn" [navPush]="RechargePage">存款</a>
       </div>
     </div>
@@ -20,10 +20,10 @@
 
 <ion-content>
   <div style="height: 1px;" [class.sscbg]="ccc"></div>
-  <div class="notice" [navPush]="NoticeListPage"><img src="assets/img/notice-icon.svg" alt=""><span>{{notice.data.cmsarticle[0]?.title}}</span></div>
-  <ion-slides [options]="mySlideOptions">
-    <ion-slide *ngFor="let banner of banners.data"><img src="{{banner.pic_url}}" alt=""></ion-slide>
-    <ion-slide *ngIf="!banners.data?.length"><img src="assets/img/banner01.jpg" alt=""></ion-slide>
+  <div class="notice" [navPush]="NoticeListPage"><img src="assets/img/notice-icon.svg" alt=""><span>{{notice?.data?.cmsarticle[0]?.title}}</span></div>
+  <ion-slides>
+    <ion-slide *ngFor="let banner of banners?.data"><img src="{{banner?.pic_url}}" alt=""></ion-slide>
+    <ion-slide *ngIf="!banners?.data?.length"><img src="assets/img/banner01.jpg" alt=""></ion-slide>
   </ion-slides>
   <div class="lottery-title clear">
     <i class="iconfont icon-bianmincaipiao"></i><span>彩票大厅</span>
@@ -35,8 +35,8 @@
         <div class="sort-a" (click)="playGame(items)">
           <img src="{{items.name}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
         </div>
-        <div class="sort-drop clear" *ngIf="items.group">
-          <a class="definite-sort" *ngFor="let minitems of items.group" (touchstart)="playGame(minitems)">{{minitems.name}}</a>
+        <div class="sort-drop clear" *ngIf="items?.group">
+          <a class="definite-sort" *ngFor="let minitems of items?.group" (touchstart)="playGame(minitems)">{{minitems.name}}</a>
         </div>
       </li>
     </ul>
