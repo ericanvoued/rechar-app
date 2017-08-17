@@ -12,12 +12,10 @@ import {LoadingController, ToastController} from "ionic-angular";
 @Injectable()
 export class GlobalShareProvider {
   private loading: any;
-
+  usr: any;
+  _token:any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
-    console.log('Hello GlobalShareProvider Provider');
   }
-
-  usr: any
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

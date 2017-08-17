@@ -8,24 +8,22 @@
         <img src="assets/img/home-logo.svg" width=90 alt="">
       </a>
       <div class="fr">
-        <span class="home-money">￥{{userbalance.balance.available}}</span>
+        <span class="home-money">￥{{balance.data.available}}</span>
         <a class="home-btn" [navPush]="RechargePage">存款</a>
       </div>
     </div>
-    <div class="header-record" (click)="gamerecordFetch()" menuToggle="right">
+    <div class="header-record" (click)="gameRecordFetch()" menuToggle="right">
       <i class="iconfont icon-jilu"></i>
     </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div style="height: 1px;" [class.sscbg]="ccc" ></div>
-  <div class="notice" [navPush]="NoticeListPage"><img src="assets/img/notice-icon.svg" alt=""><span>{{activityService.recordList.data[0]?.title}}</span></div>
+  <div style="height: 1px;" [class.sscbg]="ccc"></div>
+  <div class="notice" [navPush]="NoticeListPage"><img src="assets/img/notice-icon.svg" alt=""><span>{{notice.data.cmsarticle[0]?.title}}</span></div>
   <ion-slides [options]="mySlideOptions">
-    <ion-slide *ngFor="let banner of activityService.bannderData"><img src="{{banner.pic_url}}" alt=""></ion-slide>
-
-    <ion-slide *ngIf="!activityService.bannderData?.length"><img src="assets/img/banner01.jpg" alt=""></ion-slide>
-
+    <ion-slide *ngFor="let banner of banners.data"><img src="{{banner.pic_url}}" alt=""></ion-slide>
+    <ion-slide *ngIf="!banners.data?.length"><img src="assets/img/banner01.jpg" alt=""></ion-slide>
   </ion-slides>
   <div class="lottery-title clear">
     <i class="iconfont icon-bianmincaipiao"></i><span>彩票大厅</span>
@@ -33,13 +31,12 @@
   </div>
   <div class="lottery-con">
     <ul class="sort-list clear">
-      <li class="sort-li" *ngFor="let items of gamelist.nowData">
-        <div class="sort-a" (click)="items.haschildren ? '' : goforwordGame(items,items.haschildren)">
-          <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span
-          class="sort-span">{{items.name}}</span>
+      <li class="sort-li" *ngFor="let items of lottery">
+        <div class="sort-a" (click)="playGame(items)">
+          <img src="{{items.name}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
         </div>
-        <div class="sort-drop clear" *ngIf="items.haschildren">
-          <a class="definite-sort" *ngFor="let minitems of items.children" (touchstart)="goforwordGame(minitems,$event)">{{minitems.name}}</a>
+        <div class="sort-drop clear" *ngIf="items.group">
+          <a class="definite-sort" *ngFor="let minitems of items.group" (touchstart)="playGame(minitems)">{{minitems.name}}</a>
         </div>
       </li>
     </ul>

@@ -7,7 +7,7 @@ import {GlobalShareProvider} from "../global-share/global-share";
 
 @Injectable()
 export class HttpClientProvider {
-  baseUrl = Config.baseurl
+  baseUrl = Config.baseurl;
   public options = new RequestOptions({withCredentials: true});
 
   constructor(public http: Http, public share: GlobalShareProvider) {

@@ -32,6 +32,7 @@ export class LoginPage {
   async login(localData) {
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
+      this.share._token = data.data.token;
       this.clearAndStore(localData);
       this.navCtrl.setRoot('HomePage');
     } else {
