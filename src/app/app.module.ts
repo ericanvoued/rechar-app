@@ -5,6 +5,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {MyApp} from './app.component';
 import {HttpModule} from "@angular/http";
+import {HttpClientProvider} from "../providers/http-client/http-client";
+import {GlobalShareProvider} from "../providers/global-share/global-share";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {HttpModule} from "@angular/http";
     MyApp
   ],
   providers: [
+    HttpClientProvider,
+    GlobalShareProvider,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
