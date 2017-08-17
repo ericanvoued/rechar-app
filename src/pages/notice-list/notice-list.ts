@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 
 /**
  * Generated class for the NoticeListPage page.
@@ -15,11 +16,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NoticeListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController,public homeService: HomeServiceProvider, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NoticeListPage');
+    this.homeService.getRemoteServer();
   }
 
+  pushPage(page){
+    if(page) this.navCtrl.push(page);
+  }
 }

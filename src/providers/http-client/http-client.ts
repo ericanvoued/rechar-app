@@ -26,6 +26,8 @@ export class HttpClientProvider {
   async logout() {
     this.share.store.remove('app_user');
     this.share.usr = null;
+    localStorage.token = "";
+    localStorage.expired = Date.now();
     this.share.presentToast("您太久没有操作，帐号已自动退出");
     setTimeout(() => {
       location.reload();
@@ -35,10 +37,7 @@ export class HttpClientProvider {
   beforeRequest() {
     let a = localStorage.expired;
     let b = Date.now();
-    if ((b - a) > 1800000) {
-      localStorage.expired = Date.now();
-      this.logout();
-    }
+    if ((b - a) > 1800000) this.logout();
     return (b - a) > 1800000;
   }
 

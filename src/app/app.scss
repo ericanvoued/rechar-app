@@ -9,6 +9,15 @@ html, body {
   height: 100%;
 }
 
+.toast-ios .toast-wrapper{
+  left: 40px;
+  right: 40px;
+  .toast-message {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 body {
   color: #fff;
   font-family: Helvetica, Arial, "microsoft yahei", STHeiTi, sans-serif;
@@ -1309,14 +1318,15 @@ a, a:hover, a:focus, a:visited {
   }
 }
 
-.recharge-5{
-  li{
+.recharge-5 {
+  li {
     width: 20%;
   }
 }
+
 @media (max-width: 360px) {
-  .recharge-5{
-    li{
+  .recharge-5 {
+    li {
       font-size: 1.5rem;
     }
   }
