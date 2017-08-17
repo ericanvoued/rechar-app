@@ -13,7 +13,7 @@ export class HttpClientProvider {
   constructor(public http: Http, public share: GlobalShareProvider) {
   }
 
-  get (url): Promise<any> {
+  get(url): Promise<any> {
     return this.doSubmitAction(url);
   }
 
@@ -44,28 +44,39 @@ export class HttpClientProvider {
   private doSubmitAction(url, data?): Promise<any> {
     clearTimeout(this.autoLoginOutId);
     this.autoLoginOutId = setTimeout(() => this.logout(), 1800000);
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       if (this.beforeRequest()) {
-        resolve({isSuccess: 0});
+        reject({isSuccess: 0});
+        this.share.hidepresentLoadingDefault();
         return;
       }
       if (data) {
-        return this.http.post(this.baseUrl + url, data).map(res => res.json()).subscribe((data) => {
-          resolve(data);
+        return this.http.post(this.baseUrl + url, data,this.options).map(res => res.json()).subscribe((data) => {
+          if (data.isSuccess) {
+            resolve(data);
+          } else {
+            this.share.presentToast(data.Msg);
+            reject(data);
+          }
           this.share.hidepresentLoadingDefault();
         }, (e) => {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
-          resolve(e);
+          reject(e);
         })
       } else {
-        return this.http.get(this.baseUrl + url).map(res => res.json()).subscribe((data) => {
-          resolve(data);
+        return this.http.get(this.baseUrl + url,this.options).map(res => res.json()).subscribe((data) => {
+          if (data.isSuccess) {
+            resolve(data);
+          } else {
+            this.share.presentToast(data.Msg);
+            reject(data);
+          }
           this.share.hidepresentLoadingDefault();
         }, (e) => {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();
-          resolve(e);
+          reject(e);
         })
       }
     })

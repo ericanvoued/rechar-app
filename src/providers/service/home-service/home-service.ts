@@ -3,6 +3,34 @@ import 'rxjs/add/operator/map';
 import {HttpClientProvider} from "../../http-client/http-client";
 import {GlobalShareProvider} from "../../global-share/global-share";
 
+
+let dataGroup = [
+  {
+    name: "时时彩系列",
+    nav: "SSC|60",
+    time: null,
+    group: []
+  }, {
+    name: "11选5系列",
+    nav: "11Y",
+    time: null,
+    group: []
+  }, {
+    name: "六合彩系列",
+    nav: "LHC", time: null,
+    group: []
+  }, {
+    name: "幸运28系列",
+    nav: "KL",
+    time: null,
+    group: []
+  }, {
+    name: "快三系列",
+    nav: "K3",
+    time: null,
+    group: []
+  }
+];
 @Injectable()
 export class HomeServiceProvider {
   parameters = {
@@ -16,7 +44,8 @@ export class HomeServiceProvider {
   dataGroup: any;
   banners: any;
   balance: any;
-  notice={data:[]};
+  notice = {data: []};
+
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
 
@@ -42,17 +71,11 @@ export class HomeServiceProvider {
 
   async postLotteryServer() {
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
-    let dataGroup = [{name: "时时彩系列", nav: "SSC|60", time: null, group: []}, {
-      name: "11选5系列",
-      nav: "11Y",
-      time: null,
-      group: []
-    }, {name: "六合彩系列", nav: "LHC", time: null, group: []}, {
-      name: "幸运28系列",
-      nav: "KL",
-      time: null,
-      group: []
-    }, {name: "快三系列", nav: "K3", time: null, group: []}];
+    this.setInData(inData);
+    this.dataGroup = dataGroup;
+  }
+
+  setInData(inData) {
     for (let k in inData) {
       if (inData[k].name && inData[k].nav) {
         for (let v in dataGroup) {
@@ -64,12 +87,12 @@ export class HomeServiceProvider {
         }
       }
     }
-    this.dataGroup = dataGroup;
+    return inData;
   }
 
   inStr(strB, strA) {
     let subStr = strB.split("|");
-    let indexNumber = -1;
+    let indexNumber;
     for (let v in subStr) {
       indexNumber = strA.toUpperCase().indexOf(subStr[v].toUpperCase());
       if (indexNumber > -1) break;
