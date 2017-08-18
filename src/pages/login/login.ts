@@ -25,6 +25,7 @@ export class LoginPage {
   }
 
   async login(localData) {
+    this.share.presentLoadingDefault("正在登陆中....");
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
       localStorage.token = data.data.token;
