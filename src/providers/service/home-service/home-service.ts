@@ -31,6 +31,7 @@ let dataGroup = [
     group: []
   }
 ];
+
 @Injectable()
 export class HomeServiceProvider {
   parameters = {
@@ -45,17 +46,25 @@ export class HomeServiceProvider {
   banners: any;
   balance: any;
   notice = {data: []};
+  gameRecord = {data: []};
+  chargeRecord = {data: []};
 
-  constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {}
+  constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
+  }
 
   async getUserBalance(): Promise<any> {
     let balance = await this.client.get('/mobileh5-users/user-account-info');
     this.balance = balance.data;
   }
 
+  async postRecordServer(): Promise<any> {
+    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters());
+    this.chargeRecord.data = chargeRecord.data;
+  }
+
   async postRemoteServer(): Promise<any> {
-    let notice = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters());
-    this.notice.data = notice.data;
+    let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters());
+    this.gameRecord.data = gameRecord.data;
   }
 
   async getRemoteServer(): Promise<any> {
@@ -72,7 +81,7 @@ export class HomeServiceProvider {
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
     this.setInData(inData);
     this.dataGroup = dataGroup;
-    this.share.dataGroup=dataGroup;
+    this.share.dataGroup = dataGroup;
   }
 
   setInData(inData) {

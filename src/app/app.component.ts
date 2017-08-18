@@ -1,11 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
-import {MenuController, Nav, Platform, IonicApp, App, AlertController} from 'ionic-angular';
+import {MenuController, Nav, Platform, IonicApp, App, AlertController, ToastController} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {Config} from "../config/config";
 import {DateFormat} from "../providers/tools/date";
-
 
 @Component({
   templateUrl: 'app.html'
@@ -16,8 +15,9 @@ export class MyApp {
   userTypeMap = Config.userTypeMap;
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;
-
-  constructor(public share: GlobalShareProvider,public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
+  statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
+  yearReg = /[\d]{4}-/;
+  constructor(public share: GlobalShareProvider,public toastCtrl: ToastController,public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -55,11 +55,29 @@ export class MyApp {
     confirm.present();
   }
 
-  goUserCenter() {
-    this.nav.setRoot('TabHomePage', {pageIndex: 4});
+  playGame(gameNav,toPage): void {
+    if (!gameNav.time) {
+      let toast = this.toastCtrl.create({
+        message: "即将上线",
+        duration: 1000,
+        position: 'middle'
+      });
+      toast.present();
+      return;
+    }
     this.menu.close();
+    if(toPage) this.nav.push(toPage,{nav: gameNav})
   }
 
-
+  goPage(page,parameter,how){
+    if(page){
+      if(how){
+        this.nav.push(page,parameter);
+      }else{
+        this.nav.setRoot(page,parameter);
+      }
+      this.menu.close();
+    }
+  }
 }
 

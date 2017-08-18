@@ -2,17 +2,9 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Effect} from "../game-common/effect";
 import {Config} from "../../../config/config";
-import {BusinessTool} from "../../../providers/tools/business-tool";
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {GamerecordComponent} from "../../../components/gamerecord/gamerecord";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-
-/**
- * Generated class for the CqsscPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,7 +21,7 @@ export class CqsscPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider,private util: BusinessTool,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
     this.other();
 

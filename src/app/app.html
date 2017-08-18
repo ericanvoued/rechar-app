@@ -2,32 +2,32 @@
   <ion-content>
     <div class="side-content">
       <div class="side-header">
-        <span class="member" (touchstart)="goUserCenter()"><img src="assets/img/header-pic.svg" alt=""></span>
+        <span class="member" (touchstart)="goPage('TabHomePage',{pageIndex: 4})"><img src="assets/img/header-pic.svg" alt=""></span>
         <span class="name-grade">
-          <strong class="name">{{ share.user?.username}}</strong>
-          <strong class="grade">会员类型：{{userTypeMap[ share.user?.user_type]}}</strong>
+          <strong class="name">{{ share?.user?.username}}</strong>
+          <strong class="grade">会员类型：{{userTypeMap[ share?.user?.user_type]}}</strong>
         </span>
       </div>
       <div class="side-title clear">
-        <a (touchstart)="goHomePage()"><span>游戏大厅</span></a>
-        <a (touchstart)="goGamesRecordsPage()"><span>投注记录</span></a>
-        <a (touchstart)="goRechargeRecord()"><span>充值提款</span></a>
+        <a (touchstart)="goPage('TabHomePage','')"><span>游戏大厅</span></a>
+        <a (touchstart)="goPage('GameRecordPage',{title: '投注记录'},1)"><span>投注记录</span></a>
+        <a (touchstart)="goPage('RechargeDetailPage','',1)"><span>充值提款</span></a>
       </div>
       <div class="side-wrap">
         <ul class="side-list">
-          <li class="side-li" *ngFor="let items of gamelist.dataGroup">
+          <li class="side-li" *ngFor="let items of share?.dataGroup">
             <div class="side-con clear">
               <div class="fl">
                 <img src="{{gamelistIconMap[items.name]}}" alt="">
                 <span>{{items.name}}</span>
               </div>
               <div class="fr">
-                <span class="time" *ngIf="items.haschildren">{{ft(items.children[0]?.time)}}</span>
+                <span class="time" *ngIf="items?.group">{{ft(items.group[0]?.time)}}</span>
                 <!--<span class="star"><i [class.icon-wujiaoxingman]="" class="iconfont icon-wujiaoxingkong"></i></span>-->
               </div>
             </div>
-            <div class="side-drop clear" *ngIf="items.haschildren">
-              <a class="definite-sort" *ngFor="let minitems of items.children" (touchstart)="goforwordGame(minitems,$event)">{{minitems.name}}
+            <div class="side-drop clear" *ngIf="items.group">
+              <a class="definite-sort" *ngFor="let minitems of items.group" (touchstart)="playGame(minitems,'CqsscPage')">{{minitems.name}}
               </a>
             </div>
           </li>
@@ -42,7 +42,7 @@
     <div class="bill-title">投注单</div>
     <div class="bet-con">
       <ul class="bet-record side-bet-record">
-        <li *ngFor="let item of betrecordService.betRecordlist?.data?.data" (touchstart)="goBetDetailPage(item)">
+        <li *ngFor="let item of share?.gameRecord?.data" (touchstart)="goPage('BetDetailPage',item,1)">
           <div class="my-table">
             <div class="my-row">
               <div class="my-cell">
@@ -63,7 +63,7 @@
         </li>
       </ul>
     </div>
-    <no-data-remind *ngIf="!betrecordService.betRecordlist?.data?.data?.length"></no-data-remind>
+    <no-data-remind *ngIf="!share?.gameRecord?.data?.length"></no-data-remind>
   </ion-content>
 </ion-menu>
 

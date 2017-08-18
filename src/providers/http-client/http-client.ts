@@ -25,14 +25,14 @@ export class HttpClientProvider {
 
   async logout() {
     this.share.store.remove('app_user');
-    this.share.usr = null;
+    this.share.user = null;
     localStorage.token = "";
     localStorage.expired = Date.now();
     this.share.presentToast("您太久没有操作，帐号已自动退出");
     setTimeout(() => {
       location.reload();
     }, 3000);
-  }
+  }e
 
   beforeRequest() {
     let a = localStorage.expired;
