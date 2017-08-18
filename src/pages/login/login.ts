@@ -31,7 +31,7 @@ export class LoginPage {
       localStorage.token = data.data.token;
       this.share._token = data.data.token;
       this.clearAndStore(localData);
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabHomePage');
     } else {
       this.share.presentToast(data.Msg);
     }

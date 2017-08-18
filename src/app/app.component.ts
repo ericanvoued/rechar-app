@@ -17,7 +17,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
   yearReg = /[\d]{4}-/;
-  constructor(public share: GlobalShareProvider,public toastCtrl: ToastController,public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
+
+  constructor(public share: GlobalShareProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
+
+    if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
+      setTimeout(v => this.nav.setRoot('LoginPage'), 150);
+    }
+
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -48,14 +54,14 @@ export class MyApp {
         text: '取消',
         handler: () => console.log('Disagree clicked')
       }, {
-          text: '退出',
-          handler: () => this.platform.exitApp()
-        }]
+        text: '退出',
+        handler: () => this.platform.exitApp()
+      }]
     });
     confirm.present();
   }
 
-  playGame(gameNav,toPage): void {
+  playGame(gameNav, toPage): void {
     if (!gameNav.time) {
       let toast = this.toastCtrl.create({
         message: "即将上线",
@@ -66,15 +72,15 @@ export class MyApp {
       return;
     }
     this.menu.close();
-    if(toPage) this.nav.push(toPage,{nav: gameNav})
+    if (toPage) this.nav.push(toPage, {nav: gameNav})
   }
 
-  goPage(page,parameter,how){
-    if(page){
-      if(how){
-        this.nav.push(page,parameter);
-      }else{
-        this.nav.setRoot(page,parameter);
+  goPage(page, parameter, how) {
+    if (page) {
+      if (how) {
+        this.nav.push(page, parameter);
+      } else {
+        this.nav.setRoot(page, parameter);
       }
       this.menu.close();
     }
