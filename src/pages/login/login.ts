@@ -3,6 +3,8 @@ import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angula
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GlobalShareProvider} from "../../providers/global-share/global-share";
 import {LoginServiceProvider} from "../../providers/service/login-serice/login-service";
+import * as md5 from 'md5';
+
 
 @IonicPage()
 @Component({
@@ -50,7 +52,12 @@ export class LoginPage {
 
   getFormData() {
     let {username, password} = this.LoginForm.controls;
-    return {username: username.value, password: password.value};
+
+      return {
+        username: username.value,
+        password: md5(md5(md5(username.value + password.value)))
+      }
+
   }
 
   memoryLogin() {

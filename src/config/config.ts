@@ -1,5 +1,5 @@
 export class Config {
-  static baseurl = "http://localhost:8181";
+  static baseurl = "";
   //static baseurl = "http://180.178.42.214";
   static autologin = !!(+localStorage.getItem('autologin'));
   static bankcardIconMap = {

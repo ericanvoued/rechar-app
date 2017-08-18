@@ -15,6 +15,7 @@ export class GlobalShareProvider {
   user: any;
   _token:any;
   dataGroup: any=[];
+  balance: any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 

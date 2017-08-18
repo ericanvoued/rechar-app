@@ -22,9 +22,28 @@
         .catch(err => console.error('Error', err));
     }
   </script>-->
-
+  <link rel="stylesheet" href="assets/font/iconfont.css">
   <link href="build/main.css" rel="stylesheet">
+  <script>
+    Number.prototype.toFixed = function (len) {
+      var str = this + "";
+      var start = str.indexOf(".");
+      if (start > -1) return +str.substr(0, start + 3);
+      return this;
+    }
 
+    var myJsonParse = JSON.parse;
+    JSON.parse = function (str) {
+      try {
+        return myJsonParse.call(JSON, str);
+      } catch (e) {
+        var error = {Msg: 'json parse error', originData: str, e: e};
+        console.log(error);
+        return error;
+      }
+    }
+
+  </script>
 </head>
 <body>
 
