@@ -1,12 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {IonicApp, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {MyApp} from './app.component';
 import {HttpModule} from "@angular/http";
 import {HttpClientProvider} from "../providers/http-client/http-client";
 import {GlobalShareProvider} from "../providers/global-share/global-share";
+import {MyExceptionHandler} from "./MyExceptionHandler";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {GlobalShareProvider} from "../providers/global-share/global-share";
     GlobalShareProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: MyExceptionHandler},
   ]
 })
 export class AppModule {

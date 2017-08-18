@@ -37,3 +37,6 @@ resources
 
 ionic.config.json
 package-lock.json
+
+src/config/config.ts
+src/providers/http-client/http-client.ts

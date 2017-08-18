@@ -4,8 +4,8 @@ import {Effect} from "../game-common/effect";
 import {Config} from "../../../config/config";
 import {BusinessTool} from "../../../providers/tools/business-tool";
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
-import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {GamerecordComponent} from "../../../components/gamerecord/gamerecord";
+import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 
 /**
  * Generated class for the CqsscPage page.
@@ -29,9 +29,24 @@ export class CqsscPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigure: GameconfigServiceProvider,private util: BusinessTool,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider,private util: BusinessTool,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
     this.other();
+
+    let nav = this.navParams.get('nav');
+    let gamenav = nav;
+    this.gameconfigdata.setPid(gamenav.pid);
+    this.gameconfigdata.fetchMethedsList();
+    basket.gameId = nav && nav.pid;
+
+    gameconfigdata.getDefaultsMethods();
+    gameconfigdata.isInit = true;
+    gameconfigdata.getIssues();
+    basket.clearAll();
+
+    this.menuCtrl.enable(false, 'unauthenticated');
+
+
   }
   tmpComformMethod(a, b, c) {
     this.methodGroup = {

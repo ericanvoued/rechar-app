@@ -2,5 +2,11 @@
   "name": "new-bomao-app",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {},
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "http://localhost:8181"
+    }
+  ]
 }

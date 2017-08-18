@@ -8,7 +8,7 @@ import {GlobalShareProvider} from "../global-share/global-share";
 @Injectable()
 export class HttpClientProvider {
   baseUrl = Config.baseurl;
-  public options = new RequestOptions({withCredentials: false});
+  public options = new RequestOptions({withCredentials: true});
 
   constructor(public http: Http, public share: GlobalShareProvider) {
   }
@@ -51,7 +51,7 @@ export class HttpClientProvider {
         return;
       }
       if (data) {
-        return this.http.post(this.baseUrl + url, data,this.options).map(res => res.json()).subscribe((data) => {
+        return this.http.post(this.baseUrl + url, data, this.options).map(res => res.json()).subscribe((data) => {
           if (data.isSuccess) {
             resolve(data);
           } else {
@@ -65,7 +65,7 @@ export class HttpClientProvider {
           reject(e);
         })
       } else {
-        return this.http.get(this.baseUrl + url,this.options).map(res => res.json()).subscribe((data) => {
+        return this.http.get(this.baseUrl + url, this.options).map(res => res.json()).subscribe((data) => {
           if (data.isSuccess) {
             resolve(data);
           } else {

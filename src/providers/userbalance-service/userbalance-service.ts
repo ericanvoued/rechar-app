@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import {Injectable} from '@angular/core';
+import {HttpClientProvider} from "../http-client/http-client";
+import {GlobalShareProvider} from "../global-share/global-share";
 
-/*
-  Generated class for the UserbalanceServiceProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class UserbalanceServiceProvider {
+  public balance = {available: 0};
 
-  constructor(public http: Http) {
-    console.log('Hello UserbalanceServiceProvider Provider');
+  constructor(public httpclient: HttpClientProvider, public share: GlobalShareProvider) {
+
   }
 
+  async getBalaceAgain() {
+    let data = await this.httpclient.get('/mobileh5-users/user-account-info');
+    this.share.balance = this.balance = data.data;
+  }
 }
