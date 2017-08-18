@@ -3,12 +3,6 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {LoadingController, ToastController} from "ionic-angular";
 
-/*
-  Generated class for the GlobalShareProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class GlobalShareProvider {
   loading: any;

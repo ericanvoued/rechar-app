@@ -28,6 +28,7 @@ export class LoginPage {
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
       localStorage.token = data.data.token;
+      this.share._token = data.data.token;
       this.clearAndStore(localData);
       this.navCtrl.setRoot('HomePage');
     } else {
@@ -38,7 +39,7 @@ export class LoginPage {
   clearAndStore(data) {
     this.LoginForm.reset();
     this.share.store.set("app_user", data);
-    this.share.user=data.data;
+    this.share.user = data.data;
     localStorage.expired = Date.now();
   }
 
@@ -53,10 +54,10 @@ export class LoginPage {
   getFormData() {
     let {username, password} = this.LoginForm.controls;
 
-      return {
-        username: username.value,
-        password: md5(md5(md5(username.value + password.value)))
-      }
+    return {
+      username: username.value,
+      password: md5(md5(md5(username.value + password.value)))
+    }
 
   }
 
@@ -72,9 +73,10 @@ export class LoginPage {
   checkTime() {
     let timeBefore = localStorage.expired;
     let timeAfter = Date.now();
-    if(!timeBefore) timeBefore=0;
-    if ((timeAfter - timeBefore) > 1800000){
-      localStorage.token="";
+    if (!timeBefore) timeBefore = 0;
+    if ((timeAfter - timeBefore) > 1800000) {
+      localStorage.token = "";
+      this.share._token = null;
       localStorage.expired = timeAfter;
     }
     return (timeAfter - timeBefore) > 1800000;
