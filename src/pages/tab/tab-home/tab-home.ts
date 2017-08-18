@@ -25,9 +25,4 @@ export class TabHomePage {
     pageIndex ? this.tabRef.select(pageIndex) : this.tabRef.select(2);
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabHomePage');
-  }
-
 }
