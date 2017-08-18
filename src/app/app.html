@@ -1,1 +1,70 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" side="left" id="menu1">
+  <ion-content>
+    <div class="side-content">
+      <div class="side-header">
+        <span class="member" (touchstart)="goUserCenter()"><img src="assets/img/header-pic.svg" alt=""></span>
+        <span class="name-grade">
+          <strong class="name">{{ share.user?.username}}</strong>
+          <strong class="grade">会员类型：{{userTypeMap[ share.user?.user_type]}}</strong>
+        </span>
+      </div>
+      <div class="side-title clear">
+        <a (touchstart)="goHomePage()"><span>游戏大厅</span></a>
+        <a (touchstart)="goGamesRecordsPage()"><span>投注记录</span></a>
+        <a (touchstart)="goRechargeRecord()"><span>充值提款</span></a>
+      </div>
+      <div class="side-wrap">
+        <ul class="side-list">
+          <li class="side-li" *ngFor="let items of gamelist.dataGroup">
+            <div class="side-con clear">
+              <div class="fl">
+                <img src="{{gamelistIconMap[items.name]}}" alt="">
+                <span>{{items.name}}</span>
+              </div>
+              <div class="fr">
+                <span class="time" *ngIf="items.haschildren">{{ft(items.children[0]?.time)}}</span>
+                <!--<span class="star"><i [class.icon-wujiaoxingman]="" class="iconfont icon-wujiaoxingkong"></i></span>-->
+              </div>
+            </div>
+            <div class="side-drop clear" *ngIf="items.haschildren">
+              <a class="definite-sort" *ngFor="let minitems of items.children" (touchstart)="goforwordGame(minitems,$event)">{{minitems.name}}
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<ion-menu [content]="content" side="right" id="unauthenticated">
+  <ion-content class="blue-bg">
+    <div class="bill-title">投注单</div>
+    <div class="bet-con">
+      <ul class="bet-record side-bet-record">
+        <li *ngFor="let item of betrecordService.betRecordlist?.data?.data" (touchstart)="goBetDetailPage(item)">
+          <div class="my-table">
+            <div class="my-row">
+              <div class="my-cell">
+                <div class="text-2 gray">{{item.created_at?.replace(yearReg, '')}}</div>
+              </div>
+              <div class="my-cell">
+                <div class="text-1 white">{{item.friendly_name}}</div>
+                <div class="text-2">金额：{{item.amount}}</div>
+                <div class="col-4">{{item.display_bet_number}}</div>
+              </div>
+              <div class="my-cell right">
+                <div class="text-2 nowrap" [class.orange]="item.status == 3" [class.green]="item.status == 0">
+                  {{statusName[item.status]}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <no-data-remind *ngIf="!betrecordService.betRecordlist?.data?.data?.length"></no-data-remind>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

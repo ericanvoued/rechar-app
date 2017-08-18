@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Effect} from "../game-common/effect";
 import {Config} from "../../../config/config";
-import {BusinessTool} from "../../../providers/tools/business-tool";
-import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {GamerecordComponent} from "../../../components/gamerecord/gamerecord";
 
@@ -29,7 +27,7 @@ export class CqsscPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigure: GameconfigServiceProvider,private util: BusinessTool,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
     this.other();
   }

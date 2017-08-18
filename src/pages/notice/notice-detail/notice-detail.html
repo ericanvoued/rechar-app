@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>公告详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="gray-bg">
+  <no-data-remind *ngIf="!params.get('notice').title"></no-data-remind>
+  <div padding *ngIf="params.get('notice').title">
+    <h1 class="special-title">{{params.get('notice').title}}</h1>
+    <div class="help-wrap" [innerHtml]="Config.repleceImgSrc(params.get('notice').content)"></div>
+  </div>
+</ion-content>

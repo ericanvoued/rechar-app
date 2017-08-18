@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
-
-/**
- * Generated class for the NoticeListPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {HomeServiceProvider} from "../../../providers/service/home-service/home-service";
 
 @IonicPage()
 @Component({
@@ -22,7 +15,7 @@ export class NoticeListPage {
     this.homeService.getRemoteServer();
   }
 
-  pushPage(page){
-    if(page) this.navCtrl.push(page);
+  pushPage(page,parameter){
+    if(page) this.navCtrl.push(page,parameter);
   }
 }

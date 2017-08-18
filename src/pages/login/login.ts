@@ -4,13 +4,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GlobalShareProvider} from "../../providers/global-share/global-share";
 import {LoginServiceProvider} from "../../providers/service/login-serice/login-service";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -43,6 +36,7 @@ export class LoginPage {
   clearAndStore(data) {
     this.LoginForm.reset();
     this.share.store.set("app_user", data);
+    this.share.user=data.data;
     localStorage.expired = Date.now();
   }
 

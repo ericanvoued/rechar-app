@@ -46,8 +46,7 @@ export class HomeServiceProvider {
   balance: any;
   notice = {data: []};
 
-  constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
-  }
+  constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {}
 
   async getUserBalance(): Promise<any> {
     let balance = await this.client.get('/mobileh5-users/user-account-info');
@@ -73,6 +72,7 @@ export class HomeServiceProvider {
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
     this.setInData(inData);
     this.dataGroup = dataGroup;
+    this.share.dataGroup=dataGroup;
   }
 
   setInData(inData) {
