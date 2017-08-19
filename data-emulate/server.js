@@ -80,7 +80,7 @@ app.get('/mobileh5-users/user-account-info', ({body}, res) => {
 
 app.post('/mobileh5-projects', ({body}, res) => {
   if (body._token == _token) {
-    res.json(require('./data/game-record.json'));
+    res.json(require('./data/index/post/game-record.json'));
   } else {
     res.json(errortoken);
   }

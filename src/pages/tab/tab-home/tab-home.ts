@@ -17,7 +17,6 @@ export class TabHomePage {
   tab5Root: any = "PersonalProfilesPage";
 
   constructor(public navCtrl: NavController, public  navParams: NavParams) {
-
   }
 
   ionViewDidEnter() {

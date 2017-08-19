@@ -54,12 +54,10 @@ export class LoginPage {
 
   getFormData() {
     let {username, password} = this.LoginForm.controls;
-
     return {
       username: username.value,
       password: md5(md5(md5(username.value + password.value)))
     }
-
   }
 
   memoryLogin() {

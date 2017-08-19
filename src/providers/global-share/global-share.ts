@@ -9,7 +9,25 @@ export class GlobalShareProvider {
   user: any;
   _token:any;
   dataGroup: any=[];
+  dataItems: any;
   balance: any;
+  gameRecord = {data: []};
+  chargeRecord = {data: []};
+  parameters = {0:{
+    _token: '',
+    page: 1,
+    end: '',
+    start: '',
+    bet_status: 1,
+    lottery_id: ''
+  },1:{
+    _token: '',
+    page: 1,
+    end: '',
+    start: '',
+    bet_status: 1,
+    lottery_id: ''
+  }};
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 

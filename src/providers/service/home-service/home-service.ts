@@ -34,21 +34,11 @@ let dataGroup = [
 
 @Injectable()
 export class HomeServiceProvider {
-  parameters = {
-    _token: '',
-    page: 1,
-    end: '',
-    start: '',
-    bet_status: 1,
-    lottery_id: ''
-  };
   dataGroup: any;
+  dataItems = [];
   banners: any;
   balance: any;
   notice = {data: []};
-  gameRecord = {data: []};
-  chargeRecord = {data: []};
-
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
 
@@ -58,13 +48,13 @@ export class HomeServiceProvider {
   }
 
   async postRecordServer(): Promise<any> {
-    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters());
-    this.chargeRecord.data = chargeRecord.data;
+    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters(1));
+    this.share.chargeRecord.data = chargeRecord.data;
   }
 
   async postRemoteServer(): Promise<any> {
-    let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters());
-    this.gameRecord.data = gameRecord.data;
+    let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters(0));
+    this.share.gameRecord.data = gameRecord.data.data;
   }
 
   async getRemoteServer(): Promise<any> {
@@ -78,15 +68,17 @@ export class HomeServiceProvider {
   }
 
   async postLotteryServer() {
-    let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters());
+    let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters(0));
     this.setInData(inData);
     this.dataGroup = dataGroup;
     this.share.dataGroup = dataGroup;
+    this.share.dataItems = this.dataItems;
   }
 
   setInData(inData) {
     for (let k in inData) {
       if (inData[k].name && inData[k].nav) {
+        this.dataItems.push(inData[k]);
         for (let v in dataGroup) {
           if (this.inStr(dataGroup[v].nav, inData[k].nav)) {
             if (!dataGroup[v].time) dataGroup[v].time = inData[k].time;
@@ -109,8 +101,8 @@ export class HomeServiceProvider {
     return indexNumber > -1;
   }
 
-  getParameters() {
-    this.parameters._token = localStorage.token;
-    return this.parameters;
+  getParameters(index) {
+    this.share.parameters[index]._token = localStorage.token;
+    return this.share.parameters[index];
   }
 }
