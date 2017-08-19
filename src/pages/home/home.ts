@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 import {Config} from "../../config/config";
 import {Effect} from "./effect";
+import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,8 @@ export class HomePage {
   ccc: boolean;
   cccInterval: any;
   gamelistIconMap = Config.gameiconMap;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider, public toastCtrl: ToastController) {
     new Effect().initEffect();
     this.homeService.getUserBalance();
     this.homeService.getRemoteServer();
@@ -29,8 +31,11 @@ export class HomePage {
     return this.homeService.postRemoteServer();
   }
 
-  playGame(gameNav,toPage): void {
-    if (!gameNav.time) {
+  playGame(gameNav, toPage): void {
+    let drops = [];
+    $('.sort-drop').each(function(){drops.push($(this).css("display"))});
+    if(drops.join(' ').indexOf('block')==-1) return;
+    if ((!gameNav.time)) {
       let toast = this.toastCtrl.create({
         message: "即将上线",
         duration: 1000,
@@ -39,10 +44,11 @@ export class HomePage {
       toast.present();
       return;
     }
-    if(toPage) this.navCtrl.push(toPage,{nav: gameNav})
+    if ((gameNav.group)) return;
+    if (toPage) this.navCtrl.push(toPage, {nav: gameNav})
   }
 
-  pushPage(page){
-    if(page) this.navCtrl.push(page);
+  pushPage(page) {
+    if (page) this.navCtrl.push(page);
   }
 }

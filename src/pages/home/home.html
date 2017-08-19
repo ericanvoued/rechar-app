@@ -33,7 +33,7 @@
   <div class="lottery-con">
     <ul class="sort-list clear">
       <li class="sort-li" *ngFor="let items of homeService?.dataGroup">
-        <div class="sort-a" (click)="items.group ? '' : playGame(items)">
+        <div class="sort-a" (click)="playGame(items)">
           <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
         </div>
         <div class="sort-drop clear" *ngIf="items?.group">
@@ -44,4 +44,3 @@
   </div>
 </ion-content>
 
-<ion-footer></ion-footer>

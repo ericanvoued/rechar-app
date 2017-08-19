@@ -4,9 +4,7 @@
 import * as $ from 'jquery';
 
 export class Effect {
-  constructor() {
-
-  }
+  constructor() {}
 
   initEffect() {
     this.dropDown();
