@@ -1,0 +1,28 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "min_withdraw_amount": "100",
+    "max_withdraw_amount": "49998",
+    "bank_cards": [
+      {
+        "id": "21427",
+        "account": "3333222233332222",
+        "account_name": "\u6d4b\u8bd5",
+        "bank": "\u4e2d\u56fd\u5de5\u5546\u94f6\u884c",
+        "province": "\u5b89\u5fbd\u7701",
+        "city": "\u868c\u57e0\u5e02"
+      }
+    ],
+    "accounts": {
+      "user_id": "43090",
+      "balance": "37.913865",
+      "username": "testtvd001",
+      "available": "37.913865",
+      "withdrawable": "37.91"
+    },
+    "withdraw_limit_num": "20",
+    "withdraw_num": 0,
+    "tplData": []
+  }
+}
