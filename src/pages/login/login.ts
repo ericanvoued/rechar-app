@@ -25,12 +25,13 @@ export class LoginPage {
   }
 
   async login(localData) {
+    this.share.presentLoadingDefault("正在登陆中....");
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
       localStorage.token = data.data.token;
       this.share._token = data.data.token;
       this.clearAndStore(localData);
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabHomePage');
     } else {
       this.share.presentToast(data.Msg);
     }

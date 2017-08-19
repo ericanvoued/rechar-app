@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {IonicPage, NavController, NavParams, Tabs} from 'ionic-angular';
 
-/**
- * Generated class for the TabHomePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +9,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabHomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('myTabs') tabRef: Tabs;
+  tab1Root: any = "SpecialOfferPage";
+  tab2Root: any = "GameRecordPage";
+  tab3Root: any = "HomePage";
+  tab4Root: any = "ManageCataloguePage";
+  tab5Root: any = "PersonalProfilesPage";
+
+  constructor(public navCtrl: NavController, public  navParams: NavParams) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabHomePage');
+  ionViewDidEnter() {
+    let pageIndex = this.navParams.get('pageIndex');
+    pageIndex ? this.tabRef.select(pageIndex) : this.tabRef.select(2);
   }
 
 }
