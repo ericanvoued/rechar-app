@@ -68,13 +68,13 @@ app.get('/mobileh5-users/user-account-info', ({body}, res) => {
  * 投注记录接口
  * 请求参数
 
-  {
-  "_token": "uKOLUgfsb0AZcb2eUj0MNzUhNCq131qUtKdpb8Gg",
-  "page": 1,
-  "end": "",
-  "start": "",
-  "bet_status": 1,
-  "lottery_id": ""
+ {
+ "_token": "uKOLUgfsb0AZcb2eUj0MNzUhNCq131qUtKdpb8Gg",
+ "page": 1,
+ "end": "",
+ "start": "",
+ "bet_status": 1,
+ "lottery_id": ""
 }
  */
 
@@ -84,6 +84,13 @@ app.post('/mobileh5-projects', ({body}, res) => {
   } else {
     res.json(errortoken);
   }
+});
+
+/**
+ * 优惠接口
+ */
+app.get('/mobileh5-announcements/youhui', ({body}, res) => {
+  res.json({"isSuccess": 1, "type": "info", "data": {"youhui": [], "tplData": []}});
 });
 
 
