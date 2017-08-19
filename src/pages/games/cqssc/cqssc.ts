@@ -24,7 +24,7 @@ export class CqsscPage extends Effect {
   constructor(public gamerecord: GamerecordComponent,public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider,public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
     this.other();
-
+debugger
     let nav = this.navParams.get('nav');
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);

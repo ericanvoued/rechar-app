@@ -37,7 +37,7 @@
           <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
         </div>
         <div class="sort-drop clear" *ngIf="items?.group">
-          <a class="definite-sort" *ngFor="let minitems of items?.group" (click)="playGame(minitems,'CqsscPage')">{{minitems.name}}</a>
+          <a class="definite-sort" *ngFor="let minitems of items?.group" (touchstart)="playGame(minitems,'CqsscPage')">{{minitems.name}}</a>
         </div>
       </li>
     </ul>
