@@ -126,8 +126,25 @@ app.get('/mobileh5-announcements/youhui', ({body}, res) => {
   res.json({"isSuccess": 1, "type": "info", "data": {"youhui": [], "tplData": []}});
 });
 
+/**
+ * 提款接口,
+ * 无参数
+ */
 
 
+app.get('/mobileh5-withdrawals/withdraw', ({body}, res) => {
+    res.json(require('./data/withdraw.json'));
+});
+
+
+/**
+ * 用户信息
+ *无参数
+ */
+
+app.get('/mobileh5-users/user-account-info', ({body}, res) => {
+    res.json({"isSuccess":1,"type":"info","data":{"available":"37.9","tplData":[]}});
+});
 app.listen(8181);
 
 console.log('************listening************* port 8181');
