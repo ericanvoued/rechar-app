@@ -37,7 +37,7 @@ export class GameRecordPage {
     new JSONObserver(this.lotterGroup, () => {
       this.searchRecords();
     });
-    this.searchRecords();
+
     this.viewCtrl.didEnter.subscribe(() => {
       if (params.get('title') == '投注记录') {
         this.betrecordService.postRemoteServer();
