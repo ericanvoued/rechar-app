@@ -24,8 +24,8 @@ export class GameRecordPage {
 
 
     this.eventOne = {
-      timeStarts: d,
-      timeEnds: new Date()
+      timeStarts: DateFormat.format(d),
+      timeEnds:  DateFormat.format(new Date())
     };
 
     this.isbianzhang = params.get('title') != '投注记录';
