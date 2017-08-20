@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {IonicModule, IonicPageModule} from 'ionic-angular';
 import { GameRecordPage } from './game-record';
 import {ComponentsModule} from "../../../components/components.module";
-import {HomeServiceProvider} from "../../../providers/service/home-service/home-service";
+import {BetrecordServiceProvider} from "../../../providers/betrecord-service/betrecord-service";
 
 @NgModule({
   declarations: [
     GameRecordPage,
   ],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     ComponentsModule,
     IonicPageModule.forChild(GameRecordPage),
   ],
-  providers:[HomeServiceProvider],
+  providers:[BetrecordServiceProvider],
   entryComponents:[
   ]
 })
