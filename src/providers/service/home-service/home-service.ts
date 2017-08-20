@@ -50,15 +50,6 @@ export class HomeServiceProvider {
     this.balance = balance.data;
   }
 
-  async postRecordServer(): Promise<any> {
-    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters(1));
-    this.share.chargeRecord.data = chargeRecord.data.data;
-  }
-
-  async postRemoteServer(): Promise<any> {
-    let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters(0));
-    this.share.gameRecord.data = gameRecord.data.data;
-  }
 
   async getRemoteServer(): Promise<any> {
     let notice = await this.client.get('/mobileh5-announcements/');
@@ -81,6 +72,7 @@ export class HomeServiceProvider {
   }
 
   async postLotteryServer() {
+    this.share.presentLoadingDefault();
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters(0));
     this.setInData(inData);
     this.dataGroup = dataGroup;

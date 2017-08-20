@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {JSONObserver} from 'json-observer'
-import {BetrecordServiceProvider} from "../../../providers/betrecord-service/betrecord-service";
+import {BetrecordServiceProvider} from "../../../providers/service/betrecord-service/betrecord-service";
 import {DateFormat} from "../../../providers/tools/date";
 
 
