@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
+import {NavController, ViewController} from "ionic-angular";
 
-/**
- * Generated class for the MyPopOverComponent component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
 @Component({
   selector: 'my-pop-over',
   templateUrl: 'my-pop-over.html'
 })
 export class MyPopOverComponent {
-
   text: string;
-
-  constructor() {
-    console.log('Hello MyPopOverComponent Component');
-    this.text = 'Hello World';
+  constructor(public viewCtrl: ViewController,public navCtrl: NavController) {
   }
 
+  close(page) {
+    this.navCtrl.push(page);
+    this.viewCtrl.dismiss();
+  }
 }

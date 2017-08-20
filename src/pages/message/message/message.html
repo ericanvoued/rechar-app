@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>站内信</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <ion-list class="message">
+    <ion-item-sliding class="j-btn" *ngFor="let item of home?.message?.data">
+      <ion-item (click)="goPage('MessageDetailPage',item)">
+        <div class="message-date">{{item.updated_at}}</div>
+        <div class="message-title">{{item.msg_title}}</div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button class="side-remove"><i class="iconfont icon-lajitong"></i></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <no-data-remind *ngIf="!home?.message?.data?.length"></no-data-remind>
+</ion-content>

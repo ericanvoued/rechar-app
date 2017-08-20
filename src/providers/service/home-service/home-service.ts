@@ -39,6 +39,9 @@ export class HomeServiceProvider {
   banners: any;
   balance: any;
   notice = {data: []};
+  message = {data: []};
+  messageDetail: any;
+
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
 
@@ -49,7 +52,7 @@ export class HomeServiceProvider {
 
   async postRecordServer(): Promise<any> {
     let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters(1));
-    this.share.chargeRecord.data = chargeRecord.data;
+    this.share.chargeRecord.data = chargeRecord.data.data;
   }
 
   async postRemoteServer(): Promise<any> {
@@ -65,6 +68,16 @@ export class HomeServiceProvider {
   async getBannerRemoteServer(): Promise<any> {
     let banners = await this.client.get('/mobileh5-announcements/banner');
     this.banners = banners.data;
+  }
+
+  async postMessageServer(): Promise<any> {
+    let message = await this.client.post('/mobileh5-station-letters/', this.getParameters(0));
+    this.message.data = message.data.data;
+  }
+
+  async getMessageServer(id): Promise<any> {
+    let messageDetail = await this.client.get(`/mobileh5-station-letters/${id}/view`);
+    this.messageDetail = messageDetail.data;
   }
 
   async postLotteryServer() {

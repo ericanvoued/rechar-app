@@ -87,6 +87,39 @@ app.post('/mobileh5-projects', ({body}, res) => {
 });
 
 /**
+ * 帐变记录接口
+ */
+
+app.post('/mobileh5-reports/0/getmobileusertransaction/', ({body}, res) => {
+  if (body._token == _token) {
+    res.json(require('./data/index/post/charge-record.json'));
+  } else {
+    res.json(errortoken);
+  }
+});
+
+/**
+ * 站内信接口
+ */
+
+app.post('/mobileh5-station-letters/', ({body}, res) => {
+  if (body._token == _token) {
+    res.json(require('./data/index/post/messgae.json'));
+  } else {
+    res.json(errortoken);
+  }
+});
+
+
+/**
+ * 站内信详情接口
+ */
+
+app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
+  res.json(require('./data/index/get/messgae-detail.json'));
+});
+
+/**
  * 优惠接口
  */
 app.get('/mobileh5-announcements/youhui', ({body}, res) => {

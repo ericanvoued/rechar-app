@@ -59,17 +59,17 @@
               <li *ngFor="let item of gameData" (click)="goDetail(item)">
                 <div class="my-table">
                   <div class="my-row">
-                    <div class="my-cell">
+                    <div class="my-cell start-col center">
                       <div class="text-2">{{(item.created_at?.replace(yearReg, ''))}}</div>
                     </div>
-                    <div class="my-cell">
-                      <div class="text-1 nowrap">{{item.friendly_name}}</div>
-                      <div class="text-2">金额：{{item.amount}}</div>
+                    <div class="my-cell mid-col">
+                      <div class="text-1">{{item.friendly_name}}</div>
+                      <div class="text-2">金额:{{item.amount}}</div>
                     </div>
-                    <div class="my-cell center">
+                    <div class="my-cell mid-col center">
                       <div class="col-3">{{item.display_bet_number}}</div>
                     </div>
-                    <div class="my-cell right">
+                    <div class="my-cell end-col center">
                       <div class="text-2 nowrap" [class.orange]="item.status == 3" [class.green]="item.status == 0">
                         {{statusName[item.status]}}
                       </div>
@@ -98,15 +98,14 @@
                     </div>
                     <div class="my-cell">
                       <div class="text-1 nowrap">{{item.friendly_name}}</div>
-                      <div class="text-2">金额：{{item.amount}}</div>
                     </div>
-                    <div class="my-cell center">
-                      <div class="col-3">{{item.display_bet_number}}</div>
+                    <div class="my-cell">
+                      <div class="text-2 nowrap">金额：</div>
+                      <div class="text-2">{{item.amount}}</div>
                     </div>
                     <div class="my-cell right">
-                      <div class="text-2 nowrap" [class.orange]="item.status == 3" [class.green]="item.status == 0">
-                        {{statusName[item.status]}}
-                      </div>
+                      <div class="text-2 nowrap">余额：</div>
+                      <div class="text-2">{{item.balance}}</div>
                     </div>
                   </div>
                 </div>
