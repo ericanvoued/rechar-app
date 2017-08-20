@@ -9,6 +9,7 @@ import {HttpClientProvider} from "../providers/http-client/http-client";
 import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {MyExceptionHandler} from "./MyExceptionHandler";
 
+
 @NgModule({
   declarations: [
     MyApp
@@ -37,7 +38,7 @@ import {MyExceptionHandler} from "./MyExceptionHandler";
     GlobalShareProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: MyExceptionHandler},
+    {provide: ErrorHandler, useClass: MyExceptionHandler}
   ]
 })
 export class AppModule {

@@ -7,11 +7,11 @@
   </ion-navbar>
   <div class="recharge mt0">
     <div class="recharge-con block" *ngIf="!isTitle">
-      <ion-segment [(ngModel)]="pet1">
-        <ion-segment-button value="'9'">全部</ion-segment-button>
-        <ion-segment-button value="'3'">已中奖</ion-segment-button>
-        <ion-segment-button value="'0'">待开奖</ion-segment-button>
-        <ion-segment-button value="'2'">未中奖</ion-segment-button>
+      <ion-segment>
+        <ion-segment-button (click)="clickFilter('9')">全部</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('3')">已中奖</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('0')">待开奖</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('2')">未中奖</ion-segment-button>
       </ion-segment>
     </div>
   </div>
@@ -38,7 +38,7 @@
       <ion-list>
         <ion-item>
           <ion-label>全部游戏</ion-label>
-          <ion-select [(ngModel)]="lotteryGroup.id" cancelText="取消" okText="确认" placeholder="全部游戏">
+          <ion-select [(ngModel)]="eventOne.id" cancelText="取消" okText="确认" placeholder="全部游戏">
             <ion-option value="">全部</ion-option>
             <ion-option *ngFor="let item of share?.dataItems;let i = index;" value="{{item.pid}}">{{item.name}}
             </ion-option>
@@ -81,7 +81,7 @@
           </ion-list>
         </div>
       </div>
-      <no-data-remind *ngIf="!gameData.length"></no-data-remind>
+      <no-data-remind *ngIf="!gameData?.length"></no-data-remind>
     </div>
   </div>
   <div *ngIf="isTitle">
@@ -90,7 +90,7 @@
         <div>
           <ion-list>
             <ul class="bet-record">
-              <li *ngFor="let item of gameData" (click)="goDetail(item)">
+              <li *ngFor="let item of recordList" (click)="goDetail(item)">
                 <div class="my-table">
                   <div class="my-row">
                     <div class="my-cell start-col">
@@ -114,7 +114,7 @@
           </ion-list>
         </div>
       </div>
-      <no-data-remind *ngIf="!gameData.length"></no-data-remind>
+      <no-data-remind *ngIf="!gameData?.length"></no-data-remind>
     </div>
   </div>
 </ion-content>

@@ -1,3 +1,65 @@
 gamerecord {
+  .history-wrap {
+    max-height: 215px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .history-table {
+    display: table;
+    width: 100%;
+  }
+  .history-table > li {
+    display: table-row;
+  }
+  .history-table > li:nth-child(2n) {
+    background: #2A2D40;
+  }
+  .history-table > li:nth-child(2n+1) {
+    background: #2F324C;
+  }
+  .history-table > li > div {
+    display: table-cell;
+    padding: 4px 0;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    border-right: 1px solid #222;
+    line-height: 24px;
+  }
+  .history-table > li:first-child div {
+    color: #C6C6C6;
+  }
+  .history-table > li > div:last-child {
+    border-right: none;
+  }
+  .number-white {
+    width: 24px;
+    height: 24px;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    border-radius: 50%;
+  }
+  .number-green {
+    background: #00948a;
+    color: #c6c6c6;
+  }
+  .history-number {
+    .number-white {
+      margin: 0 3px;
+    }
+  }
 
+  .history-slide {
+    width: 100%;
+    padding-bottom: 10px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  .history-slide .swiper-container-horizontal > .swiper-pagination {
+    bottom: -20px;
+  }
 }
