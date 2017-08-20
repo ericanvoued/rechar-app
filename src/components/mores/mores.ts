@@ -11,8 +11,6 @@ export class MoresComponent {
   constructor(public popoverCtrl: PopoverController) {}
   presentPopover(ev) {
     let popover = this.popoverCtrl.create(MyPopOverComponent);
-    popover.present({
-      ev: ev
-    });
+    popover.present({ev: ev});
   }
 }

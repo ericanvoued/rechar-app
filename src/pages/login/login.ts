@@ -73,11 +73,8 @@ export class LoginPage {
     let timeBefore = localStorage.expired;
     let timeAfter = Date.now();
     if (!timeBefore) timeBefore = 0;
-    if ((timeAfter - timeBefore) > 1800000) {
-      localStorage.token = "";
-      this.share._token = null;
+    if ((timeAfter - timeBefore) > 1800000)
       localStorage.expired = timeAfter;
-    }
     return (timeAfter - timeBefore) > 1800000;
   }
 }
