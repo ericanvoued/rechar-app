@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {PopoverController} from "ionic-angular";
-import {MyPopOverComponent} from "../my-pop-over/my-pop-over";
 
 @Component({
   selector: 'mores',
@@ -9,8 +8,8 @@ import {MyPopOverComponent} from "../my-pop-over/my-pop-over";
 export class MoresComponent {
   text: string;
   constructor(public popoverCtrl: PopoverController) {}
-  presentPopover(ev) {
-    let popover = this.popoverCtrl.create(MyPopOverComponent);
-    popover.present({ev: ev});
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create('MyPopOverComponent');
+    popover.present(myEvent);
   }
 }

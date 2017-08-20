@@ -1,0 +1,64 @@
+page-bet-datail {
+  .bet-top{
+    background: #2E324E;
+    text-align: center;
+    padding:13px;
+    .text-1{
+      font-size: 1.6rem;
+      color: #fff;
+    }
+    .text-2{
+      color: #c6c6c6;
+      margin:6px 0;
+    }
+  }
+  .bet-num-green {
+    .num-green{
+      margin: 0 3px;
+    }
+  }
+  .bet-wrap{
+    background: #fff;
+    padding: 0 2%;
+    color: #808080;
+    margin-top: 10px;
+  }
+  .bet-detail{
+    padding:10px 2%;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .bet-l{
+    float: left;
+  }
+  .bet-r{
+    float: right;
+    font-size: 1.3rem;
+    padding-top: 6px;
+  }
+  .bet-list {
+    padding:8px 2%;
+    line-height: 2;
+  }
+  .bet-chase{
+    line-height: 28px;
+    padding:8px;
+  }
+  .chase-r{
+    float: right;
+  }
+  .stop{
+    border: 1px solid #686990;
+    font-size: 1.4rem;
+    color: #686990;
+    line-height:26px;
+    padding: 0 10px;
+    border-radius: 3px;
+    margin-left: 10px;
+  }
+  .now-chase{
+    background: #fff;
+    padding: 0 4%;
+    line-height:40px;
+    margin:12px 0;
+  }
+}

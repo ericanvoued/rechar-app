@@ -41,6 +41,7 @@ export class HomeServiceProvider {
   notice = {data: []};
   message = {data: []};
   messageDetail: any;
+  betDetail:any;
 
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
@@ -58,6 +59,11 @@ export class HomeServiceProvider {
   async postRemoteServer(): Promise<any> {
     let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters(0));
     this.share.gameRecord.data = gameRecord.data.data;
+  }
+
+  async getBetDetailServer(id): Promise<any> {
+    let betDetail = await this.client.get(`/mobileh5-projects/${id}/view`);
+    this.betDetail = betDetail.data;
   }
 
   async getRemoteServer(): Promise<any> {

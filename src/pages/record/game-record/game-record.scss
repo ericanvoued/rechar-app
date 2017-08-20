@@ -1,23 +1,35 @@
 page-game-record {
   .my-table{
-    padding: 0 3%;
+    padding: 0 4%;
+  }
+  .my-cell .text-1 {
+    font-size: 1.55rem !important;
   }
   .my-table .my-cell{
-    padding: 7px 4px;
+    padding: 7px 2px;
   }
   .start-col{
     width: 21% !important;
   }
   .large-col{
-    width: 35% !important;
+    width: 33% !important;
   }
   .big-col{
-    width: 26% !important;
+    width: 28% !important;
   }
   .end-col{
     width: 18% !important;
   }
   .mid-col{
-    width: 22% !important;
+    width: 23% !important;
+  }
+  .col-3{
+    display: block !important;
+    width: 90px !important;
+    margin: 0 auto !important;
+    word-wrap: break-word !important;
+  }
+  .my-row{
+    height: 90px;
   }
 }

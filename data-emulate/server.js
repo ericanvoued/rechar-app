@@ -119,6 +119,16 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
   res.json(require('./data/index/get/messgae-detail.json'));
 });
 
+
+/**
+ * 投注详情接口
+ */
+
+app.get('/mobileh5-projects/:id/view', ({body}, res) => {
+  res.json(require('./data/index/get/bet-detail.json'));
+});
+
+
 /**
  * 优惠接口
  */

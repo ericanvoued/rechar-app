@@ -1,0 +1,20 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "id": "103070697",
+    "serial_number": "23F22836927B08B1C562DAA47492AD4B",
+    "multiple": "1",
+    "issue": "170819093",
+    "title": "\u4efb\u4e8c\u76f4\u9009\u548c\u503c",
+    "display_bet_number": "3|4|5|6|7|8|9|10|11|12|13|14|15",
+    "lottery_id": "1",
+    "coefficient": "0.01",
+    "amount": "1.7600",
+    "winning_number": "73351",
+    "prize": "1.950000",
+    "status": "3",
+    "bought_at": "2017-08-19 21:24:42",
+    "tplData": []
+  }
+}

@@ -79,7 +79,8 @@ export class GameRecordPage {
   }
 
   goDetail(item) {
-    if (this.params.get('title') == '投注记录')
-      this.navCtrl.push('BetDetailPage', item)
+    if (this.params.get('title') == '投注记录') {
+      this.navCtrl.push('BetDatailPage', item);
+    }
   }
 }

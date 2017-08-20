@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>注单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <div class="betdetail-bg" *ngIf="home?.betDetail">
+    <div class="bet-top">
+      <div class="text-1">{{home?.betDetail?.title}}</div>
+      <div class="text-2">第{{home?.betDetail?.issue}}期</div>
+      <div class="bet-num-green" *ngIf="bet_winning_number.length">
+        <i class="num-green" *ngFor="let num of bet_winning_number">{{num}}</i>
+      </div>
+    </div>
+    <div class="bet-wrap">
+      <div class="bet-detail clear">
+        <div class="bet-l">
+          <div><span>注单金额：</span><span class="gray">￥{{home?.betDetail?.amount}}</span></div>
+          <div class="mt5" *ngIf="home?.betDetail?.winning_number"><span>中奖金额：</span><span class="col">￥{{home?.betDetail?.prize}}</span></div>
+        </div>
+        <div class="bet-r">
+          <div>下注时间：</div>
+          <div>{{home?.betDetail?.bought_at}}</div>
+        </div>
+      </div>
+      <ul class="bet-list">
+        <li><span>模式：</span><span class="gray">{{({'1.00':'元','0.1':'角','0.01':"分"}[home?.betDetail?.coefficient])}}</span></li>
+        <li><span>倍数：</span><span class="gray">{{home?.betDetail?.multiple}}倍</span></li>
+        <li><span>投注内容：</span><span class="gray">{{home?.betDetail?.display_bet_number}}</span></li>
+        <li><span>注单编号：</span><span class="gray">{{home?.betDetail?.serial_number}}</span></li>
+        <li><span>订单状态：</span><span class="gray">{{(statusName[home?.betDetail?.status])}}</span></li>
+      </ul>
+    </div>
+  </div>
+  <no-data-remind *ngIf="!home?.betDetail?.length"></no-data-remind>
+</ion-content>
