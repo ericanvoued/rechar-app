@@ -34,7 +34,7 @@ export class GameconfigServiceProvider {
   loading: any;
 
   getParamaterToken(): tokenOnly {
-    return {_token: this.share._token};
+    return {_token: this.share.user.token};
   }
 
   /**

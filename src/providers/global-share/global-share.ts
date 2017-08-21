@@ -7,7 +7,6 @@ import {LoadingController, ToastController} from "ionic-angular";
 export class GlobalShareProvider {
   loading: any;
   user: any;
-  _token:any;
   dataGroup: any=[];
   dataItems: any;
   balance: any;

@@ -1,0 +1,58 @@
+page-get-money {
+  .get-icon{
+    line-height:44px;
+  }
+  .get-box{
+    .money-input{
+      font-size: 2.4rem;
+      line-height: 24px;
+      padding: 11px 0;
+    }
+  }
+  .get-l{
+    font-size: 2.6rem;
+    color: #4A4A4A;
+    line-height: 50px;
+    .rmb{
+      position: relative;
+      top: 1px;
+    }
+    .line{
+      color: #c6c6c6;
+      margin-left: 5px;
+    }
+  }
+  .get-r{
+    margin-left: 55px;
+  }
+  .get-border{
+    border-top:1px solid #E5E5E5;
+    line-height:46px;
+    font-size: 1.4rem;
+  }
+  .bank-tit{
+    color: #2E324E;
+    font-size: 1.6rem;
+    line-height:40px;
+    padding: 0 4%;
+  }
+  .list{
+    margin: 0;
+  }
+  .item{
+    font-size: 1.6rem;
+    padding: 0;
+  }
+  .list > .item-block:first-child{
+    border-top: none;
+  }
+  .list-ios .item-block .item-inner,.list > .item-block:last-child, .list > .item-wrapper:last-child .item-block{
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+  .radio-ios .radio-checked .radio-inner{
+    border-color: #FFBE00;
+  }
+  .label{
+    margin:2px 0;
+  }
+}

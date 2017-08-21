@@ -28,8 +28,7 @@ export class LoginPage {
     this.share.presentLoadingDefault("正在登陆中....");
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
-      localStorage.token = data.data.token;
-      this.share._token = data.data.token;
+      this.share.user = data.data;
       this.clearAndStore(localData);
       this.navCtrl.setRoot('TabHomePage');
     } else {
@@ -40,7 +39,6 @@ export class LoginPage {
   clearAndStore(data) {
     this.LoginForm.reset();
     this.share.store.set("app_user", data);
-    this.share.user = data.data;
     localStorage.expired = Date.now();
   }
 
@@ -61,12 +59,7 @@ export class LoginPage {
   }
 
   memoryLogin() {
-    if (this.checkTime())
-      this.login(this.share.store.get("app_user"));
-  }
-
-  checkUser() {
-    return !!this.share.store.get("app_user");
+    if (this.checkTime()) this.login(this.share.store.get("app_user"));
   }
 
   checkTime() {

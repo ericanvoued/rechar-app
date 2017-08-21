@@ -121,7 +121,7 @@ export class HomeServiceProvider {
   }
 
   getParameters(index) {
-    this.share.parameters[index]._token = localStorage.token;
+    this.share.parameters[index]._token = this.share.user.token;
     return this.share.parameters[index];
   }
 }

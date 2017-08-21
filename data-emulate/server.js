@@ -27,7 +27,6 @@ app.post('/mobile-h5-auth/login', ({body}, res) => {
   }
 });
 
-
 /**
  * 1。*****************首页数据，开始******************
  */
@@ -35,7 +34,6 @@ let _token = 'uk9ZswIRWYIdKWmx93k3apeplMuDBH4Y2KuvkLlV';
 app.get('/mobileh5-announcements/banner', ({body}, res) => {
   res.json(require('./data/index/get/banner.json'));
 });
-
 
 app.get('/mobileh5-users/user-account-info', ({body}, res) => {
   res.json(require('./data/index/get/user-account-info.json'));
@@ -62,7 +60,6 @@ app.post('/mobile-lotteries-h5/lottery-info', ({body}, res) => {
 app.get('/mobileh5-users/user-account-info', ({body}, res) => {
   res.json(require('./data/index/get/user-account-info.json'));
 });
-
 
 /**
  * 投注记录接口
@@ -110,7 +107,6 @@ app.post('/mobileh5-station-letters/', ({body}, res) => {
   }
 });
 
-
 /**
  * 站内信详情接口
  */
@@ -119,7 +115,6 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
   res.json(require('./data/index/get/messgae-detail.json'));
 });
 
-
 /**
  * 投注详情接口
  */
@@ -127,7 +122,6 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
 app.get('/mobileh5-projects/:id/view', ({body}, res) => {
   res.json(require('./data/index/get/bet-detail.json'));
 });
-
 
 /**
  * 优惠接口
@@ -141,11 +135,9 @@ app.get('/mobileh5-announcements/youhui', ({body}, res) => {
  * 无参数
  */
 
-
 app.get('/mobileh5-withdrawals/withdraw', ({body}, res) => {
     res.json(require('./data/withdraw.json'));
 });
-
 
 /**
  * 用户信息
@@ -155,6 +147,20 @@ app.get('/mobileh5-withdrawals/withdraw', ({body}, res) => {
 app.get('/mobileh5-users/user-account-info', ({body}, res) => {
     res.json({"isSuccess":1,"type":"info","data":{"available":"37.9","tplData":[]}});
 });
+
+/**
+ * 支付方式接口
+ */
+
+app.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', ({body}, res) => {
+  if (body._token == _token) {
+    res.json(require('./data/index/post/check-pay.json'));
+  } else {
+    res.json(errortoken);
+  }
+});
+
+
 app.listen(8181);
 
 console.log('************listening************* port 8181');

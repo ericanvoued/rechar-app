@@ -269,7 +269,7 @@ export class BasketServiceProvider extends BusinessTool {
       "orders": this.getOrderIssure(),
       "amount": this.totalAllCount,
       is_encoded: 1,
-      _token: this.share._token,
+      _token: this.share.user.token,
       bet_source: platformInstance.isAndroid ? 'android' : (platformInstance.isIphoneOs ? 'ios' : 'h5')
     }
 

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { RechargePage } from './recharge';
-import {ComponentsModule} from "../../../components/components.module";
+import { GetMoneyPage } from './get-money';
 import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
+import {ComponentsModule} from "../../../components/components.module";
 
 @NgModule({
   declarations: [
-    RechargePage,
+    GetMoneyPage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(RechargePage),
+    IonicPageModule.forChild(GetMoneyPage),
   ],
   providers:[MoneySericeProvider],
   entryComponents:[
   ]
 })
-export class RechargePageModule {}
+export class GetMoneyPageModule {}

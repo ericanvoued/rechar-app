@@ -8,10 +8,10 @@
   <div class="recharge mt0">
     <div class="recharge-con block" *ngIf="!isTitle">
       <ion-segment>
-        <ion-segment-button (click)="clickFilter('9')">全部</ion-segment-button>
-        <ion-segment-button (click)="clickFilter('3')">已中奖</ion-segment-button>
-        <ion-segment-button (click)="clickFilter('0')">待开奖</ion-segment-button>
-        <ion-segment-button (click)="clickFilter('2')">未中奖</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('9')" value="9">全部</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('3')" value="3">已中奖</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('0')" value="0">待开奖</ion-segment-button>
+        <ion-segment-button (click)="clickFilter('2')" value="2">未中奖</ion-segment-button>
       </ion-segment>
     </div>
   </div>

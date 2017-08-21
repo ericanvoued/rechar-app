@@ -36,7 +36,7 @@ export class BetrecordServiceProvider {
   }
 
   getParameters(): betrecordParameter {
-    this.parameters._token = this.share._token;
+    this.parameters._token = this.share.user.token;
     return this.parameters;
   }
 

@@ -1,0 +1,14 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "alipay": 1,
+    "weixin": 1,
+    "bankkj": 1,
+    "bank": 0,
+    "yinlian": 0,
+    "baidu": 1,
+    "qq": 1,
+    "tplData": []
+  }
+}

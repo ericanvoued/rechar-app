@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>资金管理</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <ul class="person-data">
+    <li class="person-li j-btn" (click)="pushPage('RechargePage')">
+      <i class="iconfont icon-chongzhi"></i>
+      <span class="manage-text">充值</span>
+      <span class="fr"><i class="iconfont icon-fanhui icon-right"></i></span>
+    </li>
+    <li class="person-li j-btn" (click)="pushPage('GetMoneyPage')">
+      <img src="assets/img/tikuan.svg" alt="">
+      <span class="manage-text">提款</span>
+      <span class="fr"><i class="iconfont icon-fanhui icon-right"></i></span>
+    </li>
+    <li class="person-li j-btn" (click)="pushPage('RechargeDetailPage')">
+      <i class="iconfont icon-chongzhimingxi"></i>
+      <span class="manage-text">充值记录</span>
+      <span class="fr"><i class="iconfont icon-fanhui icon-right"></i></span>
+    </li>
+  </ul>
+</ion-content>
