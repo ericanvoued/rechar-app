@@ -1,23 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
 
-import {ReqTemplate} from "../../providers/tool/reqTemplate";
-import {FundpasswordParameter} from "../../interfaces/parametersInterface/funds/FundpasswordParameter";
-import {User} from "../initialize-service/user-serivce";
-import {requestSerivce} from "../../interfaces/requestSerivce";
 import {AlertController, ToastController} from "ionic-angular";
+import {GlobalShareProvider} from "../../global-share/global-share";
+import {HttpClientProvider} from "../../http-client/http-client";
+
+interface FundpasswordParameter {
+  _token: string,
+  fund_password: string,
+  fund_password_confirmation: string
+}
+
 
 @Injectable()
-export class SetfundpasswordService extends ReqTemplate implements requestSerivce {
+export class SetfundpasswordService {
 
   getRemoteServer(): any {
     return null;
   }
 
-  constructor(public http: Http, public usr: User, public alertCtrl: AlertController, public toastCtrl: ToastController) {
-    super(http);
+  constructor(private http: HttpClientProvider, private share: GlobalShareProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.initialize();
   }
 
@@ -29,7 +30,7 @@ export class SetfundpasswordService extends ReqTemplate implements requestSerivc
   }
 
   isNoSetFundPW(): boolean {
-    return !(+this.usr.tmpUserInfo.data.is_set_fund_password);
+    return !(+this.share.user.is_set_fund_password);
   }
 
   parameters: FundpasswordParameter = {
@@ -43,8 +44,8 @@ export class SetfundpasswordService extends ReqTemplate implements requestSerivc
     return this.parameters;
   }
 
-  postRemoteServer() {
-    return this.post('/mobileh5-users/safe-reset-fund-password', this.getParameters());
+  postRemoteServer(): Promise<any> {
+    return this.http.post('/mobileh5-users/safe-reset-fund-password', this.getParameters());
 
   }
 
@@ -90,17 +91,7 @@ export class SetfundpasswordService extends ReqTemplate implements requestSerivc
             } else {
               this.parameters.fund_password = data.password;
               this.parameters.fund_password_confirmation = data.repassword;
-              this.postRemoteServer().subscribe((data) => {
-                if (data.isSuccess) {
-                  this.presentToast('资金密码设置成功');
-                  this.usr.setfund_passwordAvailable();
-                  prompt.dismiss();
-                } else {
-                  this.presentToast(data.Msg);
-                }
-              }, (c) => {
-                this.presentToast('发生未知错误,请退出应用后,重试一次');
-              });
+              this.aaa(prompt);
             }
             return false;
           }
@@ -109,4 +100,17 @@ export class SetfundpasswordService extends ReqTemplate implements requestSerivc
     });
     prompt.present();
   }
+
+  async aaa(prompt) {
+    let data = await this.postRemoteServer();
+
+    if (data.isSuccess) {
+      this.presentToast('资金密码设置成功');
+      this.share.user.is_set_fund_password = 1;
+      prompt.dismiss();
+    } else {
+      this.presentToast(data.Msg);
+    }
+  }
+
 }

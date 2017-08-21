@@ -1,21 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {requestSerivce} from "../../interfaces/requestSerivce";
-import {ReqTemplate} from "../../providers/tool/reqTemplate";
-import {User} from "../initialize-service/user-serivce";
+import {HttpClientProvider} from "../../http-client/http-client";
+import {GlobalShareProvider} from "../../global-share/global-share";
 
 
 @Injectable()
-export class TopupService extends ReqTemplate implements requestSerivce {
+export class TopupService {
 
-  constructor(public http: Http, public usr: User) {
-    super(http);
+  constructor(public http: HttpClientProvider,private share:GlobalShareProvider) {
+
   }
 
   getbanks_tabs() {
-    let param = {_token:this.usr.getUserToken()._token};
-    return this.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', param);
+    let param = {_token:this.share.user.token};
+    return this.http.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', param);
   }
 
   postRemoteServer(): any {
@@ -73,7 +71,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
   }
 
   postBaiduRechargeRemoteServer() {
-    return this.post('/mobileh5-recharges/confirmMobileBaidu', this.getpostBaiduRechargeParameter());
+    return this.http.post('/mobileh5-recharges/confirmMobileBaidu', this.getpostBaiduRechargeParameter());
   }
   /**
    * QQ钱包充值
@@ -94,7 +92,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
   }
 
   postQQRechargeRemoteServer() {
-    return this.post('/mobileh5-recharges/confirmMobileQq', this.getpostQQRechargeParameter());
+    return this.http.post('/mobileh5-recharges/confirmMobileQq', this.getpostQQRechargeParameter());
   }
 
   /**
@@ -107,7 +105,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
   }
 
   postWeixinRechargeRemoteServer() {
-    return this.post('/mobileh5-recharges/confirmWeiXin', this.getpostWeixinRechargeParameter());
+    return this.http.post('/mobileh5-recharges/confirmWeiXin', this.getpostWeixinRechargeParameter());
   }
 
   /**
@@ -120,14 +118,14 @@ export class TopupService extends ReqTemplate implements requestSerivce {
   }
 
   postAlipayRechargeRemoteServer() {
-    return this.post('/mobileh5-recharges/get-alipay-qrcode', this.getpostAlipayRechargeParameter());
+    return this.http.post('/mobileh5-recharges/get-alipay-qrcode', this.getpostAlipayRechargeParameter());
   }
 
   /**
    * 1.获取快捷或银行充值接口页面
    */
   getQuiklyAndBankRechargePage() {
-    return this.get('/mobileh5-recharges/netbank');
+    return this.http.get('/mobileh5-recharges/netbank');
   }
 
   /**
@@ -152,7 +150,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
   }
 
   postQuiklyAndBankRecharge(isBank) {
-    return this.post('/mobileh5-recharges/confirm', this.getpostQuiklyAndBankRechargeParameter(isBank));
+    return this.http.post('/mobileh5-recharges/confirm', this.getpostQuiklyAndBankRechargeParameter(isBank));
   }
 
   /**
@@ -160,7 +158,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
    * @return {Observable<any>}
    */
   getUnionPay() {
-    return this.get('/mobileh5-recharges/sdpay');
+    return this.http.get('/mobileh5-recharges/sdpay');
   }
 
   unionPayComfirmParameter = {
@@ -180,7 +178,7 @@ export class TopupService extends ReqTemplate implements requestSerivce {
    * @return {Observable<any>}
    */
   unionPayComfirm() {
-    return this.post('/mobileh5-recharges/confirmSdpay', this.getUnionPayComfirmParameter());
+    return this.http.post('/mobileh5-recharges/confirmSdpay', this.getUnionPayComfirmParameter());
   }
 
 }
