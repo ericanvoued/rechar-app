@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
-import {JSONObserver} from 'json-observer'
+
 import {BusinessTool} from "../../../tools/business-tool";
 import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
 import {AlertController, LoadingController, ToastController} from "ionic-angular";
@@ -26,8 +26,10 @@ export class BasketServiceProvider extends BusinessTool {
   basketData = [];
   basketDataValideArr = [];
   c = {name_cn: '', prize: 0};
-  globalData: { globalMutile: number, trace: number };
-  MinMutiple: { minmax_multiple: number, c: any };
+  globalData: {globalMutile: number, trace: number};
+  globalDataArr: Array<{globalMutile: number, trace: number}>
+  MinMutiple: {minmax_multiple: number, c: any};
+  MinMutipleArr: Array<{minmax_multiple: number, c: any}>
   totalAllCount: number;
   totalAllNum: number;
   gameId: any;
@@ -35,23 +37,26 @@ export class BasketServiceProvider extends BusinessTool {
 
   constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
-    this.globalData = {globalMutile: 1, trace: 1};
 
-    new JSONObserver(this.globalData, () => {
+    this.globalData = {globalMutile: 1, trace: 1};
+    this.globalDataArr = [this.globalData];
+
+    this._.observe(this.globalDataArr, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
 
-    new JSONObserver(this.basketData, () => {
+    this._.observe(this.basketData, () => {
       this.whenUpdatebasketData();
     });
 
     this.MinMutiple = {minmax_multiple: 0, c: {}};
-
-    new JSONObserver(this.MinMutiple, () => {
+    this.MinMutipleArr = [this.MinMutiple];
+    this._.observe(this.MinMutipleArr, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
+
 
   }
 

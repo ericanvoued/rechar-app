@@ -6,7 +6,7 @@ import {LoadingController, ToastController} from "ionic-angular";
 @Injectable()
 export class GlobalShareProvider {
   loading: any;
-  user: any;
+  user: any={_token:''};
   dataGroup: any=[];
   dataItems: any;
   balance: any;
@@ -27,6 +27,8 @@ export class GlobalShareProvider {
     bet_status: 1,
     lottery_id: ''
   }};
+  bankcardDetail2: any;
+  bankcardDetail: any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 
