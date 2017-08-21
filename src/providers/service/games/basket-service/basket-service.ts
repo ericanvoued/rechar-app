@@ -5,7 +5,7 @@ import {BusinessTool} from "../../../tools/business-tool";
 import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
 import {AlertController, LoadingController, ToastController} from "ionic-angular";
 import {GlobalShareProvider} from "../../../global-share/global-share";
-import {UserbalanceServiceProvider} from "../../../userbalance-service/userbalance-service";
+import {UserbalanceServiceProvider} from "../../userbalance-service/userbalance-service";
 
 function PlatformDetected() {
   var userAgent = navigator.userAgent.toLowerCase();

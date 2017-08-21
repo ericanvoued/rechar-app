@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GameRecordPage } from './game-record';
@@ -16,4 +17,5 @@ import {HomeServiceProvider} from "../../../providers/service/home-service/home-
   entryComponents:[
   ]
 })
-export class GameRecordPageModule {}
+export class GameRecordPageModule {
+}

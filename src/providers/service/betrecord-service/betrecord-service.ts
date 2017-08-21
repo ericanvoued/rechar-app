@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClientProvider} from "../http-client/http-client";
-import {GlobalShareProvider} from "../global-share/global-share";
+import {HttpClientProvider} from "../../http-client/http-client";
+import {GlobalShareProvider} from "../../global-share/global-share";
 
 export interface betrecordParameter {
   _token: string,
