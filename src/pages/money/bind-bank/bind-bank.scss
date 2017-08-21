@@ -1,3 +1,23 @@
 page-bind-bank {
+  .list {
+    margin: 0;
+    > .item-block:first-child {
+      border-top: none;
+    }
+    > .item-block:last-child, .list-ios .item-block .item-inner, > .item-wrapper:last-child .item-block {
+      border-bottom: none;
+    }
+    .select {
+      width: 100%;
+    }
+    .item {
+      font-size: 1.5rem;
+      padding-left: 4%;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .item.item-block .item-inner {
+      padding-right: 4%;
+    }
+  }
 
 }

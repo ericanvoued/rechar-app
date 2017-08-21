@@ -16,8 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class BankcardRechargecomfirmPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+    this.comfirmDateil = this.navParams.get('data').data;
   }
+
+  comfirmDateil: any;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BankcardRechargecomfirmPage');

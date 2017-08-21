@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
+import {ModifyPasswordService} from "../../../providers/service/fund-service/modify-password-service";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import {MoneySericeProvider} from "../../../providers/service/money-serice/money
 })
 export class ManageCataloguePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public money: MoneySericeProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modifyPasswordServiceextends:ModifyPasswordService) {
   }
 
   pushPage(page) {

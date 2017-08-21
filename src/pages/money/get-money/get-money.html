@@ -1,3 +1,8 @@
+<!--
+  Generated template for the GetMoney page.
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
   <ion-navbar>
     <button icon-only class="fr">
@@ -6,3 +11,58 @@
     <ion-title>提款</ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-content class="gray-bg">
+  <div class="balance">{{bankcard.defautbankcard.account_name}}</div>
+  <div class="balance">余额：{{usr.tmpUserInfo.data.available}}</div>
+
+  <div *ngIf="bankcard.defautbankcard.bank" class="open-modal recharge-bank">
+    <img src="{{bankcardIconMap[bankcard.defautbankcard.bank]}}" alt="">
+    <span class="bank-detail">
+      <span class="name"><i>{{bankcard.defautbankcard.bank}}</i><!--<i class="save">储蓄卡</i>--></span>
+      <span class="number">**** **** **** {{bankcard.defautbankcard.account.slice(-4)}}</span>
+    </span>
+    <span class="get-icon fr"><i class="iconfont icon-fanhui icon-right"></i></span>
+  </div>
+  <div class="recharge-money">
+    <div class="get-box clear">
+      <span class="get-l fl"><i class="rmb fl">￥</i> <i class="line fl">|</i></span>
+      <div class="get-r clear"><input autocomplete="false" type="number" [(ngModel)]="bankcard.drawMoneyCount"
+                                      class="money-input"></div>
+    </div>
+    <div class="get-border clear">
+      <span class="fl col-1">可提金额：￥{{bankcard.withdrawData.data.accounts.withdrawable}}</span>
+      <span class="fr col" (click)="bankcard.drawAll()">全部提出</span>
+    </div>
+  </div>
+  <div class="remind">单笔最低提现金额：2.00元，最高500,000.00元</div>
+  <div class="save-btn">
+    <button ion-button full (click)="drawChashNow()">立即提现</button>
+  </div>
+</ion-content>
+
+<!--透明背景-->
+<div class="body-bg"></div>
+<!--弹框内容-->
+<div class="alert-con">
+  <div class="bank-tit">选择提款银行卡</div>
+  <ion-list  radio-group [(ngModel)]="select.autoManufacturers" >
+    <ion-item *ngFor="let item of bankcard.withdrawData.data.bank_cards">
+      <ion-label>
+        <div class="recharge-bank">
+          <img src="{{bankcardIconMap[item.name]}}" alt="">
+          <span class="bank-detail">
+            <span class="name">{{item.bank}}（尾号{{item.account.slice(-4)}}）</span>
+            <!--<span class="available">可用额度50000.00元</span>-->
+          </span>
+        </div>
+      </ion-label>
+      <ion-radio  value="{{item.account}}"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <!--<div class="new-recharge clear">-->
+  <!--<span class="fl new-card">使用新卡值</span>-->
+  <!--<span class="fr"><i class="iconfont icon-fanhui icon-right"></i></span>-->
+  <!--</div>-->
+</div>
+

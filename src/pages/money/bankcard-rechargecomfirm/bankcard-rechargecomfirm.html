@@ -1,0 +1,60 @@
+<!--
+  Generated template for the BankcardRechargecomfirm page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>汇款确认</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item>
+      <label>
+        收款账户名:
+      </label>
+      <span>{{comfirmDateil.accept_account_name}}</span>
+    </button>
+    <button ion-item>
+      <label>
+        卡号：
+      </label>
+      <span>{{comfirmDateil.accept_card_number}}</span>
+    </button>
+    <button ion-item>
+      <label>
+        开户城市:
+      </label>
+      <span>{{comfirmDateil.accept_bank_address}}</span>
+    </button>
+    <button ion-item>
+      <label>
+        订单金额：
+      </label>
+      <b style="color: red; font-weight: bold;">{{comfirmDateil.amount}}</b>
+    </button>
+
+    <button ion-item>
+      <label>
+        附言(充值订单号)：
+      </label>
+      <b>{{comfirmDateil.note}}</b>
+    </button>
+    <!--<button ion-item>-->
+    <!--<label>-->
+    <!--网银入口：-->
+    <!--</label>-->
+    <!--<a href="{{comfirmDateil.url}}" target="_blank">{{comfirmDateil.url}}</a>-->
+    <!--</button>-->
+  </ion-list>
+
+  <div class="save-btn">
+    <a ion-button full href="{{comfirmDateil.url}}" target="_blank">立即充值</a>
+  </div>
+</ion-content>
