@@ -14,13 +14,17 @@
         <span (click)="pushPage('MessagePage')"><i class="iconfont icon-xiaoxi"></i></span>
       </span>
     </div>
-    <!--<div class="member-main">-->
-      <!--<div class="header-pic">-->
-        <!--<span class="header-circle"><img src="assets/img/header-pic.svg" alt=""></span>-->
-      <!--</div>-->
-      <!--<div class="name">{{ usr.tmpUserInfo.data.username}}</div>-->
-      <!--<div class="grade">会员类型：{{userTypeMap[ usr.tmpUserInfo.data.user_type]}} <div class="onlineserviceButton" (click)="onlineserviceButton()"><ion-icon name="contacts">在线客服&nbsp;&nbsp;</ion-icon>  </div></div>-->
-    <!--</div>-->
+    <div class="member-main">
+      <div class="header-pic">
+        <span class="header-circle"><img src="assets/img/header-pic.svg" alt=""></span>
+      </div>
+      <div class="name">{{share?.user?.username}}</div>
+      <div class="grade">会员类型：{{userTypeMap[share?.user?.user_type]}} <div class="lineService" (click)="lineService()"><ion-icon name="contacts">在线客服&nbsp;&nbsp;</ion-icon></div></div>
+    </div>
+
+
+
+
     <!--<ul class="my-money clear" (click)="hideMyMoney()">-->
       <!--<li>-->
         <!--<div>可提金额：</div>-->

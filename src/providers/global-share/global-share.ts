@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {LoadingController, ToastController} from "ionic-angular";
+import {HttpClientProvider} from "../http-client/http-client";
 
 @Injectable()
 export class GlobalShareProvider {
@@ -35,7 +36,7 @@ export class GlobalShareProvider {
   }};
   bankcardDetail2: any;
   bankcardDetail: any;
-  constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+  constructor(public client: HttpClientProvider,public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 
   presentToast(msg) {
@@ -54,6 +55,11 @@ export class GlobalShareProvider {
       });
       this.loading.present();
     }
+  }
+
+  async getUserBalance(): Promise<any> {
+    let balance = await this.client.get('/mobileh5-users/user-account-info');
+    this.balance = balance.data;
   }
 
   hidepresentLoadingDefault() {
