@@ -259,7 +259,7 @@ export class BasketServiceProvider extends BusinessTool {
   getSubmitData(): Object {
 
     return {
-      "gameId": this.gameId,
+      "gameId": this.share.gameId,
       "isTrace": +(this.share.globalData.trace > 1),
       "traceWinStop": +this.traceWinStop,
       "traceStopValue": 1,

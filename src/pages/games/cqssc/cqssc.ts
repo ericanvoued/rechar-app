@@ -29,10 +29,9 @@ export class CqsscPage extends Effect {
     this.other();
     let nav = this.navParams.get('nav');
     let gamenav = nav;
-    debugger
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
-    basket.gameId = nav && nav.pid;
+    this.share.gameId = nav && nav.pid;
 
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
