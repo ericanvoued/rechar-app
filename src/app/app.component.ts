@@ -19,10 +19,12 @@ export class MyApp {
   yearReg = /[\d]{4}-/;
 
   constructor(public share: GlobalShareProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
-    if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-      setTimeout(v => this.nav.setRoot('LoginPage'), 150);
-    }
+
     platform.ready().then(() => {
+      if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
+        setTimeout(v => this.nav.setRoot('LoginPage'), 500);
+      }
+
       statusBar.styleDefault();
       splashScreen.hide();
       this.egisterBackButtonAction();
@@ -75,12 +77,13 @@ export class MyApp {
 
   goPage(page, parameter, how) {
     if (page) {
+      this.menu.close();
       if (how) {
         this.nav.push(page, parameter);
       } else {
         this.nav.setRoot(page, parameter);
       }
-      this.menu.close();
+
     }
   }
 }

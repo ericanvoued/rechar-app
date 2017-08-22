@@ -9,6 +9,7 @@ import {HttpClientProvider} from "../providers/http-client/http-client";
 import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {MyExceptionHandler} from "./MyExceptionHandler";
 
+
 @NgModule({
   declarations: [
     MyApp

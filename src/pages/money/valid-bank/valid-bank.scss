@@ -1,0 +1,21 @@
+page-valid-bank {
+  .list{
+    margin:10px 0 0 0;
+  }
+  .list > .item-block:first-child{
+    border-top: none;
+  }
+  .list-ios .item-block .item-inner,.list > .item-block:last-child, .list > .item-wrapper:last-child .item-block{
+    border-bottom: none;
+  }
+  .select{
+    width: 100%;
+  }
+  .item{
+    font-size: 1.5rem;
+    padding-left: 4%;
+  }
+  .item.item-block .item-inner{
+    padding-right: 4%;
+  }
+}

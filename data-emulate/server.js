@@ -66,7 +66,7 @@ app.get('/mobileh5-users/user-account-info', ({body}, res) => {
  * 请求参数
 
  {
- "_token": "uKOLUgfsb0AZcb2eUj0MNzUhNCq131qUtKdpb8Gg",
+ "_token": "uk9ZswIRWYIdKWmx93k3apeplMuDBH4Y2KuvkLlV",
  "page": 1,
  "end": "",
  "start": "",
@@ -127,7 +127,7 @@ app.get('/mobileh5-projects/:id/view', ({body}, res) => {
  * 优惠接口
  */
 app.get('/mobileh5-announcements/youhui', ({body}, res) => {
-  res.json({"isSuccess": 1, "type": "info", "data": {"youhui": [], "tplData": []}});
+  res.json({"isSuccess": 1, "type": "info", "data": {"youhui": [{name:'Specil',detail:{name:'Special Detail',content:'abcdefghijklmnopqrstuvwxyz'},pic_url:'assets/img/favorable-banner.jpg'}], "tplData": []}});
 });
 
 /**

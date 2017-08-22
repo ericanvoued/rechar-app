@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>安全中心</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="gray-bg">
+  <ul class="recharge-tab safe-tab clear">
+    <li class="active"><span class="li-line"></span>登录密码</li>
+    <li><span class="li-line"></span>资金安全</li>
+  </ul>
+  <div class="recharge">
+    <div class="recharge-con block">
+      <div class="balance">修改登录密码</div>
+      <form action="" autocomplete="off">
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">输入旧登录密码：</span>
+            <div class="amend-r clear"><input name="oldloginpassword" [(ngModel)]="modifyPasswordService.parameters.old_password"
+                                              autocomplete="off"   type="password" class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">输入新登录密码：</span>
+            <div class="amend-r clear"><input name="newloginpassword" type="password" [(ngModel)]="modifyPasswordService.parameters.password"
+                                              autocomplete="off"   class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">确认新登录密码：</span>
+            <div class="amend-r clear"><input name="comfirmloginpassword" type="password"
+                                              [(ngModel)]="modifyPasswordService.parameters.password_confirmation"
+                                              autocomplete="off"   class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+      </form>
+      <div class="remind">6-16位字符，可使用字母或数字，不能和资金密码相同</div>
+      <div class="save-btn">
+        <button ion-button full (click)="modityLoginPassword()">确认修改</button>
+      </div>
+    </div>
+    <div class="recharge-con">
+      <div class="balance">修改资金密码</div>
+      <form action="" autocomplete="off">
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">输入旧资金密码：</span>
+            <div class="amend-r clear"><input name="oldfunpassword" type="password"
+                                              [(ngModel)]="modifyPasswordService.fundparameters.old_fund_password"
+                                              autocomplete="off"  class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">输入新资金密码：</span>
+            <div class="amend-r clear"><input name="newfunpassword" type="password"
+                                              [(ngModel)]="modifyPasswordService.fundparameters.fund_password"
+                                              autocomplete="off"  class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+        <div class="mb10">
+          <div class="new-recharge">
+            <span class="amend-l fl">确认新资金密码：</span>
+            <div class="amend-r clear"><input name="comfirmfundpassword" type="password"
+                                              [(ngModel)]="modifyPasswordService.fundparameters.fund_password_confirmation"
+                                              autocomplete="off"  class="money-input"></div>
+          </div>
+          <!--<div class="remind-red block">密码错误</div>-->
+        </div>
+      </form>
+      <div class="remind">6-16位字符，可使用字母或数字，不能和登陆相同</div>
+      <div class="save-btn">
+        <button ion-button full (click)="modityFundPassword()">确认修改</button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

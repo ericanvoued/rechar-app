@@ -1,8 +1,71 @@
 <ion-header>
+
   <ion-navbar>
     <button icon-only class="fr">
       <mores></mores>
     </button>
     <ion-title>充值记录</ion-title>
   </ion-navbar>
+
 </ion-header>
+
+<ion-content class="gray-bg">
+  <ul class="recharge-tab clear">
+    <li class="active" (click)="changenodataremind('没有任何充提记录')"><span class="li-line"></span>全部</li>
+    <li (click)="changenodataremind('没有任何充值记录')"><span class="li-line"></span>充值</li>
+    <li (click)="changenodataremind('没有任何提现记录')"><span class="li-line"></span>提款</li>
+  </ul>
+  <div class="recharge">
+    <ul class="recharge-con block">
+      <li class="my-table" *ngFor="let item of mydepositService.recordList.data.data">
+        <div class="my-row">
+          <div class="my-cell">
+            <div class="text-1">{{mapName[item.type_id]}}</div>
+            <div class="text-2">余额：{{item.balance}}</div>
+          </div>
+          <div class="my-cell right">
+            <div class="text-3">{{item.note}}</div>
+            <div class="text-4 orange">{{(item.type_id ==2 || item.type_id==19) ? '-':'+'}}{{item.amount}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="recharge-con">
+      <li class="my-table" *ngFor="let item of mydepositService.recordList.data.data">
+        <div class="my-row" *ngIf="(item.type_id !=2 && item.type_id !=19)">
+          <div class="my-cell">
+            <div class="text-1">{{mapName[item.type_id]}}</div>
+            <div class="text-2">余额：{{item.balance}}</div>
+          </div>
+          <div class="my-cell right">
+            <div class="text-3">{{item.note}}</div>
+            <div class="text-4 orange">+{{item.amount}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="recharge-con">
+      <li class="my-table" *ngFor="let item of mydepositService.recordList.data.data">
+        <div class="my-row" *ngIf="(item.type_id ==2 || item.type_id ==19)">
+          <div class="my-cell">
+            <div class="text-1">{{mapName[item.type_id]}}</div>
+            <div class="text-2">余额：{{item.balance}}</div>
+          </div>
+          <div class="my-cell right">
+            <div class="text-3">{{item.note}}</div>
+            <div class="text-4 orange">-{{item.amount}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="rechargenow" style="position: relative" *ngIf="!mydepositService.recordList.data?.data?.length"
+       text-center>
+    <no-data-remind [text]="nodataremind" style="position: relative; display: block;"></no-data-remind>
+    <button *ngIf="nodataremind=='没有任何充值记录'" ion-button (click)=go("RechargePage")>立即充值</button>
+
+  </div>
+</ion-content>
+
+

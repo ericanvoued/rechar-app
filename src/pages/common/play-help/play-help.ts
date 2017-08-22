@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SafeCenterPage page.
+ * Generated class for the PlayHelpPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-safe-center',
-  templateUrl: 'safe-center.html',
+  selector: 'page-play-help',
+  templateUrl: 'play-help.html',
 })
-export class SafeCenterPage {
+export class PlayHelpPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SafeCenterPage');
+    console.log('ionViewDidLoad PlayHelpPage');
   }
 
 }

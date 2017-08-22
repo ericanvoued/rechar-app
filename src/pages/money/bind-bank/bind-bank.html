@@ -1,18 +1,61 @@
 <!--
-  Generated template for the BindBankPage page.
+  Generated template for the BindBank page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>bind-bank</ion-title>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>银行卡管理</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="gray-bg">
+  <div class="new-recharge mt10">
+    <span class="amend-l fl">持卡人姓名：</span>
+    <div class="amend-r ml95 clear"><input [(ngModel)]="userInput.account_name" type="text" class="money-input"></div>
+  </div>
+  <div class="new-recharge mt10">
+    <span class="amend-l fl">卡号：</span>
+    <div class="amend-r ml50 clear"><input [(ngModel)]="userInput.account" minlength="16" maxlength="20" type="tel" class="money-input"></div>
+  </div>
+  <ion-list class="mt10">
+    <ion-item>
+      <ion-label>开户行名称</ion-label>
+      <ion-select [(ngModel)]="bank.title" cancelText="取消" okText="确认" placeholder="选择开户行">
+        <ion-option value="{{item.id}}" *ngFor="let item of banks">
+          {{item.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>开户所在省</ion-label>
+      <ion-select [(ngModel)]="province.title" cancelText="取消" okText="确认" placeholder="选择省">
+        <ion-option value="{{item.id}}" *ngFor="let item of provinceList">
+          {{item.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="cityList.length">
+      <ion-label>开户所在市</ion-label>
+      <ion-select [(ngModel)]="city.title" cancelText="取消" okText="确认" placeholder="选择市">
+        <ion-option value="{{items.id}}" *ngFor="let items of cityList">
+          {{items.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="new-recharge mt10">
+    <span class="amend-l fl">支行名称：</span>
+    <div class="amend-r ml80 clear"><input [(ngModel)]="userInput.branch"  type="text" class="money-input"></div>
+  </div>
+  <div class="save-btn">
+    <button ion-button full (click)="showConfirm()">立即绑卡</button>
+  </div>
 </ion-content>

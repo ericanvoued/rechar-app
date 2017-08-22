@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
-import {JSONObserver} from 'json-observer'
+
 import {BusinessTool} from "../../../tools/business-tool";
 import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
 import {AlertController, LoadingController, ToastController} from "ionic-angular";
@@ -27,7 +27,9 @@ export class BasketServiceProvider extends BusinessTool {
   basketDataValideArr = [];
   c = {name_cn: '', prize: 0};
   globalData: { globalMutile: number, trace: number };
+  globalDataArr: Array<{ globalMutile: number, trace: number }>
   MinMutiple: { minmax_multiple: number, c: any };
+  MinMutipleArr: Array<{ minmax_multiple: number, c: any }>
   totalAllCount: number;
   totalAllNum: number;
   gameId: any;
@@ -35,23 +37,26 @@ export class BasketServiceProvider extends BusinessTool {
 
   constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
-    this.globalData = {globalMutile: 1, trace: 1};
 
-    new JSONObserver(this.globalData, () => {
+    this.globalData = {globalMutile: 1, trace: 1};
+    this.globalDataArr = [this.globalData];
+
+    this._.observe(this.globalDataArr, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
 
-    new JSONObserver(this.basketData, () => {
+    this._.observe(this.basketData, () => {
       this.whenUpdatebasketData();
     });
 
     this.MinMutiple = {minmax_multiple: 0, c: {}};
-
-    new JSONObserver(this.MinMutiple, () => {
+    this.MinMutipleArr = [this.MinMutiple];
+    this._.observe(this.MinMutipleArr, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
+
 
   }
 
@@ -303,8 +308,9 @@ export class BasketServiceProvider extends BusinessTool {
 
   }
 
-  finishRequest(data) {
+  finishRequest(data,goContent) {
     if (data.isSuccess) {
+      goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
     } else {
       let alert = this.alertCtrl.create({
@@ -319,7 +325,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async submit() {
+  async submit(goContent) {
     if (!(this.basketData.length)) {
       let toast = this.toastCtrl.create({
         message: '号码篮不能为空',
@@ -328,7 +334,6 @@ export class BasketServiceProvider extends BusinessTool {
       });
       toast.present(toast);
     } else {
-
 
       if (this.submitProcessing) {
         return;
@@ -341,15 +346,16 @@ export class BasketServiceProvider extends BusinessTool {
 
       this.loading.present();
 
-      let Issues = await this.gameconfigure.outergetIssues();
+      await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
       this.loading.dismiss();
-      this.finishRequest(Issues);
+      let data = await this.doSubmint();
+      this.finishRequest(data,goContent);
     }
   }
 
-  async doSubmint() {
-    await  this.httpclient.post(`/mobile-lotteries-h5/bet/${this.gameconfigure.getPid()}`, this.getSubmitData());
+  doSubmint() {
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.gameconfigure.getPid()}`, this.getSubmitData());
   }
 
   loading: any;

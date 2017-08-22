@@ -15,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BetSuccessPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public  navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BetSuccessPage');
+  }
+  gosscpage() {
+    this.navCtrl.pop();
+    this.navCtrl.pop();
+  }
+  go(a,b){
+    this.navCtrl.push(a,b);
   }
 
 }

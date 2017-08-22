@@ -1,0 +1,17 @@
+page-select-bank {
+  .bank-list{
+    padding: 0 4%;
+    li{
+      border-bottom: 1px solid #e5e5e5;
+      line-height:46px;
+    }
+    .bank-img{
+      width: 42px;
+      text-align: center;
+    }
+    .bank-text{
+      color: #4a4a4a;
+      font-size: 1.6rem;
+    }
+  }
+}

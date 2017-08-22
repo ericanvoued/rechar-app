@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {HomeServiceProvider} from "../../../providers/service/home-service/home-service";
+import {Component} from '@angular/core';
+import {IonicPage, NavController} from 'ionic-angular';
+import {WebsidemessagesService} from "../../../providers/service/websidemessages-service";
 
 @IonicPage()
 @Component({
@@ -9,14 +9,16 @@ import {HomeServiceProvider} from "../../../providers/service/home-service/home-
 })
 export class MessagePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public home:HomeServiceProvider) {
+
+  constructor(public navCtrl: NavController, public websidemessagesService: WebsidemessagesService) {
+
   }
 
   ionViewDidLoad() {
-    this.home.postMessageServer();
+    this.websidemessagesService.postRemoteServer();
   }
 
-  goPage(page,item) {
-    this.navCtrl.push(page,item);
+  go(a, b) {
+    this.navCtrl.push(a,b);
   }
 }

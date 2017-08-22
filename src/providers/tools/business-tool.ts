@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {GameUtil} from './game-util';
 import * as CryptoJS from 'crypto-js';
 import {Config} from '../../config/config';
-import {JSONObserver} from 'json-observer'
+import {observe} from "./observe";
+let _ = new observe();
 
 @Injectable()
 export class BusinessTool extends GameUtil {
@@ -33,9 +34,11 @@ export class BusinessTool extends GameUtil {
     return numbarArr;
   }
 
+  _: any
 
   constructor() {
     super();
+    this._ = _;
   }
 
   private filterMethod(methodsData) {
@@ -127,11 +130,11 @@ export class BusinessTool extends GameUtil {
     c.count = 0;
     c.totals = 0;
 
-    new JSONObserver(c.selectarea, () => {
+    _.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });
 
-    new JSONObserver(c.mutipleAndMode, () => {
+    _.observe(c.mutipleAndMode, 'update', () => {
       this.mainBussiness(c);
     });
 
@@ -777,7 +780,7 @@ export class BusinessTool extends GameUtil {
 
   }
 
-  daxiaodanshuangqing(arr, tag, value): Array<any> {
+  daxiaodanshuangqing(arr, tag, value): Array < any > {
     function hanlder(v, k, arr) {
       arr[k] = false;
     }
@@ -857,7 +860,7 @@ export class BusinessTool extends GameUtil {
     return arr;
   }
 
-  clearBall(ball: Array<any>) {
+  clearBall(ball: Array < any >) {
     ball.forEach((v) => {
       v.forEach((v, k, arr) => {
         arr[k] = false;

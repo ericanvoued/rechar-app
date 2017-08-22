@@ -1,0 +1,45 @@
+<!--
+  Generated template for the AddBank page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>银行卡管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="{{bankcardService.isBindBankCard ? 'gray-bg':'white-bg'}}" >
+  <div *ngIf="bankcardService.isBindBankCard">
+    <div class="recharge-bank mt10" *ngFor="let item of bankcardService.withdrawData.data.bank_cards">
+      <button ion-button class="bank-btn fr" (click)=gopage("RechargePage",{bankcard:item}) >充值</button>
+      <div (click)=gopage("RemoveBindPage",{bankcard:item})>
+        <img src="{{bankcardIconMap[item.name]}}" alt="">
+        <span class="bank-detail">
+      <span class="name"><i>{{item.bank}}</i></span>
+      <span class="number">**** **** **** {{item.account.slice(-4)}}</span>
+    </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bank-pic" *ngIf="!bankcardService.isBindBankCard">
+    <div><img src="assets/img/bank-pic.svg" alt=""></div>
+    <div class="bank-text">您还未添加任何银行卡</div>
+    <div class="col-1">点击下方按钮快速绑定银行卡</div>
+  </div>
+
+
+  <div class="save-btn">
+    <button ion-button full (click)="addBinddBankCard()">{{this.bankcardService.withdrawData.data.bank_cards.length >= 4
+      ?'返回' :'添加银行卡'}}
+    </button>
+  </div>
+</ion-content>

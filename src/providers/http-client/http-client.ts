@@ -43,6 +43,8 @@ export class HttpClientProvider {
   private doSubmitAction(url, data?): Promise<any> {
     clearTimeout(this.autoLoginOutId);
     this.autoLoginOutId = setTimeout(() => this.logout(), 1800000);
+    this.share.presentLoadingDefault();
+
     return new Promise((resolve, reject) => {
       if (this.beforeRequest()) {
         reject({isSuccess: 0});
@@ -51,26 +53,16 @@ export class HttpClientProvider {
       }
       if (data) {
         return this.http.post(this.baseUrl + url, data, this.options).map(res => res.json()).subscribe((data) => {
-          if (data.isSuccess) {
-            resolve(data);
-          } else {
-            this.share.presentToast(data.Msg);
-            reject(data);
-          }
+          resolve(data);
           this.share.hidepresentLoadingDefault();
         }, (e) => {
-          this.share.presentToast(e);
+          this.share.presentToast(JSON.stringify(e));
           this.share.hidepresentLoadingDefault();
           reject(e);
         })
       } else {
         return this.http.get(this.baseUrl + url, this.options).map(res => res.json()).subscribe((data) => {
-          if (data.isSuccess) {
-            resolve(data);
-          } else {
-            this.share.presentToast(data.Msg);
-            reject(data);
-          }
+          resolve(data);
           this.share.hidepresentLoadingDefault();
         }, (e) => {
           this.share.presentToast(e);

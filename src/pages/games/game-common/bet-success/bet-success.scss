@@ -1,3 +1,32 @@
 page-bet-success {
-
+  .bet-success{
+    text-align: center;
+    margin-top: 50px;
+    .text-1{
+      margin-top:20px;
+      color: #4a4a4a;
+      font-size: 2.6rem;
+      padding-left:20px;
+    }
+    .text-2{
+      color: #4a4a4a;
+      font-size: 1.6rem;
+    }
+  }
+  .bet-bottom-box{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    li{
+      width: 50%;
+      float: left;
+    }
+  }
+  .bet-green{
+    background: #05756B;
+    color: #fff;
+  }
+  .bet-green.activated{
+    background:#1C9288;
+  }
 }
