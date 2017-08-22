@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ManageCataloguePage } from './manage-catalogue';
 import {ComponentsModule} from "../../../components/components.module";
-import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
+import {ModifyPasswordService} from "../../../providers/service/fund-service/modify-password-service";
 
 @NgModule({
   declarations: [
@@ -12,8 +12,6 @@ import {MoneySericeProvider} from "../../../providers/service/money-serice/money
     ComponentsModule,
     IonicPageModule.forChild(ManageCataloguePage),
   ],
-  providers:[MoneySericeProvider],
-  entryComponents:[
-  ]
+  providers:[ModifyPasswordService]
 })
 export class ManageCataloguePageModule {}

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, ToastController} from 'ionic-angular';
 import {BankcardService} from "../../../providers/service/fund-service/bankcard-service";
 
 /**

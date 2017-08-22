@@ -1,18 +1,84 @@
-<!--
-  Generated template for the BuyBasketPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>buy-basket</ion-title>
+    <ion-title>购彩篮</ion-title>
+    <div class="header-r"><div class="random-btn" (touchstart)="basket.clearAll()">清空</div></div>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content class="gray-bg">
+  <ul class="buy-list">
+    <li class="buy-li clear" *ngFor="let items of basket.basketData;let parantitemIndex =index;">
+      <div class="buy-li-r"><i class="iconfont icon-cuowu" (touchstart)="basket.deleteItem(parantitemIndex)"></i></div>
+      <div class="buy-con">
+        <div class="number">
+          <i style="color: #FE5600;width: auto; display: inline;" *ngFor="let label of items.label;let i = index;"><i>{{label}}</i><i class="line"
+                                                                                                                                      *ngIf="i < (items.label.length-1)">|</i></i>
+        </div>
+        <div class="mt5"><span class="direct-select">{{items.fullName_cn}}</span> <span>{{items.count}}注 {{items.mutipleAndModeObj.times * basket.globalData.globalMutile}}倍 {{items.totals * basket.globalData.globalMutile}}元</span>
+        </div>
+      </div>
+    </li>
+  </ul>
 </ion-content>
+
+<ion-footer>
+  <div class="footer-con">
+    <div class="clear">
+      <div class="fl">
+        <span class="multiple-num">倍数:</span>
+        <div class="multiple">
+          <img src="assets/img/reduce-1.svg" (touchstart)="mutipleReduce()" alt=""><input type="tel"
+                                                                                          (input)="mutiplepluseOrmindusOnInput($event)"
+                                                                                          (change)="mutiplepluseOrmindus($event)"
+                                                                                          value="{{basket.globalData.globalMutile}}"
+                                                                                          maxlength="6"><img
+          src="assets/img/plus-1.svg" (touchstart)="mutiplePluse()" alt="">
+        </div>
+      </div>
+      <div class="fr">
+        <span class="multiple-num">追号: </span>
+        <div class="multiple">
+          <img src="assets/img/reduce-1.svg" (touchstart)="traceReduce()" alt=""><input type="tel"
+                                                                                        (input)="tracepluseOrmindusOnInput($event)"
+                                                                                        (change)="tracepluseOrmindus($event)"
+                                                                                        value="{{basket.globalData.trace}}"
+                                                                                        maxlength="6"><img
+          src="assets/img/plus-1.svg" (touchstart)="tracePluse()" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="win-point clear">
+      <div class="fl">
+        <span class="multiple-num">返点</span>
+        <div class="money-drop return-point">
+          <div class="money-btn money-btn-1">
+            <i>{{basket.customprizeGroupchoose}}-{{percent}}%</i><img
+            src="assets/img/arrow-u.svg" alt=""></div>
+          <ul class="money-menu">
+            <li (touchstart)="setPrizeGroup(gameconfig.defaultData.data.bet_min_prize_group,bet_min_prize_groupPercent)">
+              {{gameconfig.defaultData.data.bet_min_prize_group}}-{{bet_min_prize_groupPercent}}%
+            </li>
+            <li (touchstart)="setPrizeGroup(gameconfig.defaultData.data.bet_max_prize_group,bet_max_prize_groupPercent)">
+              {{gameconfig.defaultData.data.bet_max_prize_group}}-{{bet_max_prize_groupPercent}}%
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="fr">
+        <label class="win-select">
+          <input type="checkbox" [disabled]="basket.globalData.trace == 1" [(ngModel)]="basket.traceWinStop"><span [class.opacity]="basket.globalData.trace == 1"  class="opacity"></span><strong>中奖后停止追号</strong></label>
+      </div>
+    </div>
+    <div class="buy-balance">余额： ¥{{userbalance.balance.available}}</div>
+    <div class="total-con">
+      <span>共追号</span>
+      <span class="footer-num">{{basket.globalData.trace}}</span>
+      <span>期，</span>
+      <span class="footer-num">{{basket.totalAllNum}}</span>
+      <span>注，</span>
+      <span>共</span>
+      <span class="big-text"><i>¥</i><i class="col">{{basket.totalAllCount}}</i></span>
+    </div>
+  </div>
+  <div class="bet-btn" (touchstart)="submit()">立即下注</div>
+</ion-footer>

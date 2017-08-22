@@ -1,3 +1,115 @@
 page-buy-basket {
+  .random-btn {
+    background: #444B65;
+    color: #fff;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.4rem;
 
+  }
+  .random {
+    padding: 15px 3% 0;
+    li {
+      float: left;
+      width: 33.33%;
+      padding: 0 2%;
+    }
+  }
+  .buy-list {
+    margin-top: 15px;
+  }
+  .buy-li {
+    background: #fff;
+    padding: 10px 4%;
+    margin-bottom: 10px;
+    .line {
+      color: #808080;
+      margin: 0 4px;
+      position: relative;
+      top: -1px;
+    }
+    .direct-select {
+      margin-right: 10px;
+    }
+    .buy-li-r {
+      line-height: 45px;
+      float: right;
+    }
+    .icon-cuowu {
+      color: #C6C6C6;
+      font-size: 2rem;
+    }
+    .buy-con {
+      margin-right: 26px;
+      .number {
+        word-break: break-all;
+      }
+    }
+  }
+
+  .footer-con {
+    background: #fff;
+    padding: 10px 4%;
+  }
+  .multiple-num {
+    font-size: 1.6rem;
+    color: #4a4a4a;
+    margin-right: 6px;
+  }
+
+  .win-point {
+    padding: 10px 0;
+  }
+  .return-point {
+    .money-btn {
+      background: #eee;
+      padding-right: 4px;
+    }
+    .money-btn i {
+      color: #4a4a4a;
+    }
+  }
+  .win-select {
+    line-height: 32px;
+    input {
+      display: none;
+    }
+    span {
+      width: 18px;
+      height: 18px;
+      background: url("../assets/img/win-bg.svg") no-repeat;
+      background-size: 100% 100%;
+    }
+    input:checked + span {
+      background: url("../assets/img/win-bg-checked.svg") no-repeat;
+      background-size: 100% 100%;
+    }
+    strong {
+      color: #808080;
+      margin-left: 5px;
+      position: relative;
+      top: 1px;
+    }
+    .opacity {
+      opacity: 0.4;
+    }
+  }
+  .buy-balance {
+    color: #808080;
+  }
+  .footer-num {
+    color: #FE5600;
+    font-size: 1.6rem;
+  }
+  .big-text {
+    font-size: 2rem;
+    position: relative;
+    top: -1px;
+    white-space: nowrap;
+  }
+  .total-con {
+    color: #4a4a4a;
+  }
 }
+

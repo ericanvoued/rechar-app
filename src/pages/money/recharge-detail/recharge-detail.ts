@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, ViewController} from 'ionic-angular';
 import {MydepositService} from "../../../providers/service/bank-mix/mydeposit-service";
 
 @IonicPage()

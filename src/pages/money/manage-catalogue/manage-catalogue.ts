@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
 import {ModifyPasswordService} from "../../../providers/service/fund-service/modify-password-service";
 
 @IonicPage()

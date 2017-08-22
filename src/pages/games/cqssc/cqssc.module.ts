@@ -6,6 +6,7 @@ import {BasketServiceProvider} from "../../../providers/service/games/basket-ser
 import {ComponentsModule} from "../../../components/components.module";
 import {UserbalanceServiceProvider} from "../../../providers/service/userbalance-service/userbalance-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
+import {Gamelist} from "../../../providers/service/games/gamelist-service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {BusinessTool} from "../../../providers/tools/business-tool";
     GameconfigServiceProvider,
     BasketServiceProvider,
     UserbalanceServiceProvider,
-    BusinessTool
+    BusinessTool,
+    Gamelist
   ]
 })
 export class CqsscPageModule {

@@ -20,7 +20,7 @@
 
 <ion-content>
   <div style="height: 1px;" [class.sscbg]="ccc"></div>
-  <div class="notice" (click)="pushPage('NoticeListPage')">
+  <div class="notice" (touchstart)="pushPage('NoticeListPage')">
     <img src="assets/img/notice-icon.svg" alt=""><span>{{homeService.notice.data[0]?.title}}</span></div>
   <ion-slides>
     <ion-slide *ngFor="let banner of homeService?.banners?.banner"><img src="{{banner?.pic_url}}" alt=""></ion-slide>
@@ -33,7 +33,7 @@
   <div class="lottery-con">
     <ul class="sort-list clear">
       <li class="sort-li" *ngFor="let items of homeService?.dataGroup">
-        <div class="sort-a" (click)="playGame(items)">
+        <div class="sort-a" (touchstart)="playGame(items)">
           <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
         </div>
         <div class="sort-drop clear" *ngIf="items?.group">

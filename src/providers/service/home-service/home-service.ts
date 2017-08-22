@@ -77,7 +77,6 @@ export class HomeServiceProvider {
   }
 
   async postMessageServer(): Promise<any> {
-    this.share.presentLoadingDefault();
     let message = await this.client.post('/mobileh5-station-letters/', this.getParameters(0));
     this.message.data = message.data.data;
   }

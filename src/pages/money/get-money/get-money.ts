@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, ToastController, ViewController} from 'ionic-angular';
 
 import {Config} from "../../../config/config";
 import * as $ from 'jquery';

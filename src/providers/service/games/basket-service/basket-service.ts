@@ -26,10 +26,10 @@ export class BasketServiceProvider extends BusinessTool {
   basketData = [];
   basketDataValideArr = [];
   c = {name_cn: '', prize: 0};
-  globalData: {globalMutile: number, trace: number};
-  globalDataArr: Array<{globalMutile: number, trace: number}>
-  MinMutiple: {minmax_multiple: number, c: any};
-  MinMutipleArr: Array<{minmax_multiple: number, c: any}>
+  globalData: { globalMutile: number, trace: number };
+  globalDataArr: Array<{ globalMutile: number, trace: number }>
+  MinMutiple: { minmax_multiple: number, c: any };
+  MinMutipleArr: Array<{ minmax_multiple: number, c: any }>
   totalAllCount: number;
   totalAllNum: number;
   gameId: any;
@@ -308,8 +308,9 @@ export class BasketServiceProvider extends BusinessTool {
 
   }
 
-  finishRequest(data) {
+  finishRequest(data,goContent) {
     if (data.isSuccess) {
+      goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
     } else {
       let alert = this.alertCtrl.create({
@@ -324,7 +325,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async submit() {
+  async submit(goContent) {
     if (!(this.basketData.length)) {
       let toast = this.toastCtrl.create({
         message: '号码篮不能为空',
@@ -333,7 +334,6 @@ export class BasketServiceProvider extends BusinessTool {
       });
       toast.present(toast);
     } else {
-
 
       if (this.submitProcessing) {
         return;
@@ -346,15 +346,16 @@ export class BasketServiceProvider extends BusinessTool {
 
       this.loading.present();
 
-      let Issues = await this.gameconfigure.outergetIssues();
+      await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
       this.loading.dismiss();
-      this.finishRequest(Issues);
+      let data = await this.doSubmint();
+      this.finishRequest(data,goContent);
     }
   }
 
-  async doSubmint() {
-    await  this.httpclient.post(`/mobile-lotteries-h5/bet/${this.gameconfigure.getPid()}`, this.getSubmitData());
+  doSubmint() {
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.gameconfigure.getPid()}`, this.getSubmitData());
   }
 
   loading: any;

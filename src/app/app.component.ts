@@ -22,7 +22,7 @@ export class MyApp {
 
     platform.ready().then(() => {
       if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot('LoginPage'), 150);
+        setTimeout(v => this.nav.setRoot('LoginPage'), 500);
       }
 
       statusBar.styleDefault();
@@ -77,12 +77,13 @@ export class MyApp {
 
   goPage(page, parameter, how) {
     if (page) {
+      this.menu.close();
       if (how) {
         this.nav.push(page, parameter);
       } else {
         this.nav.setRoot(page, parameter);
       }
-      this.menu.close();
+
     }
   }
 }
