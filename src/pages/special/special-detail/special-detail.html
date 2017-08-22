@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>优惠活动</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="white-bg">
+  <h1 class="special-title">{{params.get('detail').name}}</h1>
+  <div class="help-wrap" [innerHtml]="params.get('detail').content"></div>
+</ion-content>

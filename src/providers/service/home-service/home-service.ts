@@ -42,6 +42,8 @@ export class HomeServiceProvider {
   message = {data: []};
   messageDetail: any;
   betDetail:any;
+  specialData:any;
+  parameter:any;
 
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
   }
@@ -52,12 +54,14 @@ export class HomeServiceProvider {
   }
 
   async postRecordServer(): Promise<any> {
-    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.getParameters(1));
+    this.parameter= await this.getParameters(1);
+    let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.parameter);
     this.share.chargeRecord.data = chargeRecord.data.data;
   }
 
   async postRemoteServer(): Promise<any> {
-    let gameRecord = await this.client.post('/mobileh5-projects', this.getParameters(0));
+    this.parameter= await this.getParameters(0);
+    let gameRecord = await this.client.post('/mobileh5-projects', this.parameter);
     this.share.gameRecord.data = gameRecord.data.data;
   }
 
@@ -77,7 +81,8 @@ export class HomeServiceProvider {
   }
 
   async postMessageServer(): Promise<any> {
-    let message = await this.client.post('/mobileh5-station-letters/', this.getParameters(0));
+    this.parameter= await this.getParameters(0);
+    let message = await this.client.post('/mobileh5-station-letters/', this.parameter);
     this.message.data = message.data.data;
   }
 
@@ -87,11 +92,17 @@ export class HomeServiceProvider {
   }
 
   async postLotteryServer() {
-    let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.getParameters(0));
+    this.parameter= await this.getParameters(0);
+    let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.parameter);
     this.setInData(inData);
     this.dataGroup = dataGroup;
     this.share.dataGroup = dataGroup;
     this.share.dataItems = this.dataItems;
+  }
+
+  async getSpecialSever(): Promise<any> {
+    let specialData = await this.client.get(`/mobileh5-announcements/youhui`);
+    this.specialData = specialData.data.youhui;
   }
 
   setInData(inData) {
@@ -120,7 +131,11 @@ export class HomeServiceProvider {
     return indexNumber > -1;
   }
 
-  getParameters(index) {
+  async getParameters(index) {
+    if(!this.share.user.token) {
+      let data = await this.client.post('/mobile-h5-auth/login', this.share.store.get("app_user"));
+      if (data.isSuccess) this.share.user = data.data;
+    }
     this.share.parameters[index]._token = this.share.user.token;
     return this.share.parameters[index];
   }

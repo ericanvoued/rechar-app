@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar *navbar show-tabs>
+    <ion-title>个人中心</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <div class="member-header">
+    <div class="member-top clear">
+      <button menuToggle="left" class="memeber-btn fl">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <span class="member-icon fr">
+        <span (click)="pushPage('SetPage')"><i class="iconfont icon-shezhi"></i></span>
+        <span (click)="pushPage('MessagePage')"><i class="iconfont icon-xiaoxi"></i></span>
+      </span>
+    </div>
+    <!--<div class="member-main">-->
+      <!--<div class="header-pic">-->
+        <!--<span class="header-circle"><img src="assets/img/header-pic.svg" alt=""></span>-->
+      <!--</div>-->
+      <!--<div class="name">{{ usr.tmpUserInfo.data.username}}</div>-->
+      <!--<div class="grade">会员类型：{{userTypeMap[ usr.tmpUserInfo.data.user_type]}} <div class="onlineserviceButton" (click)="onlineserviceButton()"><ion-icon name="contacts">在线客服&nbsp;&nbsp;</ion-icon>  </div></div>-->
+    <!--</div>-->
+    <!--<ul class="my-money clear" (click)="hideMyMoney()">-->
+      <!--<li>-->
+        <!--<div>可提金额：</div>-->
+        <!--<div class="charge-text">{{isHideMyMoney ? star:-->
+          <!--bankcard.withdrawData.data.accounts?.available}} 元-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--<li>-->
+
+        <!--<div>我的钱包：</div>-->
+        <!--<div class="charge-text">{{isHideMyMoney ? star:-->
+          <!--usr.tmpUserInfo.data.available}} 元-->
+        <!--</div>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<ul class="member-charge clear">-->
+      <!--<li (click)="pushPage('GetMoneyPage')">-->
+        <!--<img src="assets/img/getmoney-icon.svg" alt=""><span class="charge-text">提现</span>-->
+      <!--</li>-->
+      <!--<li (click)="pushPage('RechargePage')">-->
+        <!--<img src="assets/img/recharge-icon.svg" alt=""><span class="charge-text">充值</span>-->
+      <!--</li>-->
+    <!--</ul>-->
+  </div>
+
+
+
+
+  <!--<ul class="member-list">-->
+    <!--<li class="member-li">-->
+      <!--<div class="member-title clear">-->
+        <!--<span class="fl">账户设置</span>-->
+        <!--&lt;!&ndash;<span class="fr"><i class="iconfont icon-fanhui"></i></span>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<ul class="clear">-->
+        <!--<li class="member-con j-btn" (click)="pushPage('PersonDataPage')">-->
+          <!--<i class="iconfont icon-grxx"></i>-->
+          <!--<div class="member-text">个人中心</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('SafeCenterPage')">-->
+          <!--<i class="iconfont icon-iconfuzhi01"></i>-->
+          <!--<div class="member-text">安全中心</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('ManageCataloguePage')">-->
+          <!--<i class="iconfont icon-fmomey"></i>-->
+          <!--<div class="member-text">资金管理</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('AddBankPage')">-->
+          <!--<i class="iconfont icon-yinxingqia"></i>-->
+          <!--<div class="member-text">银行卡</div>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</li>-->
+    <!--<li class="member-li">-->
+      <!--<div class="member-title clear">-->
+        <!--<span class="fl">我的记录</span>-->
+        <!--&lt;!&ndash;<span class="fr"><i class="iconfont icon-fanhui"></i></span>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<ul class="clear">-->
+        <!--<li class="member-con j-btn" (click)="pushPage('RechargeDetailPage')">-->
+          <!--<i class="iconfont icon-chongzhijilu"></i>-->
+          <!--<div class="member-text">充值记录</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('GameRecordPage',{title:'投注记录'})">-->
+          <!--<i class="iconfont icon-zhuoqiushi"></i>-->
+          <!--<div class="member-text">投注记录</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('BetDetailPage')">-->
+          <!--<img src="assets/img/bet-icon.svg" class="img-icon" alt="">-->
+          <!--<div class="member-text">投注详情</div>-->
+        <!--</li>-->
+        <!--<li class="member-con j-btn" (click)="pushPage('GameRecordPage',{title:'帐变记录'})">-->
+          <!--<i class="iconfont icon-icozhangben02"></i>-->
+          <!--<div class="member-text">帐变记录</div>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</li>-->
+  <!--</ul>-->
+
+
+
+
+
+</ion-content>

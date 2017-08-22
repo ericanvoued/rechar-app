@@ -1,0 +1,137 @@
+page-personal-profiles {
+  .onlineserviceButton{
+    color: #fff;
+    position: absolute;
+    right: 10%;
+    left: auto;
+    top: 0;
+  }
+  .member-header{
+    padding-top:10px;
+    background: url("../assets/img/member-bg.png") no-repeat;
+    background-size: cover;
+    .member-top{
+      padding: 0 4%;
+      line-height: 26px;
+    }
+    .member-icon{
+      .iconfont{
+        font-size: 2.6rem;
+        color: #fff;
+        margin-left:20px;
+      }
+      .icon-xiaoxi{
+        position: relative;
+        top: 2px;
+      }
+    }
+    .member-main{
+      text-align: center;
+      margin-bottom:20px;
+      .name{
+        color: #fff;
+        font-size: 1.8rem;
+        margin-top: 6px;
+      }
+      .grade{
+        font-size: 1.4rem;
+        color: #C6C6C6;
+        position: relative;
+      }
+    }
+    .header-pic{
+      .header-circle{
+        width:60px;
+        height:60px;
+        border-radius: 50%;
+        img{
+          width: 100%;
+          min-height:100%;
+        }
+      }
+    }
+    .charge-text{
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.1;
+      margin-top:3px;
+    }
+    .my-money{
+      background: url("../assets/img/line-1.png") no-repeat center top;
+      background-size: 100% 1px;
+      color: #fff;
+      text-align: center;
+      li{
+        float: left;
+        width: 50%;
+        padding: 8px 0;
+
+      }
+      li:first-child {
+        border-right: 1px solid #8087A8;
+      }
+    }
+    .member-charge{
+      background: #252943 url("../assets/img/line-2.png") no-repeat center top;
+      background-size: 100% 1px;
+      text-align: center;
+      li{
+        float: left;
+        width: 50%;
+        padding: 12px 0;
+        img{
+          margin-right: 6px;
+        }
+      }
+      li:first-child {
+        border-right: 1px solid #8087A8;
+      }
+    }
+  }
+  .member-list{
+    padding-bottom:15px;
+  }
+  .member-li{
+    padding: 10px 4% 0;
+    margin-bottom: 8px;
+    background: #fff;
+    color: #808080;
+    .member-title{
+      margin-bottom: 10px;
+      line-height: 20px;
+      .fl{
+        font-size: 1.4rem;
+      }
+      .icon-fanhui{
+        color: #DFDFDF;
+        font-size: 2.4rem;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+    .member-con{
+      float: left;
+      width: 25%;
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      padding-top: 2px;
+      .iconfont{
+        height: 34px;
+        color: #686990;
+        font-size: 2.6rem;
+      }
+      .member-text{
+        font-size: 1.4rem;
+      }
+      .img-icon{
+        margin-top: 5px;
+        margin-bottom: 6px;
+        height: 23px;
+      }
+    }
+  }
+}

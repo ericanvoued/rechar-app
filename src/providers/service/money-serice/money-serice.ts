@@ -7,7 +7,6 @@ import {GlobalShareProvider} from "../../global-share/global-share";
 export class MoneySericeProvider {
   payType = [];
 
-
   constructor(private client: HttpClientProvider, private share: GlobalShareProvider) {
   }
 
@@ -15,6 +14,7 @@ export class MoneySericeProvider {
     let payType = await this.client.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', {_token: this.share.user.token});
     this.payType = payType.data;
   }
+
 
   // async getQuiklyAndBankRechargePage() {
   //   await return this.client.get('/mobileh5-recharges/netbank');

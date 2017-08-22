@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>优惠活动</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="recharge mb10">
+    <div class="recharge-con block">
+      <ul class="special">
+        <li *ngFor="let item of home?.specialData">
+          <div class="center"><img src="{{item.pic_url}}" alt=""></div>
+          <div class="special-con clear">
+            <div class="fr">
+              <button ion-button round class="my-button" (click)="pushPage('SpecialDetailPage',item)">
+                查看详情
+              </button>
+            </div>
+            <div class="special-l">
+              <div class="special-l-con">
+                <span class="basket">{{item.name}}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <no-data-remind *ngIf="!home?.specialData?.length"></no-data-remind>
+    </div>
+  </div>
+</ion-content>
+

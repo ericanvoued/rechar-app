@@ -1,0 +1,40 @@
+page-special-offer {
+  .special{
+    li{
+      margin-bottom:8px;
+    }
+  }
+  .special-con{
+    padding: 10px 3%;
+    background: #2F324C;
+  }
+  .special-l{
+    margin-right:100px;
+    .time{
+      color: #686990;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+    .special-l-con{
+      margin-top: 5px;
+      vertical-align: bottom;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #fff;
+      .basket{
+        font-size: 1.7rem;
+        display: inline;
+      }
+      .high{
+        color: #e5e5e5;
+        font-size: 1.5rem;
+      }
+      .number{
+        font-size: 1.5rem;
+        color: #FFBE00;
+      }
+    }
+  }
+}
