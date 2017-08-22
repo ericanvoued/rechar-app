@@ -2,13 +2,6 @@ import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {ModifyPasswordService} from "../../../providers/service/fund-service/modify-password-service";
 
-/**
- * Generated class for the SafeCenterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-safe-center',

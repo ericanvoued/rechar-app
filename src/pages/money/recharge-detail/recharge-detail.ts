@@ -8,9 +8,6 @@ import {MydepositService} from "../../../providers/service/bank-mix/mydeposit-se
   templateUrl: 'recharge-detail.html',
 })
 export class RechargeDetailPage {
-
-
-
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public mydepositService: MydepositService) {
     this.viewCtrl.didEnter.subscribe(data => this.mydepositService.postRemoteServer());
   }

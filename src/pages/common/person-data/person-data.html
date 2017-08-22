@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only class="fr">
+      <mores></mores>
+    </button>
+    <ion-title>个人资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <ul class="person-data">
+    <li class="person-li">
+      <i class="iconfont icon-zhanghao"></i>
+      <span class="user-name">用户名：</span>
+      <span class="person-name">{{share?.user?.username}}</span>
+    </li>
+  </ul>
+  <div class="save-btn">
+    <button ion-button full navPop>返回</button>
+  </div>
+</ion-content>

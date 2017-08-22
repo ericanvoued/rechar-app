@@ -112,7 +112,7 @@ app.post('/mobileh5-station-letters/', ({body}, res) => {
  */
 
 app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
-  res.json(require('./data/index/get/messgae-detail.json'));
+  res.json(require('./data/index/get/message-detail.json'));
 });
 
 /**

@@ -11,7 +11,6 @@ export class MessagePage {
 
 
   constructor(public navCtrl: NavController, public websidemessagesService: WebsidemessagesService) {
-
   }
 
   ionViewDidLoad() {

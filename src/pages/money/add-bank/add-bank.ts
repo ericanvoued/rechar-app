@@ -4,13 +4,6 @@ import {Config} from "../../../config/config";
 import {SetfundpasswordService} from "../../../providers/service/fund-service/setfundpassword-service";
 import {BankcardService} from "../../../providers/service/fund-service/bankcard-service";
 
-/**
- * Generated class for the AddBankPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add-bank',
