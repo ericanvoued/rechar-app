@@ -90,20 +90,20 @@
         <div>
           <ion-list>
             <ul class="bet-record">
-              <li *ngFor="let item of recordList" (click)="goDetail(item)">
+              <li *ngFor="let item of gameData" (click)="goDetail(item)">
                 <div class="my-table">
                   <div class="my-row">
-                    <div class="my-cell start-col">
+                    <div class="my-cell avg-col">
                       <div class="text-2">{{(item.created_at?.replace(yearReg, ''))}}</div>
                     </div>
-                    <div class="my-cell large-col">
+                    <div class="my-cell avg-col">
                       <div class="text-1 nowrap">{{item.friendly_name}}</div>
                     </div>
-                    <div class="my-cell mid-col center">
+                    <div class="my-cell avg-col center">
                       <div class="text-2">金额：</div>
                       <div class="text-2 nowrap">{{item.amount}}</div>
                     </div>
-                    <div class="my-cell mid-col center">
+                    <div class="my-cell avg-col center">
                       <div class="text-2">余额：</div>
                       <div class="text-2 nowrap">{{item.balance}}</div>
                     </div>
