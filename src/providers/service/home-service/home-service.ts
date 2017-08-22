@@ -132,11 +132,11 @@ export class HomeServiceProvider {
   }
 
   async getParameters(index) {
-    if(!this.share.user.token) {
+    if(!this.share.user) {
       let data = await this.client.post('/mobile-h5-auth/login', this.share.store.get("app_user"));
       if (data.isSuccess) this.share.user = data.data;
     }
-    this.share.parameters[index]._token = this.share.user.token;
+    if(this.share.user) this.share.parameters[index]._token = this.share.user.token;
     return this.share.parameters[index];
   }
 }
