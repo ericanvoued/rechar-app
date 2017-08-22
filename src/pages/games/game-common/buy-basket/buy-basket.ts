@@ -4,6 +4,7 @@ import {Effect} from "./effect";
 import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../../providers/service/games/basket-service/basket-service";
 import {UserbalanceServiceProvider} from "../../../../providers/service/userbalance-service/userbalance-service";
+import {GlobalShareProvider} from "../../../../providers/global-share/global-share";
 
 /**
  * Generated class for the BuyBasketPage page.
@@ -18,33 +19,33 @@ import {UserbalanceServiceProvider} from "../../../../providers/service/userbala
   templateUrl: 'buy-basket.html',
 })
 export class BuyBasketPage extends Effect {
-  constructor(public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public gameconfig: GameconfigServiceProvider) {
+  constructor(private share:GlobalShareProvider,public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public gameconfig: GameconfigServiceProvider) {
     super();
   }
 
   ionViewDidLoad() {
     this.initEffect();
-
+    this.userbalance.getBalaceAgain();
     this.basket.setcustomprizeGroupchoose = this.basket.customprizeGroupchoose = this.gameconfig.defaultData.data.bet_max_prize_group;
     this.setPriceChooseOptions();
   }
 
   mutiplePluse() {
-    this.basket.globalData.globalMutile++;
+    this.share.globalData.globalMutile++;
   }
 
   tracePluse() {
-    this.basket.globalData.trace++;
+    this.share.globalData.trace++;
   }
 
   traceReduce() {
-    this.basket.globalData.trace--;
-    this.basket.globalData.trace = Math.max(this.basket.globalData.trace, 1);
+    this.share.globalData.trace--;
+    this.share.globalData.trace = Math.max(this.share.globalData.trace, 1);
   }
 
   mutipleReduce() {
-    this.basket.globalData.globalMutile--;
-    this.basket.globalData.globalMutile = Math.max(this.basket.globalData.globalMutile, 1);
+    this.share.globalData.globalMutile--;
+    this.share.globalData.globalMutile = Math.max(this.share.globalData.globalMutile, 1);
   }
 
   tracepluseOrmindusOnInput = debounce((e) => {
@@ -54,18 +55,18 @@ export class BuyBasketPage extends Effect {
   tracepluseOrmindus(e) {
     let v = +e.target.value;
     if (v <= 1) {
-      this.basket.globalData.trace = 1;
+      this.share.globalData.trace = 1;
     } else if (v >= 999) {
-      this.basket.globalData.trace = 999;
+      this.share.globalData.trace = 999;
     } else {
-      this.basket.globalData.trace = v;
+      this.share.globalData.trace = v;
     }
-    e.target.value = this.basket.globalData.trace;
+    e.target.value = this.share.globalData.trace;
 
   }
 
   async submit() {
-    if (this.userbalance.balance.available < this.basket.totalAllCount) {
+    if (this.share.balance.available < this.basket.totalAllCount) {
       let alert = this.alertCtrl.create({
         title: '',
         subTitle: '您的余额不足,请先充值',
@@ -85,13 +86,13 @@ export class BuyBasketPage extends Effect {
   mutiplepluseOrmindus(e) {
     let v = +e.target.value;
     if (v <= 1) {
-      this.basket.globalData.globalMutile = 1;
+      this.share.globalData.globalMutile = 1;
     } else if (v >= 999) {
-      this.basket.globalData.globalMutile = 999;
+      this.share.globalData.globalMutile = 999;
     } else {
-      this.basket.globalData.globalMutile = v;
+      this.share.globalData.globalMutile = v;
     }
-    e.target.value = this.basket.globalData.globalMutile;
+    e.target.value = this.share.globalData.globalMutile;
   }
 
   bet_max_prize_groupPercent: any;

@@ -30,7 +30,6 @@ export class HomePage {
   }
 
   playGame(gameNav,toPage): void {
-    console.log(gameNav,toPage);
     if (!gameNav.time) {
       let toast = this.toastCtrl.create({
         message: "即将上线",

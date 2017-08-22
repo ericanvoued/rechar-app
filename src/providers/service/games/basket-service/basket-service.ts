@@ -24,12 +24,8 @@ var platformInstance = new PlatformDetected();
 @Injectable()
 export class BasketServiceProvider extends BusinessTool {
   basketData = [];
-  basketDataValideArr = [];
   c = {name_cn: '', prize: 0};
-  globalData: { globalMutile: number, trace: number };
-  globalDataArr: Array<{ globalMutile: number, trace: number }>
-  MinMutiple: { minmax_multiple: number, c: any };
-  MinMutipleArr: Array<{ minmax_multiple: number, c: any }>
+
   totalAllCount: number;
   totalAllNum: number;
   gameId: any;
@@ -38,21 +34,18 @@ export class BasketServiceProvider extends BusinessTool {
   constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
 
-    this.globalData = {globalMutile: 1, trace: 1};
-    this.globalDataArr = [this.globalData];
-
-    this._.observe(this.globalDataArr, 'update', () => {
+    this.share.globalData =  {globalMutile: 1, trace: 1}
+    this._.observe(this.share.globalData, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
 
-    this._.observe(this.basketData, () => {
+    this._.observe(this.share.basketData, () => {
       this.whenUpdatebasketData();
     });
 
-    this.MinMutiple = {minmax_multiple: 0, c: {}};
-    this.MinMutipleArr = [this.MinMutiple];
-    this._.observe(this.MinMutipleArr, 'update', () => {
+    this.share.MinMutiple = {minmax_multiple: 0, c: {}};
+    this._.observe(this.share.MinMutiple, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
     });
@@ -63,19 +56,19 @@ export class BasketServiceProvider extends BusinessTool {
   whenUpdatebasketData() {
 
     this.getMinMutipleAndTotalAllCount();
-    if (!this.basketData.length)
-      this.globalData.trace = 0;
-    else if (!this.globalData.trace)
-      this.globalData.trace = 1;
+    if (!this.share.basketData.length)
+      this.share.globalData.trace = 0;
+    else if (!this.share.globalData.trace)
+      this.share.globalData.trace = 1;
 
   }
 
   getMinMutipleAndTotalAllCount(): { minmax_multiple: number } {
-    let min = this.basketData[0];
+    let min = this.share.basketData[0];
     this.totalAllCount = 0;
     this.totalAllNum = 0;
-    this.basketData.forEach((v) => {
-      this.totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.globalData.globalMutile * this.globalData.trace * v.count);
+    this.share.basketData.forEach((v) => {
+      this.totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.share.globalData.globalMutile * this.share.globalData.trace * v.count);
       this.totalAllCount = +this.totalAllCount.toFixed(4);
       this.totalAllNum += v.count;
       if (v.max_multiple < min.max_multiple) {
@@ -84,17 +77,17 @@ export class BasketServiceProvider extends BusinessTool {
     });
 
     if (min) {
-      this.MinMutiple.minmax_multiple = min.max_multiple;
-      this.MinMutiple.c = min;
+      this.share.MinMutiple.minmax_multiple = min.max_multiple;
+      this.share.MinMutiple.c = min;
     }
     else {
-      if (this.MinMutiple) {
-        this.MinMutiple.minmax_multiple = 0;
-        this.MinMutiple.c = min;
+      if (this.share.MinMutiple) {
+        this.share.MinMutiple.minmax_multiple = 0;
+        this.share.MinMutiple.c = min;
       }
     }
 
-    return this.MinMutiple;
+    return this.share.MinMutiple;
   }
 
   whenUpdateGlobalData(): any {
@@ -102,20 +95,20 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   resetGlobalMutiple() {
-    if (!this.basketData.length)
-      this.globalData.globalMutile = 0;
-    else if (this.globalData.globalMutile == 0)
-      this.globalData.globalMutile = 1;
+    if (!this.share.basketData.length)
+      this.share.globalData.globalMutile = 0;
+    else if (this.share.globalData.globalMutile == 0)
+      this.share.globalData.globalMutile = 1;
 
 
-    if (this.MinMutiple.c && this.MinMutiple.c.mutipleAndModeObj && this.isBigerThenMutipleAndModeObj(this.MinMutiple.c)) {
-      this.globalData.globalMutile -= 1;
+    if (this.share.MinMutiple.c && this.share.MinMutiple.c.mutipleAndModeObj && this.isBigerThenMutipleAndModeObj(this.share.MinMutiple.c)) {
+      this.share.globalData.globalMutile -= 1;
       this.resetGlobalMutiple();
     }
   }
 
   isBigerThenMutipleAndModeObj(c): boolean {
-    return this.MinMutiple.minmax_multiple < c.mutipleAndModeObj.times * this.globalData.globalMutile;
+    return this.share.MinMutiple.minmax_multiple < c.mutipleAndModeObj.times * this.share.globalData.globalMutile;
   }
 
   addDataToBasket(obj): boolean {
@@ -123,9 +116,9 @@ export class BasketServiceProvider extends BusinessTool {
       this.addLabel(obj);
       this.c = obj;
       let validIndex = `${obj.fullName_en}/${obj.label}`;
-      if (this.basketDataValideArr.indexOf(validIndex) == -1) {
-        this.basketDataValideArr.push(validIndex);
-        this.basketData.push(this.deepCloneObj(obj));
+      if (this.share.basketDataValideArr.indexOf(validIndex) == -1) {
+        this.share.basketDataValideArr.push(validIndex);
+        this.share.basketData.push(this.deepCloneObj(obj));
         obj.isRedudu = false;
         return true;
       } else {
@@ -184,13 +177,13 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   deleteItem(i) {
-    this.basketData.splice(i, 1);
-    this.basketDataValideArr.splice(i, 1);
+    this.share.basketData.splice(i, 1);
+    this.share.basketDataValideArr.splice(i, 1);
   }
 
   clearAll() {
-    this.basketData.splice(0, this.basketData.length);
-    this.basketDataValideArr.splice(0, this.basketDataValideArr.length);
+    this.share.basketData.splice(0, this.share.basketData.length);
+    this.share.basketDataValideArr.splice(0, this.share.basketDataValideArr.length);
   }
 
   convertToBalls(a: Array<any>, b: Array<any>): Array<any> {
@@ -225,7 +218,7 @@ export class BasketServiceProvider extends BusinessTool {
       '0单5双': '0'
     }
 
-    this.basketData.forEach((v, key) => {
+    this.share.basketData.forEach((v, key) => {
       let ball = this.fiterBalls(v, v.name_en);
 
       if (Array.isArray(ball) && /单|双/.test(ball[0])) {
@@ -247,7 +240,7 @@ export class BasketServiceProvider extends BusinessTool {
         "onePrice": 2,
         "prize_group": this.setcustomprizeGroupchoose,
         "moneyunit": v.mutipleAndModeObj.mode,
-        "multiple": v.mutipleAndModeObj.times * this.globalData.globalMutile
+        "multiple": v.mutipleAndModeObj.times * this.share.globalData.globalMutile
       })
     });
 
@@ -256,7 +249,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   getOrderIssure(): Object {
     let orderIssue = {};
-    for (let i = 0; i < this.globalData.trace; i++) {
+    for (let i = 0; i < this.share.globalData.trace; i++) {
       orderIssue[this.gameconfigure.getIssuesList.data.trace_issues[i].number] = 1;
     }
 
@@ -267,7 +260,7 @@ export class BasketServiceProvider extends BusinessTool {
 
     return {
       "gameId": this.gameId,
-      "isTrace": +(this.globalData.trace > 1),
+      "isTrace": +(this.share.globalData.trace > 1),
       "traceWinStop": +this.traceWinStop,
       "traceStopValue": 1,
       "balls": this.getBallsString(),
@@ -308,7 +301,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   }
 
-  finishRequest(data,goContent) {
+  finishRequest(data, goContent) {
     if (data.isSuccess) {
       goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
@@ -326,7 +319,7 @@ export class BasketServiceProvider extends BusinessTool {
   submitProcessing = false;
 
   async submit(goContent) {
-    if (!(this.basketData.length)) {
+    if (!(this.share.basketData.length)) {
       let toast = this.toastCtrl.create({
         message: '号码篮不能为空',
         duration: 1000,
@@ -350,12 +343,13 @@ export class BasketServiceProvider extends BusinessTool {
       this.submitProcessing = false;
       this.loading.dismiss();
       let data = await this.doSubmint();
-      this.finishRequest(data,goContent);
+      this.finishRequest(data, goContent);
     }
   }
 
   doSubmint() {
-    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.gameconfigure.getPid()}`, this.getSubmitData());
+    debugger
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.getSubmitData());
   }
 
   loading: any;
