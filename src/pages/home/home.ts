@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 import {Config} from "../../config/config";
 import {Effect} from "./effect";
+import {BalanceProvider} from "../../providers/service/balance/balance";
 
 @IonicPage()
 @Component({
@@ -13,9 +14,10 @@ export class HomePage {
   ccc: boolean;
   cccInterval: any;
   gamelistIconMap = Config.gameiconMap;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
+
+  constructor(public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
     new Effect().initEffect();
-    this.homeService.getUserBalance();
+    this.balance.getUserBalance();
     this.homeService.getRemoteServer();
     this.homeService.getBannerRemoteServer();
     this.homeService.postLotteryServer();
