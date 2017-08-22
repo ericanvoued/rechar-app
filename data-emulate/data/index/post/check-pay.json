@@ -5,8 +5,8 @@
     "alipay": 1,
     "weixin": 1,
     "bankkj": 1,
-    "bank": 0,
-    "yinlian": 0,
+    "bank": 1,
+    "yinlian": 1,
     "baidu": 1,
     "qq": 1,
     "tplData": []
