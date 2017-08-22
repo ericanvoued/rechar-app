@@ -41,7 +41,7 @@ export class GameconfigServiceProvider {
    * 1.获取总玩玩法列表
    */
   async fetchMethedsList() {
-    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/2/${this.getPid()}`, this.getParamaterToken());
+    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/2/${this.share.getPid()}`, this.getParamaterToken());
     this.methedsList = data.data;
     this.setdefaultsMethodData();
     this.data = data;
@@ -52,7 +52,7 @@ export class GameconfigServiceProvider {
    * 2.获取默认数据
    */
   async getDefaultsMethods() {
-    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.getPid()}?_=${Math.random()}`, this.getParamaterToken());
+    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.share.getPid()}?_=${Math.random()}`, this.getParamaterToken());
     let str = this.defaultData.data.lottery_balls;
 
     if (str) {
@@ -87,12 +87,12 @@ export class GameconfigServiceProvider {
    */
 
   async getIssues() {
-    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.getPid()}`, this.getParamaterToken());
+    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
     this.getIssuesList = data;
   }
 
   outergetIssues(): Promise<any> {
-    return this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.getPid()}`, this.getParamaterToken());
+    return this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
   }
 
   clock: {
@@ -166,6 +166,7 @@ export class GameconfigServiceProvider {
   }
 
   setPid(name: string) {
+    this.share.setPid(name);
     this.pid = name;
   }
 

@@ -6,6 +6,7 @@ import {GameconfigServiceProvider} from "../../../providers/service/games/gameco
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 @IonicPage()
 @Component({
@@ -22,7 +23,7 @@ export class CqsscPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(private share:GlobalShareProvider,private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
 
     this.other();
@@ -30,7 +31,7 @@ export class CqsscPage extends Effect {
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
-    basket.gameId = nav && nav.pid;
+    this.share.gameId = nav && nav.pid;
 
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
@@ -179,7 +180,7 @@ export class CqsscPage extends Effect {
   goBuybasket(obj) {
     let isSucess = this.basket.addDataToBasket(obj);
 
-    if (isSucess || this.basket.basketData.length) {
+    if (isSucess || this.share.basketData.length) {
       this.clear(obj);
       this.navCtrl.push("BuyBasketPage", {nav: this.navParams.get('nav')});
     } else {

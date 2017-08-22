@@ -5,6 +5,12 @@ import {LoadingController, ToastController} from "ionic-angular";
 
 @Injectable()
 export class GlobalShareProvider {
+  pid: string;
+  basketData = [];
+  basketDataValideArr=[];
+  globalData: { globalMutile: number, trace: number }={globalMutile: 1, trace: 1};
+  MinMutiple: {minmax_multiple: 0, c: any};
+
   loading: any;
   user: any={_token:''};
   dataGroup: any=[];
@@ -29,6 +35,7 @@ export class GlobalShareProvider {
   }};
   bankcardDetail2: any;
   bankcardDetail: any;
+  gameId: any | string | number;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 
@@ -68,4 +75,12 @@ export class GlobalShareProvider {
       localStorage.removeItem(key);
     }
   }
+
+  setPid(name: string) {
+    this.pid = name;
+  }
+  getPid() {
+    return this.pid;
+  }
+
 }
