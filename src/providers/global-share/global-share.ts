@@ -36,6 +36,8 @@ export class GlobalShareProvider {
   bankcardDetail2: any;
   bankcardDetail: any;
   gameId: any | string | number;
+  defaultData: any={};
+  getIssuesList: any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 

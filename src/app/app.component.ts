@@ -22,7 +22,7 @@ export class MyApp {
 
     platform.ready().then(() => {
       if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot('LoginPage'), 500);
+        setTimeout(v => this.nav.setRoot('LoginPage'), 800);
       }
 
       statusBar.styleDefault();

@@ -14,7 +14,7 @@
 
 <ion-content class="gray-bg">
   <div class="balance">{{bankcard.defautbankcard.account_name}}</div>
-  <div class="balance">余额：{{usr.tmpUserInfo.data.available}}</div>
+  <div class="balance">余额：{{this.share.balance?.available}}</div>
 
   <div *ngIf="bankcard.defautbankcard.bank" class="open-modal recharge-bank">
     <img src="{{bankcardIconMap[bankcard.defautbankcard.bank]}}" alt="">

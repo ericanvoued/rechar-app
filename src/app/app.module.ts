@@ -8,10 +8,12 @@ import {HttpModule} from "@angular/http";
 import {HttpClientProvider} from "../providers/http-client/http-client";
 import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {MyExceptionHandler} from "./MyExceptionHandler";
+import {MyPopOverComponent} from "../components/my-pop-over/my-pop-over";
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    MyPopOverComponent
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -30,7 +32,8 @@ import {MyExceptionHandler} from "./MyExceptionHandler";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    MyPopOverComponent
   ],
   providers: [
     HttpClientProvider,
