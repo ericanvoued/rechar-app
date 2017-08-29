@@ -77,7 +77,7 @@ app.get('/mobileh5-users/user-account-info', ({body}, res) => {
 
 app.post('/mobileh5-projects', ({body}, res) => {
   if (body._token == _token) {
-    res.json(require('./data/index/post/game-record.json'));
+    setTimeout(() =>res.json(require('./data/index/post/game-record.json')),2000);
   } else {
     res.json(errortoken);
   }
@@ -119,8 +119,15 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
  * 投注详情接口
  */
 
-app.get('/mobileh5-projects/:id/view', ({body}, res) => {
+app.get('/mobileh5-projects/:id/view', (req, res) => {
+  console.log("req.query.id:",req.params)
+if(req.params.id){
   res.json(require('./data/index/get/bet-detail.json'));
+} else {
+  res.json(error);
+}
+
+
 });
 
 /**
@@ -160,6 +167,21 @@ app.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', ({body}, res) => {
   }
 });
 
+/**
+ * 银行列表
+ */
+
+app.get('/mobileh5-recharges/netbank', ({body}, res) => {
+  res.json(require('./data/index/get/bank-list.json'));
+});
+
+/**
+ * 银联列表
+ */
+
+app.get('/mobileh5-recharges/sdpay', ({body}, res) => {
+  res.json(require('./data/index/get/bank-list.json'));
+});
 
 app.listen(8181);
 
