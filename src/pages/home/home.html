@@ -33,8 +33,9 @@
   <div class="lottery-con">
     <ul class="sort-list clear">
       <li class="sort-li" *ngFor="let items of homeService?.dataGroup">
-        <div class="sort-a" (touchstart)="playGame(items)">
-          <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span class="sort-span">{{items.name}}</span>
+        <div class="sort-a" (touchstart)="items.group ? '':playGame(items)">
+          <img src="{{gamelistIconMap[items.name]}}" class="sort-img" alt=""><span
+          class="sort-span">{{items.name}}</span>
         </div>
         <div class="sort-drop clear" *ngIf="items?.group">
           <a class="definite-sort" *ngFor="let minitems of items?.group" (touchstart)="playGame(minitems,'CqsscPage')">{{minitems.name}}</a>
