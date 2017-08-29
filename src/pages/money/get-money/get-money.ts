@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 import {observe} from "../../../providers/tools/observe";
 import {BankcardService} from "../../../providers/service/fund-service/bankcard-service";
 import {SetfundpasswordService} from "../../../providers/service/fund-service/setfundpassword-service";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 let _ = new observe();
 
@@ -20,7 +21,7 @@ export class GetMoneyPage {
   bankcardIconMap = Config.bankcardIconMap;
 
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public bankcard: BankcardService, public alertCtrl: AlertController, public toastCtrl: ToastController, public setfundpasswordService: SetfundpasswordService) {
+  constructor(private share:GlobalShareProvider,public viewCtrl: ViewController, public navCtrl: NavController, public bankcard: BankcardService, public alertCtrl: AlertController, public toastCtrl: ToastController, public setfundpasswordService: SetfundpasswordService) {
     this.initlize();
   }
 
