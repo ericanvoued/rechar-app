@@ -16,7 +16,7 @@ export class HomePage {
   gamelistIconMap = Config.gameiconMap;
 
   constructor(public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
-    new Effect().initEffect();
+    (new Effect()).initEffect();
     this.balance.getUserBalance();
     this.homeService.getRemoteServer();
     this.homeService.getBannerRemoteServer();
@@ -32,6 +32,7 @@ export class HomePage {
   }
 
   playGame(gameNav,toPage): void {
+    console.log("gameNav:",gameNav);
     if (!gameNav.time) {
       let toast = this.toastCtrl.create({
         message: "即将上线",

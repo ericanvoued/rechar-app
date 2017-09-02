@@ -26,19 +26,23 @@ export class AddBankPage {
   addBinddBankCard() {
     if (this.bankcardService.withdrawData.data.bank_cards.length >= 4) {
       this.navCtrl.pop();
-      return;
-    }
-    if (this.setfundpasswordService.initialize()) return;
 
-    if (this.bankcardService.isBindBankCard) {
-      this.navCtrl.push("ValidBankPage");
     } else {
-      this.navCtrl.push("BindBankPage");
+      let isset = this.setfundpasswordService.initialize();
+      debugger
+      if (!isset) {
+        if (this.bankcardService.isBindBankCard) {
+          this.navCtrl.push("ValidBankPage");
+        } else {
+          this.navCtrl.push("BindBankPage");
+        }
+      }
     }
 
   }
-  gopage(page,p){
-    this.navCtrl.push(page,p);
+
+  gopage(page, p) {
+    this.navCtrl.push(page, p);
   }
 
 }

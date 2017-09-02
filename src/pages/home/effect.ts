@@ -2,37 +2,36 @@
  * Created by apple on 2016/12/28.
  */
 import * as $ from 'jquery';
-
 export class Effect {
-  constructor() {}
+  constructor() {
+
+  }
 
   initEffect() {
     this.dropDown();
     this.rechargeTab();
     this.myModal();
     this.sideDrop();
-    this.phoneClick('.j-btn', 'gray-on');
-    this.phoneClick('.s-btn', 'orange-on');
+    this.phoneClick('.j-btn','gray-on');
+    this.phoneClick('.s-btn','orange-on');
     this.waterEffect('.bt');
     this.waterEffect('.black-bt');
   }
-
-  phoneClick(obj, cla) {
-    $(document).on('touchstart', obj, function () {
+  phoneClick(obj,cla){
+    $(document).on('touchstart',obj,function(){
       $(this).addClass(cla);
     });
-    $(document).on('touchend', obj, function () {
+    $(document).on('touchend',obj,function(){
       let This = $(this);
       setTimeout(function () {
         This.removeClass(cla);
-      }, 150)
+      },150)
     });
   }
-
   //水波纹效果
-  waterEffect(obj) {
-    $(document).on('touchstart', obj, function (e) {
-      let newRound = document.createElement('div'), x, y;
+  waterEffect(obj){
+    $(document).on('touchstart', obj ,function (e) {
+      let newRound = document.createElement('div'),x,y;
       newRound.className = 'circles';
       this.appendChild(newRound);
       x = e.pageX - $(this).offset().left;
@@ -40,7 +39,7 @@ export class Effect {
       newRound.style.left = x + "px";
       newRound.style.top = y + "px";
       newRound.className += " animations";
-      setTimeout(function () {
+      setTimeout(function() {
         newRound.remove();
       }, 400);
     });
@@ -49,14 +48,13 @@ export class Effect {
   //左侧彩种下拉
   sideDrop() {
     $(document).on('touchstart', '.side-li', drop);
-
     function drop() {
       $(this).find('.side-drop').slideToggle(200);
       $(this).siblings().find('.side-drop').slideUp(200);
       return false;
     }
 
-    $(document).on('touchstart', function () {
+    $(document).on('touchstart',function () {
       $('.side-drop').slideUp(200);
     });
   }
@@ -64,7 +62,6 @@ export class Effect {
   //首页彩种下拉
   dropDown() {
     $(document).on('touchstart', '.sort-li', drop);
-
     function drop() {
       let oSort = $('.sort-li');
       let len = oSort.length;
@@ -90,7 +87,7 @@ export class Effect {
       return false;
     }
 
-    $(document).on('touchstart', function () {
+    $(document).on('touchstart',function () {
       $('.sort-li').find('.sort-a').removeClass('sort-col');
       $('.sort-li').find('.definite-sort').removeClass('sort-col');
       $('.sort-drop').slideUp(0);
@@ -100,7 +97,6 @@ export class Effect {
   //tab切换
   rechargeTab() {
     $(document).on('touchstart', '.recharge-tab li', recharge);
-
     function recharge() {
       let oDiv = $('.recharge');
       let i = $(this).index();
