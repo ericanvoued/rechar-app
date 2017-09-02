@@ -1,17 +1,14 @@
 <ion-header>
-
   <ion-navbar>
     <button icon-only class="fr">
       <mores></mores>
     </button>
     <ion-title>选择银行卡</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 <ion-content class="white-bg">
   <ul class="bank-list">
-    <li *ngFor="let item of bankcardlist" (click)="goBack(item)">
+    <li *ngFor="let item of bankCardList" (click)="goBack(item)">
       <span class="bank-img">
         <img src="{{bankcardIconMap[item.name]}}" alt="">
       </span>

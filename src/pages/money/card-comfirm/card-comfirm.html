@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>汇款确认</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <button ion-item>
+      <label>收款账户名:</label><span>{{comfirm.accept_account_name}}</span>
+    </button>
+    <button ion-item>
+      <label>卡号：</label><span>{{comfirm.accept_card_number}}</span>
+    </button>
+    <button ion-item>
+      <label>开户城市:</label><span>{{comfirm.accept_bank_address}}</span>
+    </button>
+    <button ion-item>
+      <label>订单金额：</label><b style="color: red; font-weight: bold;">{{comfirm.amount}}</b>
+    </button>
+    <button ion-item>
+      <label>附言(充值订单号)：</label><b>{{comfirm.note}}</b>
+    </button>
+  </ion-list>
+  <div class="save-btn">
+    <a ion-button full href="{{comfirm.url}}" target="_blank">立即充值</a>
+  </div>
+</ion-content>

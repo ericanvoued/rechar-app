@@ -1,14 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Config} from "../../../config/config";
-import {GlobalShareProvider} from "../../../providers/global-share/global-share";
-
-/**
- * Generated class for the SelectBankPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
 
 @IonicPage()
 @Component({
@@ -17,23 +10,20 @@ import {GlobalShareProvider} from "../../../providers/global-share/global-share"
 })
 export class SelectBankPage {
   bankcardIconMap = Config.bankcardIconMap;
-
-  constructor(public sharebankcarddetail: GlobalShareProvider, public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  bankcardlist = [];
+  bankCardList = [];
+  constructor(public money: MoneySericeProvider, public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    this.bankcardlist = this.navParams.get('data');
+    this.bankCardList = this.navParams.get('data');
+    this.money.payClass = this.navParams.get('pay');
   }
 
   goBack(item) {
-    if (this.navParams.get('isbankcard'))
-      this.sharebankcarddetail.bankcardDetail2 = item;
-    else
-      this.sharebankcarddetail.bankcardDetail = item;
-
-    this.navCtrl.pop();
+    this.money.bankItem = item;
+    if(this.money.payClass.display!='yinlian') {
+      if(this.money.payClass.display=='bank') this.money.payClass.max = Number(item.max);
+      this.money.payClass.post.bank=item.id;
+    }
+    this.navCtrl.push('RechargePage',{item:item});
   }
-
 }

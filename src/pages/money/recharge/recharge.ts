@@ -4,15 +4,8 @@ import {
   ViewController
 } from 'ionic-angular';
 import {Config} from "../../../config/config";
+import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
-import {TopupServiceProvider} from "../../../providers/service/bank-mix/topup-service/topup-service";
-
-/**
- * Generated class for the RechargePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,162 +13,168 @@ import {TopupServiceProvider} from "../../../providers/service/bank-mix/topup-se
   templateUrl: 'recharge.html',
 })
 export class RechargePage {
-
-
   bankcardIconMap = Config.bankcardIconMap;
-
-  constructor(public loadingCtrl: LoadingController, public sharebankcarddetail: GlobalShareProvider, public navParams: NavParams, public viewCtrl: ViewController, public modalCtrl: ModalController, public navCtrl: NavController, public topupService: TopupServiceProvider, public toastCtrl: ToastController) {
-    this.fetchData();
-  }
-
-  async fetchData() {
-    let data = await this.topupService.getbanks_tabs()
-    Object.assign(this.tabsItemSwith, data.data);
-  }
-
-  tabsItemSwith = {
-    alipay: 0,
-    baidu: 0,
-    bank: 0,
-    bankkj: 0,
-    qq: 0,
-    weixin: 0,
-    yinlian: 0
-  }
-  unionpayInitData: any;
-
-  /**
-   * baidu charege
-   */
-  async baiduRecharge() {
-    if (!this.validateData(this.topupService.postBaiduRechargeParameter)) return;
-    this.showLoading();
-    let data = await this.topupService.postBaiduRechargeRemoteServer();
-    this.jumpUrlFormCode(data, '百度钱包')
-  }
-
-  /**
-   * qq recharege
-   */
-  async qqRecharge() {
-    if (!this.validateData(this.topupService.postQQRechargeParameter)) return;
-    this.showLoading();
-    let data = await this.topupService.postQQRechargeRemoteServer();
-    this.jumpUrlFormCode(data, 'QQ钱包');
-  }
-
   loading: any;
+  payData=[{name: 'alipay', max: 3000, remind: true, button: '支付宝安全充值', deposit_mode: 2, bank_code: 'ALIPAY', bank: 43},
+    {name: 'weixin', max: 500, remind: true, button: '微信安全充值', deposit_mode: 2, bank_code: 'WEIXIN', bank: 48},
+    {name: 'bankkj', max: 10000, remind: true, button: '立即充值', deposit_mode: 2, bank_code: 'KJCZ', bank: 0},
+    {name: 'bank', max: 45000, remind: true, button: '下一步', deposit_mode: 1, bank_code: 'WYCZ', bank: 0},
+    {name: 'yinlian', max: 45000, remind: true, button: '下一步', deposit_mode: 2, bank_code: 'UNION', bank: 47},
+    {name: 'baidu', max: 5000, remind: false, button: '下一步', deposit_mode: 2, bank_code: 'BAIDU', bank: 50},
+    {name: 'qq', max: 5000, remind: false, button: '下一步', deposit_mode: 2, bank_code: 'QQ', bank: 49}];
+  result=false;
 
-  hideLoading() {
-    if (this.loading) {
-      this.loading.dismiss();
+  constructor(public modalCtrl: ModalController,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public share:GlobalShareProvider, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams, public money: MoneySericeProvider) {
+    this.loadData();
+  }
+
+  checkButton(text) {
+    if (!this.money.payType) return false;
+    for (let k in this.money.payType) {
+      if (k == text && this.money.payType[k] == 1) return true;
+    }
+    return false;
+  }
+
+  checkBind() {
+    if (!this.share.user.is_set_fund_password || this.share.user.is_set_fund_password != 1){
+      this.showToast('您未绑卡,请先绑卡');
+      setTimeout(() => this.pushPage('BindBankPage'), 1000);
     }
   }
 
-  showLoading() {
-    if (!this.loading) {
-      this.loading = this.loadingCtrl.create({
-        spinner: 'bubbles'
-      });
-      this.loading.present();
+  async loadData() {
+    this.checkBind();
+    if(!this.navParams.get('item')){
+      await this.money.checkPayType();
+      this.changePayType();
+    }else{
+      this.money.bankItem = this.navParams.get('item');
     }
   }
 
-  async unionpayInit() {
-    let data = await this.topupService.getUnionPay();
-    this.unionpayInitData = data;
+  changePayType() {
+    if (!this.money.payType) return;
+    this.clearType();
+    for (let k in this.money.payType) {
+      if (this.money.payType[k] == 1 && this.money.payClass.display=='') {
+        this.money.payClass.display = k;
+        this.setType();
+        break;
+      }
+    }
   }
 
-  unionpayProcessing = false;
+  clearType(){
+    this.money.payClass.display='';
+    this.money.payClass.max=0;
+    this.money.payClass.remind=false;
+    this.money.payClass.button='';
+    this.money.payClass.post.amount = 10;
+    for(let k in this.money.payClass.show)
+      this.money.payClass.show[k]='';
+  }
 
-  /**
-   * 银联充值
-   *
-   */
-  async unionpaySubmit() {
-    if (!this.validateData4()) {
-      return;
+  setType(){
+    for(let k in this.money.payClass.show){
+      if(k==this.money.payClass.display){
+        this.money.payClass.show[k]='active';
+        break;
+      }
     }
-    if (this.unionpayProcessing) return;
-    this.unionpayProcessing = true;
+    for(let v in this.payData){
+      if(this.payData[v].name==this.money.payClass.display){
+        this.money.payClass.max = Number(this.payData[v].max);
+        this.money.payClass.remind=this.payData[v].remind;
+        this.money.payClass.button=this.payData[v].button;
+        this.money.payClass.post.deposit_mode=this.payData[v].deposit_mode;
+        this.money.payClass.post.bank_code=this.payData[v].bank_code;
+        this.money.payClass.post.bank=this.payData[v].bank;
+        break;
+      }
+    }
+  }
 
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles'
-    });
+  async goItem(text){
+    this.money.bankItem='';
+    if (!this.money.payType) return;
+    this.clearType();
+    this.money.payClass.display = text;
+    this.setType();
+    if(text=='bankkj' || text=='bank'){
+      await this.money.getBankList();
+    }else if(text=='yinlian'){
+      await this.money.getUnion();
+    }
+  }
 
-    loading.present();
+  selectBank() {
+    if (this.money.bankCardList.length)
+      this.navCtrl.push('SelectBankPage', {data: this.money.bankCardList,pay:this.money.payClass});
+  }
 
-    let data = await this.topupService.unionPayComfirm();
-    loading.dismiss();
-    this.unionpayProcessing = false;
-    if (data.isSuccess) {
-      let form = '' + data.data.url;
-      this.postunionpayPayment(form);
+  async nextStep(){
+    this.checkInput(this.money.payClass.post,10,this.money.payClass.max);
+    if(!this.result) return;
+    this.showLoading();
+    this.money.payClass.post._token = this.share.user.token;
+    if(this.money.payClass.display=='alipay'){
+      await this.money.postAlipayCode();
+      this.hideLoading();
+      if(this.money.aliCode) this.toAliPay(this.money.aliCode);
+    }else if(this.money.payClass.display=='weixin'){
+      await this.money.postWechartCode();
+      this.hideLoading();
+      if(this.money.weCode) this.presentModal(this.money.weCode.data.break_url, '微信充值');
+    }else if((this.money.payClass.display=='bankkj') || (this.money.payClass.display=='bank')){
+      await this.money.postBankCode();
+      this.hideLoading();
+      if(this.money.bankCode) this.toBank(this.money.bankCode);
+    }else if(this.money.payClass.display=='yinlian'){
+      await this.money.postUnionCode();
+      this.hideLoading();
+      if(this.money.unionCode) this.presentModal('' + this.money.unionCode.data.url, '银联充值');
+    }else if(this.money.payClass.display=='baidu'){
+      await this.money.postBaiduCode();
+      this.hideLoading();
+      if(this.money.baiduCode) this.presentModal(this.money.baiduCode.data.break_url, '百度钱包');
+    }else if(this.money.payClass.display=='qq'){
+      await this.money.postQQCode();
+      this.hideLoading();
+      if(this.money.QQCode) this.presentModal(this.money.QQCode.data.break_url, 'QQ钱包');
+    }
+  }
+
+  toAliPay(data){
+    if(data.deposit_mode =="mc" || data.deposit_mode =="juxin"){
+      window.open(data.data.break_url, '_blank');
     } else {
-      this.showToast(data.Msg);
+      this.presentModal(data.data.break_url, '支付宝');
     }
-
   }
 
-  post: any;
+  toBank(data){
+    if (data.data.break_url) {
+      window.open(data.data.break_url, '_blank');
+    } else {
+      this.navCtrl.push('CardComfirmPage', {data: data});
+    }
+  }
 
-  validateData4(): boolean {
-    let data = this.topupService.unionPayComfirmParameter;
-    let mostAmout = (+(this.unionpayInitData && this.unionpayInitData.data.fMaxLoad)) || 45000;
+  presentModal(data, title) {
+    let profileModal = this.modalCtrl.create('CodeComfirmPage', {data:data, title:title});
+    profileModal.present();
+  }
 
+  checkInput(data, min, max) {
     if (!data.amount) {
       this.showToast('请输入金额');
-      return false;
-    } else if (+data.amount < 2) {
-      this.showToast('最低充值2');
-      return false;
-    } else if (+data.amount > mostAmout) {
-      this.showToast('最高充值' + mostAmout);
-      return false;
+    } else if (+data.amount < min) {
+      this.showToast('最低充值' + min);
+    } else if (+data.amount > max) {
+      this.showToast('最高充值' + max);
     }
-    return true;
-  }
-
-  postunionpayPayment(data) {
-    this.presentProfileModal(data, '银联充值', undefined, true);
-  }
-
-  private jumpUrlFormCode(data: any, title: string) {
-    this.hideLoading();
-    if (data.isSuccess) {
-      this.presentProfileModalFormCode(data.data.break_url, title, true);
-    } else {
-      this.showToast(data.Msg);
-    }
-  }
-
-  presentProfileModalFormCode(data, title: string, isQQBaidu: boolean) {
-    let profileModal = this.modalCtrl.create("WechatpayResultPage", {data, title, isQQBaidu});
-    profileModal.present();
-  }
-
-  presentProfileModal(data, title: string, url?: string, isform?: boolean) {
-    let profileModal = this.modalCtrl.create("WechatpayResultPage", {data, title, url, isform});
-    profileModal.present();
-  }
-
-  goSelectBank() {
-    if (this.bankcardlist.length) {
-      this.navCtrl.push("SelectBankPage", {data: this.bankcardlist, isbankcard: this.isbankcard});
-    }
-  }
-
-  ionViewDidLoad() {
-
-  }
-
-  ionViewDidEnter() {
-
-  }
-
-  dismiss() {
-    let data = {'foo': 'bar'};
-    this.viewCtrl.dismiss(data);
+    this.result = data.amount && (+data.amount >= min) && (+data.amount <= max);
   }
 
   showToast(msg) {
@@ -187,310 +186,22 @@ export class RechargePage {
     toast.present();
   }
 
-  validateData(data): boolean {
-    if (!data.amount) {
-      this.showToast('请输入金额');
-      return false;
-    } else if (+data.amount < 2) {
-      this.showToast('最低充值2');
-      return false;
-    } else if (+data > 45000) {
-      this.showToast('最高充值45000');
-      return false;
-    }
-    return true;
+  hideLoading() {
+    if (this.loading) this.loading.dismiss();
   }
 
-  showQR(data) {
-    this.hideLoading();
-    if (data.isSuccess) {
-
-      if (/weixin:\/\//.test(data.data.break_url)) {
-        let profileModal = this.modalCtrl.create('WechatpayResultPage', {
-          data: data.data.break_url,
-          title: "微信充值",
-          isQQBaidu: true
-        });
-        profileModal.present();
-        // window.open(data.data.break_url);
-      } else {
-        let template = `<img src="${data.data.break_url}" />`;
-        this.postWechatPayment(template, data.data.break_url);
-      }
-
-    } else {
-      this.showToast(data.Msg);
-    }
-
-  }
-
-  /**
-   * 微信
-   */
-  async rechargeByWechat() {
-    if (!this.validateData(this.topupService.postWeixinRechargeParameter)) return;
-    this.showLoading();
-
-    let data = await this.topupService.postWeixinRechargeRemoteServer();
-    this.showQR(data);
-  }
-
-  /**
-   * 支付宝
-   */
-  async rechargeByAlipay() {
-    if (!this.validateData(this.topupService.postAlipayRechargeParameter)) return;
-    this.showLoading();
-    let data = await this.topupService.postAlipayRechargeRemoteServer();
-    this.jumpUrl(data);
-  }
-
-  jumpUrl(data) {
-    this.hideLoading();
-    if (data.isSuccess) {
-      if (data.deposit_mode == "mc" || data.deposit_mode == "juxin") {
-        this.jumpAction(data.data.break_url);
-      } else {
-        this.jumpUrlFormCode(data, '支付宝');
-      }
-    } else {
-      this.showToast(data.Msg);
+  showLoading() {
+    if (!this.loading) {
+      this.loading = this.loadingCtrl.create({spinner: 'bubbles'});
+      this.loading.present();
     }
   }
 
-  jumpAction(url) {
-    window.open(url, '_blank');
+  dismiss() {
+    this.viewCtrl.dismiss({'foo': 'bar'});
   }
 
-  /**
-   * 快捷和银行支付相关
-   * @param rs
-   */
-  bankcardlist = [{
-    "id": 25,
-    "name": "中国工商银行",
-    "min": "2.00",
-    "max": "190000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 26,
-    "name": "中国建设银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 27,
-    "name": "中国农业银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 28,
-    "name": "中国银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 29,
-    "name": "招商银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 30,
-    "name": "中国交通银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 31,
-    "name": "中国民生银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 32,
-    "name": "中信银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 33,
-    "name": "上海浦东发展银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 34,
-    "name": "广东发展银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 35,
-    "name": "平安银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 37,
-    "name": "兴业银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 38,
-    "name": "华夏银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 39,
-    "name": "中国光大银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }, {
-    "id": 40,
-    "name": "中国邮政储蓄银行",
-    "min": "2.00",
-    "max": "45000.00",
-    "text": "单日充值总额无上限",
-    "is_mbank": false,
-    "userAccountList": []
-  }];
-  isbankcard: boolean;
-
-  async getQuiklyAndBackRechargePage(isbankcard) {
-
-    this.isbankcard = isbankcard;
-
-    let data = await this.topupService.getQuiklyAndBankRechargePage();
-
-    if (data.isSuccess) {
-      this.bankcardlist = data.data.banks;
-    } else {
-      this.showToast(data.Msg);
-    }
+  pushPage(page) {
+    if (page) this.navCtrl.push(page);
   }
-
-  bankcardamount: any;
-  quiklyamount: any;
-
-  validBankcardRecharge(isBank) {
-
-    let c = isBank ? this.sharebankcarddetail.bankcardDetail2 : this.sharebankcarddetail.bankcardDetail;
-    if (!c) {
-      this.showToast('请选择银行卡');
-      return false;
-    }
-    let mt = isBank ? this.bankcardamount : this.quiklyamount;
-    let isvalied = this.validateData({amount: mt});
-    if (isvalied) {
-      this.topupService.postQuiklyAndBankRechargeParameter.amount = mt;
-      this.topupService.postQuiklyAndBankRechargeParameter.bank = c.id;
-    }
-
-    return isvalied;
-  }
-
-  submitQuiklyAndBackRecharge() {
-
-  }
-
-  ComfirmBankRecharge(isBank) {
-    this.isbankcard = isBank;
-    if (!this.validBankcardRecharge(isBank)) return;
-
-    let data: any = this.topupService.postQuiklyAndBankRecharge(isBank);
-    if (data.isSuccess) {
-      window.open(data.data.break_url, '_blank');
-    } else {
-      this.showToast(data.Msg);
-    }
-
-  }
-
-  async ComfirmQuiklyAndBackRecharge(isBank) {
-    this.isbankcard = isBank;
-    if (!this.validBankcardRecharge(isBank)) return;
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles'
-    });
-    loading.present();
-
-    let data = await this.topupService.postQuiklyAndBankRecharge(isBank);
-    loading.dismiss();
-
-    if (data.isSuccess) {
-      if (data.data.break_url) {
-        window.open(data.data.break_url, '_blank');
-      } else {
-        this.navCtrl.push("BankcardRechargecomfirmPage", {data: data});
-      }
-    } else {
-      this.showToast(data.Msg);
-    }
-    ;
-
-
-  }
-
-  postWechatPayment(rs, url?) {
-    //let data = this.createPostForm(rs.data);
-    this.presentProfileModal(rs, '微信充值', url);
-  }
-
-  createPostForm(data): string {
-    return `
-      <form id="wechat-postform" action="http://api.hyf-motor.com/paySubmit.php" method="post">
-          <input type="hidden" name="input_charset" value="${data.input_charset}"/>
-          <input type="hidden" name="notify_url" value="${data.notify_url}"/>
-          <input type="hidden" name="return_url"  value="${data.return_url}"/>
-          <input type="hidden" name="pay_type" value="${data.pay_type}"/>
-          <input type="hidden" name="bank_code" value="${data.bank_code}"/>
-          <input type="hidden" name="merchant_code" value="${data.merchant_code}"/>
-          <input type="hidden" name="order_no" value="${data.order_no}"/>
-          <input type="hidden" name="order_amount" value="${data.order_amount}"/>
-          <input type="hidden" name="order_time" value="${data.order_time}"/>
-          <input type="hidden" name="product_name" value="${data.product_name}"/>
-          <input type="hidden" name="product_num" value="${data.product_num}"/>
-          <input type="hidden" name="req_referer" value="${data.req_referer}"/>
-          <input type="hidden" name="customer_ip" value="${data.customer_ip}"/>
-          <input type="hidden" name="customer_phone" value="${data.customer_phone}"/>
-          <input type="hidden" name="receive_address" value="${data.receive_address}"/>
-          <input type="hidden" name="return_params" value="${data.return_params}"/>
-          <input type="hidden" name="sign" value="${data.sign}"/>
-    </form>
-    `;
-  }
-
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {Effect} from "./effect";
+import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../../providers/service/games/basket-service/basket-service";
 import {UserbalanceServiceProvider} from "../../../../providers/service/userbalance-service/userbalance-service";
 import {GlobalShareProvider} from "../../../../providers/global-share/global-share";
@@ -18,7 +19,7 @@ import {GlobalShareProvider} from "../../../../providers/global-share/global-sha
   templateUrl: 'buy-basket.html',
 })
 export class BuyBasketPage extends Effect {
-  constructor(private share: GlobalShareProvider, public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public gameconfig: GlobalShareProvider) {
+  constructor(private share:GlobalShareProvider,public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public gameconfig: GameconfigServiceProvider) {
     super();
   }
 

@@ -13,21 +13,24 @@ export class BetDatailPage {
   bet_winning_number = [];
   id: any;
 
-  constructor(public share: GlobalShareProvider,public navCtrl: NavController, public params: NavParams, public home: HomeServiceProvider) {
+  constructor(public share: GlobalShareProvider, public navCtrl: NavController, public params: NavParams, public home: HomeServiceProvider) {
+    this.getDetailID();
+  }
+
+  async getDetailID() {
+    this.home.betDetail = null;
+    this.id = null;
     if (!this.params.get('id')) {
-      this.getID();
+      await this.home.postRemoteServer();
+      if (this.share.gameRecord.data[0]) this.id = this.share.gameRecord.data[0].id;
     } else {
       this.id = this.params.get('id');
     }
+    if (this.id) this.requestDetail(this.id);
   }
 
-  async getID() {
-    await this.home.postRemoteServer();
-    this.id = this.share.gameRecord.data[0].id;
-  }
-
-  async ionViewDidLoad() {
-    await this.home.getBetDetailServer(this.id);
+  async requestDetail(id){
+    await this.home.getBetDetailServer(id);
     let str = this.home.betDetail.winning_number;
     if (str) this.bet_winning_number = str.replace(/\s+?/ig, "").split('');
   }
