@@ -21,11 +21,17 @@ export class GetMoneyPage {
   bankcardIconMap = Config.bankcardIconMap;
 
 
-  constructor(private share:GlobalShareProvider,public viewCtrl: ViewController, public navCtrl: NavController, public bankcard: BankcardService, public alertCtrl: AlertController, public toastCtrl: ToastController, public setfundpasswordService: SetfundpasswordService) {
+  constructor(private share: GlobalShareProvider, public viewCtrl: ViewController, public navCtrl: NavController, public bankcard: BankcardService, public alertCtrl: AlertController, public toastCtrl: ToastController, public setfundpasswordService: SetfundpasswordService) {
+    this.init();
+  }
+
+  async init() {
+    await this.bankcard.getRemoteServer();
     this.initlize();
   }
 
   initlize(): boolean {
+
     if (!this.bankcard.isBindBankCard) {
       let toast = this.toastCtrl.create({
         message: '您未绑卡,请先绑卡',
@@ -135,4 +141,6 @@ export class GetMoneyPage {
     }
 
   }
+
+
 }
