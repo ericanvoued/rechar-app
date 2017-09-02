@@ -31,6 +31,8 @@ export class GameconfigServiceProvider {
 
   }
 
+  loading: any;
+
   getParamaterToken(): tokenOnly {
     return {_token: this.share.user.token};
   }
@@ -43,13 +45,14 @@ export class GameconfigServiceProvider {
     this.methedsList = data.data;
     this.setdefaultsMethodData();
     this.data = data;
+    this.methedsList
   }
 
   /**
    * 2.获取默认数据
    */
   async getDefaultsMethods() {
-    let defaultData = this.share.defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.share.getPid()}?_=${Math.random()}`, this.getParamaterToken());
+    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.share.getPid()}?_=${Math.random()}`, this.getParamaterToken());
     let str = this.defaultData.data.lottery_balls;
 
     if (str) {
@@ -85,7 +88,7 @@ export class GameconfigServiceProvider {
 
   async getIssues() {
     let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
-    this.share.getIssuesList = this.getIssuesList = data;
+    this.getIssuesList = data;
   }
 
   outergetIssues(): Promise<any> {

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only style="padding-left: 10px; font-size:15px; color: #fff; font-weight: bold;" class="fl" (click)="dismiss()">X 关闭</button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="title=='银联充值'">
+    <div id="myForm"></div>
+  </div>
+  <div *ngIf="title!='银联充值'">
+    <div *ngIf="isCode">
+      <div id="qrCode" style="height: 100%;padding-top: 30px;" text-center justify-content-center></div>
+    </div>
+    <div *ngIf="!isCode">
+      <iframe *ngIf="!isIphoneOs" #webchatpaypage src="assets/wechatpay.html"></iframe>
+      <div class="sqCode" text-center><img src="{{data}}"/></div>
+    </div>
+  </div>
+</ion-content>
+

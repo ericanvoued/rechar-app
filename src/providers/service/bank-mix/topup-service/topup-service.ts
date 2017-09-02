@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
 import {GlobalShareProvider} from "../../../global-share/global-share";
 
-@Injectable()
+Injectable()
+
 export class TopupServiceProvider {
 
   constructor(private httpClient: HttpClientProvider, private share: GlobalShareProvider) {

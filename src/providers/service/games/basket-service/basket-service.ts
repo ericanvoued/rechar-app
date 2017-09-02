@@ -2,14 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
 
 import {BusinessTool} from "../../../tools/business-tool";
-
+import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
 import {AlertController, LoadingController, ToastController} from "ionic-angular";
 import {GlobalShareProvider} from "../../../global-share/global-share";
 import {UserbalanceServiceProvider} from "../../userbalance-service/userbalance-service";
-
-interface tokenOnly {
-  _token: string
-}
 
 function PlatformDetected() {
   var userAgent = navigator.userAgent.toLowerCase();
@@ -35,10 +31,10 @@ export class BasketServiceProvider extends BusinessTool {
   gameId: any;
   traceWinStop: boolean = true;
 
-  constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GlobalShareProvider, private httpclient: HttpClientProvider) {
+  constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
 
-    this.share.globalData = {globalMutile: 1, trace: 1}
+    this.share.globalData =  {globalMutile: 1, trace: 1}
     this._.observe(this.share.globalData, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
@@ -343,8 +339,7 @@ export class BasketServiceProvider extends BusinessTool {
 
       this.loading.present();
 
-      this.share.getIssuesList = await this.outergetIssues();
-
+      await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
       this.loading.dismiss();
       let data = await this.doSubmint();
@@ -352,17 +347,11 @@ export class BasketServiceProvider extends BusinessTool {
     }
   }
 
-  outergetIssues(): Promise<any> {
-    return this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
-  }
-
   doSubmint() {
+    debugger
     return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.getSubmitData());
   }
 
   loading: any;
-  getParamaterToken(): tokenOnly {
-    return {_token: this.share.user.token};
-  }
 
 }

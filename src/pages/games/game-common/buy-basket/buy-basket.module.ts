@@ -5,7 +5,6 @@ import {BasketServiceProvider} from "../../../../providers/service/games/basket-
 import {UserbalanceServiceProvider} from "../../../../providers/service/userbalance-service/userbalance-service";
 import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BusinessTool} from "../../../../providers/tools/business-tool";
-import {ComponentsModule} from "../../../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import {ComponentsModule} from "../../../../components/components.module";
     IonicPageModule.forChild(BuyBasketPage),
   ],
   providers: [
-    ComponentsModule,
     BasketServiceProvider,
     UserbalanceServiceProvider,
     GameconfigServiceProvider,

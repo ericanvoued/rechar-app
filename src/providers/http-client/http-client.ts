@@ -51,8 +51,14 @@ export class HttpClientProvider {
       }
       if (data) {
         return this.http.post(this.baseUrl + url, data, this.options).map(res => res.json()).subscribe((data) => {
-          resolve(data);
-          this.share.hidepresentLoadingDefault();
+          if(data.isSuccess){
+            resolve(data);
+            this.share.hidepresentLoadingDefault();
+          }else{
+            this.share.presentToast(data.Msg);
+            this.share.hidepresentLoadingDefault();
+            reject(data);
+          }
         }, (e) => {
           this.share.presentToast(JSON.stringify(e));
           this.share.hidepresentLoadingDefault();
@@ -60,8 +66,14 @@ export class HttpClientProvider {
         })
       } else {
         return this.http.get(this.baseUrl + url, this.options).map(res => res.json()).subscribe((data) => {
-          resolve(data);
-          this.share.hidepresentLoadingDefault();
+          if(data.isSuccess){
+            resolve(data);
+            this.share.hidepresentLoadingDefault();
+          }else{
+            this.share.presentToast(data.Msg);
+            this.share.hidepresentLoadingDefault();
+            reject(data);
+          }
         }, (e) => {
           this.share.presentToast(e);
           this.share.hidepresentLoadingDefault();

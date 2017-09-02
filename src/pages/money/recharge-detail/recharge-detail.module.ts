@@ -3,7 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { RechargeDetailPage } from './recharge-detail';
 import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
 import {ComponentsModule} from "../../../components/components.module";
-import {MydepositService} from "../../../providers/service/bank-mix/mydeposit-service";
 
 @NgModule({
   declarations: [
@@ -13,7 +12,7 @@ import {MydepositService} from "../../../providers/service/bank-mix/mydeposit-se
     ComponentsModule,
     IonicPageModule.forChild(RechargeDetailPage),
   ],
-  providers:[MoneySericeProvider,MydepositService],
+  providers:[MoneySericeProvider],
   entryComponents:[
   ]
 })

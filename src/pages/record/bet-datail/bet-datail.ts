@@ -14,33 +14,24 @@ export class BetDatailPage {
   id: any;
 
   constructor(public share: GlobalShareProvider, public navCtrl: NavController, public params: NavParams, public home: HomeServiceProvider) {
-
+    this.getDetailID();
   }
 
-  biz() {
-    this.share.presentLoadingDefault();
+  async getDetailID() {
+    this.home.betDetail = null;
+    this.id = null;
     if (!this.params.get('id')) {
-      this.getID();
+      await this.home.postRemoteServer();
+      if (this.share.gameRecord.data[0]) this.id = this.share.gameRecord.data[0].id;
     } else {
       this.id = this.params.get('id');
-      this.getDetailData();
     }
+    if (this.id) this.requestDetail(this.id);
   }
 
-  async getDetailData() {
-    await this.home.getBetDetailServer(this.id);
+  async requestDetail(id){
+    await this.home.getBetDetailServer(id);
     let str = this.home.betDetail.winning_number;
     if (str) this.bet_winning_number = str.replace(/\s+?/ig, "").split('');
-
-  }
-
-  async getID() {
-    await this.home.postRemoteServer();
-    this.id = this.share.gameRecord.data[0].id;
-    this.getDetailData();
-  }
-
-  ionViewDidLoad() {
-    this.biz();
   }
 }
