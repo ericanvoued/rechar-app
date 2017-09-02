@@ -24,6 +24,7 @@ export class GetMoneyPage {
   }
 
   initlize(): boolean {
+
     if (!this.bankcard.isBindBankCard) {
       this.share.showToast('您未绑卡,请先绑卡');
       setTimeout(() => this.navCtrl.push("AddBankPage"), 1000);
@@ -114,4 +115,6 @@ export class GetMoneyPage {
   pushPage(page) {
     if (page) this.navCtrl.push(page);
   }
+
+
 }
