@@ -27,10 +27,8 @@ export class HttpClientProvider {
     this.share.store.remove('app_user');
     this.share.user = null;
     localStorage.expired = Date.now();
-    this.share.presentToast("您太久没有操作，帐号已自动退出");
-    setTimeout(() => {
-      location.reload();
-    }, 3000);
+    this.share.showToast('您太久没有操作，帐号已自动退出',3000);
+    setTimeout(() => location.reload(), 3000);
   }
 
   beforeRequest() {
@@ -46,37 +44,37 @@ export class HttpClientProvider {
     return new Promise((resolve, reject) => {
       if (this.beforeRequest()) {
         reject({isSuccess: 0});
-        this.share.hidepresentLoadingDefault();
+        this.share.hideLoading();
         return;
       }
       if (data) {
         return this.http.post(this.baseUrl + url, data, this.options).map(res => res.json()).subscribe((data) => {
           if(data.isSuccess){
             resolve(data);
-            this.share.hidepresentLoadingDefault();
+            this.share.hideLoading();
           }else{
-            this.share.presentToast(data.Msg);
-            this.share.hidepresentLoadingDefault();
+            this.share.showToast(data.Msg,3000);
+            this.share.hideLoading();
             reject(data);
           }
         }, (e) => {
-          this.share.presentToast(JSON.stringify(e));
-          this.share.hidepresentLoadingDefault();
+          this.share.showToast(JSON.stringify(e),3000);
+          this.share.hideLoading();
           reject(e);
         })
       } else {
         return this.http.get(this.baseUrl + url, this.options).map(res => res.json()).subscribe((data) => {
           if(data.isSuccess){
             resolve(data);
-            this.share.hidepresentLoadingDefault();
+            this.share.hideLoading();
           }else{
-            this.share.presentToast(data.Msg);
-            this.share.hidepresentLoadingDefault();
+            this.share.showToast(data.Msg,3000);
+            this.share.hideLoading();
             reject(data);
           }
         }, (e) => {
-          this.share.presentToast(e);
-          this.share.hidepresentLoadingDefault();
+          this.share.showToast(e,3000);
+          this.share.hideLoading();
           reject(e);
         })
       }

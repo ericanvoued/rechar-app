@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {HttpClientProvider} from "../../../http-client/http-client";
 import {BusinessTool} from "../../../tools/business-tool";
-import {LoadingController, ToastController} from "ionic-angular";
 import {GlobalShareProvider} from "../../../global-share/global-share";
 
 interface tokenOnly {
@@ -19,7 +18,7 @@ export class GameconfigServiceProvider {
   getIssuesList = {data: {trace_issues: [{number: 0}]}};
   isInit = true;
 
-  constructor(public toastCtrl: ToastController, private share: GlobalShareProvider, public loadingCtrl: LoadingController, public businessTool: BusinessTool, public httpclient: HttpClientProvider) {
+  constructor(private share: GlobalShareProvider, public businessTool: BusinessTool, public httpclient: HttpClientProvider) {
 
   }
 
@@ -72,12 +71,7 @@ export class GameconfigServiceProvider {
 
       this.coundown(this.defaultData.data.current_time, this.defaultData.data.current_number_time)
     } else {
-      let toast = this.toastCtrl.create({
-        message: defaultData.Msg,
-        duration: 3000,
-        position: 'middle'
-      });
-      toast.present();
+      this.share.showToast(defaultData.Msg,3000);
     }
   }
 

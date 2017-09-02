@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {jquery} from "../../../providers/sc-code/sc-code";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class CodeComfirmPage {
   loading:any;
   @ViewChild('webchatpaypage') iframe;
 
-  constructor(public loadingCtrl: LoadingController,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public share:GlobalShareProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     this.userAgent = navigator.userAgent.toLowerCase();
@@ -60,19 +61,12 @@ export class CodeComfirmPage {
   }
 
   notPhone(){
-    this.showLoading();
+    this.share.showLoading();
     setTimeout(() => {
       let win = this.iframe.nativeElement.contentWindow;
       win.postMessage(this.data, "*");
       setTimeout(() => this.loading.dismiss(), 1000);
     }, 1000);
-  }
-
-  showLoading() {
-    if (!this.loading) {
-      this.loading = this.loadingCtrl.create({spinner: 'bubbles'});
-      this.loading.present();
-    }
   }
 
   dismiss() {

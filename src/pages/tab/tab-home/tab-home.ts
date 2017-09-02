@@ -16,7 +16,7 @@ export class TabHomePage {
   tab4Root: any = "ManageCataloguePage";
   tab5Root: any = "PersonalProfilesPage";
 
-  constructor(public navCtrl: NavController, public  navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidEnter() {

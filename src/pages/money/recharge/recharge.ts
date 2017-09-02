@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {
-  IonicPage, LoadingController, ModalController, NavController, NavParams, ToastController,
-  ViewController
+  IonicPage, ModalController, NavController, NavParams, ViewController
 } from 'ionic-angular';
 import {Config} from "../../../config/config";
 import {MoneySericeProvider} from "../../../providers/service/money-serice/money-serice";
@@ -24,7 +23,7 @@ export class RechargePage {
     {name: 'qq', max: 5000, remind: false, button: '下一步', deposit_mode: 2, bank_code: 'QQ', bank: 49}];
   result=false;
 
-  constructor(public modalCtrl: ModalController,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public share:GlobalShareProvider, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams, public money: MoneySericeProvider) {
+  constructor(public modalCtrl: ModalController,public share:GlobalShareProvider, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams, public money: MoneySericeProvider) {
     this.loadData();
   }
 
@@ -38,7 +37,7 @@ export class RechargePage {
 
   checkBind() {
     if (!this.share.user.is_set_fund_password || this.share.user.is_set_fund_password != 1){
-      this.showToast('您未绑卡,请先绑卡');
+      this.share.showToast('您未绑卡,请先绑卡');
       setTimeout(() => this.pushPage('BindBankPage'), 1000);
     }
   }
@@ -116,31 +115,31 @@ export class RechargePage {
   async nextStep(){
     this.checkInput(this.money.payClass.post,10,this.money.payClass.max);
     if(!this.result) return;
-    this.showLoading();
+    this.share.showLoading();
     this.money.payClass.post._token = this.share.user.token;
     if(this.money.payClass.display=='alipay'){
       await this.money.postAlipayCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.aliCode) this.toAliPay(this.money.aliCode);
     }else if(this.money.payClass.display=='weixin'){
       await this.money.postWechartCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.weCode) this.presentModal(this.money.weCode.data.break_url, '微信充值');
     }else if((this.money.payClass.display=='bankkj') || (this.money.payClass.display=='bank')){
       await this.money.postBankCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.bankCode) this.toBank(this.money.bankCode);
     }else if(this.money.payClass.display=='yinlian'){
       await this.money.postUnionCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.unionCode) this.presentModal('' + this.money.unionCode.data.url, '银联充值');
     }else if(this.money.payClass.display=='baidu'){
       await this.money.postBaiduCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.baiduCode) this.presentModal(this.money.baiduCode.data.break_url, '百度钱包');
     }else if(this.money.payClass.display=='qq'){
       await this.money.postQQCode();
-      this.hideLoading();
+      this.share.hideLoading();
       if(this.money.QQCode) this.presentModal(this.money.QQCode.data.break_url, 'QQ钱包');
     }
   }
@@ -168,33 +167,13 @@ export class RechargePage {
 
   checkInput(data, min, max) {
     if (!data.amount) {
-      this.showToast('请输入金额');
+      this.share.showToast('请输入金额');
     } else if (+data.amount < min) {
-      this.showToast('最低充值' + min);
+      this.share.showToast('最低充值' + min);
     } else if (+data.amount > max) {
-      this.showToast('最高充值' + max);
+      this.share.showToast('最高充值' + max);
     }
     this.result = data.amount && (+data.amount >= min) && (+data.amount <= max);
-  }
-
-  showToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      position: 'middle'
-    });
-    toast.present();
-  }
-
-  hideLoading() {
-    if (this.loading) this.loading.dismiss();
-  }
-
-  showLoading() {
-    if (!this.loading) {
-      this.loading = this.loadingCtrl.create({spinner: 'bubbles'});
-      this.loading.present();
-    }
   }
 
   dismiss() {

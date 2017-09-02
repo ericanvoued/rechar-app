@@ -25,14 +25,14 @@ export class LoginPage {
   }
 
   async login(localData) {
-    this.share.presentLoadingDefault("正在登陆中....");
+    this.share.showLoading("正在登陆中....");
     let data = await this.loginservice.loginAction(localData);
     if (data.isSuccess) {
       this.share.user = data.data;
       this.clearAndStore(localData);
       this.navCtrl.setRoot('TabHomePage');
     } else {
-      this.share.presentToast(data.Msg);
+      this.share.showToast(data.Msg,3000);
     }
   }
 
@@ -46,7 +46,7 @@ export class LoginPage {
     if (this.LoginForm.valid) {
       this.login(this.getFormData());
     } else {
-      this.share.presentToast('请完善资料后再提交');
+      this.share.showToast('请完善资料后再提交',3000);
     }
   }
 

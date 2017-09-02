@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
-
 import {BusinessTool} from "../../../tools/business-tool";
 import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
-import {AlertController, LoadingController, ToastController} from "ionic-angular";
 import {GlobalShareProvider} from "../../../global-share/global-share";
 import {UserbalanceServiceProvider} from "../../userbalance-service/userbalance-service";
 
@@ -31,7 +29,7 @@ export class BasketServiceProvider extends BusinessTool {
   gameId: any;
   traceWinStop: boolean = true;
 
-  constructor(public loadingCtrl: LoadingController, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public share: GlobalShareProvider, public toastCtrl: ToastController, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
+  constructor( public userbalance: UserbalanceServiceProvider, public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
 
     this.share.globalData =  {globalMutile: 1, trace: 1}
@@ -274,14 +272,8 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   messages(obj): void {
-    if (obj.isRedudu) {
-      let toast = this.toastCtrl.create({
-        message: '订单已经存在',
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
-    }
+    if (obj.isRedudu)
+      this.share.showToast('订单已经存在',1000);
   }
 
   getRondomBall() {
@@ -289,12 +281,7 @@ export class BasketServiceProvider extends BusinessTool {
     this.mainBussiness(this.c);
     let isSucess = this.addDataToBasket(this.c);
     if (isSucess) {
-      let toast = this.toastCtrl.create({
-        message: '注单添加成功',
-        duration: 1000,
-        position: 'bottom'
-      });
-      toast.present(toast);
+      this.share.showToast('注单添加成功',1000,'bottom');
     } else {
       this.messages(this.c);
     }
@@ -306,12 +293,7 @@ export class BasketServiceProvider extends BusinessTool {
       goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
     } else {
-      let alert = this.alertCtrl.create({
-        title: '',
-        subTitle: data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg,
-        buttons: ['确定']
-      });
-      alert.present();
+      this.share.showAlert('',['确定'],data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
     }
     this.userbalance.getBalaceAgain();
   }
@@ -320,25 +302,13 @@ export class BasketServiceProvider extends BusinessTool {
 
   async submit(goContent) {
     if (!(this.share.basketData.length)) {
-      let toast = this.toastCtrl.create({
-        message: '号码篮不能为空',
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast('号码篮不能为空',1000);
     } else {
-
       if (this.submitProcessing) {
         return;
       }
       this.submitProcessing = true;
-
-      this.loading = this.loadingCtrl.create({
-        spinner: 'bubbles'
-      });
-
-      this.loading.present();
-
+      this.share.showLoading();
       await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
       this.loading.dismiss();
@@ -348,7 +318,6 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   doSubmint() {
-    debugger
     return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.getSubmitData());
   }
 

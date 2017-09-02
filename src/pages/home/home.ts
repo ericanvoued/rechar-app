@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 import {Config} from "../../config/config";
 import {Effect} from "./effect";
 import {BalanceProvider} from "../../providers/service/balance/balance";
+import {GlobalShareProvider} from "../../providers/global-share/global-share";
 
 @IonicPage()
 @Component({
@@ -15,16 +16,14 @@ export class HomePage {
   cccInterval: any;
   gamelistIconMap = Config.gameiconMap;
 
-  constructor(public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
+  constructor(public share:GlobalShareProvider,public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
     (new Effect()).initEffect();
     this.balance.getUserBalance();
     this.homeService.getRemoteServer();
     this.homeService.getBannerRemoteServer();
     this.homeService.postLotteryServer();
     clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => {
-      this.ccc = !this.ccc;
-    }, 1000);
+    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 1000);
   }
 
   gameRecordFetch() {
@@ -34,12 +33,7 @@ export class HomePage {
   playGame(gameNav,toPage): void {
     console.log("gameNav:",gameNav);
     if (!gameNav.time) {
-      let toast = this.toastCtrl.create({
-        message: "即将上线",
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present();
+      this.share.showToast('即将上线',1000);
       return;
     }
     if(toPage) this.navCtrl.push(toPage,{nav: gameNav})

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Effect} from "../game-common/effect";
 import {Config} from "../../../config/config";
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
@@ -23,7 +23,7 @@ export class CqsscPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(private share:GlobalShareProvider,private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(private share:GlobalShareProvider,private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
     super();
 
     this.other();
@@ -135,45 +135,22 @@ export class CqsscPage extends Effect {
   messages(obj): void {
     let hasChoose = this.basket.hasChooseBall(obj.selectarea);
     if (hasChoose && (obj.count == 0)) {
-      let toast = this.toastCtrl.create({
-        message: obj.bet_note,
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast(obj.bet_note,1000);
     } else if (obj.isRedudu) {
-      let toast = this.toastCtrl.create({
-        message: '订单已经存在',
-        duration: 1000,
-        position: 'middle'
-      });
-
-      toast.present(toast);
+      this.share.showToast('订单已经存在',1000);
     } else {
-      let toast = this.toastCtrl.create({
-        message: '请选择注单',
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast('请选择注单',1000);
     }
   }
 
   addBall(obj): boolean {
     let isSucess = this.basket.addDataToBasket(obj);
-
     if (isSucess) {
       this.clear(obj);
-      let toast = this.toastCtrl.create({
-        message: '注单添加成功',
-        duration: 1000,
-        position: 'bottom'
-      });
-      toast.present(toast);
+      this.share.showToast('注单添加成功',1000,'bottom');
     } else {
       this.messages(obj);
     }
-
     return isSucess;
   }
 

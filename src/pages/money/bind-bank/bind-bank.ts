@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, ToastController} from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import {BankcardService} from "../../../providers/service/fund-service/bankcard-service";
 import {observe} from "../../../providers/tools/observe";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 let _ = new observe();
 
@@ -25,7 +26,7 @@ export class BindBankPage {
     branch: ""
   }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public bankcardService: BankcardService, public toastCtrl: ToastController) {
+  constructor(public share:GlobalShareProvider,public navCtrl: NavController,public bankcardService: BankcardService) {
 
   }
 
@@ -56,18 +57,9 @@ export class BindBankPage {
       this.provinceList = data.data.provice_cities;
       this.banks = this.convertBanksToArray(data.data.banks[0]);
     } else {
-      this.showtoast(data.Msg);
+      this.share.showToast(data.Msg);
     }
 
-  }
-
-  showtoast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      position: 'top'
-    });
-    toast.present();
   }
 
   async aaa() {
@@ -141,9 +133,9 @@ export class BindBankPage {
 
     if (result.isSuccess) {
       this.bankcardService.getRemoteServer();
-      this.showMessage('绑卡成功');
+      this.share.showAlert('',['确定'],'','绑卡成功');
     } else {
-      this.showMessage(result.Msg);
+      this.share.showAlert('',['确定'],'',result.Msg);
     }
   }
 
@@ -151,24 +143,11 @@ export class BindBankPage {
     for (let key in params) {
       this.bankcardService.bindBankCardPostParameter[key] = params[key];
       if (!params[key]) {
-        let alert = this.alertCtrl.create({
-          title: '请完善资料再提交',
-          buttons: ['好的']
-        });
-        alert.present();
+        this.share.showAlert('请完善资料再提交',['好的']);
         return false;
       }
     }
     return true;
-  }
-
-  showMessage(msg) {
-    let confirm = this.alertCtrl.create({
-      title: '',
-      message: msg,
-      buttons: ['确定']
-    });
-    confirm.present();
   }
 
   showConfirm() {

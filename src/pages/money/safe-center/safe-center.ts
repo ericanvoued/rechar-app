@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {ModifyPasswordService} from "../../../providers/service/fund-service/modify-password-service";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import {ModifyPasswordService} from "../../../providers/service/fund-service/mod
 })
 export class SafeCenterPage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public modifyPasswordService: ModifyPasswordService) {
+  constructor(public share:GlobalShareProvider,public navCtrl: NavController, public modifyPasswordService: ModifyPasswordService) {
   }
 
   ionViewDidLoad() {
@@ -30,39 +31,17 @@ export class SafeCenterPage {
   };
 
   showSuccessAlert() {
-    let alert = this.alertCtrl.create({
-      title: '<img src="assets/img/ok-icon.png" alt="">',
-      subTitle: '密码修改成功',
-      buttons: [{
-        text: '重新登陆',
-        handler: () => {
-          this.navCtrl.parent.parent.setRoot("LoginPage");
-        }
-      }]
-    });
-    alert.present();
+    this.share.showAlert(
+      '<img src="assets/img/ok-icon.png" alt="">',
+      [{text: '重新登陆', handler: () => this.navCtrl.parent.parent.setRoot("LoginPage")}],
+      '密码修改成功');
   }
 
   showSuccessAlert2() {
-    let alert = this.alertCtrl.create({
-      title: '<img src="assets/img/ok-icon.png" alt="">',
-      subTitle: '密码修改成功',
-      buttons: [{
-        text: '确定',
-        handler: () => {
-          this.navCtrl.pop();
-        }
-      }]
-    });
-    alert.present();
-  }
-
-  showAlert(msg) {
-    let alert = this.alertCtrl.create({
-      title: msg,
-      buttons: ['好的']
-    });
-    alert.present();
+    this.share.showAlert(
+      '<img src="assets/img/ok-icon.png" alt="">',
+      [{text: '确定', handler: () => this.navCtrl.pop()}],
+      '密码修改成功');
   }
 
   validEmpty(param) {
@@ -73,31 +52,29 @@ export class SafeCenterPage {
   }
 
   async modityLoginPassword() {
-
     if (this.validEmpty(this.modifyPasswordService.parameters)) {
-      this.showAlert('资料不完整,请检查您的输入');
+      this.share.showAlert('资料不完整,请检查您的输入',['好的']);
       return;
     }
     if (this.modifyPasswordService.parameters.password != this.modifyPasswordService.parameters.password_confirmation) {
-      this.showAlert('新密码和确认密码不一致,请重新输入')
+      this.share.showAlert('新密码和确认密码不一致,请重新输入',['好的']);
       return;
     }
-
     let data = await this.modifyPasswordService.postRemoteServer();
     if (data.isSuccess) {
       this.showSuccessAlert();
     } else {
-      this.showAlert(this.status[data.errno]);
+      this.share.showAlert(this.status[data.errno],['好的']);
     }
   }
 
   async modityFundPassword() {
     if (this.validEmpty(this.modifyPasswordService.fundparameters)) {
-      this.showAlert('资料不完整,请检查您的输入');
+      this.share.showAlert('资料不完整,请检查您的输入',['好的']);
       return;
     }
     if (this.modifyPasswordService.fundparameters.fund_password != this.modifyPasswordService.fundparameters.fund_password_confirmation) {
-      this.showAlert('新密码和确认密码不一致,请重新输入')
+      this.share.showAlert('新密码和确认密码不一致,请重新输入',['好的']);
       return;
     }
 
@@ -105,7 +82,7 @@ export class SafeCenterPage {
     if (data.isSuccess) {
       this.showSuccessAlert2();
     } else {
-      this.showAlert(this.status[data.errno]);
+      this.share.showAlert(this.status[data.errno],['好的']);
     }
 
   }

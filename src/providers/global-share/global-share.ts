@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {LoadingController, ToastController} from "ionic-angular";
+import {AlertController, LoadingController, ToastController} from "ionic-angular";
 
 @Injectable()
 export class GlobalShareProvider {
@@ -33,33 +33,39 @@ export class GlobalShareProvider {
     bet_status: 1,
     lottery_id: ''
   }};
-  bankcardDetail2: any;
-  bankcardDetail: any;
   gameId: any | string | number;
-  constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
-  }
+  constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController) {}
 
-  presentToast(msg) {
+  showToast(msg,time?,position?) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 3000,
-      position: 'middle'
+      duration: time?time:2000,
+      position: position?position:'middle'
     });
     toast.present();
   }
 
-  presentLoadingDefault(msg?) {
-    if (!this.loading) {
-      this.loading = this.loadingCtrl.create({
-        content: msg ? msg : '数据加载中...'
-      });
-      this.loading.present();
-    }
+  showAlert(title,button?,subTitle?,msg?,input?) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle?subTitle:'',
+      message:msg?msg:'',
+      inputs:input?input:'',
+      buttons:button?button:''
+    });
+    alert.present();
   }
 
-  hidepresentLoadingDefault() {
+  hideLoading() {
     this.loading && this.loading.dismiss();
     this.loading = null;
+  }
+
+  showLoading(msg?) {
+    if (!this.loading) {
+      this.loading = this.loadingCtrl.create({content: msg ? msg : '', spinner: 'bubbles'});
+      this.loading.present();
+    }
   }
 
   store = {

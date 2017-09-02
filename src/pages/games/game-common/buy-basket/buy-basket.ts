@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {Effect} from "./effect";
 import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../../providers/service/games/basket-service/basket-service";
@@ -19,7 +19,7 @@ import {GlobalShareProvider} from "../../../../providers/global-share/global-sha
   templateUrl: 'buy-basket.html',
 })
 export class BuyBasketPage extends Effect {
-  constructor(private share:GlobalShareProvider,public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public alertCtrl: AlertController, public gameconfig: GameconfigServiceProvider) {
+  constructor(private share:GlobalShareProvider,public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public gameconfig: GameconfigServiceProvider) {
     super();
   }
 
@@ -67,14 +67,8 @@ export class BuyBasketPage extends Effect {
 
   async submit() {
     if (this.share.balance.available < this.basket.totalAllCount) {
-      let alert = this.alertCtrl.create({
-        title: '',
-        subTitle: '您的余额不足,请先充值',
-        buttons: ['好']
-      });
-      alert.present();
+      this.share.showAlert('',['好'],'您的余额不足,请先充值');
     } else {
-
       this.basket.submit(this);
     }
   }

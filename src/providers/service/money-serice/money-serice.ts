@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {HttpClientProvider} from "../../http-client/http-client";
 import {GlobalShareProvider} from "../../global-share/global-share";
-import {ToastController} from "ionic-angular";
 
 @Injectable()
 export class MoneySericeProvider {
@@ -26,7 +25,7 @@ export class MoneySericeProvider {
   baiduCode:any;
   QQCode:any;
 
-  constructor(private client: HttpClientProvider, private share: GlobalShareProvider, public toastCtrl: ToastController) {
+  constructor(private client: HttpClientProvider, private share: GlobalShareProvider) {
   }
 
   async checkPayType(): Promise<any> {
@@ -76,14 +75,5 @@ export class MoneySericeProvider {
   async postQQCode() {
     let QQCode = await this.client.post('/mobileh5-recharges/confirmMobileQq', this.payClass.post);
     this.QQCode = QQCode;
-  }
-
-  showToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      position: 'middle'
-    });
-    toast.present();
   }
 }

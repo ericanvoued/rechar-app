@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {MenuController, Nav, Platform, IonicApp, App, AlertController, ToastController} from 'ionic-angular';
+import {MenuController, Nav, Platform, IonicApp, App} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {GlobalShareProvider} from "../providers/global-share/global-share";
@@ -18,13 +18,11 @@ export class MyApp {
   statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
   yearReg = /[\d]{4}-/;
 
-  constructor(public share: GlobalShareProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController,) {
-
+  constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
       if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
         setTimeout(v => this.nav.setRoot('LoginPage'), 500);
       }
-
       statusBar.styleDefault();
       splashScreen.hide();
       this.egisterBackButtonAction();
@@ -48,34 +46,21 @@ export class MyApp {
   }
 
   showExit() {
-    let confirm = this.alertCtrl.create({
-      title: '您需要退出程序吗?',
-      buttons: [{
-        text: '取消',
-        handler: () => console.log('Disagree clicked')
-      }, {
-        text: '退出',
-        handler: () => this.platform.exitApp()
-      }]
-    });
-    confirm.present();
+    this.share.showAlert('您需要退出程序吗?',
+      [{text: '取消', handler: () => console.log('Disagree clicked')},
+        {text: '退出', handler: () => this.platform.exitApp()}]);
   }
 
   playGame(gameNav, toPage): void {
     if (!gameNav.time) {
-      let toast = this.toastCtrl.create({
-        message: "即将上线",
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present();
+      this.share.showToast('即将上线',1000);
       return;
     }
     this.menu.close();
     if (toPage) this.nav.push(toPage, {nav: gameNav})
   }
 
-  goPage(page, parameter, how) {
+  goPage(page, parameter, how?) {
     if (page) {
       this.menu.close();
       if (how) {
@@ -83,7 +68,6 @@ export class MyApp {
       } else {
         this.nav.setRoot(page, parameter);
       }
-
     }
   }
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, ToastController} from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import {BankcardService} from "../../../providers/service/fund-service/bankcard-service";
+import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
 /**
  * Generated class for the ValidBankPage page.
@@ -21,7 +22,7 @@ export class ValidBankPage {
     account_name: ''
   }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController, public bankcardService: BankcardService) {
+  constructor(public share:GlobalShareProvider,public navCtrl: NavController, public bankcardService: BankcardService) {
 
   }
 
@@ -45,7 +46,7 @@ export class ValidBankPage {
   async todoParameter() {
     let bankinfo = this.get_id(this.bankcardService.withdrawData.data.bank_cards, this.mybank);
     if (!bankinfo) {
-      this.showMessage('请选择银行卡');
+      this.share.showAlert('',['好的'],'','请选择银行卡');
       return;
     }
     bankinfo.fund_password = this.userInput.fund_password;
@@ -57,7 +58,7 @@ export class ValidBankPage {
     }
 
     if (!this.isMathcBanckInfo(params, bankinfo)) {
-      this.showMessage('输入的银行卡与输入的信息不匹配');
+      this.share.showAlert('',['好的'],'','输入的银行卡与输入的信息不匹配');
       return;
     }
 
@@ -69,7 +70,7 @@ export class ValidBankPage {
     if (data.isSuccess) {
       this.navCtrl.push("BindBankPage");
     } else {
-      this.showMessage(data.Msg);
+      this.share.showAlert('',['好的'],'',data.Msg);
     }
   }
 
@@ -77,11 +78,7 @@ export class ValidBankPage {
     for (let key in params) {
       this.bankcardService.ValidedBankCardPParameters[key] = params[key];
       if (!params[key]) {
-        let alert = this.alertCtrl.create({
-          title: '请完善资料再提交',
-          buttons: ['好的']
-        });
-        alert.present();
+        this.share.showAlert('请完善资料再提交',['好的']);
         return false;
       }
     }
@@ -89,15 +86,6 @@ export class ValidBankPage {
   }
 
   mybank = {title: ''};
-
-  showMessage(msg) {
-    let confirm = this.alertCtrl.create({
-      title: '',
-      message: msg,
-      buttons: ['确定']
-    });
-    confirm.present();
-  }
 
   showConfirm() {
     this.todoParameter();
