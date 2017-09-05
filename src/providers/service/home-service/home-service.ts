@@ -33,13 +33,13 @@ export class HomeServiceProvider {
   }
 
   async postRecordServer(): Promise<any> {
-    this.parameter= await this.getParameters(1);
+    this.parameter= this.getParameters(1);
     let chargeRecord = await this.client.post('/mobileh5-reports/0/getmobileusertransaction/', this.parameter);
     this.share.chargeRecord.data = chargeRecord.data.data;
   }
 
   async postRemoteServer(): Promise<any> {
-    this.parameter= await this.getParameters(0);
+    this.parameter= this.getParameters(0);
     let gameRecord = await this.client.post('/mobileh5-projects', this.parameter);
     this.share.gameRecord.data = gameRecord.data.data;
   }
@@ -60,7 +60,7 @@ export class HomeServiceProvider {
   }
 
   async postMessageServer(): Promise<any> {
-    this.parameter= await this.getParameters(0);
+    this.parameter= this.getParameters(0);
     let message = await this.client.post('/mobileh5-station-letters/', this.parameter);
     this.message.data = message.data.data;
   }
@@ -71,7 +71,7 @@ export class HomeServiceProvider {
   }
 
   async postLotteryServer() {
-    this.parameter= await this.getParameters(0);
+    this.parameter= this.getParameters(0);
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.parameter);
     this.dataGroup = JSON.parse(JSON.stringify(dataGroup));
     this.setInData(inData);
@@ -110,11 +110,7 @@ export class HomeServiceProvider {
     return indexNumber > -1;
   }
 
-  async getParameters(index) {
-    if(!this.share.user) {
-      let data = await this.client.post('/mobile-h5-auth/login', this.share.store.get("app_user"));
-      if (data.isSuccess) this.share.user = data.data;
-    }
+   getParameters(index) {
     if(this.share.user) this.share.parameters[index]._token = this.share.user.token;
     return this.share.parameters[index];
   }

@@ -39,7 +39,6 @@ export class JsksPage extends Effect {
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
     this.share.gameId = nav && nav.pid;
-
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
