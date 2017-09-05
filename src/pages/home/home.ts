@@ -42,10 +42,18 @@ export class HomePage {
       toast.present();
       return;
     }
-    if (toPage) {
 
+    if (toPage) {
+      if (/k3$/i.test(gameNav.nav)) {
+        toPage = 'JsksPage';
+      } else if (/SSC|11Y$/i.test(gameNav.nav)) {
+        toPage = 'CqsscPage';
+      } else if (/K10$/i.test(gameNav.nav)) {
+        toPage = 'Pk10Page';
+      }
       this.navCtrl.push(toPage, {nav: gameNav});
     }
+
   }
 
   pushPage(page) {
