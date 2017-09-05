@@ -39,11 +39,13 @@ export class RechargePage {
     if (!this.share.user.is_set_fund_password || this.share.user.is_set_fund_password != 1){
       this.share.showToast('您未绑卡,请先绑卡');
       setTimeout(() => this.pushPage('BindBankPage'), 1000);
+      return true;
     }
+    return false;
   }
 
   async loadData() {
-    this.checkBind();
+    if(this.checkBind()) return;
     if(!this.navParams.get('item')){
       await this.money.checkPayType();
       this.changePayType();

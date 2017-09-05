@@ -4,33 +4,12 @@ import {HttpClientProvider} from "../../http-client/http-client";
 import {GlobalShareProvider} from "../../global-share/global-share";
 
 
-let dataGroup = [
-  {
-    name: "时时彩系列",
-    nav: "SSC|60",
-    time: null,
-    group: []
-  }, {
-    name: "11选5系列",
-    nav: "11Y",
-    time: null,
-    group: []
-  }, {
-    name: "六合彩系列",
-    nav: "LHC", time: null,
-    group: []
-  }, {
-    name: "幸运28系列",
-    nav: "KL",
-    time: null,
-    group: []
-  }, {
-    name: "快三系列",
-    nav: "K3",
-    time: null,
-    group: []
-  }
-];
+let dataGroup = [{name: "时时彩系列", nav: "SSC|60", time: null, group: []},
+  {name: "11选5系列", nav: "11Y", time: null, group: []},
+  {name: "六合彩系列", nav: "LHC", time: null, group: []},
+  {name: "幸运28系列", nav: "KL", time: null, group: []},
+  {name: "快三系列", nav: "K3", time: null, group: []},
+  {name: "北京PK10", nav: "K10", time: null, group: []}];
 
 @Injectable()
 export class HomeServiceProvider {
@@ -94,6 +73,7 @@ export class HomeServiceProvider {
   async postLotteryServer() {
     this.parameter= await this.getParameters(0);
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.parameter);
+    this.clearData();
     this.setInData(inData);
     this.dataGroup = dataGroup;
     this.share.dataGroup = dataGroup;
@@ -129,6 +109,12 @@ export class HomeServiceProvider {
       if (indexNumber > -1) break;
     }
     return indexNumber > -1;
+  }
+
+  clearData(){
+    for (let v in dataGroup) {
+      dataGroup[v].group=[];
+    }
   }
 
   async getParameters(index) {

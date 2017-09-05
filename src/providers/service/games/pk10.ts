@@ -6,7 +6,36 @@ export class PK10 {
 
   constructor() {}
 
-  selectPK10(data) {
+  countPK10(data) {
+    if (data.constructor == String) {
+      return this.countStrPK10(data);
+    } else if (data.constructor == Array) {
+      return this.countArrPK10(data);
+    }
+  }
+
+  countStrPK10(data) {
+    let total = 0;
+    if (data.trim() == '') return total;
+    let flag = data.trim().split(/[,;.?!@#$%^*_\-+=|\/\\~&()\[\]{}]+/);
+    let basic = flag[0].trim().split(/\s+/).length;
+    for(let i=0;i<flag.length;i++){
+      let sub= flag[i].trim().split(/\s+/);
+      if(sub.length==basic && this.checkSingle(sub)) total++;
+    }
+    return total;
+  }
+
+  checkSingle(data){
+    for(let i=0;i<data.length;i++){
+      for(let j=i+1;j<data.length;j++){
+        if(data[j]==data[i]) return false;
+      }
+    }
+    return true;
+  }
+
+  countArrPK10(data) {
     let total = 0;
     let start = 0;
     let flag = [];

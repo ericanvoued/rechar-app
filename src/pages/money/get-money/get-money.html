@@ -4,52 +4,40 @@
     <ion-title>提款</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content class="gray-bg">
-  <div class="balance">{{bankcard.defautbankcard.account_name}}</div>
-  <div class="balance">余额：{{usr.tmpUserInfo.data.available}}</div>
-
-  <div *ngIf="bankcard.defautbankcard.bank" class="open-modal recharge-bank">
-    <img src="{{bankcardIconMap[bankcard.defautbankcard.bank]}}" alt="">
+  <div class="balance">{{money.selectCard?.account_name}}</div>
+  <div class="balance">余额：{{share.user?.available}}</div>
+  <div *ngIf="money.selectCard?.bank" class="open-modal recharge-bank">
+    <img src="{{bankcardIconMap[money.selectCard?.bank]}}" alt="">
     <span class="bank-detail">
-      <span class="name"><i>{{bankcard.defautbankcard.bank}}</i><!--<i class="save">储蓄卡</i>--></span>
-      <span class="number">**** **** **** {{bankcard.defautbankcard.account.slice(-4)}}</span>
+      <span class="name"><i>{{money.selectCard?.bank}}</i><!--<i class="save">储蓄卡</i>--></span>
+      <span class="number">**** **** **** {{money.selectCard?.account.slice(-4)}}</span>
     </span>
     <span class="get-icon fr"><i class="iconfont icon-fanhui icon-right"></i></span>
   </div>
-
-
-
   <div class="recharge-money">
     <div class="get-box clear">
       <span class="get-l fl"><i class="rmb fl">￥</i> <i class="line fl">|</i></span>
-      <div class="get-r clear"><input autocomplete="false" type="number" [(ngModel)]="bankcard.drawMoneyCount" class="money-input"></div>
+      <div class="get-r clear"><input autocomplete="false" type="number" [(ngModel)]="money.parameters.amount" class="money-input"></div>
     </div>
     <div class="get-border clear">
-      <span class="fl col-1">可提金额：￥{{bankcard.withdrawData.data.accounts.withdrawable}}</span>
-      <span class="fr col" (click)="bankcard.drawAll()">全部提出</span>
+      <span class="fl col-1">可提金额：￥{{money.withdraw.data.accounts.withdrawable}}</span>
+      <span class="fr col" (click)="money.getAll()">全部提出</span>
     </div>
   </div>
-
-
-
   <div class="remind">单笔最低提现金额：2.00元，最高500,000.00元</div>
   <div class="save-btn">
-    <button ion-button full (click)="drawChashNow()">立即提现</button>
+    <button ion-button full (click)="getMoneyToCard()">立即提现</button>
   </div>
 </ion-content>
-
-
-
-
 
 <!--透明背景-->
 <div class="body-bg"></div>
 <!--弹框内容-->
 <div class="alert-con">
   <div class="bank-tit">选择提款银行卡</div>
-  <ion-list  radio-group [(ngModel)]="select.autoManufacturers" >
-    <ion-item *ngFor="let item of bankcard.withdrawData.data.bank_cards">
+  <ion-list  radio-group [(ngModel)]="select.card" >
+    <ion-item *ngFor="let item of money.withdraw.data.bank_cards">
       <ion-label>
         <div class="recharge-bank">
           <img src="{{bankcardIconMap[item.name]}}" alt="">
@@ -62,4 +50,3 @@
     </ion-item>
   </ion-list>
 </div>
-

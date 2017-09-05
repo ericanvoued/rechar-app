@@ -18,15 +18,18 @@ export class MoneySericeProvider {
     show: {alipay: '', weixin: '', bankkj: '', bank: '', yinlian: '', baidu: '', qq: ''},
     post: {_token: '', deposit_mode: 2, bank_code: '', bank: 0, amount: 10}
   };
-  aliCode:any;
-  weCode:any;
-  bankCode:any;
-  unionCode:any;
-  baiduCode:any;
-  QQCode:any;
+  parameters = {id: '', account: '', account_name: '', fund_password: '', amount: 2, _token: ''};
+  withdraw = {data: {accounts: {available: 0, withdrawable: 0}, bank_cards: []}};
+  selectCard = {"id": "", "account": "", "account_name": "", "bank": "", "province": "", "city": ""};
+  getTimes = 0;
+  aliCode: any;
+  weCode: any;
+  bankCode: any;
+  unionCode: any;
+  baiduCode: any;
+  QQCode: any;
 
-  constructor(private client: HttpClientProvider, private share: GlobalShareProvider) {
-  }
+  constructor(private client: HttpClientProvider, private share: GlobalShareProvider) {}
 
   async checkPayType(): Promise<any> {
     let payType = await this.client.post('/mobile-lotteries-h5/load-data/banks_tab/availabe', {_token: this.share.user.token});
@@ -75,5 +78,38 @@ export class MoneySericeProvider {
   async postQQCode() {
     let QQCode = await this.client.post('/mobileh5-recharges/confirmMobileQq', this.payClass.post);
     this.QQCode = QQCode;
+  }
+
+  async getWithdraw() {
+    let data = await this.client.get('/mobileh5-withdrawals/withdraw');
+    this.getTimes = 1;
+    try {
+      this.withdraw = data;
+      this.selectCard = data.data.bank_cards[0];
+      this.share.user.is_set_fund_password = 1;
+    } catch (e) {
+      this.share.user.is_set_fund_password = '';
+    }
+  }
+
+  async postWithdraw() {
+    let data = await  this.client.post('/mobileh5-withdrawals/withdraw/1', this.getParameters());
+    if (data.isSuccess) {
+      this.share.showAlert('您的提款申请已经提交成功', ['好的']);
+    } else {
+      this.share.showToast(data.Msg, 3000);
+    }
+  }
+
+  getParameters() {
+    this.parameters._token = this.share.user.token;
+    this.parameters.account = this.selectCard.account;
+    this.parameters.account_name = this.selectCard.account_name;
+    this.parameters.id = this.selectCard.id;
+    return this.parameters;
+  }
+
+  getAll() {
+    this.parameters.amount = this.withdraw.data.accounts.withdrawable;
   }
 }

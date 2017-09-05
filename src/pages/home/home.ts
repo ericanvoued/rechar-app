@@ -31,7 +31,6 @@ export class HomePage {
   }
 
   playGame(gameNav,toPage): void {
-    console.log("gameNav:",gameNav);
     if (!gameNav.time) {
       this.share.showToast('即将上线',1000);
       return;
