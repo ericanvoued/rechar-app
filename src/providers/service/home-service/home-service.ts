@@ -73,10 +73,9 @@ export class HomeServiceProvider {
   async postLotteryServer() {
     this.parameter= await this.getParameters(0);
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.parameter);
-    this.clearData();
-    this.setInData(inData);
     this.dataGroup = dataGroup;
-    this.share.dataGroup = dataGroup;
+    this.setInData(inData);
+    this.share.dataGroup = this.dataGroup;
     this.share.dataItems = this.dataItems;
   }
 
@@ -89,10 +88,10 @@ export class HomeServiceProvider {
     for (let k in inData) {
       if (inData[k].name && inData[k].nav) {
         this.dataItems.push(inData[k]);
-        for (let v in dataGroup) {
-          if (this.inStr(dataGroup[v].nav, inData[k].nav)) {
-            if (!dataGroup[v].time) dataGroup[v].time = inData[k].time;
-            dataGroup[v].group.push(inData[k]);
+        for (let v in this.dataGroup) {
+          if (this.inStr(this.dataGroup[v].nav, inData[k].nav)) {
+            if (!this.dataGroup[v].time) this.dataGroup[v].time = inData[k].time;
+            this.dataGroup[v].group.push(inData[k]);
             break;
           }
         }
@@ -109,12 +108,6 @@ export class HomeServiceProvider {
       if (indexNumber > -1) break;
     }
     return indexNumber > -1;
-  }
-
-  clearData(){
-    for (let v in dataGroup) {
-      dataGroup[v].group=[];
-    }
   }
 
   async getParameters(index) {
