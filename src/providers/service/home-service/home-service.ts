@@ -9,7 +9,7 @@ let dataGroup = [{name: "时时彩系列", nav: "SSC|60", time: null, group: []}
   {name: "六合彩系列", nav: "LHC", time: null, group: []},
   {name: "幸运28系列", nav: "KL", time: null, group: []},
   {name: "快三系列", nav: "K3", time: null, group: []},
-  {name: "北京PK10", nav: "K10", time: null, group: []}];
+  {name: "北京PK10", nav: "PK10", time: null, group: []}];
 
 @Injectable()
 export class HomeServiceProvider {
