@@ -20,7 +20,6 @@ class GameUtil {
 
 var g = new GameUtil();
 
-console.log(g.C(5,3));
-
+console.log(g.C(5, 3));
 
 

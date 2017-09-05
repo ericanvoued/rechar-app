@@ -1,7 +1,7 @@
 /**
  * Created by richard.g on 13/07/2017.
  */
-
+/* tslint:disable */
 
 import * as $ from 'jquery';
 

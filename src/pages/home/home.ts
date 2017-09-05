@@ -15,7 +15,7 @@ export class HomePage {
   cccInterval: any;
   gamelistIconMap = Config.gameiconMap;
 
-  constructor(public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider,public toastCtrl: ToastController) {
+  constructor(public balance: BalanceProvider, public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider, public toastCtrl: ToastController) {
     (new Effect()).initEffect();
     this.balance.getUserBalance();
     this.homeService.getRemoteServer();
@@ -31,8 +31,8 @@ export class HomePage {
     return this.homeService.postRemoteServer();
   }
 
-  playGame(gameNav,toPage): void {
-    console.log("gameNav:",gameNav);
+  playGame(gameNav, toPage): void {
+    console.log("gameNav:", gameNav);
     if (!gameNav.time) {
       let toast = this.toastCtrl.create({
         message: "即将上线",
@@ -42,10 +42,13 @@ export class HomePage {
       toast.present();
       return;
     }
-    if(toPage) this.navCtrl.push(toPage,{nav: gameNav})
+    if (toPage) {
+
+      this.navCtrl.push(toPage, {nav: gameNav});
+    }
   }
 
-  pushPage(page){
-    if(page) this.navCtrl.push(page);
+  pushPage(page) {
+    if (page) this.navCtrl.push(page);
   }
 }
