@@ -20,7 +20,11 @@ class GameUtil {
 
 var g = new GameUtil();
 
+<<<<<<< HEAD
 console.log(g.C(5,3));
 
+=======
+console.log(g.C(5, 3));
+>>>>>>> 6aeb9a4cebd99a1b829cd120997a6f3d690c5121
 
 

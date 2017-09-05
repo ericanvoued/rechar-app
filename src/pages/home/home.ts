@@ -30,15 +30,24 @@ export class HomePage {
     return this.homeService.postRemoteServer();
   }
 
-  playGame(gameNav,toPage): void {
+  playGame(gameNav, toPage):void {
     if (!gameNav.time) {
       this.share.showToast('即将上线',1000);
       return;
     }
-    if(toPage) this.navCtrl.push(toPage,{nav: gameNav})
+    if (toPage) {
+      if (/k3$/i.test(gameNav.nav)) {
+        toPage = 'JsksPage';
+      } else if (/SSC|11Y$/i.test(gameNav.nav)) {
+        toPage = 'CqsscPage';
+      } else if (/K10$/i.test(gameNav.nav)) {
+        toPage = 'Pk10Page';
+      }
+      this.navCtrl.push(toPage, {nav: gameNav});
+    }
   }
 
-  pushPage(page){
-    if(page) this.navCtrl.push(page);
+  pushPage(page) {
+    if (page) this.navCtrl.push(page);
   }
 }

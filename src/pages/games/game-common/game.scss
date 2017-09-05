@@ -1,0 +1,389 @@
+//玩法公用样式开始
+.sscbg {
+  background: #1A1D2E;
+}
+
+//按钮样式
+.side-black {
+  width: 32px;
+  line-height: 40px;
+  text-align: center;
+  background: #242431;
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: 2px;
+  margin: 4px 2px;
+}
+
+.side-green {
+  background: #00948A;
+  -webkit-animation: myAnimate 0.4s;
+  animation: myAnimate 0.4s;
+}
+
+@-webkit-keyframes myAnimate {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes myAnimate {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.list .item-block .item-inner, .item.item-block .item-inner, .list ion-item-options,
+.list > .item-block:last-child, .list > .item-wrapper:last-child .item-block {
+  border-bottom: none;
+}
+
+.list ion-item-sliding {
+  background: none;
+}
+
+.list, .label {
+  margin: 0;
+}
+
+.item.item-block .item-inner {
+  padding-right: 0;
+}
+
+.item {
+  padding-left: 0;
+  background: none;
+}
+
+.label {
+  width: 100%;
+  display: table;
+  background: #2E324E;
+  border-radius: 8px;
+  padding: 6px 10px;
+  white-space: normal;
+}
+
+.item-wrapper {
+  margin-bottom: 8px;
+}
+
+.side-right-con {
+  padding-left: 6px;
+  padding-right: 2px;
+  background: none;
+}
+
+.side-right {
+  width: 128px;
+  background: #4B4E69;
+  border-radius: 8px;
+  text-align: center;
+  padding: 6px 0;
+}
+
+.wrap-top {
+  padding-top: 13px;
+  padding-bottom: 10px;
+  .fr {
+    text-align: right;
+  }
+}
+
+//投注公用样式
+.wrap-top-num {
+  margin-top: 6px;
+}
+
+.wrap-top-num i {
+  margin-right: 2px;
+}
+
+.date {
+  color: #95A8BB;
+  font-size: 1.2rem;
+}
+
+.time {
+  span {
+    line-height: 27px;
+    color: #95A8BB;
+    font-size: 2rem;
+    margin-top: 6px;
+  }
+  .time-num {
+    width: 34px;
+    background: #28324E;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.time-top {
+  padding-top: 28px;
+}
+
+@media screen and (min-width: 360px) {
+  .date {
+    font-size: 1.3rem;
+  }
+  .time {
+    span {
+      line-height: 31px;
+      font-size: 2.4rem;
+    }
+    .time-num {
+      width: 38px;
+    }
+  }
+}
+
+.xy-28 .num-black {
+  margin: 6px;
+}
+
+.interest {
+  text-align: center;
+  .num-black {
+    margin: 5px 4.8%;
+  }
+}
+
+.remind {
+  font-size: 1.3rem;
+  color: #E5E5E5;
+  margin-bottom: 6px;
+}
+
+.bet-content {
+  width: 100%;
+  padding: 8px 10px;
+  display: block;
+  line-height: 1.8;
+  resize: none;
+  font-size: 1.5rem;
+  color: #fff;
+  border: none;
+  background: #1E2135;
+  border-radius: 6px;
+}
+
+.play-black {
+  background: #444B65;
+  color: #fff;
+  font-size: 1.3rem;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 34px;
+  width: 100%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.play-opacity {
+  opacity: 0.8;
+}
+
+.play-yellow {
+  background: #FFBE00;
+  color: #2E324E;
+}
+
+.play-select {
+  padding: 15px 2% 3px;
+  background: #fff;
+}
+
+.play-title {
+  padding-left: 2%;
+  font-size: 1.8rem;
+  color: #2E324E;
+  margin-bottom: 12px;
+}
+
+.play-list li {
+  float: left;
+  width: 25%;
+  padding: 0 2%;
+  margin-bottom: 12px;
+}
+
+.after-select {
+  padding: 15px 4%;
+  background: #e3e3e3;
+}
+
+.after-con {
+  display: none;
+}
+
+.after-con.active {
+  display: block;
+}
+
+.after-list {
+  .after-l {
+    float: left;
+    text-align: center;
+  }
+  .after-text {
+    font-size: 1.3rem;
+    color: #4a4a4a;
+    line-height: 34px;
+  }
+}
+
+.lastchina {
+  li {
+    float: left;
+    padding: 0 1%;
+    margin-bottom: 10px;
+    i {
+      padding: 0 6px;
+    }
+  }
+}
+
+@for $m from 2 through 8 {
+  .after-list-#{$m} {
+    .after-text {
+      width: $m*14px;
+    }
+    .lastchina {
+      margin-left: $m*14px;
+    }
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.out-side {
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+}
+
+.wrap-black {
+  position: relative;
+  z-index: 1;
+  background: #1A1D2E;
+  min-height: 222px;
+}
+
+.backanimate {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.history-slide {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.history-slide .swiper-container-horizontal > .swiper-pagination {
+  bottom: -20px;
+}
+
+.history-wrap {
+  max-height: 217px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.history-table {
+  display: table;
+  width: 100%;
+  .history-row {
+    display: table-row;
+  }
+  .history-row:nth-child(2n) {
+    background: #2A2D40;
+  }
+  .history-row:nth-child(2n+1) {
+    background: #2F324C;
+  }
+  .history-cell {
+    display: table-cell;
+    padding: 4px 0;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    border-right: 1px solid #222;
+    line-height: 25px;
+  }
+  .history-row:first-child .history-cell {
+    color: #C6C6C6;
+  }
+  .history-row .history-cell:last-child {
+    border-right: none;
+  }
+  .history-number {
+    .number-white {
+      margin: 0 3px;
+    }
+  }
+  .number-white {
+    width: 24px;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    border-radius: 50%;
+  }
+  .number-green {
+    background: #00948a;
+    color: #c6c6c6;
+  }
+}
+
+

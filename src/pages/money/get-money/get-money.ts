@@ -75,4 +75,6 @@ export class GetMoneyPage {
   pushPage(page) {
     if (page) this.navCtrl.push(page);
   }
+
+
 }

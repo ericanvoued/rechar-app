@@ -57,7 +57,20 @@ export class MyApp {
       return;
     }
     this.menu.close();
-    if (toPage) this.nav.push(toPage, {nav: gameNav})
+
+    if (toPage) {
+      if (/k3$/i.test(gameNav.nav)) {
+        toPage = 'JsksPage';
+      } else if (/SSC|11Y$/i.test(gameNav.nav)) {
+        toPage = 'CqsscPage';
+      } else if (/K10$/i.test(gameNav.nav)) {
+        toPage = 'Pk10Page';
+      }
+
+      if (toPage) this.nav.push(toPage, {nav: gameNav})
+    }
+
+
   }
 
   goPage(page, parameter, how?) {

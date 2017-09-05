@@ -1,3 +1,74 @@
 page-jsks {
+  @import "../game-common/game";
+  //玩法公用样式结束
 
+
+  //快3样式
+  .saizi{
+    width: 32px;
+    height: 32px;
+    background-image: url("../../../assets/img/lottery-sort/saizi1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .saizi-1{
+    background-image: url("../../../assets/img/lottery-sort/saizi1.svg");
+  }
+  .saizi-2{
+    background-image: url("../../../assets/img/lottery-sort/saizi2.svg");
+  }
+  .saizi-3{
+    background-image: url("../../../assets/img/lottery-sort/saizi3.svg");
+  }
+  .saizi-4{
+    background-image: url("../../../assets/img/lottery-sort/saizi4.svg");
+  }
+  .saizi-5{
+    background-image: url("../../../assets/img/lottery-sort/saizi5.svg");
+  }
+  .saizi-6{
+    background-image: url("../../../assets/img/lottery-sort/saizi6.svg");
+  }
+  .game-list{
+    background: #2E324E;
+    border-radius: 8px;
+    padding: 6px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .k3-li{
+    display: inline-block;
+    padding: 5px;
+  }
+  .k3-list{
+    display: inline-block;
+    text-align: center;
+    background: #252943;
+    border: 1px solid #05756B;
+    border-radius: 8px;
+    color: #95A8BB;
+    margin: 6px;
+    padding: 3px 0;
+    width: 50px;
+  }
+  @media (max-width: 359px) {
+    .k3-list{
+      margin: 6px 2px;
+    }
+  }
+  .k3-horizontal{
+    width: 154px;
+  }
+  .k3-list-1{
+    margin: 6px 5%;
+  }
+  .k3-list-2{
+    display: block;
+    border: none;
+    background: none;
+    width: auto;
+  }
+  .k3-same-2{
+    padding-top: 8px;
+  }
 }

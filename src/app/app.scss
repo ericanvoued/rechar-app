@@ -265,9 +265,9 @@ a, a:hover, a:focus, a:visited {
 }
 
 .num-yellow {
-  background: #FFBE00;
-  border: 1px solid #FFBE00;
-  color: #2D3142;
+  background: #FFBE00 !important;
+  border: 1px solid #FFBE00 !important;
+  color: #2D3142 !important;
 }
 
 @-webkit-keyframes myAnimate {
@@ -821,57 +821,6 @@ a, a:hover, a:focus, a:visited {
       color: #686990;
       padding: 8px 0;
     }
-    .number-list i {
-      margin: 4px 0;
-    }
-    @media screen and (min-width: 360px) {
-      .number-list i {
-        margin-right: 5px;
-      }
-    }
-    @media screen and (min-width: 375px) {
-      .number-list i {
-        margin-right: 7px;
-      }
-    }
-    @media screen and (min-width: 412px) {
-      .number-list i {
-        margin-right: 11px;
-      }
-    }
-    @media screen and (min-width: 768px) {
-      .number-list i {
-        margin-right: 14px;
-      }
-    }
-    .lottery-number i {
-      margin-right: 4px;
-    }
-    @media screen and (min-width: 360px) {
-      .lottery-number i {
-        margin-right: 8px;
-      }
-    }
-    @media screen and (min-width: 375px) {
-      .lottery-number i {
-        margin-right: 10px;
-      }
-    }
-    @media screen and (min-width: 412px) {
-      .lottery-number i {
-        margin-right: 14px;
-      }
-    }
-    @media screen and (min-width: 600px) {
-      .lottery-number i {
-        margin-right: 30px;
-      }
-    }
-    @media screen and (min-width: 1024px) {
-      .lottery-number i {
-        margin-right: 50px;
-      }
-    }
     .num-col {
       color: #808080;
       font-size: 1.8rem;
@@ -888,7 +837,57 @@ a, a:hover, a:focus, a:visited {
     text-align: center;
   }
 }
-
+.number-list i {
+  margin: 4px 0;
+}
+@media screen and (min-width: 360px) {
+  .number-list i {
+    margin-right: 5px;
+  }
+}
+@media screen and (min-width: 375px) {
+  .number-list i {
+    margin-right: 7px;
+  }
+}
+@media screen and (min-width: 412px) {
+  .number-list i {
+    margin-right: 11px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .number-list i {
+    margin-right: 14px;
+  }
+}
+.lottery-number i {
+  margin-right: 4px;
+}
+@media screen and (min-width: 360px) {
+  .lottery-number i {
+    margin-right: 8px;
+  }
+}
+@media screen and (min-width: 375px) {
+  .lottery-number i {
+    margin-right: 10px;
+  }
+}
+@media screen and (min-width: 412px) {
+  .lottery-number i {
+    margin-right: 14px;
+  }
+}
+@media screen and (min-width: 600px) {
+  .lottery-number i {
+    margin-right: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .lottery-number i {
+    margin-right: 50px;
+  }
+}
 //公用的页脚
 .add-bill {
   background: #323758;
@@ -2143,6 +2142,8 @@ a, a:hover, a:focus, a:visited {
   width: 4.5em;
   height: 4.5em;
 }
-
 //字体公用样式结束
+
+
+//投注页面公用样式
 
