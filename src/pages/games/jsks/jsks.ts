@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {Effect} from "../../home/effect";
 /**
  * Generated class for the JsksPage page.
  *
@@ -13,13 +13,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-jsks',
   templateUrl: 'jsks.html',
 })
-export class JsksPage {
+export class JsksPage extends Effect{
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    super();
+    this.initEffect();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad JsksPage');
+
   }
 
 }
