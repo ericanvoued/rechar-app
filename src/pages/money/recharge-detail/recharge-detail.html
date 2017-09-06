@@ -61,7 +61,7 @@
   <div class="rechargenow" style="position: relative" *ngIf="!mydepositService.recordList.data?.data?.length"
        text-center>
     <no-data-remind [text]="nodataremind" style="position: relative; display: block;"></no-data-remind>
-    <button *ngIf="nodataremind=='没有任何充值记录'" ion-button (click)=go("RechargePage")>立即充值</button>
+    <button *ngIf="nodataremind=='没有任何充值记录'" ion-button (click)="go('RechargePage')">立即充值</button>
 
   </div>
 </ion-content>

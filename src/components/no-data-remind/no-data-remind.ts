@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'no-data-remind',
   templateUrl: 'no-data-remind.html'
 })
 export class NoDataRemindComponent {
-  constructor() {}
+  @Input() text: string;
+
+  constructor() {
+  }
 }
