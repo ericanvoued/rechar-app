@@ -21,7 +21,7 @@ export class HomeServiceProvider {
   message = {data: []};
   messageDetail: any;
   betDetail:any;
-  specialData:any;
+  specialData=[];
   parameter:any;
 
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {

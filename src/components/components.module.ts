@@ -1,20 +1,18 @@
 import {NgModule} from '@angular/core';
 import {MoresComponent} from './mores/mores';
 import {NoDataRemindComponent} from './no-data-remind/no-data-remind';
-import {GamerecordComponent} from './gamerecord/gamerecord';
+
 
 
 @NgModule({
   declarations: [
     MoresComponent,
-    NoDataRemindComponent,
-    GamerecordComponent,
+    NoDataRemindComponent
   ],
   imports: [],
   exports: [
     MoresComponent,
-    NoDataRemindComponent,
-    GamerecordComponent,
+    NoDataRemindComponent
   ]
 })
 export class ComponentsModule {

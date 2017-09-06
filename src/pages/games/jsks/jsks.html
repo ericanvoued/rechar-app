@@ -19,7 +19,580 @@
 </ion-header>
 <!--主要内容-->
 <ion-content class="no-scroll">
+  <div class="out-side" id="out-side">
+    <ion-slides class="history-slide" id="inner-side">
+      <ion-spinner></ion-spinner>
+      <ion-slide>
+        <div class="history-wrap">
+          <ul class="history-table">
+            <li class="history-row">
+              <div class="history-cell">时间</div>
+              <div class="history-cell">彩种</div>
+              <div class="history-cell">投注金额</div>
+            </li>
 
+            <li class="history-row">
+              <div class="history-cell">2017:5:26</div>
+              <div class="history-cell">江苏快3</div>
+              <div class="history-cell">
+                <i class="saizi saizi-1"></i>
+                <i class="saizi saizi-2"></i>
+                <i class="saizi saizi-3"></i>
+              </div>
+            </li>
+            <li class="history-row">
+              <div class="history-cell">2017:5:26</div>
+              <div class="history-cell">江苏快3</div>
+              <div class="history-cell">
+                <i class="saizi saizi-1"></i>
+                <i class="saizi saizi-2"></i>
+                <i class="saizi saizi-3"></i>
+              </div>
+            </li>
+            <li class="history-row">
+              <div class="history-cell">2017:5:26</div>
+              <div class="history-cell">江苏快3</div>
+              <div class="history-cell">
+                <i class="saizi saizi-1"></i>
+                <i class="saizi saizi-2"></i>
+                <i class="saizi saizi-3"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <div class="wrap wrap-black" id="wrap">
+      <div class="chonghui">
+        <div style="height: 1px;" [class.sscbg]="bbb"></div>
+        <div style="height: 1px;" [class.sscbg]="ccc"></div>
+      </div>
+      <div class="wrap-top clear">
+        <div class="fl">
+          <div class="date">第012312321期</div>
+          <div class="wrap-top-num">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-3"></i>
+          </div>
+        </div>
+        <div class="fr">
+          <div class="date">第123123234期投注截止
+          </div>
+          <div class="time">
+            <span class="time-num">00</span>
+            <span>:</span>
+            <span class="time-num">11</span>
+            <span>:</span>
+            <span class="time-num">22</span>
+          </div>
+        </div>
+      </div>
+      <!--和值-->
+      <div class="game-list">
+        <ul class="k3-num-list">
+          <li class="k3-li"><i class="num-black num-yellow">03</i></li>
+          <li class="k3-li"><i class="num-black">04</i></li>
+          <li class="k3-li"><i class="num-black">05</i></li>
+          <li class="k3-li"><i class="num-black">06</i></li>
+          <li class="k3-li"><i class="num-black">07</i></li>
+          <li class="k3-li"><i class="num-black">08</i></li>
+          <li class="k3-li"><i class="num-black">09</i></li>
+          <li class="k3-li"><i class="num-black">10</i></li>
+          <li class="k3-li"><i class="num-black">11</i></li>
+          <li class="k3-li"><i class="num-black">12</i></li>
+          <li class="k3-li"><i class="num-black">13</i></li>
+          <li class="k3-li"><i class="num-black">14</i></li>
+          <li class="k3-li"><i class="num-black">15</i></li>
+          <li class="k3-li"><i class="num-black">16</i></li>
+          <li class="k3-li"><i class="num-black">17</i></li>
+          <li class="k3-li"><i class="num-black">18</i></li>
+        </ul>
+      </div>
+      <!--三同号-->
+      <div class="game-list">
+        <ul class="k3-list k3-horizontal">
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list k3-horizontal">
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list k3-horizontal num-yellow">
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list k3-horizontal">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+        </ul>
+        <ul class="k3-list k3-horizontal">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+        </ul>
+        <ul class="k3-list k3-horizontal">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+        </ul>
+      </div>
+      <!--二同号-->
+      <div class="game-list">
+        <div class="k3-same-2">
+          <ul class="k3-list num-yellow">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          </ul>
+          <ul class="k3-list num-yellow">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+          <ul class="k3-list num-yellow">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list num-yellow">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list num-yellow">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个1-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          </ul>
+        </div>
+        <div class="k3-same-2">
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个2-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          </ul>
+        </div>
+        <div class="k3-same-2">
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个3-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+        </div>
+        <div class="k3-same-2">
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个4-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+        </div>
+        <div class="k3-same-2">
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个5-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+        </div>
+        <div class="k3-same-2">
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-1"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <ul class="k3-list">
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <!--两个6-->
+          <ul class="k3-list k3-list-2">
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+        </div>
+      </div>
+      <!--三不同号-->
+      <div class="game-list">
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list num-yellow">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+      </div>
+      <!--二不同号-->
+      <div class="game-list">
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list num-yellow">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+      </div>
+      <!--三连号-->
+      <div class="game-list">
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-1"></i></li>
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+        </ul>
+        <ul class="k3-list num-yellow">
+          <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+        </ul>
+        <ul class="k3-list">
+          <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          <li class="k3-li"><i class="saizi saizi-6"></i></li>
+        </ul>
+      </div>
+      <!--单挑号-->
+      <div class="game-list">
+        <div>
+          <ul class="k3-list k3-list-1 num-yellow">
+            <li class="k3-li"><i class="saizi saizi-6"></i></li>
+          </ul>
+          <ul class="k3-list k3-list-1">
+            <li class="k3-li"><i class="saizi saizi-5"></i></li>
+          </ul>
+          <ul class="k3-list k3-list-1">
+            <li class="k3-li"><i class="saizi saizi-4"></i></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="k3-list k3-list-1">
+            <li class="k3-li"><i class="saizi saizi-3"></i></li>
+          </ul>
+          <ul class="k3-list k3-list-1">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          </ul>
+          <ul class="k3-list k3-list-1">
+            <li class="k3-li"><i class="saizi saizi-2"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="out-side" id="out-side">
     <ion-slides class="history-slide" id="inner-side" *ngIf="gamerecord?.recordlist?.length">
       <ion-spinner></ion-spinner>
@@ -70,8 +643,7 @@
         </div>
       </div>
       <!--时时彩-->
-      <ion-list class="lottery-list"
-                *ngIf="!gameconfigdata.defaultsMethodData?.c.isdanshi">
+      <ion-list class="lottery-list">
         <ion-item-sliding #slidingItem (ionDrag)="logDrag($event)"
                           *ngFor="let item of (gameconfigdata.defaultsMethodData?.c.bet_numberArrObj); let key = index;">
           <ion-item #myitem>
@@ -112,10 +684,6 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
-      <div class="sort-con" *ngIf="gameconfigdata.defaultsMethodData?.c.isdanshi">
-        <div class="remind">请在下方的输入框内输入或粘贴投注内容,每注请使用逗号分隔开</div>
-        <textarea name="" id="" rows="6" placeholder="粘贴或输入你的投注内容" class="bet-content"></textarea>
-      </div>
     </div>
   </div>
 </ion-content>
