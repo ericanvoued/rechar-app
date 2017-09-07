@@ -68,6 +68,7 @@ export class JsksPage extends Effect {
   }
 
   comformMethod() {
+    debugger
     if (this.methodGroup && this.methodGroup.a && this.methodGroup.b && this.methodGroup.c) {
       this.gameconfigdata.defaultsMethodData.a = this.methodGroup.a;
       this.gameconfigdata.defaultsMethodData.b = this.methodGroup.b;
