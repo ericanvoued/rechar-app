@@ -10,11 +10,11 @@ export class SubCameconfigServiceProvider extends GameconfigServiceProvider {
     super(share, businessTool, httpclient);
   }
   setdefaultsMethodData() {
-    debugger
-    //let df = this.businessTool.setDefaultsMethod(this.methedsList.game_ways, this.defaultData.data && this.defaultData.data.default_method_id, this.defaultData);
-    // if (df) {
-    //   this.defaultsMethodData = df;
-    // }
+
+    let df = this.businessTool.setDefaultsMethod(this.methedsList.game_ways, this.defaultData.data && this.defaultData.data.default_method_id, this.defaultData);
+    if (df) {
+      this.defaultsMethodData = df;
+    }
   }
 
 }
