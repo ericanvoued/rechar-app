@@ -18,7 +18,7 @@ export class GameconfigServiceProvider {
   getIssuesList = {data: {trace_issues: [{number: 0}]}};
   isInit = true;
 
-  constructor(private share: GlobalShareProvider, public businessTool: BusinessTool, public httpclient: HttpClientProvider) {
+  constructor(public share: GlobalShareProvider, public businessTool: BusinessTool, public httpclient: HttpClientProvider) {
 
   }
 

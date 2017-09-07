@@ -4,10 +4,13 @@ import {Config} from "../../../config/config";
 
 @Injectable()
 export class SubBusinessToolProvider extends BusinessTool {
+  constructor() {
+    super();
 
+  }
 
   initSetBussiness(c) {
-
+    debugger
     let bet_numberArrObj = [];
     let selectarea = [];
     let selectareaPair = [];
@@ -66,11 +69,11 @@ export class SubBusinessToolProvider extends BusinessTool {
     c.count = 0;
     c.totals = 0;
 
-    _.observe(c.selectarea, 'update', () => {
+    this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });
 
-    _.observe(c.mutipleAndMode, 'update', () => {
+    this._.observe(c.mutipleAndMode, 'update', () => {
       this.mainBussiness(c);
     });
 

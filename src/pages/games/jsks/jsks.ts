@@ -3,18 +3,10 @@ import {IonicPage, MenuController, NavController, NavParams, ToastController} fr
 import {Effect} from "../../home/effect";
 import {Config} from "../../../config/config";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
-
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {SubBusinessToolProvider} from "./sub-business-tool";
-
-/**
- * Generated class for the JsksPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 
 @IonicPage()
 @Component({
@@ -31,7 +23,7 @@ export class JsksPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(private share: GlobalShareProvider, private util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(private share: GlobalShareProvider, private util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
 
     this.other();
@@ -45,10 +37,7 @@ export class JsksPage extends Effect {
     gameconfigdata.getIssues();
     this.gameinfo.getRecord();
     basket.clearAll();
-
     this.menuCtrl.enable(false, 'unauthenticated');
-
-
   }
 
   tmpComformMethod(a, b, c) {
