@@ -1,0 +1,22 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "subtract_prize_group": 0,
+    "bet_min_prize_group": 1800,
+    "user_prize_group": 1950,
+    "bet_max_prize_group": 1950,
+    "series_amount": "2000",
+    "game_name_en": "BJPK10",
+    "game_name_cn": "\u5317\u4eacPK10",
+    "default_method_id": "271",
+    "trace_max_times": 120,
+    "current_number": "638621",
+    "current_number_time": "2017-09-07 22:31:20",
+    "current_time": "2017-09-07 22:28:48",
+    "coefficient": null,
+    "last_number": "638619",
+    "lottery_balls": "8,9,7,1,5,6,10,2,4,3",
+    "tplData": []
+  }
+}
