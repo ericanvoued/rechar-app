@@ -3,6 +3,7 @@ import {GameUtil} from './game-util';
 import * as CryptoJS from 'crypto-js';
 import {Config} from '../../config/config';
 import {observe} from "./observe";
+
 let _ = new observe();
 
 @Injectable()
@@ -780,7 +781,7 @@ export class BusinessTool extends GameUtil {
 
   }
 
-  daxiaodanshuangqing(arr, tag, value): Array < any > {
+  daxiaodanshuangqing(arr, tag, value): Array<any> {
     function hanlder(v, k, arr) {
       arr[k] = false;
     }
@@ -801,6 +802,7 @@ export class BusinessTool extends GameUtil {
       }
 
       console.log(value);
+
       function setTrue(arr, i) {
         arr[i] = true;
       }
@@ -860,7 +862,7 @@ export class BusinessTool extends GameUtil {
     return arr;
   }
 
-  clearBall(ball: Array < any >) {
+  clearBall(ball: Array<any>) {
     ball.forEach((v) => {
       v.forEach((v, k, arr) => {
         arr[k] = false;
@@ -951,3 +953,4 @@ export class BusinessTool extends GameUtil {
     }).toString();
   }
 }
+

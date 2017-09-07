@@ -14,7 +14,7 @@
     <div class="text-2">你的下注已经成功了祝你好运！</div>
   </div>
   <ul class="bet-bottom-box clear">
-    <li><button ion-button full (click)=go("BetDetailMorePage",navParams.get('data')) class="bet-green">订单详情</button></li>
+    <li><button ion-button full (click)="go('BetDetailMorePage',navParams.get('data'))" class="bet-green">订单详情</button></li>
     <li><button ion-button full (touchstart)="gosscpage()">继续投注</button></li>
   </ul>
 </ion-content>

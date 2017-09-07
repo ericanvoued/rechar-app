@@ -9,6 +9,7 @@ import {HttpClientProvider} from "../providers/http-client/http-client";
 import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {MyExceptionHandler} from "./MyExceptionHandler";
 import {MyPopOverComponent} from "../components/my-pop-over/my-pop-over";
+import { SubBusinessToolProvider } from '../pages/games/jsks/sub-business-tool';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MyPopOverComponent} from "../components/my-pop-over/my-pop-over";
     GlobalShareProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: MyExceptionHandler}
+    {provide: ErrorHandler, useClass: MyExceptionHandler},
+    SubBusinessToolProvider
   ]
 })
 export class AppModule {
