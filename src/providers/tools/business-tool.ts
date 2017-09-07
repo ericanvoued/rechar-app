@@ -8,7 +8,7 @@ let _ = new observe();
 
 @Injectable()
 export class BusinessTool extends GameUtil {
-  private createNumberRange(a, b) {
+  createNumberRange(a, b) {
     let numbarArr = [];
     let flag = a;
     let numA = +a;
@@ -26,7 +26,7 @@ export class BusinessTool extends GameUtil {
     return numbarArr;
   }
 
-  private createSelectArrarModel(a, b) {
+  createSelectArrarModel(a, b) {
     let numbarArr = [];
     if (isNaN(+a)) return [];
     for (; a <= b; a++) {
@@ -42,7 +42,7 @@ export class BusinessTool extends GameUtil {
     this._ = _;
   }
 
-  private filterMethod(methodsData) {
+  filterMethod(methodsData) {
     try {
       for (let ii = 0; ii < methodsData.length; ii++) {
         let a = methodsData[ii];
@@ -69,7 +69,7 @@ export class BusinessTool extends GameUtil {
 
   }
 
-  private initSetBussiness(c) {
+  initSetBussiness(c) {
 
     let bet_numberArrObj = [];
     let selectarea = [];
