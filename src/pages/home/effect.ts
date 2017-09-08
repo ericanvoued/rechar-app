@@ -111,6 +111,7 @@ export class Effect {
   //从下往上的弹出框
   myModal() {
     $(document).on('touchstart', '.open-modal', function () {
+
       $('.body-bg').fadeIn(300);
       $('.alert-con').addClass('alert-show');
     });

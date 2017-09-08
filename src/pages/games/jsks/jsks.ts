@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
-import {Effect} from "../../home/effect";
+
 import {Config} from "../../../config/config";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
+import {Effect} from "../game-common/effect";
 
 @IonicPage()
 @Component({
@@ -14,6 +15,10 @@ import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
   templateUrl: 'jsks.html',
 })
 export class JsksPage extends Effect {
+  c: any={selectarea:[],selectareaPair:[]};
+  b: any={selectarea:[],selectareaPair:[]};
+  a: any={selectarea:[],selectareaPair:[]};
+
   methodGroup: {
     a: any;
     b: any;
@@ -23,7 +28,7 @@ export class JsksPage extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(private share: GlobalShareProvider, private util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
 
     this.other();
@@ -68,13 +73,12 @@ export class JsksPage extends Effect {
   }
 
   comformMethod() {
-    debugger
     if (this.methodGroup && this.methodGroup.a && this.methodGroup.b && this.methodGroup.c) {
-      this.gameconfigdata.defaultsMethodData.a = this.methodGroup.a;
-      this.gameconfigdata.defaultsMethodData.b = this.methodGroup.b;
-      this.gameconfigdata.defaultsMethodData.c = this.methodGroup.c;
+      this.a = this.gameconfigdata.defaultsMethodData.a = this.methodGroup.a;
+      this.b = this.gameconfigdata.defaultsMethodData.b = this.methodGroup.b;
+      this.c = this.gameconfigdata.defaultsMethodData.c = this.methodGroup.c;
     }
-    console.log("this.gameconfigdata.defaultsMethodData:", this.gameconfigdata.defaultsMethodData);
+
   }
 
   goHelpPage() {

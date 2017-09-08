@@ -1,1 +1,29 @@
-{"isSuccess":1,"type":"info","data":{"subtract_prize_group":0,"bet_min_prize_group":1800,"user_prize_group":1950,"bet_max_prize_group":1950,"series_amount":"2000","game_name_en":"CQSSC","game_name_cn":"\u91cd\u5e86\u65f6\u65f6\u5f69","default_method_id":"69","trace_max_times":120,"current_number":"170907096","current_number_time":"2017-09-07 21:59:30","current_time":"2017-09-07 21:59:05","coefficient":{"moneyunit":"1","tracetab":"0","methodid":"142","voice":"0"},"last_number":"170907095","lottery_balls":"50457","tplData":[]}}
+<!--和值-->
+<div class="game-list" *ngIf="of gameconfigdata.defaultsMethodData?.c?.ishezhi">
+  <ul class="k3-num-list">
+  <li class="k3-li" *ngFor="let v of of gameconfigdata.defaultsMethodData?.c?.selectarea; let key = index;">
+<i (touchstart)="util.chooseBall(key,gameconfigdata.defaultsMethodData?.c.selectarea,c)" class="num-black" [class.num-yellow]="v">{{gameconfigdata.defaultsMethodData?.c?.selectareaPair[key]}}</i>
+</li>
+</ul>
+</div>
+
+<div *ngIf="!gameconfigdata.defaultsMethodData?.c?.ishezhi" class="game-list">
+  <div class="k3-same-2" *ngIf="c.leveltwo">
+<div *ngFor="let items of of gameconfigdata.defaultsMethodData?.c?.selectareaPair; let pindex = index;">
+<ul [class.num-yellow]="gameconfigdata.defaultsMethodData?.c?.selectarea[pindex][key]" class="k3-list" *ngFor="let v of items;let key = index;" (touchstart)="util.chooseBall(key,gameconfigdata.defaultsMethodData?.c.selectarea[pindex],gameconfigdata.defaultsMethodData?.c)">
+  <li class="k3-li" *ngFor="let num of (''+v).split('')"><i class="saizi saizi-{{num}}"></i></li>
+</ul>
+
+<ul class="k3-list k3-list-2" *ngIf="gameconfigdata.defaultsMethodData?.c.isertonghao">
+<li *ngFor="let v of [pindex+1,pindex+1]" class="k3-li"><i class="saizi saizi-{{v}}"></i></li>
+</ul>
+</div>
+</div>
+
+<div class="k3-same-2" *ngIf="!gameconfigdata.defaultsMethodData?.c?.leveltwo">
+<ul [class.num-yellow]="gameconfigdata.defaultsMethodData?.c?.selectarea[key]" class="k3-list" *ngFor="let v of gameconfigdata.defaultsMethodData?.c?.selectareaPair;let key = index;" (touchstart)="util.chooseBall(key,gameconfigdata.defaultsMethodData?.c?.selectarea,gameconfigdata.defaultsMethodData?.c)">
+  <li class="k3-li" *ngFor="let num of (''+v).split('')"><i class="saizi saizi-{{num}}"></i></li>
+</ul>
+</div>
+
+</div>

@@ -9,10 +9,31 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   initSetBussiness(c) {
-    console.log(c);
     let bet_numberArrObj = [];
-    let selectarea = [];
     let selectareaPair = [];
+    let selectarea = [];
+
+    c.ishezhi = /.hezhi$/.test(c.fullName_en);
+    c.isertonghao = /ertonghao$/.test(c.fullName_en);
+    c.issanlianhao = /santonghao|sanlianhao/.test(c.fullName_en);
+
+    if (c.ishezhi) {
+      selectareaPair = c.bet_number;
+      selectarea = c.bet_number.map(v => false);
+    } else {
+      c.bet_number = this.threeArrToTwoArr(c.bet_number, c);
+      if (c.isertonghao) {
+        selectarea.splice(-6);
+      }
+    }
+
+    selectareaPair = c.bet_number;
+    if (c.leveltwo) {
+      selectarea = c.bet_number.map(v => v.map(vv => false));
+    } else {
+      selectarea = c.bet_number.map(v => false);
+    }
+
 
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
@@ -27,7 +48,8 @@ export class SubBusinessToolProvider extends BusinessTool {
 
     c.count = 0;
     c.totals = 0;
-
+    //是否和值
+    console.log(c);
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });
@@ -35,6 +57,25 @@ export class SubBusinessToolProvider extends BusinessTool {
     this._.observe(c.mutipleAndModeObj, 'update', () => {
       this.mainBussiness(c);
     });
+
+  }
+
+  threeArrToTwoArr(arr: Array<any>, c): Array<any> {
+    if (arr[0] && Array.isArray(arr[0])) {
+      c.leveltwo = false;
+      if (arr[0][0] && Array.isArray(arr[0][0])) {
+        c.leveltwo = true
+      }
+      return arr[0];
+    }
+    return arr;
+  }
+
+  mainBussiness(data) {
+    this.findCounter(data.name_cn, data);
+  }
+
+  findCounter(name, obj) {
 
   }
 }
