@@ -23,8 +23,9 @@ export class SubBusinessToolProvider extends BusinessTool {
     } else {
       c.bet_number = this.threeArrToTwoArr(c.bet_number, c);
       if (c.isertonghao) {
-        selectarea.splice(-6);
+        c.bet_number.splice(-1);
       }
+
     }
 
     selectareaPair = c.bet_number;
@@ -76,6 +77,7 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
-
+    obj.count = obj.selectarea.toString().replace(/false/g,'').split(',').filter(v=>v).length;;
+    obj.totals = this.countsTotal(obj);
   }
 }

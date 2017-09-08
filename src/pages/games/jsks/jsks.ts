@@ -15,9 +15,9 @@ import {Effect} from "../game-common/effect";
   templateUrl: 'jsks.html',
 })
 export class JsksPage extends Effect {
-  c: any={selectarea:[],selectareaPair:[]};
-  b: any={selectarea:[],selectareaPair:[]};
-  a: any={selectarea:[],selectareaPair:[]};
+  c: any = {selectarea: [], selectareaPair: []};
+  b: any = {selectarea: [], selectareaPair: []};
+  a: any = {selectarea: [], selectareaPair: []};
 
   methodGroup: {
     a: any;
@@ -43,6 +43,15 @@ export class JsksPage extends Effect {
     this.gameinfo.getRecord();
     basket.clearAll();
     this.menuCtrl.enable(false, 'unauthenticated');
+  }
+
+  selectall(arr: Array<any>) {
+    if (arr.every(v => v)) {
+      arr.forEach((v, k, arr) => arr[k] = false);
+    } else {
+      arr.forEach((v, k, arr) => arr[k] = true);
+    }
+
   }
 
   tmpComformMethod(a, b, c) {

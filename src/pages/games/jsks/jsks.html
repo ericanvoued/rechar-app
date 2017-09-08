@@ -87,7 +87,8 @@
               <li class="k3-li" *ngFor="let num of (''+v).split('')"><i class="saizi saizi-{{num}}"></i></li>
             </ul>
 
-            <ul class="k3-list k3-list-2" *ngIf="gameconfigdata.defaultsMethodData?.c.isertonghao">
+
+            <ul class="k3-list k3-list-2" *ngIf="gameconfigdata.defaultsMethodData?.c.isertonghao" (touchstart)="selectall(gameconfigdata.defaultsMethodData?.c.selectarea[pindex])">
               <li *ngFor="let v of [pindex+1,pindex+1]" class="k3-li"><i class="saizi saizi-{{v}}"></i></li>
             </ul>
           </div>
