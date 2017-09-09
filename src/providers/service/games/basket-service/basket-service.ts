@@ -29,10 +29,10 @@ export class BasketServiceProvider extends BusinessTool {
   gameId: any;
   traceWinStop: boolean = true;
 
-  constructor( public userbalance: UserbalanceServiceProvider, public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
+  constructor(public userbalance: UserbalanceServiceProvider, public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
 
-    this.share.globalData =  {globalMutile: 1, trace: 1}
+    this.share.globalData = {globalMutile: 1, trace: 1}
     this._.observe(this.share.globalData, 'update', () => {
       this.whenUpdateGlobalData();
       this.whenUpdatebasketData();
@@ -130,6 +130,27 @@ export class BasketServiceProvider extends BusinessTool {
 
   }
 
+  addDataToBasketK3(obj) {
+    if (obj.count) {
+      this.addLabelk3(obj);
+      this.c = obj;
+      let validIndex = `${obj.fullName_en}/${obj.label}`;
+      if (this.share.basketDataValideArr.indexOf(validIndex) == -1) {
+        this.share.basketDataValideArr.push(validIndex);
+        this.share.basketData.push(this.deepCloneObj(obj));
+        obj.isRedudu = false;
+        return true;
+      } else {
+        obj.isRedudu = true;
+        return false;
+      }
+    } else {
+      obj.isRedudu = false;
+      return false;
+    }
+
+  }
+
   isNot11Y() {
     return this.gameconfigure.defaultData.data && this.gameconfigure.defaultData.data.isnot11Ygame;
   }
@@ -149,6 +170,25 @@ export class BasketServiceProvider extends BusinessTool {
     obj.label = this.createLabel(this.pluckChooseBall(this.pluckBall(obj.bet_numberArrObj), obj.selectarea), obj.fullName_en);
   }
 
+  addLabelk3(obj): void {
+    if (obj.leveltwo) {
+      obj.label = [];
+      obj.selectarea.forEach((v, k) => {
+        if (v.some(v => v)) {
+          v.forEach((v1, k1) => {
+            v1 && obj.label.push(obj.bet_numberArrObj[k][k1]);
+          });
+        }
+      });
+    } else {
+      obj.label = [];
+      obj.selectarea.forEach((v, k) => {
+        v && obj.label.push(obj.bet_numberArrObj[k]);
+      });
+
+    }
+  }
+
   pluckBall(a): Array<any> {
     let arr = [];
     for (let val of a) {
@@ -159,9 +199,12 @@ export class BasketServiceProvider extends BusinessTool {
 
   hasChooseBall(arr: Array<any>): boolean {
     return arr.some((v: any[]) => {
-      return v.some((v) => {
-        return v;
-      });
+      if (Array.isArray(v)) {
+        return v.some((v) => {
+          return v;
+        });
+      }
+      return v;
     });
   }
 
@@ -273,7 +316,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   messages(obj): void {
     if (obj.isRedudu)
-      this.share.showToast('订单已经存在',1000);
+      this.share.showToast('订单已经存在', 1000);
   }
 
   getRondomBall() {
@@ -281,7 +324,7 @@ export class BasketServiceProvider extends BusinessTool {
     this.mainBussiness(this.c);
     let isSucess = this.addDataToBasket(this.c);
     if (isSucess) {
-      this.share.showToast('注单添加成功',1000,'bottom');
+      this.share.showToast('注单添加成功', 1000, 'bottom');
     } else {
       this.messages(this.c);
     }
@@ -293,7 +336,7 @@ export class BasketServiceProvider extends BusinessTool {
       goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
     } else {
-      this.share.showAlert('',['确定'],data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
+      this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
     }
     this.userbalance.getBalaceAgain();
   }
@@ -302,7 +345,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   async submit(goContent) {
     if (!(this.share.basketData.length)) {
-      this.share.showToast('号码篮不能为空',1000);
+      this.share.showToast('号码篮不能为空', 1000);
     } else {
       if (this.submitProcessing) {
         return;
@@ -311,7 +354,7 @@ export class BasketServiceProvider extends BusinessTool {
       this.share.showLoading();
       await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
-      this.loading.dismiss();
+      this.loading && this.loading.dismiss();
       let data = await this.doSubmint();
       this.finishRequest(data, goContent);
     }

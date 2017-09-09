@@ -18,7 +18,7 @@ export class SubBusinessToolProvider extends BusinessTool {
     c.issanlianhao = /santonghao|sanlianhao/.test(c.fullName_en);
 
     if (c.ishezhi) {
-      selectareaPair = c.bet_number;
+      bet_numberArrObj = selectareaPair = c.bet_number;
       selectarea = c.bet_number.map(v => false);
     } else {
       c.bet_number = this.threeArrToTwoArr(c.bet_number, c);
@@ -28,7 +28,7 @@ export class SubBusinessToolProvider extends BusinessTool {
 
     }
 
-    selectareaPair = c.bet_number;
+    bet_numberArrObj = selectareaPair = c.bet_number;
     if (c.leveltwo) {
       selectarea = c.bet_number.map(v => v.map(vv => false));
     } else {

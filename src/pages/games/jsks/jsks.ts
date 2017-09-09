@@ -166,7 +166,7 @@ export class JsksPage extends Effect {
   }
 
   addBall(obj): boolean {
-    let isSucess = this.basket.addDataToBasket(obj);
+    let isSucess = this.basket.addDataToBasketK3(obj);
 
     if (isSucess) {
       this.clear(obj);
@@ -184,7 +184,7 @@ export class JsksPage extends Effect {
   }
 
   goBuybasket(obj) {
-    let isSucess = this.basket.addDataToBasket(obj);
+    let isSucess = this.basket.addDataToBasketK3(obj);
 
     if (isSucess || this.share.basketData.length) {
       this.clear(obj);

@@ -863,10 +863,14 @@ export class BusinessTool extends GameUtil {
   }
 
   clearBall(ball: Array<any>) {
-    ball.forEach((v) => {
-      v.forEach((v, k, arr) => {
+    ball.forEach((v, k, arr) => {
+      if (Array.isArray(v)) {
+        v.forEach((v, k, arr) => {
+          arr[k] = false;
+        });
+      } else {
         arr[k] = false;
-      });
+      }
     });
   }
 
