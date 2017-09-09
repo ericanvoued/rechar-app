@@ -53,6 +53,7 @@ export class GameconfigServiceProvider {
   async getDefaultsMethods() {
     let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.share.getPid()}?_=${Math.random()}`, this.getParamaterToken());
     let str = this.defaultData.data.lottery_balls;
+    this.share.defaultData = defaultData;
 
     if (str) {
       if (/\s+?/.test(str)) {
@@ -71,7 +72,7 @@ export class GameconfigServiceProvider {
 
       this.coundown(this.defaultData.data.current_time, this.defaultData.data.current_number_time)
     } else {
-      this.share.showToast(defaultData.Msg,3000);
+      this.share.showToast(defaultData.Msg, 3000);
     }
   }
 

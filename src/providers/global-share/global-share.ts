@@ -34,6 +34,7 @@ export class GlobalShareProvider {
     lottery_id: ''
   }};
   gameId: any | string | number;
+  defaultData: any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController) {}
 
   showToast(msg,time?,position?) {

@@ -19,14 +19,14 @@ import {GlobalShareProvider} from "../../../../providers/global-share/global-sha
   templateUrl: 'buy-basket.html',
 })
 export class BuyBasketPage extends Effect {
-  constructor(private share:GlobalShareProvider,public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public gameconfig: GameconfigServiceProvider) {
+  constructor(private share: GlobalShareProvider, public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public gameconfig: GameconfigServiceProvider) {
     super();
   }
 
   ionViewDidLoad() {
     this.initEffect();
     this.userbalance.getBalaceAgain();
-    this.basket.setcustomprizeGroupchoose = this.basket.customprizeGroupchoose = this.gameconfig.defaultData.data.bet_max_prize_group;
+    this.basket.setcustomprizeGroupchoose = this.basket.customprizeGroupchoose = this.share.defaultData.data.bet_max_prize_group;
     this.setPriceChooseOptions();
   }
 
@@ -67,7 +67,7 @@ export class BuyBasketPage extends Effect {
 
   async submit() {
     if (this.share.balance.available < this.basket.totalAllCount) {
-      this.share.showAlert('',['好'],'您的余额不足,请先充值');
+      this.share.showAlert('', ['好'], '您的余额不足,请先充值');
     } else {
       this.basket.submit(this);
     }
@@ -93,8 +93,8 @@ export class BuyBasketPage extends Effect {
   bet_min_prize_groupPercent: any;
 
   setPriceChooseOptions() {
-    this.bet_max_prize_groupPercent = this.filterIndex(+(((+this.gameconfig.defaultData.data.user_prize_group - this.gameconfig.defaultData.data.bet_max_prize_group) / this.gameconfig.defaultData.data.series_amount).toFixed(3)) * 100);
-    this.bet_min_prize_groupPercent = this.filterIndex(+(((+this.gameconfig.defaultData.data.user_prize_group - this.gameconfig.defaultData.data.bet_min_prize_group) / this.gameconfig.defaultData.data.series_amount).toFixed(3)) * 100);
+    this.bet_max_prize_groupPercent = this.filterIndex(+(((+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_max_prize_group) / this.share.defaultData.data.series_amount).toFixed(3)) * 100);
+    this.bet_min_prize_groupPercent = this.filterIndex(+(((+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_min_prize_group) / this.share.defaultData.data.series_amount).toFixed(3)) * 100);
   }
 
   filterIndex(num) {

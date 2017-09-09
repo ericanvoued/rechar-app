@@ -352,7 +352,7 @@ export class BasketServiceProvider extends BusinessTool {
       }
       this.submitProcessing = true;
       this.share.showLoading();
-      await this.gameconfigure.outergetIssues();
+      this.gameconfigure.getIssuesList = await this.gameconfigure.outergetIssues();
       this.submitProcessing = false;
       this.loading && this.loading.dismiss();
       let data = await this.doSubmint();

@@ -32,7 +32,7 @@ export class JsksPage extends Effect {
     super();
 
     this.other();
-    let nav = this.navParams.get('nav');
+    let nav = this.navParams.get('nav') || {};
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
