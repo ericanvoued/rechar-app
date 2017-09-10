@@ -21,7 +21,7 @@ export class SubBusinessToolProvider extends BusinessTool {
     let selectarea = [];
 
     this.createLabelAndBall(c);
-    this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj)
+    this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj,c);
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
       mode: 1,
@@ -48,6 +48,7 @@ export class SubBusinessToolProvider extends BusinessTool {
 
   createLabelAndBall(c) {
     let arr = [];
+
     let bn = c.bet_number;
     for (let key in bn) {
       let item = {};
@@ -147,11 +148,12 @@ export class SubBusinessToolProvider extends BusinessTool {
     return false;
   }
 
-  createLabelAndBallPair(bet_number: any,selectarea:Array<any>, bet_numberArrObj:Array<any>) {
+  createLabelAndBallPair(bet_number: any, selectarea: Array<any>, bet_numberArrObj: Array<any>, c: any) {
     bet_number.forEach((v, k) => {
       let item: any = {};
       let originitem2: any = {};
       for (let key in v) {
+        originitem2.showgroup = !/^liangmianpan|zhixuanhezhi/.test(c.fullName_en);
         originitem2.key = item.key = key;
         item.value = v[key].map(v => false);
         originitem2.value = v[key].map(v => v);
