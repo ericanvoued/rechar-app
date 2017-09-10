@@ -147,7 +147,6 @@ export class BusinessTool extends GameUtil {
     if (!defaultMethodId || !methodsData) {
       return null;
     }
-
     let obj: any;
     let ii = 0;
     for (let a of methodsData) {
@@ -164,7 +163,6 @@ export class BusinessTool extends GameUtil {
           i++;
         }
       }
-
       ii++;
     }
 

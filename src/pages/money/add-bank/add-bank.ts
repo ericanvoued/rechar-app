@@ -29,7 +29,6 @@ export class AddBankPage {
 
     } else {
       let isset = this.setfundpasswordService.initialize();
-      debugger
       if (!isset) {
         if (this.bankcardService.isBindBankCard) {
           this.navCtrl.push("ValidBankPage");
