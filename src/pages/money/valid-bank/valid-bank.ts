@@ -66,7 +66,7 @@ export class ValidBankPage {
     if (!this.isVaildedParameter(params)) return;
 
 
-    let data = await  this.bankcardService.validedBankCardPostRemoteServer();
+    let data = await  this.bankcardService.postBindCardServer();
     if (data.isSuccess) {
       this.navCtrl.push("BindBankPage");
     } else {

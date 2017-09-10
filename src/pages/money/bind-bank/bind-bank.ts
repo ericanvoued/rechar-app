@@ -68,9 +68,8 @@ export class BindBankPage {
   }
 
   async bbb() {
-    let data = await this.bankcardService.validedBankCardPostRemoteServer();
+    let data = await this.bankcardService.postBindCardServer();
     this.initilizeCityAndProvince(data);
-
   }
 
   ionViewDidLoad() {

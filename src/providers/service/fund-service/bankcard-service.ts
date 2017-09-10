@@ -17,12 +17,8 @@ interface widthDrawRequestParamater {
 @Injectable()
 export class BankcardService {
 
-
   constructor(public httpclient: HttpClientProvider, private share: GlobalShareProvider) {
-
-    _.observe(this.bindBankCardRequestType, () => {
-      this.bindBankCardPostInitRemoteServer();
-    });
+    _.observe(this.bindBankCardRequestType,'update', () => this.postBindCardServer());
     this.initSetting();
   }
 
@@ -98,7 +94,7 @@ export class BankcardService {
 
   }
 
-  bindBankCardPostInitRemoteServer() {
+  postBindCardServer() {
     return this.httpclient.post('/mobileh5-bank-cards/0/bind-card', this.getParameters());
   }
 
@@ -129,10 +125,6 @@ export class BankcardService {
   getValidedBankCardPParameters() {
     this.ValidedBankCardPParameters._token = this.share.user.token;
     return this.ValidedBankCardPParameters;
-  }
-
-  validedBankCardPostRemoteServer() :Promise<any>{
-    return this.httpclient.post('/mobileh5-bank-cards/0/bind-card', this.getValidedBankCardPParameters());
   }
 
   RemovedBankCardPParameters = {
