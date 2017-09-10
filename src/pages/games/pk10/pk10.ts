@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Config} from "../../../config/config";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
-import {BusinessTool} from "../../../providers/tools/business-tool";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {Effect} from "../game-common/effect";
+import {SubBusinessToolProvider} from "./sub-business-tool";
+import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 
 /**
  * Generated class for the Pk10Page page.
@@ -30,11 +30,11 @@ export class Pk10Page extends Effect {
   private cccInterval: number;
   ccc: boolean;
 
-  constructor(private share: GlobalShareProvider, private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
 
     this.other();
-    let nav = this.navParams.get('nav');
+    let nav = this.navParams.get('nav') || {};
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
