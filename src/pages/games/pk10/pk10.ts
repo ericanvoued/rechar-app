@@ -29,9 +29,11 @@ export class Pk10Page extends Effect {
   ballLabelMap = Config.ballLabelMap;
   private cccInterval: number;
   ccc: boolean;
+  yearReg = /[\d]{4}-/;
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
+    console.log(this.share.gameRecord);
 
     this.other();
     let nav = this.navParams.get('nav') || {};

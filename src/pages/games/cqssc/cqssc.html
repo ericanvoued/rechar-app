@@ -19,7 +19,7 @@
 <ion-content class="no-scroll">
 
   <div class="out-side" id="out-side">
-    <ion-slides  class="history-slide" id="inner-side" *ngIf="gamerecord?.recordlist?.length">
+    <ion-slides  class="history-slide" id="inner-side" *ngIf="share?.gameRecord?.data?.length">
       <ion-spinner></ion-spinner>
       <ion-slide>
         <div class="history-wrap">
@@ -30,8 +30,8 @@
               <div class="history-cell">投注金额</div>
             </li>
 
-            <li class="history-row" *ngFor="let records of gamerecord?.recordlist;let i = index;">
-              <div class="history-cell">{{ft(records.created_at)}}</div>
+            <li class="history-row" *ngFor="let records of share?.gameRecord?.data;let i = index;">
+              <div class="history-cell">{{records.created_at?.replace(yearReg, '')}}</div>
               <div class="history-cell">{{records.friendly_name}}</div>
               <div class="history-cell">{{records.amount}}</div>
             </li>
