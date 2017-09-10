@@ -14,7 +14,9 @@ export class LableMap {
     'da': '大',
     'xiao': '小',
     'dan': '单',
-    'shuang': '双'
+    'shuang': '双',
+    'qiansan':'前三',
+    'housan':'后三'
   }
 }
 

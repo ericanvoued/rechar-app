@@ -51,13 +51,30 @@ export class SubBusinessToolProvider extends BusinessTool {
           let narr = v[0].split('-');
           item[LableMap.label[key]] = this.createNumberRange(narr[0], narr[1]);
         } else {
-
+          //龙,虎
+          item[LableMap.label[key]] = [...this.createLongHu(v[0], v[1])];
         }
+      } else {
+        item[LableMap.label[key]] = v.split(',').map(v1 => LableMap.label[v1]);
       }
       arr.push(item);
     }
 
     c.bet_number = arr;
+  }
+
+  createLongHu(longlen: number, hulen: number) {
+    let longArr = this.createArrayByLenth(longlen);
+    let huArr = this.createArrayByLenth(hulen);
+    return [...longArr.map(v => '龙'), ...huArr.map(v => '虎')]
+  }
+
+  createArrayByLenth(len: number): Array<any> {
+    let arr = [];
+    for (let i = 0; i <= len; i++) {
+      arr.push(false)
+    }
+    return arr;
   }
 
   mainBussiness(data) {

@@ -240,45 +240,6 @@ var map = {
               "prize": "58968.0055",
               "max_multiple": 6,
               "bet_number": {"g": ["1-10"], "y": ["1-10"], "three": ["1-10"], "four": ["1-10"], "five": ["1-10"]}
-            }, {
-              "id": "287",
-              "pid": "103",
-              "series_way_id": "287",
-              "name_cn": "前三单式",
-              "name_en": "pk10qiansandanshi",
-              "price": "2",
-              "bet_note": "手动输入号码，至少输入1个三位数号码组成一注",
-              "bonus_note": "手动输入一个三位数号码组成一注，所选号码与“冠军 ~ 第三名”的号码保持一致，即视为中奖。",
-              "is_enable_extra": "0",
-              "prize": "1404.0000",
-              "max_multiple": 284,
-              "bet_number": []
-            }, {
-              "id": "288",
-              "pid": "103",
-              "series_way_id": "288",
-              "name_cn": "前四单式",
-              "name_en": "pk10qiansidanshi",
-              "price": "2",
-              "bet_note": "手动输入号码，至少输入1个四位数号码组成一注",
-              "bonus_note": "手动输入一个四位数号码组成一注，所选号码与“冠军 ~ 第四名”的号码保持一致，即视为中奖。",
-              "is_enable_extra": "0",
-              "prize": "9827.9999",
-              "max_multiple": 40,
-              "bet_number": []
-            }, {
-              "id": "289",
-              "pid": "103",
-              "series_way_id": "289",
-              "name_cn": "前五单式",
-              "name_en": "pk10qianwudanshi",
-              "price": "2",
-              "bet_note": "手动输入号码，至少输入1个五位数号码组成一注",
-              "bonus_note": "手动输入一个五位数号码组成一注，所选号码与“冠军 ~ 第五名”的号码保持一致，即视为中奖。",
-              "is_enable_extra": "0",
-              "prize": "58968.0055",
-              "max_multiple": 6,
-              "bet_number": []
             }]
           }]
         }, {
