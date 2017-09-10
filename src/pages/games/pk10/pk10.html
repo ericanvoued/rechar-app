@@ -68,9 +68,12 @@
           </div>
         </div>
       </div>
-      <!--时时彩-->
-      <ion-list class="lottery-list"
-                *ngIf="!gameconfigdata.defaultsMethodData?.c.isdanshi">
+
+
+
+
+      <!--PK10-->
+      <ion-list class="lottery-list" *ngIf="!gameconfigdata.defaultsMethodData?.c.isdanshi">
         <ion-item-sliding #slidingItem  (ionDrag)="logDrag($event)"
                           *ngFor="let item of (gameconfigdata.defaultsMethodData?.c.bet_numberArrObj); let key = index;">
           <ion-item  #myitem>
@@ -90,6 +93,10 @@
               <div class="lottery-r" *ngIf="!item.isnotnumberSymble"><img *ngIf="item.showgroup" src="assets/img/arrow-r.svg" alt=""></div>
             </div>
           </ion-item>
+
+
+
+
           <ion-item-options side="right">
             <button class="side-right-con" *ngIf="item.showgroup">
           <span class="side-right" *ngIf="!item.isnotnumberSymble">
@@ -110,6 +117,10 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
+
+
+
+
       <div class="sort-con" *ngIf="gameconfigdata.defaultsMethodData?.c.isdanshi">
         <div class="remind">请在下方的输入框内输入或粘贴投注内容,每注请使用逗号分隔开</div>
         <textarea name="" id="" rows="6" placeholder="粘贴或输入你的投注内容" class="bet-content"></textarea>

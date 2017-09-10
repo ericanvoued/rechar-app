@@ -33,24 +33,18 @@ export class Pk10Page extends Effect {
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
-    console.log(this.share.gameRecord);
-
     this.other();
     let nav = this.navParams.get('nav') || {};
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
     this.share.gameId = nav && nav.pid;
-
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
     this.gameinfo.getRecord();
     basket.clearAll();
-
     this.menuCtrl.enable(false, 'unauthenticated');
-
-
   }
 
   tmpComformMethod(a, b, c) {

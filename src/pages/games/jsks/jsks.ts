@@ -31,7 +31,6 @@ export class JsksPage extends Effect {
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
-
     this.other();
     let nav = this.navParams.get('nav') || {};
     let gamenav = nav;
