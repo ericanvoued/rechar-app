@@ -6,7 +6,6 @@ import {LableMap} from "../game-common/labelmap";
 export class SubBusinessToolProvider extends BusinessTool {
   constructor() {
     super();
-
   }
 
   initSetBussiness(c) {
@@ -69,7 +68,6 @@ export class SubBusinessToolProvider extends BusinessTool {
       }
       arr.push(item);
     }
-
     c.bet_number = arr;
   }
 
@@ -79,22 +77,32 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
-    let inputData=[];
-
-console.log(obj.selectarea);
-
-    obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;
-
-
-
-
+    let inputData=this.getCount(obj.selectarea,obj.bet_numberArrObj);
+    if(obj.fullName_cn.indexOf('猜排位')>-1){
+      obj.count = this.countArrPK10(inputData);
+    }else{
+      obj.count = this.countArr(inputData);
+    }
     obj.totals = this.countsTotal(obj);
   }
 
+  countArr(data){
+    let total = 0;
+    for(let i=0;i<data.length;i++) total+=data[i].length;
+    return total;
+  }
 
-
-
-
+  getCount(data,back){
+    let outputData=[];
+    for(let i=0;i<data.length;i++){
+      let lineData=[];
+      for(let j=0;j<data[i].value.length;j++){
+        if(data[i].value[j]) lineData.push(back[i].value[j]);
+      }
+      outputData.push(lineData);
+    }
+    return outputData;
+  }
 
   countArrPK10(data) {
     let total = 0;
@@ -149,6 +157,5 @@ console.log(obj.selectarea);
       selectarea.push(item);
       bet_numberArrObj.push(originitem2);
     });
-
   }
 }

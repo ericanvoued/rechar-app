@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
-import {Config} from "../../../config/config";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
