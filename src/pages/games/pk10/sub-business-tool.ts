@@ -42,7 +42,7 @@ export class SubBusinessToolProvider extends BusinessTool {
 
   createLabelAndBall(c) {
     let arr = [];
-    let bn = c.bet_number
+    let bn = c.bet_number;
     for (let key in bn) {
       let item = {};
       let v = bn[key];
