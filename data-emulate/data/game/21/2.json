@@ -1,0 +1,267 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "game_ways": [
+      {
+        "id": "85",
+        "pid": 0,
+        "name_cn": "\u5feb3",
+        "name_en": "k3",
+        "children": [
+          {
+            "id": "86",
+            "pid": "85",
+            "name_cn": "\u5feb3",
+            "name_en": "k3",
+            "children": [
+              {
+                "id": "237",
+                "pid": "86",
+                "series_way_id": "237",
+                "name_cn": "\u548c\u503c",
+                "name_en": "hezhi",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u81f3\u5c11\u9009\u62e91\u4e2a\u548c\u503c\uff083\u4e2a\u53f7\u7801\u4e4b\u548c\uff09\u8fdb\u884c\u6295\u6ce8\uff0c\u6240\u9009\u548c\u503c\u4e0e\u5f00\u5956\u76843\u4e2a\u53f7\u7801\u7684\u548c\u503c\u76f8\u540c\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "15.6000",
+                "max_multiple": 25641,
+                "bet_number": [
+                  "03",
+                  "04",
+                  "05",
+                  "06",
+                  "07",
+                  "08",
+                  "09",
+                  "10",
+                  "11",
+                  "12",
+                  "13",
+                  "14",
+                  "15",
+                  "16",
+                  "17",
+                  "18"
+                ]
+              },
+              {
+                "id": "230",
+                "pid": "86",
+                "series_way_id": "230",
+                "name_cn": "\u4e09\u540c\u53f7",
+                "name_en": "santonghao",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u5bf9\u8c79\u5b50\u53f7\uff08111\uff0c222\uff0c333\uff0c444\uff0c555\uff0c666\uff09\u8fdb\u884c\u5355\u9009\u6216\u901a\u9009\u6295\u6ce8\uff0c\u9009\u53f7\u4e0e\u5f00\u5956\u53f7\u76f8\u540c\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "421.2000",
+                "max_multiple": 949,
+                "bet_number": [
+                  [
+                    666,
+                    555,
+                    444,
+                    333,
+                    222,
+                    1111
+                  ]
+                ]
+              },
+              {
+                "id": "231",
+                "pid": "86",
+                "series_way_id": "231",
+                "name_cn": "\u4e8c\u540c\u53f7",
+                "name_en": "ertonghao",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u9009\u62e91\u5bf9\u76f8\u540c\u53f7\u7801\u548c1\u4e2a\u4e0d\u540c\u53f7\u7801\u8fdb\u884c\u5355\u9009\u6216\u8005\u591a\u9009\u6295\u6ce8\uff0c\u9009\u53f7\u4e0e\u5f00\u5956\u53f7\u76f8\u540c\uff08\u987a\u5e8f\u4e0d\u9650\uff09\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "140.4000",
+                "max_multiple": 2849,
+                "bet_number": [
+                  [
+                    [
+                      112,
+                      122,
+                      133,
+                      144,
+                      155,
+                      166
+                    ],
+                    [
+                      113,
+                      223,
+                      233,
+                      244,
+                      255,
+                      266
+                    ],
+                    [
+                      114,
+                      224,
+                      334,
+                      344,
+                      355,
+                      366
+                    ],
+                    [
+                      115,
+                      225,
+                      335,
+                      445,
+                      455,
+                      466
+                    ],
+                    [
+                      116,
+                      226,
+                      336,
+                      446,
+                      556,
+                      566
+                    ],
+                    [
+                      11,
+                      22,
+                      33,
+                      44,
+                      55,
+                      66
+                    ]
+                  ]
+                ]
+              },
+              {
+                "id": "233",
+                "pid": "86",
+                "series_way_id": "233",
+                "name_cn": "\u4e09\u4e0d\u540c\u53f7",
+                "name_en": "sanbutonghao",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u5bf9\u6240\u67093\u4e0d\u540c\u53f7\u8fdb\u884c\u5355\u9009\u6216\u591a\u9009\uff0c\u9009\u53f7\u4e0e\u5f00\u5956\u53f7\u76f8\u540c\uff08\u987a\u5e8f\u4e0d\u9650\uff09\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "70.2000",
+                "max_multiple": 5698,
+                "bet_number": [
+                  [
+                    [
+                      123,
+                      134,
+                      146,
+                      236,
+                      345
+                    ],
+                    [
+                      124,
+                      135,
+                      156,
+                      245,
+                      346
+                    ],
+                    [
+                      125,
+                      136,
+                      234,
+                      246,
+                      356
+                    ],
+                    [
+                      126,
+                      145,
+                      235,
+                      256,
+                      456
+                    ]
+                  ]
+                ]
+              },
+              {
+                "id": "234",
+                "pid": "86",
+                "series_way_id": "234",
+                "name_cn": "\u4e8c\u4e0d\u540c\u53f7",
+                "name_en": "erbutonghao",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u5bf9\u6240\u67092\u4e0d\u540c\u53f7\u8fdb\u884c\u5355\u9009\u6216\u591a\u9009\uff0c\u9009\u53f7\u4e0e\u5f00\u5956\u53f7\u4e2d\u4efb\u610f2\u4e2a\u53f7\u7801\u76f8\u540c\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "14.0400",
+                "max_multiple": 28490,
+                "bet_number": [
+                  [
+                    [
+                      12,
+                      15,
+                      24,
+                      34,
+                      45
+                    ],
+                    [
+                      13,
+                      16,
+                      25,
+                      35,
+                      46
+                    ],
+                    [
+                      14,
+                      23,
+                      26,
+                      36,
+                      56
+                    ]
+                  ]
+                ]
+              },
+              {
+                "id": "235",
+                "pid": "86",
+                "series_way_id": "235",
+                "name_cn": "\u4e09\u8fde\u53f7",
+                "name_en": "sanlianhao",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u5bf9\u6240\u67093\u4e2a\u76f8\u8fde\u7684\u53f7\u7801\uff08123\uff0c234\uff0c345\uff0c456)\u8fdb\u884c\u5355\u9009\u6216\u591a\u9009\u6295\u6ce8\uff0c\u9009\u53f7\u4e0e\u5f00\u5956\u53f7\u76f8\u540c\uff08\u987a\u5e8f\u4e0d\u9650\uff09\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "70.2000",
+                "max_multiple": 5698,
+                "bet_number": [
+                  123,
+                  234,
+                  345,
+                  456
+                ]
+              },
+              {
+                "id": "236",
+                "pid": "86",
+                "series_way_id": "236",
+                "name_cn": "\u5355\u6311\u4e00\u9ab0",
+                "name_en": "dantiaoyishai",
+                "price": "2",
+                "bet_note": "",
+                "bonus_note": "\u9009\u62e91\u4e2a\u6216\u8005\u591a\u4e2a\u9ab0\u53f7\uff0c\u5982\u679c\u5f00\u5956\u53f7\u7801\u4e2d\u5305\u542b\u8be5\u53f7\uff08\u987a\u5e8f\u4e0d\u9650\uff09\u5373\u4e2d\u5956",
+                "is_enable_extra": "0",
+                "prize": "4.6286",
+                "max_multiple": 86419,
+                "bet_number": [
+                  6,
+                  5,
+                  4,
+                  3,
+                  2,
+                  1
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tplData": []
+  }
+}

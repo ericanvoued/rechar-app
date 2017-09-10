@@ -1,0 +1,27 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "subtract_prize_group": 0,
+    "bet_min_prize_group": 1800,
+    "user_prize_group": 1950,
+    "bet_max_prize_group": 1950,
+    "series_amount": "2000",
+    "game_name_en": "JSK3",
+    "game_name_cn": "\u6c5f\u82cf\u5feb3",
+    "default_method_id": "230",
+    "trace_max_times": 82,
+    "current_number": "20170910052",
+    "current_number_time": "2017-09-10 17:07:00",
+    "current_time": "2017-09-10 17:03:21",
+    "coefficient": {
+      "moneyunit": "1",
+      "tracetab": "0",
+      "methodid": "230",
+      "voice": "0"
+    },
+    "last_number": "20170910051",
+    "lottery_balls": "255",
+    "tplData": []
+  }
+}

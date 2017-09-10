@@ -10,12 +10,19 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   initSetBussiness(c) {
-    let bet_numberArrObj = [];
-    let selectareaPair = [];
+    if (c.ok) {
+      return;
+    }
+    if (!c.ok) {
+      c.ok = true;
+    }
+    let betarr = [];
+    let bet_numberArrObj = betarr;
+    let selectareaPair = betarr;
     let selectarea = [];
 
-
     this.createLabelAndBall(c);
+    this.createLabelAndBallPair(c.bet_number, selectareaPair)
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
       mode: 1,
@@ -72,7 +79,20 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
-    obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;;
+    obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;
+    ;
     obj.totals = this.countsTotal(obj);
+  }
+
+  createLabelAndBallPair(bet_number: any, selectareaPair: Array<any>) {
+
+    bet_number.forEach((v, k) => {
+      if (Array.isArray(v)) {
+
+      } else {
+        selectareaPair[k] = false;
+      }
+    });
+
   }
 }
