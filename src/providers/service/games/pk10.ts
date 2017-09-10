@@ -6,24 +6,17 @@ export class PK10 {
 
   constructor() {}
 
-  countPK10(data) {
-    if (data.constructor == String) {
-      return this.countStrPK10(data);
-    } else if (data.constructor == Array) {
-      return this.countArrPK10(data);
-    }
-  }
-
-  countStrPK10(data) {
+  countStrPK10(data:string,type:number) {
     let total = 0;
-    if (data.trim() == '') return total;
+    if (data.trim() == '' || type<1) return {number:total,data:[]};
     let flag = data.trim().split(/[,;.?!@#$%^*_\-+=|\/\\~&()\[\]{}]+/);
-    let basic = flag[0].trim().split(/\s+/).length;
+
+
     for(let i=0;i<flag.length;i++){
       let sub= flag[i].trim().split(/\s+/);
-      if(sub.length==basic && this.checkSingle(sub)) total++;
+      if(sub.length==type && this.checkSingle(sub)) total++;
     }
-    return total;
+    return {number:total,data:[]};
   }
 
   checkSingle(data){
@@ -39,6 +32,7 @@ export class PK10 {
     let total = 0;
     let start = 0;
     let flag = [];
+    if (data.constructor != Array) return total;
     for (let i = 0; i < data.length; i++) {
       let endFlag = 0;
       for (let j = start; j < data[i].length; j++) {

@@ -12,7 +12,7 @@ const cors = require('cors');
 app.use(cors());
 
 /**
- * 1。登陆页
+ * 1。登陆页]
  */
 let error = {
   Msg: "用户名或者密码错误",
@@ -120,14 +120,11 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
  */
 
 app.get('/mobileh5-projects/:id/view', (req, res) => {
-  console.log("req.query.id:",req.params)
-if(req.params.id){
-  res.json(require('./data/index/get/bet-detail.json'));
-} else {
-  res.json(error);
-}
-
-
+  if(req.params.id){
+    res.json(require('./data/index/get/bet-detail.json'));
+  } else {
+    res.json(error);
+  }
 });
 
 /**
@@ -183,7 +180,32 @@ app.get('/mobileh5-recharges/sdpay', ({body}, res) => {
   res.json(require('./data/index/get/bank-list.json'));
 });
 
-app.listen(8181);
 
+/**
+ * PK10详情接口
+ */
+
+// app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
+//   res.json(require('./data/index/get/message-detail.json'));
+// });
+
+
+/**
+ * 游戏接口
+ */
+
+app.post('/mobile-lotteries-h5/load-data/1/:id', (req, res) => {
+  res.json(require('./data/game/'+req.params.id+'/1.json'));
+});
+
+app.post('/mobile-lotteries-h5/load-data/2/:id',(req, res) => {
+  res.json(require('./data/game/'+req.params.id+'/2.json'));
+});
+
+app.post('/mobile-lotteries-h5/load-data/3/:id', (req, res) => {
+  res.json(require('./data/game/'+req.params.id+'/3.json'));
+});
+
+app.listen(8181);
 console.log('************listening************* port 8181');
 
