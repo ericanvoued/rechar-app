@@ -297,7 +297,6 @@ export class BusinessTool extends GameUtil {
       arr[k] = !arr[k];
       this.exclusionArray(arrB, arrA);
     }
-
   }
 
   chooseBall(k, arr, obj) {

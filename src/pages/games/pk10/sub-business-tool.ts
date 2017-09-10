@@ -79,12 +79,65 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
+    let inputData=[];
+
+console.log(obj.selectarea);
+
     obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;
+
+
+
+
     obj.totals = this.countsTotal(obj);
   }
 
-  createLabelAndBallPair(bet_number: any,selectarea:Array<any>, bet_numberArrObj:Array<any>) {
 
+
+
+
+
+  countArrPK10(data) {
+    let total = 0;
+    let start = 0;
+    let flag = [];
+    if (data.constructor != Array) return total;
+    for (let i = 0; i < data.length; i++) {
+      let endFlag = 0;
+      for (let j = start; j < data[i].length; j++) {
+        endFlag = 0;
+        if (j == data[i].length - 1) endFlag = 1;
+        if (this.checkUse(data[i][j], flag)) continue;
+        if (i == data.length - 1) {
+          total++;
+        } else {
+          flag.push({index: j, number: data[i][j]});
+          start = 0;
+          endFlag = 0;
+          break;
+        }
+      }
+      if (endFlag) {
+        while (endFlag || start == data[i].length) {
+          if (!flag.length) return total;
+          start = flag[flag.length - 1].index + 1;
+          flag.pop();
+          endFlag = 0;
+          i--;
+        }
+        i--;
+      }
+    }
+    return total;
+  }
+
+  checkUse(number, data) {
+    for (let i = 0; i < data.length; i++) {
+      if (number == data[i].number) return true;
+    }
+    return false;
+  }
+
+  createLabelAndBallPair(bet_number: any,selectarea:Array<any>, bet_numberArrObj:Array<any>) {
     bet_number.forEach((v, k) => {
       let item: any = {};
       let originitem2: any = {};
