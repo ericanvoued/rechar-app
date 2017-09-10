@@ -16,5 +16,4 @@ export class SubCameconfigServiceProvider extends GameconfigServiceProvider {
       this.defaultsMethodData = df;
     }
   }
-
 }
