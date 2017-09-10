@@ -83,11 +83,11 @@
               <div class="lottery-m">
                 <div class="lottery-number number-list">
                   <i
-                    [class.num-yellow]="gameconfigdata.defaultsMethodData?.c.selectarea[key][ii]"
+                    [class.num-yellow]="gameconfigdata.defaultsMethodData?.c.selectarea[key].value[ii]"
                     [class.black-square]="item.isnotnumberSymble"
                     class="num-black"
                     *ngFor="let i of item.value;let ii = index"
-                    (touchstart)="util.chooseBall(ii,gameconfigdata.defaultsMethodData?.c.selectarea[key],gameconfigdata.defaultsMethodData?.c)">{{i}}</i>
+                    (touchstart)="util.chooseBall(ii,gameconfigdata.defaultsMethodData?.c.selectarea[key].value,gameconfigdata.defaultsMethodData?.c)">{{i}}</i>
                 </div>
               </div>
               <div class="lottery-r" *ngIf="!item.isnotnumberSymble"><img *ngIf="item.showgroup" src="assets/img/arrow-r.svg" alt=""></div>
@@ -168,7 +168,6 @@
   <div class="confirm-bet">
     <ul>
 
-      <!--<li ><a *ngIf="gameconfigdata.defaultData.data && (gameconfigdata.defaultData.data.isnot11Ygame)" class="header-select times" (touchstart)="randomBall(gameconfigdata.defaultsMethodData.c)">机选</a></li>-->
       <li>
         <span
           class="total">共 {{gameconfigdata.defaultsMethodData?.c.count}} 注</span>
