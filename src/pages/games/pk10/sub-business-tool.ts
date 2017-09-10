@@ -52,8 +52,8 @@ export class SubBusinessToolProvider extends BusinessTool {
           let narr = v[0].split('-');
           item[LableMap.label[key]] = this.createNumberRange(narr[0], narr[1]);
         } else {
-        }
 
+        }
       }
       arr.push(item);
     }
