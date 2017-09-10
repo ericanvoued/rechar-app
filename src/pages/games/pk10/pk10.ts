@@ -84,7 +84,6 @@ export class Pk10Page extends Effect {
       this.gameconfigdata.defaultsMethodData.b = this.methodGroup.b;
       this.gameconfigdata.defaultsMethodData.c = this.methodGroup.c;
     }
-    console.log("this.gameconfigdata.defaultsMethodData:", this.gameconfigdata.defaultsMethodData);
   }
 
   goHelpPage() {

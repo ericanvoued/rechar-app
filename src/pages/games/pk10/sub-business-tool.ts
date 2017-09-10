@@ -35,7 +35,6 @@ export class SubBusinessToolProvider extends BusinessTool {
 
     c.count = 0;
     c.totals = 0;
-    console.log(c);
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });
@@ -77,9 +76,6 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
-
-    console.log(obj);
-
     let inputData=this.getCount(obj.selectarea,obj.bet_numberArrObj);
     if(obj.fullName_cn.indexOf('猜排位')>-1){
       obj.count = this.countArrPK10(inputData);
