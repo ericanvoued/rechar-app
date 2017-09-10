@@ -71,7 +71,6 @@ export class SubBusinessToolProvider extends BusinessTool {
     c.bet_number = arr;
   }
 
-
   mainBussiness(data) {
     this.findCounter(data.name_cn, data);
   }
