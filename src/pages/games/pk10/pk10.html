@@ -65,7 +65,7 @@
         </div>
       </div>
       <!--PK10-->
-      <ion-list class="lottery-list" *ngIf="!gameconfigdata.defaultsMethodData?.c.isdanshi">
+      <ion-list class="lottery-list">
         <ion-item-sliding #slidingItem  (ionDrag)="logDrag($event)"
                           *ngFor="let item of (gameconfigdata.defaultsMethodData?.c.bet_numberArrObj); let key = index;">
           <ion-item  #myitem>
@@ -87,19 +87,19 @@
           </ion-item>
           <ion-item-options side="right">
             <button class="side-right-con" *ngIf="item.showgroup">
-          <span class="side-right" *ngIf="!item.isnotnumberSymble">
+          <span class="side-right">
             <i class="side-black quan"
-               (touchstart)="setGrounpChoose('quan',gameconfigdata.defaultsMethodData?.c.selectarea[key])">全</i>
+               (touchstart)="setGrounpChoose('quan',gameconfigdata.defaultsMethodData?.c.selectarea[key].value)">全</i>
             <i class="side-black da"
-               (touchstart)="setGrounpChoose('da',gameconfigdata.defaultsMethodData?.c.selectarea[key])">大</i>
+               (touchstart)="setGrounpChoose('da',gameconfigdata.defaultsMethodData?.c.selectarea[key].value)">大</i>
             <i class="side-black xiao"
-               (touchstart)="setGrounpChoose('xiao',gameconfigdata.defaultsMethodData?.c.selectarea[key])">小</i>
+               (touchstart)="setGrounpChoose('xiao',gameconfigdata.defaultsMethodData?.c.selectarea[key].value)">小</i>
             <i class="side-black ji"
-               (touchstart)="setGrounpChoose('dan',gameconfigdata.defaultsMethodData?.c.selectarea[key],item.value)">奇</i>
+               (touchstart)="setGrounpChoose('dan',gameconfigdata.defaultsMethodData?.c.selectarea[key].value,item.value)">奇</i>
             <i class="side-black ou"
-               (touchstart)="setGrounpChoose('shuang',gameconfigdata.defaultsMethodData?.c.selectarea[key],item.value)">偶</i>
+               (touchstart)="setGrounpChoose('shuang',gameconfigdata.defaultsMethodData?.c.selectarea[key].value,item.value)">偶</i>
             <i class="side-black qing"
-               (touchstart)="setGrounpChoose('qing',gameconfigdata.defaultsMethodData?.c.selectarea[key])">清</i>
+               (touchstart)="setGrounpChoose('qing',gameconfigdata.defaultsMethodData?.c.selectarea[key].value)">清</i>
           </span>
             </button>
           </ion-item-options>
