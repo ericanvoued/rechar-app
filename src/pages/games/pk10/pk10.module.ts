@@ -6,6 +6,8 @@ import {BasketServiceProvider} from "../../../providers/service/games/basket-ser
 import {UserbalanceServiceProvider} from "../../../providers/service/userbalance-service/userbalance-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
+import {SubBusinessToolProvider} from "./sub-business-tool";
+import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import {Gamelist} from "../../../providers/service/games/gamelist-service";
     IonicPageModule.forChild(Pk10Page),
   ],
   providers: [
+    SubBusinessToolProvider,
+    SubCameconfigServiceProvider,
     GameconfigServiceProvider,
     BasketServiceProvider,
     UserbalanceServiceProvider,
-    BusinessTool,
-    Gamelist
-  ]
-})
+    Gamelist,
+    BusinessTool
+]})
+
 export class Pk10PageModule {
 }

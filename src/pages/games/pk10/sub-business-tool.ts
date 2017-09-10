@@ -29,7 +29,6 @@ export class SubBusinessToolProvider extends BusinessTool {
 
     c.count = 0;
     c.totals = 0;
-    //是否和值
     console.log(c);
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);

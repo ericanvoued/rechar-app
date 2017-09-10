@@ -1,0 +1,477 @@
+{
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "game_ways": [
+      {
+        "id": "96",
+        "pid": 0,
+        "name_cn": "\u4e24\u9762\u76d8",
+        "name_en": "liangmianpan",
+        "children": [
+          {
+            "id": "97",
+            "pid": "96",
+            "name_cn": "\u4e24\u9762",
+            "name_en": "zhixuan",
+            "children": [
+              {
+                "id": "267",
+                "pid": "97",
+                "series_way_id": "267",
+                "name_cn": "\u51a0\u4e9a\u548c",
+                "name_en": "guanyahezhi",
+                "price": "2",
+                "bet_note": "\u4ece\u201c\u5927\u3001\u5c0f\u3001\u5355\u3001\u53cc\u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u62161\u4e2a\u4ee5\u4e0a\u9879",
+                "bonus_note": "\u51a0\u519b\u8f66\u53f7\uff0b\u4e9a\u519b\u8f66\u53f7\uff1d\u51a0\u4e9a\u548c<br\/><br\/>\u51a0\u4e9a\u548c\u5927\u5c0f\uff1a\u201c\u51a0\u4e9a\u548c\u201d\u5927\u4e8e11\u65f6\u6295\u6ce8\u201c\u5927\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\uff0c\u5c0f\u4e8e\u6216\u7b49\u4e8e11\u65f6\u6295\u6ce8\u201c\u5c0f\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\uff0c\u5176\u4f59\u89c6\u4e3a\u4e0d\u4e2d\u5956\u3002<br\/><br\/>\u51a0\u4e9a\u548c\u5355\u53cc\uff1a\u201c\u51a0\u4e9a\u548c\u201d\u4e3a\u5355\u89c6\u4e3a\u6295\u6ce8\u201c\u5355\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\uff0c\u4e3a\u53cc\u89c6\u4e3a\u6295\u6ce8\u201c\u53cc\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\u3002<br\/>",
+                "extra": {
+                  "1": 91168,
+                  "0": 113960,
+                  "2": 91168,
+                  "3": 113960
+                },
+                "extra_prize": {
+                  "1": "4.3875",
+                  "0": "3.5100",
+                  "2": "4.3875",
+                  "3": "3.5100"
+                },
+                "is_enable_extra": "1",
+                "prize": "3.5100",
+                "max_multiple": 113960,
+                "bet_number": {
+                  "gyh": "da,xiao,dan,shuang"
+                }
+              },
+              {
+                "id": "268",
+                "pid": "97",
+                "series_way_id": "268",
+                "name_cn": "\u6309\u540d\u6b21",
+                "name_en": "rate_daccording",
+                "price": "2",
+                "bet_note": "\u4ece\u201c\u5927\u3001\u5c0f\u3001\u5355\u3001\u53cc\u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u62161\u4e2a\u4ee5\u4e0a\u9879\u3002",
+                "bonus_note": "\u5927\u5c0f\uff1a\u201c\u8d5b\u8f66\u53f7\u201d\u5927\u4e8e\u6216\u7b49\u4e8e 6 \u65f6\uff0c\u6295\u6ce8\u201c\u5927\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\u3002\u5c0f\u4e8e\u6216\u7b49\u4e8e 5 \u65f6\uff0c\u6295\u6ce8\u201c\u5c0f\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\u3002<br\/>\r\n<br\/>\r\n\u5355\u53cc \uff1a\u201c\u8d5b\u8f66\u53f7\u201d\u4e3a\u5355\u89c6\u4e3a\u6295\u6ce8\u201c\u5355\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\uff0c\u4e3a\u53cc\u89c6\u4e3a\u6295\u6ce8\u201c\u53cc\u201d\u7684\u6ce8\u5355\u89c6\u4e3a\u4e2d\u5956\u3002<br\/>",
+                "is_enable_extra": "0",
+                "prize": "3.9000",
+                "max_multiple": 102564,
+                "bet_number": {
+                  "g": "da,xiao,dan,shuang",
+                  "y": "da,xiao,dan,shuang",
+                  "three": "da,xiao,dan,shuang",
+                  "four": "da,xiao,dan,shuang",
+                  "five": "da,xiao,dan,shuang",
+                  "six": "da,xiao,dan,shuang",
+                  "seven": "da,xiao,dan,shuang",
+                  "eight": "da,xiao,dan,shuang",
+                  "nine": "da,xiao,dan,shuang",
+                  "ten": "da,xiao,dan,shuang"
+                }
+              },
+              {
+                "id": "270",
+                "pid": "97",
+                "series_way_id": "270",
+                "name_cn": "\u9f99\u864e",
+                "name_en": "dragonwithtiger",
+                "price": "2",
+                "bet_note": "\u4ece\u201c #\u9f99#\u864e \u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u62161\u4e2a\u4ee5\u4e0a\u9879",
+                "bonus_note": "\u4e24\u4e2a\u540d\u6b21\u201c\u8d5b\u8f66\u53f7\u201d\u4e4b\u95f4\u6bd4\u5927\u5c0f\uff0c\u201c\u524d\u8d5b\u8f66\u53f7\u201d\u5927\u4e8e\u201c\u540e\u8d5b\u8f66\u53f7\u201d\u5373\u89c6\u4e3a\u4e2d\u5956\u3002<br\/>\r\n<br\/>\r\n\u6848\u4f8b      <br\/>\r\n1\u9f9910\u864e \uff1a\u201c\u7b2c\u4e00\u540d\u201d\u8f66\u53f7\u5927\u4e8e\u201c\u7b2c\u5341\u540d\u201d\u8f66\u53f7\u89c6\u4e3a\u4e2d\u5956\u3002<br\/>\r\n10\u9f991\u864e\uff1a\u201c\u7b2c\u5341\u540d\u201d\u8f66\u53f7\u5927\u4e8e\u201c\u7b2c\u4e00\u540d\u201d\u8f66\u53f7\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "3.9000",
+                "max_multiple": 102564,
+                "bet_number": {
+                  "g": [
+                    1,
+                    1
+                  ],
+                  "y": [
+                    2,
+                    2
+                  ],
+                  "three": [
+                    3,
+                    3
+                  ],
+                  "four": [
+                    4,
+                    4
+                  ],
+                  "five": [
+                    5,
+                    5
+                  ],
+                  "six": [
+                    6,
+                    6
+                  ],
+                  "seven": [
+                    7,
+                    7
+                  ],
+                  "eight": [
+                    8,
+                    8
+                  ],
+                  "nine": [
+                    9,
+                    9
+                  ],
+                  "ten": [
+                    10,
+                    10
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "98",
+        "pid": 0,
+        "name_cn": "\u548c\u503c",
+        "name_en": "zhixuanhezhi",
+        "children": [
+          {
+            "id": "99",
+            "pid": "98",
+            "name_cn": "\u548c\u503c",
+            "name_en": "hezhi",
+            "children": [
+              {
+                "id": "269",
+                "pid": "99",
+                "series_way_id": "269",
+                "name_cn": "\u51a0\u4e9a\u548c",
+                "name_en": "guanyahezhi",
+                "price": "2",
+                "bet_note": "\u4ece\u201c 3~19 \u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u62161\u4e2a\u4ee5\u4e0a\u53f7\u7801",
+                "bonus_note": "\u201c\u51a0\u4e9a\u548c\u201d\u53ef\u80fd\u51fa\u73b0\u7684\u7ed3\u679c\u4e3a3\uff5e19\uff0c \u6295\u4e2d\u5bf9\u5e94\u201c\u51a0\u4e9a\u548c\u201d\u6570\u5b57\u7684\u89c6\u4e3a\u4e2d\u5956\uff0c\u5176\u4f59\u89c6\u4e3a\u4e0d\u4e2d\u5956\u3002",
+                "extra": {
+                  "3": 4558,
+                  "4": 4558,
+                  "18": 4558,
+                  "19": 4558,
+                  "5": 9116,
+                  "6": 9116,
+                  "16": 9116,
+                  "17": 9116,
+                  "7": 13675,
+                  "8": 13675,
+                  "14": 13675,
+                  "15": 13675,
+                  "9": 18233,
+                  "10": 18233,
+                  "12": 18233,
+                  "13": 18233,
+                  "11": 22792
+                },
+                "extra_prize": {
+                  "3": "87.7500",
+                  "4": "87.7500",
+                  "18": "87.7500",
+                  "19": "87.7500",
+                  "5": "43.8750",
+                  "6": "43.8750",
+                  "16": "43.8750",
+                  "17": "43.8750",
+                  "7": "29.2500",
+                  "8": "29.2500",
+                  "14": "29.2500",
+                  "15": "29.2500",
+                  "9": "21.9375",
+                  "10": "21.9375",
+                  "12": "21.9375",
+                  "13": "21.9375",
+                  "11": "17.5500"
+                },
+                "is_enable_extra": "1",
+                "prize": "17.5500",
+                "max_multiple": 22792,
+                "bet_number": {
+                  "gyh": [
+                    "9-13"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "100",
+        "pid": 0,
+        "name_cn": "\u731c\u8f66\u53f7",
+        "name_en": "caichehao",
+        "children": [
+          {
+            "id": "101",
+            "pid": "100",
+            "name_cn": "\u5b9a\u4f4d\u80c6",
+            "name_en": "dingweidan",
+            "children": [
+              {
+                "id": "271",
+                "pid": "101",
+                "series_way_id": "271",
+                "name_cn": "\u5b9a\u4f4d\u80c6",
+                "name_en": "dingweidan",
+                "price": "2",
+                "bet_note": "\u4ece\u201c \u51a0\u519b~\u7b2c\u5341\u540d \u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u62161\u4e2a\u4ee5\u4e0a\u53f7\u7801",
+                "bonus_note": "\u4ece\u201c \u51a0\u519b~\u7b2c\u5341\u540d \u201d\u4e2d\u4efb\u4f55\u9009\u62e91\u4e2a\u53f7\u7801\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u8be5\u540d\u6b21\u4e0a\u7684\u8f66\u53f7\u4e00\u81f4\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "19.5000",
+                "max_multiple": 20512,
+                "bet_number": {
+                  "g": [
+                    "1-10"
+                  ],
+                  "y": [
+                    "1-10"
+                  ],
+                  "three": [
+                    "1-10"
+                  ],
+                  "four": [
+                    "1-10"
+                  ],
+                  "five": [
+                    "1-10"
+                  ],
+                  "six": [
+                    "1-10"
+                  ],
+                  "seven": [
+                    "1-10"
+                  ],
+                  "eight": [
+                    "1-10"
+                  ],
+                  "nine": [
+                    "1-10"
+                  ],
+                  "ten": [
+                    "1-10"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "102",
+        "pid": 0,
+        "name_cn": "\u731c\u6392\u4f4d",
+        "name_en": "caipaiwei",
+        "children": [
+          {
+            "id": "103",
+            "pid": "102",
+            "name_cn": "\u76f4\u9009",
+            "name_en": "zhixuanpk",
+            "children": [
+              {
+                "id": "272",
+                "pid": "103",
+                "series_way_id": "272",
+                "name_cn": "\u51a0\u4e9a\u519b",
+                "name_en": "guanyajun",
+                "price": "2",
+                "bet_note": "\u4ece\u201c \u51a0\u519b\u3001\u4e9a\u519b\u201d\u4e2d\u5404\u90091\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u4ece\u201c \u51a0\u519b\u3001\u4e9a\u519b\u201d\u4e2d\u9009\u62e92\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u5bf9\u5e94\u540d\u6b21\u7684\u8f66\u53f7\u76f8\u540c\u4e14\u987a\u5e8f\u76f8\u540c\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "175.5000",
+                "max_multiple": 2279,
+                "bet_number": {
+                  "g": [
+                    "1-10"
+                  ],
+                  "y": [
+                    "1-10"
+                  ]
+                }
+              },
+              {
+                "id": "273",
+                "pid": "103",
+                "series_way_id": "273",
+                "name_cn": "\u524d\u4e09",
+                "name_en": "qiansanpk",
+                "price": "2",
+                "bet_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u4e09\u540d\u201d\u4e2d\u5404\u90091\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u4e09\u540d\u201d\u4e2d\u9009\u62e93\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u5bf9\u5e94\u540d\u6b21\u7684\u8f66\u53f7\u76f8\u540c\u4e14\u987a\u5e8f\u76f8\u540c\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "1404.0000",
+                "max_multiple": 284,
+                "bet_number": {
+                  "g": [
+                    "1-10"
+                  ],
+                  "y": [
+                    "1-10"
+                  ],
+                  "three": [
+                    "1-10"
+                  ]
+                }
+              },
+              {
+                "id": "274",
+                "pid": "103",
+                "series_way_id": "274",
+                "name_cn": "\u524d\u56db",
+                "name_en": "qiansipk",
+                "price": "2",
+                "bet_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u56db\u540d\u201d\u4e2d\u5404\u90091\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u56db\u540d\u201d\u4e2d\u9009\u62e94\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u5bf9\u5e94\u540d\u6b21\u7684\u8f66\u53f7\u76f8\u540c\u4e14\u987a\u5e8f\u76f8\u540c\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "9827.9999",
+                "max_multiple": 40,
+                "bet_number": {
+                  "g": [
+                    "1-10"
+                  ],
+                  "y": [
+                    "1-10"
+                  ],
+                  "three": [
+                    "1-10"
+                  ],
+                  "four": [
+                    "1-10"
+                  ]
+                }
+              },
+              {
+                "id": "275",
+                "pid": "103",
+                "series_way_id": "275",
+                "name_cn": "\u524d\u4e94",
+                "name_en": "qianwu",
+                "price": "2",
+                "bet_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u4e94\u540d\u201d\u4e2d\u5404\u90091\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u4ece\u201c \u51a0\u519b ~ \u7b2c\u4e94\u540d\u201d\u4e2d\u9009\u62e95\u4e2a\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u5bf9\u5e94\u540d\u6b21\u7684\u8f66\u53f7\u76f8\u540c\u4e14\u987a\u5e8f\u76f8\u540c\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "58968.0055",
+                "max_multiple": 6,
+                "bet_number": {
+                  "g": [
+                    "1-10"
+                  ],
+                  "y": [
+                    "1-10"
+                  ],
+                  "three": [
+                    "1-10"
+                  ],
+                  "four": [
+                    "1-10"
+                  ],
+                  "five": [
+                    "1-10"
+                  ]
+                }
+              },
+              {
+                "id": "287",
+                "pid": "103",
+                "series_way_id": "287",
+                "name_cn": "\u524d\u4e09\u5355\u5f0f",
+                "name_en": "pk10qiansandanshi",
+                "price": "2",
+                "bet_note": "\u624b\u52a8\u8f93\u5165\u53f7\u7801\uff0c\u81f3\u5c11\u8f93\u51651\u4e2a\u4e09\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u624b\u52a8\u8f93\u5165\u4e00\u4e2a\u4e09\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u201c\u51a0\u519b ~ \u7b2c\u4e09\u540d\u201d\u7684\u53f7\u7801\u4fdd\u6301\u4e00\u81f4\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "1404.0000",
+                "max_multiple": 284,
+                "bet_number": []
+              },
+              {
+                "id": "288",
+                "pid": "103",
+                "series_way_id": "288",
+                "name_cn": "\u524d\u56db\u5355\u5f0f",
+                "name_en": "pk10qiansidanshi",
+                "price": "2",
+                "bet_note": "\u624b\u52a8\u8f93\u5165\u53f7\u7801\uff0c\u81f3\u5c11\u8f93\u51651\u4e2a\u56db\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u624b\u52a8\u8f93\u5165\u4e00\u4e2a\u56db\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u201c\u51a0\u519b ~ \u7b2c\u56db\u540d\u201d\u7684\u53f7\u7801\u4fdd\u6301\u4e00\u81f4\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "9827.9999",
+                "max_multiple": 40,
+                "bet_number": []
+              },
+              {
+                "id": "289",
+                "pid": "103",
+                "series_way_id": "289",
+                "name_cn": "\u524d\u4e94\u5355\u5f0f",
+                "name_en": "pk10qianwudanshi",
+                "price": "2",
+                "bet_note": "\u624b\u52a8\u8f93\u5165\u53f7\u7801\uff0c\u81f3\u5c11\u8f93\u51651\u4e2a\u4e94\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8",
+                "bonus_note": "\u624b\u52a8\u8f93\u5165\u4e00\u4e2a\u4e94\u4f4d\u6570\u53f7\u7801\u7ec4\u6210\u4e00\u6ce8\uff0c\u6240\u9009\u53f7\u7801\u4e0e\u201c\u51a0\u519b ~ \u7b2c\u4e94\u540d\u201d\u7684\u53f7\u7801\u4fdd\u6301\u4e00\u81f4\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "58968.0055",
+                "max_multiple": 6,
+                "bet_number": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "104",
+        "pid": 0,
+        "name_cn": "\u4e0d\u5b9a\u4f4d",
+        "name_en": "budingwei",
+        "children": [
+          {
+            "id": "105",
+            "pid": "104",
+            "name_cn": "\u4f4d\u7f6e",
+            "name_en": "sanxingbudingwei",
+            "children": [
+              {
+                "id": "280",
+                "pid": "105",
+                "series_way_id": "280",
+                "name_cn": "\u524d\u4e09",
+                "name_en": "qiansan",
+                "price": "2",
+                "bet_note": "\u4ece\u201c 1~10\u201d\u4e2d\u4efb\u610f\u9009\u4e2d1\u4e2a\u6216\u4ee5\u4e0a\u53f7\u7801",
+                "bonus_note": "\u4ece\u201c 1~10\u201d\u4e2d\u4efb\u610f\u9009\u4e2d1\u4e2a\u53f7\u7801\uff0c\u6bcf\u6ce8\u75311\u4e2a\u53f7\u7801\u7ec4\u6210\u3002\u53ea\u8981\u201c \u51a0\u519b \u3001\u4e9a\u519b\u3001 \u7b2c\u4e09\u540d\u201d\u7684\u8f66\u53f7\u4e2d\u5305\u542b\u6240\u9009\u53f7\u7801\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "6.5000",
+                "max_multiple": 61538,
+                "bet_number": {
+                  "qiansan": [
+                    "1-10"
+                  ],
+                  "housan": [
+                    "1-10"
+                  ]
+                }
+              },
+              {
+                "id": "281",
+                "pid": "105",
+                "series_way_id": "281",
+                "name_cn": "\u540e\u4e09",
+                "name_en": "housan",
+                "price": "2",
+                "bet_note": "\u4ece\u201c 1~10\u201d\u4e2d\u4efb\u610f\u9009\u4e2d1\u4e2a\u6216\u4ee5\u4e0a\u53f7\u7801",
+                "bonus_note": "\u4ece\u201c 1~10\u201d\u4e2d\u4efb\u610f\u9009\u4e2d1\u4e2a\u53f7\u7801\uff0c\u6bcf\u6ce8\u75311\u4e2a\u53f7\u7801\u7ec4\u6210\u3002\u53ea\u8981\u201c \u7b2c\u516b\u540d\u3001\u7b2c\u4e5d\u540d\u3001 \u7b2c\u5341\u540d\u201d\u7684\u8f66\u53f7\u4e2d\u5305\u542b\u6240\u9009\u53f7\u7801\uff0c\u5373\u89c6\u4e3a\u4e2d\u5956\u3002",
+                "is_enable_extra": "0",
+                "prize": "6.5000",
+                "max_multiple": 61538,
+                "bet_number": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tplData": []
+  }
+}
