@@ -78,7 +78,7 @@
                           *ngFor="let item of (gameconfigdata.defaultsMethodData?.c.bet_numberArrObj); let key = index;">
           <ion-item  #myitem>
             <div class="lottery-a">
-              <div class="lottery-l lottery-l-t" *ngIf="ballLabelMap[item.key]"><span class="lottery-text">{{ballLabelMap[item.key]}}</span>
+              <div class="lottery-l lottery-l-t" *ngIf="item.key"><span class="lottery-text">{{item.key}}</span>
               </div>
               <div class="lottery-m">
                 <div class="lottery-number number-list">
@@ -121,10 +121,12 @@
 
 
 
+
       <div class="sort-con" *ngIf="gameconfigdata.defaultsMethodData?.c.isdanshi">
         <div class="remind">请在下方的输入框内输入或粘贴投注内容,每注请使用逗号分隔开</div>
         <textarea name="" id="" rows="6" placeholder="粘贴或输入你的投注内容" class="bet-content"></textarea>
       </div>
+
     </div>
   </div>
 </ion-content>

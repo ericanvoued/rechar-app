@@ -22,7 +22,7 @@ export class SubBusinessToolProvider extends BusinessTool {
     let selectarea = [];
 
     this.createLabelAndBall(c);
-    this.createLabelAndBallPair(c.bet_number, selectareaPair)
+    this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj)
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
       mode: 1,
@@ -83,14 +83,18 @@ export class SubBusinessToolProvider extends BusinessTool {
     obj.totals = this.countsTotal(obj);
   }
 
-  createLabelAndBallPair(bet_number: any, selectareaPair: Array<any>) {
+  createLabelAndBallPair(bet_number: any,selectarea:Array<any>, bet_numberArrObj:Array<any>) {
 
     bet_number.forEach((v, k) => {
-      if (Array.isArray(v)) {
-
-      } else {
-        selectareaPair[k] = false;
+      let item: any = {};
+      let originitem2: any = {};
+      for (let key in v) {
+        originitem2.key = item.key = key;
+        item.value = v[key].map(v => false);
+        originitem2.value = v[key].map(v => v);
       }
+      selectarea.push(item);
+      bet_numberArrObj.push(originitem2);
     });
 
   }
