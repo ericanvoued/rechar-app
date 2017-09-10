@@ -7,6 +7,7 @@ import {BasketServiceProvider} from "../../../providers/service/games/basket-ser
 import {Effect} from "../game-common/effect";
 import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
+import {LableMap} from "../game-common/labelmap";
 
 /**
  * Generated class for the Pk10Page page.
@@ -26,7 +27,7 @@ export class Pk10Page extends Effect {
     b: any;
     c: any;
   };
-  ballLabelMap = Config.ballLabelMap;
+  ballLabelMap = LableMap.label;
   private cccInterval: number;
   ccc: boolean;
 
