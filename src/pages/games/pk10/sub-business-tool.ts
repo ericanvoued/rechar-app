@@ -49,16 +49,23 @@ export class SubBusinessToolProvider extends BusinessTool {
       if (Array.isArray(v)) {
         if (typeof v[0] == 'string') {
           let narr = v[0].split('-');
+          c.isnumberBall = true;
           item[LableMap.label[key]] = this.createNumberRange(narr[0], narr[1]);
         } else {
-
+          //龙,虎
+          c.islonghu = true;
+          item[LableMap.label[key]] = v;
         }
+      } else {
+        c.isdansuang = true;
+        item[LableMap.label[key]] = v.split(',').map(v1 => LableMap.label[v1]);
       }
       arr.push(item);
     }
 
     c.bet_number = arr;
   }
+
 
   mainBussiness(data) {
     this.findCounter(data.name_cn, data);
