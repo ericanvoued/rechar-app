@@ -14,9 +14,10 @@ import {GlobalShareProvider} from "../../providers/global-share/global-share";
 export class HomePage {
   ccc: boolean;
   cccInterval: any;
+  getRecord: any;
   gamelistIconMap = Config.gameiconMap;
 
-  constructor(public share:GlobalShareProvider,public balance:BalanceProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
+  constructor(public share: GlobalShareProvider, public balance: BalanceProvider, public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
     (new Effect()).initEffect();
     this.balance.getUserBalance();
     this.homeService.getRemoteServer();
@@ -30,9 +31,9 @@ export class HomePage {
     return this.homeService.postRemoteServer();
   }
 
-  playGame(gameNav, toPage):void {
+  async playGame(gameNav, toPage) {
     if (!gameNav.time) {
-      this.share.showToast('即将上线',1000);
+      this.share.showToast('即将上线', 1000);
       return;
     }
     if (toPage) {
@@ -44,6 +45,7 @@ export class HomePage {
         toPage = 'Pk10Page';
       }
       this.navCtrl.push(toPage, {nav: gameNav});
+      this.getRecord = await this.homeService.postRemoteServer();
     }
   }
 

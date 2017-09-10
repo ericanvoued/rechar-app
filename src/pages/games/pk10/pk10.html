@@ -17,9 +17,8 @@
 </ion-header>
 <!--主要内容-->
 <ion-content class="no-scroll">
-
   <div class="out-side" id="out-side">
-    <ion-slides  class="history-slide" id="inner-side" *ngIf="gamerecord?.recordlist?.length">
+    <ion-slides  class="history-slide" id="inner-side" *ngIf="share?.gameRecord?.data?.length">
       <ion-spinner></ion-spinner>
       <ion-slide>
         <div class="history-wrap">
@@ -29,9 +28,8 @@
               <div class="history-cell">彩种</div>
               <div class="history-cell">投注金额</div>
             </li>
-
-            <li class="history-row" *ngFor="let records of gamerecord?.recordlist;let i = index;">
-              <div class="history-cell">{{ft(records.created_at)}}</div>
+            <li class="history-row" *ngFor="let records of share?.gameRecord?.data;let i = index;">
+              <div class="history-cell">{{records.created_at?.replace(yearReg, '')}}</div>
               <div class="history-cell">{{records.friendly_name}}</div>
               <div class="history-cell">{{records.amount}}</div>
             </li>
@@ -39,6 +37,10 @@
         </div>
       </ion-slide>
     </ion-slides>
+
+
+
+
     <div class="wrap wrap-black" id="wrap">
       <div class="chonghui">
         <div style="height: 1px;" [class.sscbg]="bbb"></div>
@@ -111,6 +113,14 @@
     </div>
   </div>
 </ion-content>
+
+
+
+
+
+
+
+
 <!--页脚内容-->
 <ion-footer>
   <div class="add-bill clear">

@@ -51,9 +51,8 @@ export class GameconfigServiceProvider {
    */
   async getDefaultsMethods() {
     let gameID=+this.share.getPid();
-    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${gameID}?_=${Math.random()}`, this.getParamaterToken());
+    let defaultData = this.share.defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${gameID}?_=${Math.random()}`, this.getParamaterToken());
     let str = this.defaultData.data.lottery_balls;
-    this.share.defaultData = defaultData;
     if (str) {
       if (/[,\s]+/.test(str)) {
         this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(/[,\s]+/);

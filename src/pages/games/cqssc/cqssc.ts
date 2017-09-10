@@ -22,6 +22,7 @@ export class CqsscPage extends Effect {
   ballLabelMap = Config.ballLabelMap;
   private cccInterval: number;
   ccc: boolean;
+  yearReg = /[\d]{4}-/;
 
   constructor(private share:GlobalShareProvider,private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
     super();
