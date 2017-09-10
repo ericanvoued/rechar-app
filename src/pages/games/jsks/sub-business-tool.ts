@@ -25,7 +25,6 @@ export class SubBusinessToolProvider extends BusinessTool {
       if (c.isertonghao) {
         c.bet_number.splice(-1);
       }
-
     }
 
     bet_numberArrObj = selectareaPair = c.bet_number;

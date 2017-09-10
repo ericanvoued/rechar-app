@@ -65,8 +65,7 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   findCounter(name, obj) {
-    obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;
-    ;
+    obj.count = obj.selectarea.toString().replace(/false/g, '').split(',').filter(v => v).length;;
     obj.totals = this.countsTotal(obj);
   }
 }

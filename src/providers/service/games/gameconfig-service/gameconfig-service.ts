@@ -27,7 +27,6 @@ export class GameconfigServiceProvider {
     if (df) {
       this.defaultsMethodData = df;
     }
-
   }
 
   loading: any;
@@ -51,25 +50,25 @@ export class GameconfigServiceProvider {
    * 2.获取默认数据
    */
   async getDefaultsMethods() {
-    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${this.share.getPid()}?_=${Math.random()}`, this.getParamaterToken());
+    let gameID=+this.share.getPid();
+    let defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${gameID}?_=${Math.random()}`, this.getParamaterToken());
     let str = this.defaultData.data.lottery_balls;
     this.share.defaultData = defaultData;
-
     if (str) {
-      if (/\s+?/.test(str)) {
+      if (/,+?/.test(str)) {
+        this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(',');
+      } else if (/\s+?/.test(str)) {
         this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(' ');
       } else {
         this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split('');
       }
     }
-
     if (defaultData.isSuccess) {
       defaultData.data.isnot11Ygame = !/11Y/.test(this.defaultData.data.game_name_en);
       if (this.isInit) {
         this.setdefaultsMethodData();
         this.isInit = false;
       }
-
       this.coundown(this.defaultData.data.current_time, this.defaultData.data.current_number_time)
     } else {
       this.share.showToast(defaultData.Msg, 3000);
