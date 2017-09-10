@@ -55,10 +55,8 @@ export class GameconfigServiceProvider {
     let str = this.defaultData.data.lottery_balls;
     this.share.defaultData = defaultData;
     if (str) {
-      if (/,+?/.test(str)) {
-        this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(/,+?/g);
-      } else if (/\s+?/.test(str)) {
-        this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(/\s+?/g);
+      if (/[,\s]+/.test(str)) {
+        this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split(/[,\s]+/);
       } else {
         this.defaultData.data.lottery_balls = this.defaultData.data.lottery_balls.split('');
       }
