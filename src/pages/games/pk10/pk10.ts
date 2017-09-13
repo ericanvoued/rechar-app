@@ -162,7 +162,7 @@ export class Pk10Page extends Effect {
   }
 
   addBall(obj): boolean {
-    let isSucess = this.basket.addDataToBasket(obj);
+    let isSucess = this.basket.addDataToBasketPK10(obj);
 
     if (isSucess) {
       this.clear(obj);
@@ -180,7 +180,7 @@ export class Pk10Page extends Effect {
   }
 
   goBuybasket(obj) {
-    let isSucess = this.basket.addDataToBasket(obj);
+    let isSucess = this.basket.addDataToBasketPK10(obj);
 
     if (isSucess || this.share.basketData.length) {
       this.clear(obj);
@@ -197,9 +197,18 @@ export class Pk10Page extends Effect {
 
   clear(obj) {
     obj.mutipleAndModeObj.times = 1;
-    this.util.clearBall(obj.selectarea);
+    this.clearBall(obj.selectarea);
   }
 
+  clearBall(arr: Array<any>) {
+    arr.forEach(v => {
+      if (Array.isArray(v.value)) {
+        v.value.forEach((v1, k1, array) => {
+          array[k1] = false;
+        });
+      }
+    });
+  }
 }
 
 
