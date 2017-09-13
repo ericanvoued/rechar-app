@@ -337,7 +337,7 @@ export class BasketServiceProvider extends BusinessTool {
           }
 
         });
-        debugger
+
       }
 
       balls.push({
