@@ -32,6 +32,11 @@ export class BetDatailPage {
   async requestDetail(id){
     await this.home.getBetDetailServer(id);
     let str = this.home.betDetail.winning_number;
-    if (str) this.bet_winning_number = str.replace(/\s+?/ig, "").split('');
+    if (str) {
+      if (/[,\s]+/.test(str))
+        this.bet_winning_number= str.split(/[,\s]+/);
+      else
+        this.bet_winning_number = str.split('');
+    }
   }
 }

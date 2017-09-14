@@ -21,6 +21,7 @@ var platformInstance = new PlatformDetected();
 
 @Injectable()
 export class BasketServiceProvider extends BusinessTool {
+  ispk10: any;
   basketData = [];
   c = {name_cn: '', prize: 0};
 
@@ -128,6 +129,68 @@ export class BasketServiceProvider extends BusinessTool {
       return false;
     }
 
+  }
+
+  addLabelPK10(obj): void {
+
+    obj.label = [];
+    obj.isliangmianpan = /^liangmianpan/.test(obj.fullName_en);
+    obj.iszhixuanhezhi  =/^zhixuanhezhi/.test(obj.fullName_en);
+    if (obj.isliangmianpan) {
+      obj.selectarea.forEach((v, k) => {
+        if (Array.isArray(v.value)) {
+          let tmp = [];
+          v.value.forEach((v1, k1) => {
+            if (obj.isnotnumberSymble) {
+              v1 && tmp.push(obj.bet_numberArrObj[k].value[k1].join('-'));
+            } else {
+              v1 && tmp.push(obj.bet_numberArrObj[k].value[k1]);
+            }
+          });
+          if (obj.isnotnumberSymble) {
+            obj.label.push(tmp.join(','));
+          } else {
+            obj.label.push(tmp.join(''));
+          }
+        }
+      });
+    } else {
+      obj.selectarea.forEach((v, k) => {
+        if (Array.isArray(v.value)) {
+          let tmp = [];
+          v.value.forEach((v1, k1) => {
+              v1 && tmp.push(obj.bet_numberArrObj[k].value[k1]);
+          });
+          if(obj.iszhixuanhezhi){
+            obj.label.push(tmp.join('|'));
+          } else {
+            obj.label.push(tmp.join(''));
+          }
+        }
+      });
+
+    }
+
+  }
+
+  addDataToBasketPK10(obj) {
+    if (obj.count) {
+      this.addLabelPK10(obj);
+      this.c = obj;
+      let validIndex = `${obj.fullName_en}/${obj.label}`;
+      if (this.share.basketDataValideArr.indexOf(validIndex) == -1) {
+        this.share.basketDataValideArr.push(validIndex);
+        this.share.basketData.push(this.deepCloneObj(obj));
+        obj.isRedudu = false;
+        return true;
+      } else {
+        obj.isRedudu = true;
+        return false;
+      }
+    } else {
+      obj.isRedudu = false;
+      return false;
+    }
   }
 
   addDataToBasketK3(obj) {
@@ -249,6 +312,50 @@ export class BasketServiceProvider extends BusinessTool {
   setcustomprizeGroupchoose: any;
 
   getBallsString(): string {
+    if(this.ispk10){
+      return this.getStringGenertorispk10();
+    }
+    return this.getStringGenertor();
+  }
+  private getStringGenertorispk10():string{
+
+    let balls = [];
+
+    this.share.basketData.forEach((v, key) => {
+      let ball = this.fiterBalls(v, v.name_en);
+      if(v.iszhixuanhezhi){
+        ball = v.label;
+      } else if(v.isliangmianpan){
+        ball = [];
+        v.selectarea.forEach(v3=>{
+          if(Array.isArray(v3.value)){
+            let tmp = [];
+            v3.value.forEach((v4,k4)=> {
+              v4 && tmp.push(k4);
+            });
+            ball.push(tmp.join(''));
+          }
+        });
+      }
+
+      balls.push({
+        "jsId": key,
+        "wayId": v.id,
+        "ball": Array.isArray(ball) ? ball.join('|') : ball,
+        "position": [],
+        "viewBalls": v.label.join('|'),
+        "num": v.count,
+        "type": v.fullName_en,
+        "onePrice": 2,
+        "prize_group": this.setcustomprizeGroupchoose,
+        "moneyunit": v.mutipleAndModeObj.mode,
+        "multiple": v.mutipleAndModeObj.times * this.share.globalData.globalMutile
+      });
+
+    });
+    return this.encrypt(JSON.stringify(balls));
+  }
+  private getStringGenertor() :string{
     let balls = [];
     let ReplaceBallNameByMap = {
       '5单0双': '5',
@@ -343,7 +450,8 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async submit(goContent) {
+  async submit(goContent,ispk10?) {
+    this.ispk10 = ispk10;
     if (!(this.share.basketData.length)) {
       this.share.showToast('号码篮不能为空', 1000);
     } else {

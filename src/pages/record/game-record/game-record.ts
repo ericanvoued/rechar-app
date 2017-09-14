@@ -29,11 +29,13 @@ export class GameRecordPage {
   recordLogin() {
     this.isTitle = (this.params.get('title') != '投注记录');
     if (this.isTitle) this.titleIndex = 1;
-    let d = new Date();
-    d.setDate(d.getDate() - 7);
+    let startDay = new Date();
+    startDay.setDate(startDay.getDate() - 7);
+    let endDay = new Date();
+    endDay.setDate(endDay.getDate() +1);
     this.eventOne = {
-      timeStarts: DateFormat.format(d),
-      timeEnds: DateFormat.format(new Date()),
+      timeStarts: DateFormat.format(startDay),
+      timeEnds: DateFormat.format(endDay),
       id: null
     };
     _.observe(this.eventOne, () => this.changeParameter(this.titleIndex));

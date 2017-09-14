@@ -5,7 +5,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg" class="question-icon" alt="" (touchstart)="goHelpPage()">
+      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg"
+                                                                          class="question-icon" alt=""
+                                                                          (touchstart)="goHelpPage()">
       <div class="header-r">
         <div class="open-modal header-select header-w">{{
           gameconfigdata.defaultsMethodData?.a.name_cn}}{{
@@ -18,7 +20,7 @@
 <!--主要内容-->
 <ion-content class="no-scroll">
   <div class="out-side" id="out-side">
-    <ion-slides  class="history-slide" id="inner-side" *ngIf="share?.gameRecord?.data?.length">
+    <ion-slides class="history-slide" id="inner-side" *ngIf="share?.gameRecord?.data?.length">
       <ion-spinner></ion-spinner>
       <ion-slide>
         <div class="history-wrap">
@@ -49,7 +51,7 @@
           </div>
           <div class="wrap-top-num">
             <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"
-              class="num-green">{{num}}</i>
+               class="num-green">{{num}}</i>
           </div>
         </div>
         <div class="fr">
@@ -66,23 +68,26 @@
       </div>
       <!--PK10-->
       <ion-list class="lottery-list">
-        <ion-item-sliding #slidingItem  (ionDrag)="logDrag($event)"
-                          *ngFor="let item of (gameconfigdata.defaultsMethodData?.c.bet_numberArrObj); let key = index;">
-          <ion-item  #myitem>
+        <ion-item-sliding #slidingItem (ionDrag)="logDrag($event)"
+                          *ngFor="let item of (gameconfigdata.defaultsMethodData?.c?.bet_numberArrObj); let key = index;">
+          <ion-item #myitem>
             <div class="lottery-a">
               <div class="lottery-l lottery-l-t" *ngIf="item.key"><span class="lottery-text">{{item.key}}</span>
               </div>
               <div class="lottery-m">
                 <div class="lottery-number number-list">
                   <i
-                    [class.num-yellow]="gameconfigdata.defaultsMethodData?.c.selectarea[key].value[ii]"
-                    [class.black-square]="item.isnotnumberSymble"
+                    [class.num-yellow]="gameconfigdata.defaultsMethodData?.c?.selectarea[key]?.value[ii]"
+
+                    [class.black-square]="gameconfigdata.defaultsMethodData?.c?.isnotnumberSymble"
+
                     class="num-black"
                     *ngFor="let i of item.value;let ii = index"
-                    (touchstart)="util.chooseBall(ii,gameconfigdata.defaultsMethodData?.c.selectarea[key].value,gameconfigdata.defaultsMethodData?.c)">{{i}}</i>
+                    (touchstart)="util.chooseBall(ii,gameconfigdata.defaultsMethodData?.c?.selectarea[key].value,gameconfigdata.defaultsMethodData?.c)">{{gameconfigdata.defaultsMethodData?.c?.isnotnumberSymble ? (i[0]+'龙'+i[1]+'虎') :i}}</i>
                 </div>
               </div>
-              <div class="lottery-r" *ngIf="!item.isnotnumberSymble"><img *ngIf="item.showgroup" src="assets/img/arrow-r.svg" alt=""></div>
+              <div class="lottery-r" *ngIf="!item.isnotnumberSymble"><img *ngIf="item.showgroup"
+                                                                          src="assets/img/arrow-r.svg" alt=""></div>
             </div>
           </ion-item>
           <ion-item-options side="right">
@@ -105,17 +110,9 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
-
     </div>
   </div>
 </ion-content>
-
-
-
-
-
-
-
 
 <!--页脚内容-->
 <ion-footer>
@@ -142,7 +139,8 @@
         <img src="assets/img/plus.svg" (touchstart)="pluse(gameconfigdata.defaultsMethodData?.c)"/>
       </div>
     </div>
-    <div class="fr"><a class="header-select times" (touchstart)="addBall(gameconfigdata.defaultsMethodData?.c)">添加注单</a></div>
+    <div class="fr"><a class="header-select times" (touchstart)="addBall(gameconfigdata.defaultsMethodData?.c)">添加注单</a>
+    </div>
   </div>
   <div class="confirm-bet">
     <ul>
@@ -154,8 +152,10 @@
           class="total-money">￥{{gameconfigdata.defaultsMethodData?.c.totals}} </span>
       </li>
       <li class="confirm-w">
-        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger" (touchstart)="goBuybasket(gameconfigdata?.defaultsMethodData?.c)">
-          <span>确认投注</span><span class="confirm-number" *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
+        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger"
+           (touchstart)="goBuybasket(gameconfigdata?.defaultsMethodData?.c)">
+          <span>确认投注</span><span class="confirm-number"
+                                 *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
         </a>
       </li>
     </ul>
@@ -177,8 +177,8 @@
       <div class="after-list clear after-list-{{b.name_cn.length + 1}}" *ngFor="let b of a.children">
         <div class="after-l"><i class="after-text">{{b.name_cn}}:</i></div>
         <ul class="lastchina">
-          <li *ngFor="let c of b.children"><i  [class.play-yellow]="c.defaultMethod" class="play-black play-opacity"
-                                               (touchstart)="tmpComformMethod(a,b,c)">{{c.name_cn}}</i></li>
+          <li *ngFor="let c of b.children"><i [class.play-yellow]="c.defaultMethod" class="play-black play-opacity"
+                                              (touchstart)="tmpComformMethod(a,b,c)">{{c.name_cn}}</i></li>
         </ul>
       </div>
     </div>

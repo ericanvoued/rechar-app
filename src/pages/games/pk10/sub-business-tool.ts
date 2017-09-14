@@ -22,6 +22,8 @@ export class SubBusinessToolProvider extends BusinessTool {
 
     this.createLabelAndBall(c);
     this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj,c);
+    c.isnotnumberSymble = /\.dragonwithtiger$/.test(c.fullName_en);
+
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
       mode: 1,
@@ -34,7 +36,8 @@ export class SubBusinessToolProvider extends BusinessTool {
     c.selectareaPair = selectareaPair;
 
     c.count = 0;
-    c.totals = 0;
+    c.totals = 0
+    console.log(c);
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });

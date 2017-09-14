@@ -65,11 +65,11 @@ export class BuyBasketPage extends Effect {
 
   }
 
-  async submit() {
+  async submit(ispk10?) {
     if (this.share.balance.available < this.basket.totalAllCount) {
       this.share.showAlert('', ['好'], '您的余额不足,请先充值');
     } else {
-      this.basket.submit(this);
+      this.basket.submit(this,ispk10);
     }
   }
 
