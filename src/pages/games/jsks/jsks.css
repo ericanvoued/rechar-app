@@ -324,6 +324,24 @@ page-jsks .chip-1000 {
   background-image: url("../../../assets/img/lottery-sort/chip-1000.png"); }
 page-jsks .chip-5000 {
   background-image: url("../../../assets/img/lottery-sort/chip-5000.png"); }
+page-jsks .saizi {
+  width: 32px;
+  height: 32px;
+  background-image: url("../../../assets/img/lottery-sort/saizi1.svg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+page-jsks .saizi-1 {
+  background-image: url("../../../assets/img/lottery-sort/saizi1.svg"); }
+page-jsks .saizi-2 {
+  background-image: url("../../../assets/img/lottery-sort/saizi2.svg"); }
+page-jsks .saizi-3 {
+  background-image: url("../../../assets/img/lottery-sort/saizi3.svg"); }
+page-jsks .saizi-4 {
+  background-image: url("../../../assets/img/lottery-sort/saizi4.svg"); }
+page-jsks .saizi-5 {
+  background-image: url("../../../assets/img/lottery-sort/saizi5.svg"); }
+page-jsks .saizi-6 {
+  background-image: url("../../../assets/img/lottery-sort/saizi6.svg"); }
 page-jsks .game-list {
   background: #2E324E;
   border-radius: 8px;
