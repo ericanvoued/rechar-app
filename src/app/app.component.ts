@@ -7,11 +7,11 @@ import {Config} from "../config/config";
 import {DateFormat} from "../providers/tools/date";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: '../pages/games/saibao/saibao.html'
 })
 export class MyApp {
   ft = DateFormat.FormatTime;
-  rootPage: any = "LoginPage";
+  rootPage: any = "SaibaoPage";
   userTypeMap = Config.userTypeMap;
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;

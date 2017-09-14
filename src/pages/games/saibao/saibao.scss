@@ -1,0 +1,515 @@
+@import "../game-common/game";
+
+.outer-border {
+  border: 3px solid #159964;
+  box-sizing: border-box;
+}
+
+.thin-border-t {
+  border-top: 1px solid #159964;
+}
+
+.thin-border-b {
+  border-bottom: 1px solid #159964;
+}
+
+.thin-border-l {
+  border-left: 1px solid #159964;
+}
+
+.thin-border-r {
+  border-right: 1px solid #159964;
+}
+
+.thin-border {
+  border: 1px solid #159964;
+}
+
+.bdr-none{
+  border: none!important;
+}
+
+
+.main-text-color {
+  color: #95A7BB;
+}
+
+.main-table-color {
+  color: #C3E2D6;
+}
+
+.rate-mYellow-text {
+  color: #FFDB77;
+}
+
+.rate-dYellow-text {
+  color: #FFBE00;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.f14 {
+  font-size: 14px;
+}
+
+.f12 {
+  font-size: 12px;
+}
+
+.equal {
+  width: 100%;
+  flex: 1;
+}
+.toolbar{
+  text-align: center;
+}
+.js3-container {
+  padding: 0 6px 10px;
+  background-image: url("../../../assets/img/saibao-bg.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 133px;
+  background-color: #056F4D;
+  @extend .f14;
+  @extend .main-text-color;
+  min-height: 100%;
+}
+
+.s-nav {
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  .s-nav-l {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .t {
+      line-height: 42px;
+      @extend .f24;
+      span {
+        background: #28324E;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.50);
+        border-radius: 2px;
+        font-family: 'Oswald', sans-serif;
+        width: 33px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        margin-top: 7px;
+        &:first-child {
+          margin-right: 6px;
+        }
+        &:last-child {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+  .s-nav-r {
+    width: 124px;
+    height: 100%;
+    .s-rText {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px 0 3px;
+      box-sizing: border-box;
+    }
+    .t {
+      background: rgba(0, 0, 0, 0.20);
+      border-radius: 7px;
+      width: 116px;
+      height: 38px;
+      margin-top: 7px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+  .h-text {
+    @extend .f12;
+    line-height: 12px;
+    margin-top: 9px;
+    width: 100%;
+    span {
+      @extend .rate-dYellow-text;
+      vertical-align: initial;
+    }
+  }
+}
+
+.game-table {
+  //padding: 27px 2px 0;
+  margin: 27px 2px 0;
+  box-sizing: border-box;
+  @extend .main-table-color;
+  overflow: hidden;
+  border-radius: 67px 67px 0 0;
+}
+
+.t-game {
+  width: 100%;
+  margin-top: 6px;
+  @extend .outer-border;
+
+  .t-tit {
+    @extend .f14;
+    box-sizing: border-box;
+    line-height: 26px;
+    height: 27px;
+    @extend .thin-border-b;
+    text-align: center;
+  }
+  .t-list {
+    display: flex;
+    position: relative;
+    .t-unit {
+      width: 100%;
+      flex: 1;
+      padding: 9px 0px;
+      box-sizing: border-box;
+      @extend .thin-border-r;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+
+      &:last-child {
+        border-right-color: transparent;
+      }
+      p {
+        @extend .f24;
+        line-height: 24px;
+        width: 100%;
+
+        & span {
+          @extend .f14;
+        }
+      }
+      p:last-of-type {
+        @extend .rate-mYellow-text;
+        @extend .f14;
+
+      }
+
+      //下面筹码的样式
+      .add-coin{
+        width: 31px;
+        height: 31px;
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        .chip{
+          width: 31px;
+          height: 31px;
+        }
+      }
+      .bet-momey{
+        width: 36px;
+        height: 25px;
+        position: absolute;
+        background-image: url("../../../assets/img/bet-money-bg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center top;
+        top: -15px;
+        font-size: 18px;
+        text-align: center;
+        color: #ffffff;
+        line-height: 22px;
+        left: 50%;
+        margin-left: -18px;
+      }
+
+    }
+    //下面筹码的样式
+    .e-center{
+      right: 50%!important;
+      margin-right: -15.5px!important;
+    }
+    .add-coin{
+      width: 31px;
+      height: 31px;
+      position: absolute;
+      bottom: -3px;
+
+      .chip{
+        width: 31px;
+        height: 31px;
+      }
+
+    }
+    .bet-momey{
+      width: 36px;
+      height: 25px;
+      position: absolute;
+      background-image: url("../../../assets/img/bet-money-bg.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+      top: -15px;
+      font-size: 18px;
+      text-align: center;
+      color: #ffffff;
+      line-height: 22px;
+      left: 50%;
+      margin-left: -18px;
+    }
+  }
+
+}
+
+.t-game-1 {
+  border-radius: 67px 67px 0 0;
+  margin-top: 0;
+
+  .t-list {
+
+    .t-unit {
+      padding: 6px 0;
+      //.bet-momey{
+      //  left: 50%;
+      //  margin-left: -18px;
+      //}
+    }
+  }
+
+}
+
+.t-game-2 {
+
+  .t-list {
+
+    .t-unit {
+      justify-content: center;
+    }
+
+  }
+  .saizi {
+    align-self: center;
+  }
+}
+
+.t-game-3 {
+  border-bottom-width: 2px;
+
+  .t-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .t-unit {
+      display: flex;
+      width: 20%;
+      flex: none;
+      justify-content: center;
+      @extend .thin-border-b;
+      &:nth-child(5n) {
+        border-right-color: transparent;
+      }
+    }
+  }
+
+  .saizi {
+    align-self: center;
+    margin: 1px;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+.t-game-4 {
+  border-bottom-width: 2px;
+  .t-list {
+
+    @extend .thin-border-b;
+
+    .t-unit {
+      padding: 6px 0;
+    }
+  }
+}
+
+.t-game-5{
+  .t-list{
+    .t-unit{
+      width: 100%;
+      flex: 1;
+      &:nth-child(5){
+        border-right: 1px solid #159964!important;
+      }
+    }
+  }
+}
+.t-game-6 {
+  .t-list {
+    .t-unit {
+      flex-wrap: wrap;
+    }
+    .t-unit-cow{
+       width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+     }
+  }
+  .saizi {
+    width: 29px;
+    height: 29px;
+  }
+
+}
+
+.eBill--bill{
+  height: 77px;
+  background-color: #323758;
+  display: flex;
+  padding: 8.5px 6px;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .bill-detail{
+    flex: 1;
+    height: 100%;
+    @extend .f14;
+    color: #C6C6C6;
+    line-height: 28px;
+    p{
+      &:first-child{
+        margin-top: 4px;
+      }
+
+      span{
+        line-height: 20px;
+        padding: 4px 9px;
+        background: #252943;
+        border-radius: 6px;
+        margin-left: 7px;
+        height: 28px;
+        @extend .rate-mYellow-text;
+      }
+    }
+  }
+  .eCurrunt{
+    width: 185px;
+    height: 100%;
+    background: #252943;
+    border: 1px solid #686990;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+
+    p{
+      flex: 1;
+      line-height: 60px;
+      text-align: center;
+    }
+    .eCurrunt-coin{
+      height: 60px;
+      width: 59px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 19px;
+    }
+  }
+  .coin-list{
+    height: 150px;
+    background: rgba(37,34,50,0.97);
+    border: 2px solid rgba(151,151,151,0.29);
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.50), inset 0 1px 1px 0 rgba(0,0,0,0.50);
+    border-radius: 17px;
+    position: absolute;
+    top: -150px;
+    left: 6px;
+    right: 6px;
+    padding: 12px 15px;
+
+    .coin-list-container{
+      width: 100%;
+      height: 100%;
+      .cow{
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+
+    .e-triangle{
+      width: 0;
+      height: 0;
+      border-top: 16px solid #4a4750;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom-color: transparent;
+      position: absolute;
+      bottom: -16px;
+      right: 39px;
+      .e-inner-triangle{
+        width: 0;
+        height: 0;
+        border-top: 14px solid rgba(37,34,50,0.97);
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom-color: transparent;
+        position: absolute;
+        bottom: 4px;
+        right: -7px;
+      }
+    }
+  }
+}
+.confirm-bet{
+  .e-clear{
+    padding: 0px;
+    .button{
+      border: 1px solid #686990;
+      border-radius: 2px;
+      font-family: 'PingFangSC-Regular';
+      @extend .f14;
+      color: #686990;
+      letter-spacing: -0.22px;
+      width: 72px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      margin-right: 12px;
+    }
+  }
+}
+.bg-black1{
+  background-color: rgba(0,0,0,.1);
+}
+@media screen and (max-width: 342px){
+  .eBill--bill{
+    .bill-detail{
+      p{
+        span{
+          margin-left: 5px;
+          padding: 4px 6px;
+        }
+      }
+
+    }
+    .eCurrunt{
+      width: 164px;
+      .eCurrunt-coin{
+        margin-right:5px ;
+      }
+    }
+    .coin-list{
+      .e-triangle{
+        right: 26px!important;
+      }
+    }
+  }
+
+}
+
+
+
+
