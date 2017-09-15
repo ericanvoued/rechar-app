@@ -7,7 +7,7 @@ import {Config} from "../config/config";
 import {DateFormat} from "../providers/tools/date";
 
 @Component({
-  templateUrl: '../pages/games/saibao/saibao.html'
+  templateUrl: 'app.html'
 })
 export class MyApp {
   ft = DateFormat.FormatTime;
