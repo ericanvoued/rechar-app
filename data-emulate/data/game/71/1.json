@@ -1,3 +1,22 @@
 {
-
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "subtract_prize_group": 0,
+    "bet_min_prize_group": 1800,
+    "user_prize_group": 1950,
+    "bet_max_prize_group": 1950,
+    "series_amount": "2000",
+    "game_name_en": "JSDICE",
+    "game_name_cn": "\u6c5f\u82cf\u9ab0\u5b9d",
+    "default_method_id": "0",
+    "trace_max_times": 1,
+    "current_number": "20170915031",
+    "current_number_time": "2017-09-15 13:37:00",
+    "current_time": "2017-09-15 13:31:05",
+    "coefficient": null,
+    "last_number": "20170915030",
+    "lottery_balls": "224",
+    "tplData": []
+  }
 }

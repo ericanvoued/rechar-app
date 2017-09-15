@@ -1,3 +1,15 @@
 {
-
+  "isSuccess": 1,
+  "type": "info",
+  "data": {
+    "trace_issues": [
+      {
+        "number": "20170915031",
+        "time": "2017-09-15 13:37:00",
+        "wn_number": "",
+        "cycle": "600"
+      }
+    ],
+    "tplData": []
+  }
 }
