@@ -11,7 +11,7 @@ import {DateFormat} from "../providers/tools/date";
 })
 export class MyApp {
   ft = DateFormat.FormatTime;
-  rootPage: any = "SaibaoPage";
+  rootPage: any = "LoginPage";
   userTypeMap = Config.userTypeMap;
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;
@@ -57,7 +57,6 @@ export class MyApp {
       return;
     }
     this.menu.close();
-
     if (toPage) {
       if (/k3$/i.test(gameNav.nav)) {
         toPage = 'JsksPage';
@@ -66,11 +65,8 @@ export class MyApp {
       } else if (/K10$/i.test(gameNav.nav)) {
         toPage = 'Pk10Page';
       }
-
-      if (toPage) this.nav.push(toPage, {nav: gameNav})
+      this.nav.push(toPage, {nav: gameNav})
     }
-
-
   }
 
   goPage(page, parameter, how?) {
