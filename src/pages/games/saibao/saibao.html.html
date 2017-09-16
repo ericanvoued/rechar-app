@@ -1,10 +1,520 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle="left">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg" class="question-icon" alt="" (touchstart)="goHelpPage()">
+      <div class="header-r">
+        <div class="open-modal header-select header-w">{{
+          gameconfigdata.defaultsMethodData?.a.name_cn}}{{
+          gameconfigdata.defaultsMethodData?.c?.name_cn}}
+        </div>
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="container js3-container">
+    <ion-slides class="history-slide" id="inner-side" *ngIf="share?.gameRecord?.data?.length">
+      <ion-spinner></ion-spinner>
+      <ion-slide>
+        <div class="history-wrap">
+          <ul class="history-table">
+            <li class="history-row">
+              <div class="history-cell">时间</div>
+              <div class="history-cell">彩种</div>
+              <div class="history-cell">投注金额</div>
+            </li>
+            <li class="history-row" *ngFor="let records of share?.gameRecord?.data;let i = index;">
+              <div class="history-cell">{{records.created_at?.replace(yearReg, '')}}</div>
+              <div class="history-cell">{{records.friendly_name}}</div>
+              <div class="history-cell">{{records.amount}}</div>
+            </li>
+          </ul>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <div class="s-nav">
+      <div class="s-nav-l">
+        <p class="h-text"><span>{{gameconfigdata.defaultData.data?.current_number}}</span>期 截止时间</p>
+        <div class="t"><span>{{gameconfigdata.clock.minutes}}</span>:<span>{{gameconfigdata.clock.seconds}}</span></div>
+      </div>
+      <div class="s-nav-r">
+        <div class="h-text s-rText"><p>第<span>{{gameconfigdata.defaultData.data?.last_number}}</span>期</p><p>开奖记录</p></div>
+        <div class="t">
+          <i class="saizi saizi-4"></i><i class="saizi saizi-2"></i><i class="saizi saizi-2"></i>
+        </div>
+
+
+        <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"
+           class=`saizi saizi-{{num}}`></i>
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+    <div class="game-table">
+      <div class="t-game t-game-1">
+        <div class="t-tit">特殊玩法 1:1</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <p>大<span>11~17</span></p>
+            <p>1:1</p>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <p>小<span>4~10</span></p>
+            <p>1:1</p>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <p>单</p>
+            <p>1:1</p>
+          </div>
+          <div class="t-unit">
+            <p>双</p>
+            <p>1:1</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-game t-game-2 bg-black1">
+        <div class="t-tit">猜一个号 单骰1:1 双骰1:2 三骰1:3</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-3"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-4"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-6"></i>
+          </div>
+        </div>
+      </div>
+
+      <!--此模块暂时不用-->
+      <!--<div class="t-game t-game-2">-->
+      <!--<div class="t-tit">猜不出号 1:0.5</div>-->
+      <!--<div class="t-list">-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-1"></i>-->
+      <!--<div class="add-coin">-->
+      <!--<i class="chip chip-20"></i>-->
+      <!--</div>-->
+      <!--<div class="bet-momey">-->
+      <!--20-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-2"></i>-->
+      <!--</div>-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-3"></i>-->
+      <!--</div>-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-4"></i>-->
+      <!--</div>-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-5"></i>-->
+      <!--</div>-->
+      <!--<div class="t-unit">-->
+      <!--<i class="saizi saizi-6"></i>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <div class="t-game t-game-3">
+        <div class="t-tit">二不同号 1:5</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-2"></i>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-3"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-4"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-3"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-4"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-3"></i>
+            <i class="saizi saizi-4"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-3"></i>
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-3"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-4"></i>
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-4"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-5"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+        </div>
+      </div>
+      <div class="t-game t-game-4 bg-black1">
+        <div class="t-tit">和值</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <p>17</p>
+            <p>1:60</p>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <p>16</p>
+            <p>1:30</p>
+          </div>
+          <div class="t-unit">
+            <p>15</p>
+            <p>1:18</p>
+          </div>
+          <div class="t-unit">
+            <p>14</p>
+            <p>1:12</p>
+          </div>
+          <div class="t-unit">
+            <p>13</p>
+            <p>1:8</p>
+          </div>
+          <div class="t-unit">
+            <p>12</p>
+            <p>1:6</p>
+          </div>
+          <div class="t-unit">
+            <p>11</p>
+            <p>1:6</p>
+          </div>
+        </div>
+        <div class="t-list">
+          <div class="t-unit">
+            <p>10</p>
+            <p>1:6</p>
+          </div>
+          <div class="t-unit">
+            <p>09</p>
+            <p>1:6</p>
+          </div>
+          <div class="t-unit">
+            <p>08</p>
+            <p>1:8</p>
+          </div>
+          <div class="t-unit">
+            <p>07</p>
+            <p>1:12</p>
+          </div>
+          <div class="t-unit">
+            <p>06</p>
+            <p>1:18</p>
+          </div>
+          <div class="t-unit">
+            <p>05</p>
+            <p>1:30</p>
+          </div>
+          <div class="t-unit">
+            <p>04</p>
+            <p>1:60</p>
+          </div>
+        </div>
+      </div>
+      <div class="t-game t-game-3 t-game-5">
+        <div class="t-tit">二同号复选 1:10</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <i class="saizi saizi-1"></i>
+            <i class="saizi saizi-1"></i>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-2"></i>
+            <i class="saizi saizi-2"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-3"></i>
+            <i class="saizi saizi-3"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-4"></i>
+            <i class="saizi saizi-4"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-5"></i>
+            <i class="saizi saizi-5"></i>
+          </div>
+          <div class="t-unit">
+            <i class="saizi saizi-6"></i>
+            <i class="saizi saizi-6"></i>
+          </div>
+        </div>
+      </div>
+      <div class="t-game t-game-3 t-game-6 bg-black1">
+        <div class="t-tit">三同号 1:30</div>
+        <div class="t-list">
+          <div class="t-unit bdr-none">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-1"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-1"></i>
+              <i class="saizi saizi-1"></i>
+            </div>
+
+          </div>
+          <div class="t-unit bdr-none">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-2"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-2"></i>
+              <i class="saizi saizi-2"></i>
+            </div>
+          </div>
+          <div class="t-unit bdr-none">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-3"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-3"></i>
+              <i class="saizi saizi-3"></i>
+            </div>
+          </div>
+          <div class="t-unit bdr-none">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-4"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-4"></i>
+              <i class="saizi saizi-4"></i>
+            </div>
+          </div>
+          <div class="t-unit bdr-none">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-5"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-5"></i>
+              <i class="saizi saizi-5"></i>
+            </div>
+          </div>
+
+          <div class="add-coin e-center">
+            <i class="chip chip-20"></i>
+          </div>
+          <div class="bet-momey">
+            20
+          </div>
+        </div>
+      </div>
+      <div class="t-game t-game-3 t-game-6">
+        <div class="t-tit">三同号单选1:180</div>
+        <div class="t-list">
+          <div class="t-unit">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-1"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-1"></i>
+              <i class="saizi saizi-1"></i>
+            </div>
+            <div class="add-coin">
+              <i class="chip chip-20"></i>
+            </div>
+            <div class="bet-momey">
+              20
+            </div>
+          </div>
+          <div class="t-unit">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-2"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-2"></i>
+              <i class="saizi saizi-2"></i>
+            </div>
+          </div>
+          <div class="t-unit">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-3"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-3"></i>
+              <i class="saizi saizi-3"></i>
+            </div>
+          </div>
+          <div class="t-unit">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-4"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-4"></i>
+              <i class="saizi saizi-4"></i>
+            </div>
+          </div>
+          <div class="t-unit">
+            <div class="t-unit-cow">
+              <i class="saizi saizi-5"></i>
+            </div>
+            <div class="t-unit-cow">
+              <i class="saizi saizi-5"></i>
+              <i class="saizi saizi-5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<!--页脚内容-->
+<ion-footer>
+  <div class="eBill--bill clear">
+    <div class="bill-detail">
+      <p>下注金额<span>1,000,000</span></p>
+      <p>账户金额<span>1,000,000</span></p>
+    </div>
+    <div class="eCurrunt">
+      <p>当前选择筹码</p>
+      <div class="eCurrunt-coin">
+        <i class="chip chip-500"></i>
+      </div>
+    </div>
+
+    <div class="coin-list">
+      <div class="coin-list-container">
+        <div class="cow">
+          <i class="chip chip-1"></i>
+          <i class="chip chip-2"></i>
+          <i class="chip chip-5"></i>
+          <i class="chip chip-10"></i>
+          <i class="chip chip-20"></i>
+        </div>
+        <div class="cow">
+          <i class="chip chip-50"></i>
+          <i class="chip chip-100"></i>
+          <i class="chip chip-500"></i>
+          <i class="chip chip-1000"></i>
+          <i class="chip chip-5000"></i>
+        </div>
+      </div>
+      <div class="e-triangle">
+        <div class="e-inner-triangle">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-bet">
+    <ul>
+      <li class="e-clear">
+        <a href="javascript:;" class="button button-outline">清空</a><a href="javascript:;" class="button button-outline">撤销</a>
+      </li>
+      <li class="confirm-w">
+        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger"
+           (touchstart)="goBuybasket(gameconfigdata?.defaultsMethodData?.c)">
+          <span>确认投注</span><span class="confirm-number"
+                                 *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ion-footer>
+<!--透明背景-->
+<div class="body-bg"></div>
+<!--弹框内容-->
+<div class="alert-con">
+  <div class="play-select">
+    <div class="play-title">玩法选择</div>
+  </div>
+  <div class="after-select">
+    <div class="after-con" [class.active]="a.defaultMethod" *ngFor="let a of gameconfigdata.methedsList.game_ways">
+      <div class="after-list clear after-list-{{b.name_cn.length + 1}}" *ngFor="let b of a.children">
+        <ul class="lastchina">
+          <li *ngFor="let c of b.children"><i [class.play-yellow]="c.defaultMethod" class="play-black play-opacity"
+                                              (touchstart)="tmpComformMethod(a,b,c)">{{c.name_cn}}</i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="close-modal bet-btn" (touchstart)="comformMethod(a,b,c)">确定</div>
+</div>
