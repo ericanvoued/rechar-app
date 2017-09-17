@@ -43,7 +43,10 @@ export class HomePage {
         toPage = 'CqsscPage';
       } else if (/K10$/i.test(gameNav.nav)) {
         toPage = 'Pk10Page';
+      } else if (/DICE$/i.test(gameNav.nav)) {
+        toPage = 'SaibaoPage';
       }
+
       this.navCtrl.push(toPage, {nav: gameNav});
       this.getRecord = await this.homeService.postRemoteServer();
     }

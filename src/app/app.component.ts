@@ -53,7 +53,7 @@ export class MyApp {
 
   playGame(gameNav, toPage): void {
     if (!gameNav.time) {
-      this.share.showToast('即将上线',1000);
+      this.share.showToast('即将上线', 1000);
       return;
     }
     this.menu.close();
@@ -64,7 +64,10 @@ export class MyApp {
         toPage = 'CqsscPage';
       } else if (/K10$/i.test(gameNav.nav)) {
         toPage = 'Pk10Page';
+      } else if (/DICE$/i.test(gameNav.nav)) {
+        toPage = 'SaibaoPage';
       }
+
       this.nav.push(toPage, {nav: gameNav})
     }
   }
