@@ -19,7 +19,7 @@ import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
   templateUrl: 'saibao.html',
 })
 export class SaibaoPage {
-  private chips: any={};
+  chips: any={change:0,chip:10};
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     this.other();
@@ -51,7 +51,10 @@ export class SaibaoPage {
   }
 
   changeChip(){
-    this.chips.change=1;
+    if(!this.chips.change)
+      this.chips.change=1;
+    else
+      this.chips.change=0;
   }
 
   selectChip(number){

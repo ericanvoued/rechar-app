@@ -17,23 +17,9 @@ export class SubBusinessToolProvider extends BusinessTool {
   initSetBussiness(c) {
     this.SetRenderData(c);
     console.log(this.renderData);
-
-    c.modesArray = [1, 0.1, 0.01];
-    let mutipleAndModeObj = {
-      mode: 1,
-      times: 1
-    };
-
-    c.mutipleAndModeObj = mutipleAndModeObj;
-
-    c.count = 0;
-    c.totals = 0;
+    c.mode=0.1;
     //是否和值
     this._.observe(c.selectarea, 'update', () => {
-      this.mainBussiness(c);
-    });
-
-    this._.observe(c.mutipleAndModeObj, 'update', () => {
       this.mainBussiness(c);
     });
 
