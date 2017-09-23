@@ -34,6 +34,15 @@ export class SaibaoPage {
   private cccInterval: number;
   ccc: boolean;
   yearReg = /[\d]{4}-/;
+  chips={
+    change:0,
+    chip:10
+  };
+  selects={
+    groups:{},
+    total:0
+  };
+
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     this.other();
@@ -209,12 +218,18 @@ export class SaibaoPage {
     this.util.clearBall(obj.selectarea);
   }
 
-}
+  changeChip(){
+    this.chips.change=1;
+  }
 
+  selectChip(number){
+    this.chips.change=0;
+    this.chips.chip=number;
+  }
+}
 
 function debounce(func, wait?, immediate?) {
   var timeout, args, context, timestamp, result;
-
   var later = function () {
     var last = new Date().getTime() - timestamp;
 
@@ -239,8 +254,6 @@ function debounce(func, wait?, immediate?) {
       result = func.apply(context, args);
       context = args = null;
     }
-
     return result;
-  };
-
+  }
 }
