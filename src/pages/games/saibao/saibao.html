@@ -51,8 +51,6 @@
     <!--class="saizi saizi-{{num}}"></i>-->
     <!--</div>-->
     <!--</div>-->
-
-
     <div class="game-table">
       <div class="t-game t-game-1">
         <div class="t-tit">特殊玩法 1:1</div>
@@ -102,12 +100,8 @@
           <div class="t-unit">
             <i class="saizi saizi-1"></i>
             <i class="saizi saizi-2"></i>
-            <div class="add-coin">
-              <i class="chip chip-20"></i>
-            </div>
-            <div class="bet-momey">
-              20
-            </div>
+            <div class="add-coin"><i class="chip chip-20"></i></div>
+            <div class="bet-momey">20</div>
           </div>
           <div class="t-unit">
             <i class="saizi saizi-1"></i>
@@ -173,12 +167,8 @@
           <div class="t-unit">
             <p>17</p>
             <p>1:60</p>
-            <div class="add-coin">
-              <i class="chip chip-20"></i>
-            </div>
-            <div class="bet-momey">
-              20
-            </div>
+            <div class="add-coin"><i class="chip chip-20"></i></div>
+            <div class="bet-momey">20</div>
           </div>
           <div class="t-unit">
             <p>16</p>
@@ -242,12 +232,8 @@
           <div class="t-unit">
             <i class="saizi saizi-1"></i>
             <i class="saizi saizi-1"></i>
-            <div class="add-coin">
-              <i class="chip chip-20"></i>
-            </div>
-            <div class="bet-momey">
-              20
-            </div>
+            <div class="add-coin"><i class="chip chip-20"></i></div>
+            <div class="bet-momey">20</div>
           </div>
           <div class="t-unit">
             <i class="saizi saizi-2"></i>
@@ -282,7 +268,6 @@
               <i class="saizi saizi-1"></i>
               <i class="saizi saizi-1"></i>
             </div>
-
           </div>
           <div class="t-unit bdr-none">
             <div class="t-unit-cow">
@@ -320,13 +305,8 @@
               <i class="saizi saizi-5"></i>
             </div>
           </div>
-
-          <div class="add-coin e-center">
-            <i class="chip chip-20"></i>
-          </div>
-          <div class="bet-momey">
-            20
-          </div>
+          <div class="add-coin e-center"><i class="chip chip-20"></i></div>
+          <div class="bet-momey">20</div>
         </div>
       </div>
       <div class="t-game t-game-3 t-game-6 dicedicesantonghao">
@@ -343,9 +323,7 @@
             <div class="add-coin">
               <i class="chip chip-20"></i>
             </div>
-            <div class="bet-momey">
-              20
-            </div>
+            <div class="bet-momey">20</div>
           </div>
           <div class="t-unit">
             <div class="t-unit-cow">
@@ -399,25 +377,24 @@
     <div class="eCurrunt">
       <p>当前选择筹码</p>
       <div class="eCurrunt-coin">
-        <i class="chip chip-500"></i>
+        <i class="chip chip-{{chips.chip}}" (click)="changeChip()"></i>
       </div>
     </div>
-
-    <div class="coin-list">
+    <div class="coin-list" *ngIf="chips.change">
       <div class="coin-list-container">
         <div class="cow">
-          <i class="chip chip-1"></i>
-          <i class="chip chip-2"></i>
-          <i class="chip chip-5"></i>
-          <i class="chip chip-10"></i>
-          <i class="chip chip-20"></i>
+          <i class="chip chip-1" (click)="selectChip(1)"></i>
+          <i class="chip chip-2" (click)="selectChip(2)"></i>
+          <i class="chip chip-5" (click)="selectChip(5)"></i>
+          <i class="chip chip-10" (click)="selectChip(10)"></i>
+          <i class="chip chip-20" (click)="selectChip(20)"></i>
         </div>
         <div class="cow">
-          <i class="chip chip-50"></i>
-          <i class="chip chip-100"></i>
-          <i class="chip chip-500"></i>
-          <i class="chip chip-1000"></i>
-          <i class="chip chip-5000"></i>
+          <i class="chip chip-50" (click)="selectChip(50)"></i>
+          <i class="chip chip-100" (click)="selectChip(100)"></i>
+          <i class="chip chip-500" (click)="selectChip(500)"></i>
+          <i class="chip chip-1000" (click)="selectChip(1000)"></i>
+          <i class="chip chip-5000" (click)="selectChip(5000)"></i>
         </div>
       </div>
       <div class="e-triangle">
@@ -443,20 +420,3 @@
 </ion-footer>
 <!--透明背景-->
 <div class="body-bg"></div>
-<!--弹框内容-->
-<div class="alert-con">
-  <div class="play-select">
-    <div class="play-title">玩法选择</div>
-  </div>
-  <div class="after-select">
-    <div class="after-con" [class.active]="a.defaultMethod" *ngFor="let a of gameconfigdata.methedsList.game_ways">
-      <div class="after-list clear after-list-{{b.name_cn.length + 1}}" *ngFor="let b of a.children">
-        <ul class="lastchina">
-          <li *ngFor="let c of b.children"><i [class.play-yellow]="c.defaultMethod" class="play-black play-opacity"
-                                              (touchstart)="tmpComformMethod(a,b,c)">{{c.name_cn}}</i></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="close-modal bet-btn" (touchstart)="comformMethod(a,b,c)">确定</div>
-</div>
