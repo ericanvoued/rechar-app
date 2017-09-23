@@ -50,11 +50,6 @@ export class SaibaoPage {
 
   }
 
-  goHelpPage() {
-    this.navCtrl.push("PlayHelpPage");
-  }
-
-
   changeChip(){
     this.chips.change=1;
   }
