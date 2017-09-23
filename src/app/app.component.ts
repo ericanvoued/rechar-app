@@ -11,7 +11,7 @@ import {DateFormat} from "../providers/tools/date";
 })
 export class MyApp {
   ft = DateFormat.FormatTime;
-  rootPage: any = "LoginPage";
+  rootPage: any = "SaibaoPage";
   userTypeMap = Config.userTypeMap;
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;
@@ -20,9 +20,9 @@ export class MyApp {
 
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
-      if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot('LoginPage'), 500);
-      }
+      // if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
+      //   setTimeout(v => this.nav.setRoot('LoginPage'), 500);
+      // }
       statusBar.styleDefault();
       splashScreen.hide();
       this.egisterBackButtonAction();
