@@ -43,17 +43,8 @@
       <div class="s-nav-r">
         <div class="h-text s-rText"><p>第<span>{{gameconfigdata.defaultData.data?.last_number}}</span>期</p><p>开奖记录</p></div>
         <div class="t">
-          <i class="saizi saizi-4"></i><i class="saizi saizi-2"></i><i class="saizi saizi-2"></i>
+          <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls" class="saizi saizi-{{num}}"></i>
         </div>
-
-
-        <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"
-           class=`saizi saizi-{{num}}`></i>
-
-
-
-
-
       </div>
     </div>
 
