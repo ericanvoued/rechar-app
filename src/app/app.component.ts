@@ -67,7 +67,6 @@ export class MyApp {
       } else if (/DICE$/i.test(gameNav.nav)) {
         toPage = 'SaibaoPage';
       }
-
       this.nav.push(toPage, {nav: gameNav})
     }
   }

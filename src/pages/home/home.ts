@@ -46,7 +46,6 @@ export class HomePage {
       } else if (/DICE$/i.test(gameNav.nav)) {
         toPage = 'SaibaoPage';
       }
-
       this.navCtrl.push(toPage, {nav: gameNav});
       this.getRecord = await this.homeService.postRemoteServer();
     }
