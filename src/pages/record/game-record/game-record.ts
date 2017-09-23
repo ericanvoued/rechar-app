@@ -32,7 +32,7 @@ export class GameRecordPage {
     let startDay = new Date();
     startDay.setDate(startDay.getDate() - 7);
     let endDay = new Date();
-    endDay.setDate(endDay.getDate() +1);
+    endDay.setDate(endDay.getDate() + 1);
     this.eventOne = {
       timeStarts: DateFormat.format(startDay),
       timeEnds: DateFormat.format(endDay),
@@ -40,7 +40,7 @@ export class GameRecordPage {
     };
     _.observe(this.eventOne, () => this.changeParameter(this.titleIndex));
     this.viewCtrl.didEnter.subscribe(() => {
-      _.observe(this.share.parameters[this.titleIndex], async () => {
+      _.observe(this.share.parameters, async () => {
         await this.getRecordData(this.titleIndex);
         if (!this.isTitle) {
           this.backData = this.filterData(this.share.gameRecord.data);
@@ -68,7 +68,7 @@ export class GameRecordPage {
   filterData(inputData) {
     if (this.pet1 == 9) return inputData;
     let outputData = [];
-    inputData.forEach((v) => {
+    inputData && inputData.forEach((v) => {
       if (v.status == this.pet1) outputData.push(v)
     });
     return outputData;

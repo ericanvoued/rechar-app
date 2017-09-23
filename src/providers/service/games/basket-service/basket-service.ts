@@ -66,14 +66,19 @@ export class BasketServiceProvider extends BusinessTool {
     let min = this.share.basketData[0];
     this.totalAllCount = 0;
     this.totalAllNum = 0;
+    let totalAllCount = 0;
     this.share.basketData.forEach((v) => {
-      this.totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.share.globalData.globalMutile * this.share.globalData.trace * v.count);
-      this.totalAllCount = +this.totalAllCount.toFixed(4);
+      totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.share.globalData.globalMutile * this.share.globalData.trace * v.count);
+
+      totalAllCount = +totalAllCount.toFixed(4);
+
       this.totalAllNum += v.count;
       if (v.max_multiple < min.max_multiple) {
         min = v;
       }
     });
+    this.totalAllCount = totalAllCount;
+    console.log('richardgongaaaa totalAllCount:', totalAllCount);
 
     if (min) {
       this.share.MinMutiple.minmax_multiple = min.max_multiple;
@@ -135,7 +140,7 @@ export class BasketServiceProvider extends BusinessTool {
 
     obj.label = [];
     obj.isliangmianpan = /^liangmianpan/.test(obj.fullName_en);
-    obj.iszhixuanhezhi  =/^zhixuanhezhi/.test(obj.fullName_en);
+    obj.iszhixuanhezhi = /^zhixuanhezhi/.test(obj.fullName_en);
     if (obj.isliangmianpan) {
       obj.selectarea.forEach((v, k) => {
         if (Array.isArray(v.value)) {
@@ -159,9 +164,9 @@ export class BasketServiceProvider extends BusinessTool {
         if (Array.isArray(v.value)) {
           let tmp = [];
           v.value.forEach((v1, k1) => {
-              v1 && tmp.push(obj.bet_numberArrObj[k].value[k1]);
+            v1 && tmp.push(obj.bet_numberArrObj[k].value[k1]);
           });
-          if(obj.iszhixuanhezhi){
+          if (obj.iszhixuanhezhi) {
             obj.label.push(tmp.join('|'));
           } else {
             obj.label.push(tmp.join(''));
@@ -312,25 +317,27 @@ export class BasketServiceProvider extends BusinessTool {
   setcustomprizeGroupchoose: any;
 
   getBallsString(): string {
-    if(this.ispk10){
+    if (this.ispk10) {
       return this.getStringGenertorispk10();
     }
     return this.getStringGenertor();
   }
-  private getStringGenertorispk10():string{
+
+  private getStringGenertorispk10(): string {
 
     let balls = [];
 
     this.share.basketData.forEach((v, key) => {
       let ball = this.fiterBalls(v, v.name_en);
-      if(v.iszhixuanhezhi){
+
+      if (v.iszhixuanhezhi) {
         ball = v.label;
-      } else if(v.isliangmianpan){
+      } else if (v.isliangmianpan || /caichehao.dingweidan.dingweidan/.test(v.fullName_en)) {
         ball = [];
-        v.selectarea.forEach(v3=>{
-          if(Array.isArray(v3.value)){
+        v.selectarea.forEach(v3 => {
+          if (Array.isArray(v3.value)) {
             let tmp = [];
-            v3.value.forEach((v4,k4)=> {
+            v3.value.forEach((v4, k4) => {
               v4 && tmp.push(k4);
             });
             ball.push(tmp.join(''));
@@ -339,7 +346,7 @@ export class BasketServiceProvider extends BusinessTool {
       }
 
       balls.push({
-        "jsId": key,
+        "jsId": 2,
         "wayId": v.id,
         "ball": Array.isArray(ball) ? ball.join('|') : ball,
         "position": [],
@@ -353,9 +360,11 @@ export class BasketServiceProvider extends BusinessTool {
       });
 
     });
+
     return this.encrypt(JSON.stringify(balls));
   }
-  private getStringGenertor() :string{
+
+  private getStringGenertor(): string {
     let balls = [];
     let ReplaceBallNameByMap = {
       '5单0双': '5',
@@ -450,8 +459,8 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async submit(goContent,ispk10?) {
-    this.ispk10 = ispk10;
+  async submit(goContent) {
+    this.ispk10 = this.share.ispk10;
     if (!(this.share.basketData.length)) {
       this.share.showToast('号码篮不能为空', 1000);
     } else {
@@ -461,9 +470,10 @@ export class BasketServiceProvider extends BusinessTool {
       this.submitProcessing = true;
       this.share.showLoading();
       this.gameconfigure.getIssuesList = await this.gameconfigure.outergetIssues();
-      this.submitProcessing = false;
       this.loading && this.loading.dismiss();
       let data = await this.doSubmint();
+      this.submitProcessing = false;
+
       this.finishRequest(data, goContent);
     }
   }
