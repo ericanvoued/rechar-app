@@ -24,7 +24,7 @@ export class CqsscPage extends Effect {
   ccc: boolean;
   yearReg = /[\d]{4}-/;
 
-  constructor(private share:GlobalShareProvider,private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
+  constructor(private share: GlobalShareProvider, private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
     super();
 
     this.other();
@@ -122,6 +122,9 @@ export class CqsscPage extends Effect {
     }
 
     obj.mutipleAndModeObj.mode = mode;
+
+    console.log('obj.mutipleAndModeObj.mode:', obj.mutipleAndModeObj.mode);
+
     obj.max_multiple = obj.oldmax_multiple / mode;
     this.restTimesWhenChangeMode(obj);
   }
@@ -135,11 +138,11 @@ export class CqsscPage extends Effect {
   messages(obj): void {
     let hasChoose = this.basket.hasChooseBall(obj.selectarea);
     if (hasChoose && (obj.count == 0)) {
-      this.share.showToast(obj.bet_note,1000);
+      this.share.showToast(obj.bet_note, 1000);
     } else if (obj.isRedudu) {
-      this.share.showToast('订单已经存在',1000);
+      this.share.showToast('订单已经存在', 1000);
     } else {
-      this.share.showToast('请选择注单',1000);
+      this.share.showToast('请选择注单', 1000);
     }
   }
 
@@ -147,7 +150,7 @@ export class CqsscPage extends Effect {
     let isSucess = this.basket.addDataToBasket(obj);
     if (isSucess) {
       this.clear(obj);
-      this.share.showToast('注单添加成功',1000,'bottom');
+      this.share.showToast('注单添加成功', 1000, 'bottom');
     } else {
       this.messages(obj);
     }
@@ -176,7 +179,6 @@ export class CqsscPage extends Effect {
   }
 
 }
-
 
 
 function debounce(func, wait?, immediate?) {

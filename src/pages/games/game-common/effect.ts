@@ -217,7 +217,6 @@ export class Effect {
       oLi.click(function () {
         oLi.removeClass('active');
         $(this).addClass('active');
-        This.find('i').text($(this).text());
       })
     });
     $(document).on('touchstart', function () {

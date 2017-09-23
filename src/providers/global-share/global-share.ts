@@ -35,6 +35,7 @@ export class GlobalShareProvider {
   }};
   gameId: any | string | number;
   defaultData: any;
+  ispk10: any;
   constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController) {}
 
   showToast(msg,time?,position?) {
