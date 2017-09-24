@@ -1,28 +1,153 @@
 {
   "gameId": "71",
   "isTrace": 0,
-  "traceWinStop": 1,
-  "traceStopValue": 1,
+  "traceWinStop": 0,
+  "traceStopValue": 0,
   "balls": [
     {
-      "jsId": 0?,
-      "wayId": "69"?,
-      "ball": "2|7|7"?,
-      "position": [],
-      "viewBalls": "2|7|7"?,
+      "wayId": "243",
+      "type": "daxiaodanshuang",
+      "ball": 1,
       "num": 1,
-      "type": "housan.zhixuan.fushi"?,
       "onePrice": 2,
-      "prize_group": 1950,
-      "moneyunit": 0.1,
-      "multiple": 1?
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "243",
+      "type": "daxiaodanshuang",
+      "ball": 3,
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "241",
+      "type": "ertonghao",
+      "ball": "66",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "241",
+      "type": "ertonghao",
+      "ball": "55",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "239",
+      "type": "santonghao",
+      "ball": "555",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "239",
+      "type": "santonghao",
+      "ball": "444",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "244",
+      "type": "santonghaotongxuan",
+      "ball": 0,
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "242",
+      "type": "hezhi",
+      "ball": "17",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "242",
+      "type": "hezhi",
+      "ball": "16",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "240",
+      "type": "erbutonghao",
+      "ball": "56",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "240",
+      "type": "erbutonghao",
+      "ball": "46",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "240",
+      "type": "erbutonghao",
+      "ball": "45",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "238",
+      "type": "dantiaoyishai",
+      "ball": "6",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
+    },
+    {
+      "wayId": "238",
+      "type": "dantiaoyishai",
+      "ball": "5",
+      "num": 1,
+      "onePrice": 2,
+      "moneyunit": 0.01,
+      "multiple": 500,
+      "prize_group": 1800
     }
   ],
   "orders": {
-    "?": 1
+    "20170924070": 1
   },
-  "amount": "?",
-  "is_encoded": 1,
-  "_token": "?",
-  "bet_source": "?"
+  "amount": 14000,
+  "_token": "2tiLsh ooRiwUtHARJm1ycdMUO6y5OOQqNVVQibmDY5"
 }
