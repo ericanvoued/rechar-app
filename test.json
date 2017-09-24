@@ -1,28 +1,28 @@
 {
-  "gameId": "1",
+  "gameId": "71",
   "isTrace": 0,
   "traceWinStop": 1,
   "traceStopValue": 1,
   "balls": [
     {
-      "jsId": 0,
-      "wayId": "69",
-      "ball": "2|7|7",
+      "jsId": 0?,
+      "wayId": "69"?,
+      "ball": "2|7|7"?,
       "position": [],
-      "viewBalls": "2|7|7",
+      "viewBalls": "2|7|7"?,
       "num": 1,
-      "type": "housan.zhixuan.fushi",
+      "type": "housan.zhixuan.fushi"?,
       "onePrice": 2,
       "prize_group": 1950,
-      "moneyunit": 1,
-      "multiple": 1
+      "moneyunit": 0.1,
+      "multiple": 1?
     }
   ],
   "orders": {
-    "170923097": 1
+    "?": 1
   },
-  "amount": 0,
+  "amount": "?",
   "is_encoded": 1,
-  "_token": "VoI7hTyfuySFKSXncLoQPX7z6cpVUHscxfOX7CwP",
-  "bet_source": "ios"
+  "_token": "?",
+  "bet_source": "?"
 }

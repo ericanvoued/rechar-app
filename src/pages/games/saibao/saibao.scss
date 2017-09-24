@@ -58,6 +58,10 @@
   font-size: 12px;
 }
 
+@for $i from 0 through 200{
+  .chip-index-#{$i}{bottom:#{$i*3}px;}
+}
+
 .equal {
   width: 100%;
   flex: 1;
@@ -203,6 +207,8 @@
         bottom: -3px;
         right: 0;
         .chip{
+          position: absolute;
+          right: 0px;
           width: 31px;
           height: 31px;
         }
@@ -237,6 +243,8 @@
       bottom: -3px;
 
       .chip{
+        position: absolute;
+        right: 0px;
         width: 31px;
         height: 31px;
       }
@@ -280,13 +288,10 @@
 }
 
 .t-game-2 {
-
   .t-list {
-
     .t-unit {
       justify-content: center;
     }
-
   }
   .saizi {
     align-self: center;
@@ -347,6 +352,7 @@
   .t-list {
     .t-unit {
       flex-wrap: wrap;
+      width: 16.66%;
     }
     .t-unit-cow{
        width: 100%;
@@ -356,8 +362,8 @@
      }
   }
   .saizi {
-    width: 29px;
-    height: 29px;
+    width: 21px;
+    height: 21px;
   }
 
 }

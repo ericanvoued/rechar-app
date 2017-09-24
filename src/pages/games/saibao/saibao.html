@@ -55,329 +55,86 @@
       <div class="t-game t-game-1">
         <div class="t-tit">特殊玩法 1:1</div>
         <div class="t-list dicedicedaxiaodanshuang">
-          <div class="t-unit">
-            <p>大<span>11~17</span></p>
-            <p>1:1</p>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <p>小<span>4~10</span></p>
-            <p>1:1</p>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <p>单</p>
-            <p>1:1</p>
-          </div>
-          <div class="t-unit">
-            <p>双</p>
-            <p>1:1</p>
+          <div class="t-unit" *ngFor="let item of gameData.game1">
+            <p>{{item.p1}}<span>{{item.s}}</span></p>
+            <p>{{item.p2}}</p>
+            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
       </div>
-
       <div class="t-game t-game-2 bg-black1 dicedicedantiaoyishai">
         <div class="t-tit">猜一个号 单骰1:1 双骰1:2 三骰1:3</div>
         <div class="t-list">
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
+          <div class="t-unit" *ngFor="let item of gameData.game2">
+            <i class="saizi saizi-{{item.p}}"></i>
+            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
-          <div class="t-unit"><i class="saizi saizi-2"></i></div>
-          <div class="t-unit"><i class="saizi saizi-3"></i></div>
-          <div class="t-unit"><i class="saizi saizi-4"></i></div>
-          <div class="t-unit"><i class="saizi saizi-5"></i></div>
-          <div class="t-unit"><i class="saizi saizi-6"></i></div>
         </div>
       </div>
-
       <div class="t-game t-game-3 dicediceerbutonghao">
         <div class="t-tit">二不同号 1:5</div>
         <div class="t-list">
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-2"></i>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-3"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-4"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-5"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-6"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-2"></i>
-            <i class="saizi saizi-3"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-2"></i>
-            <i class="saizi saizi-4"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-2"></i>
-            <i class="saizi saizi-5"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-2"></i>
-            <i class="saizi saizi-6"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-3"></i>
-            <i class="saizi saizi-4"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-3"></i>
-            <i class="saizi saizi-5"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-3"></i>
-            <i class="saizi saizi-6"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-4"></i>
-            <i class="saizi saizi-5"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-4"></i>
-            <i class="saizi saizi-6"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-5"></i>
-            <i class="saizi saizi-6"></i>
+          <div class="t-unit" *ngFor="let item of gameData.game3">
+            <i class="saizi saizi-{{item.p1}}"></i>
+            <i class="saizi saizi-{{item.p2}}"></i>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
       </div>
       <div class="t-game t-game-4 bg-black1 dicedicehezhi">
         <div class="t-tit">和值</div>
-        <div class="t-list">
-          <div class="t-unit">
-            <p>17</p>
-            <p>1:60</p>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <p>16</p>
-            <p>1:30</p>
-          </div>
-          <div class="t-unit">
-            <p>15</p>
-            <p>1:18</p>
-          </div>
-          <div class="t-unit">
-            <p>14</p>
-            <p>1:12</p>
-          </div>
-          <div class="t-unit">
-            <p>13</p>
-            <p>1:8</p>
-          </div>
-          <div class="t-unit">
-            <p>12</p>
-            <p>1:6</p>
-          </div>
-          <div class="t-unit">
-            <p>11</p>
-            <p>1:6</p>
-          </div>
-        </div>
-        <div class="t-list">
-          <div class="t-unit">
-            <p>10</p>
-            <p>1:6</p>
-          </div>
-          <div class="t-unit">
-            <p>09</p>
-            <p>1:6</p>
-          </div>
-          <div class="t-unit">
-            <p>08</p>
-            <p>1:8</p>
-          </div>
-          <div class="t-unit">
-            <p>07</p>
-            <p>1:12</p>
-          </div>
-          <div class="t-unit">
-            <p>06</p>
-            <p>1:18</p>
-          </div>
-          <div class="t-unit">
-            <p>05</p>
-            <p>1:30</p>
-          </div>
-          <div class="t-unit">
-            <p>04</p>
-            <p>1:60</p>
+        <div class="t-list" *ngFor="let class of gameData.game4">
+          <div class="t-unit" *ngFor="let item of class">
+            <p>{{item.n}}</p>
+            <p>1:{{item.b}}</p>
+            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
       </div>
       <div class="t-game t-game-3 t-game-5 dicediceertonghao">
         <div class="t-tit">二同号复选 1:10</div>
         <div class="t-list">
-          <div class="t-unit">
-            <i class="saizi saizi-1"></i>
-            <i class="saizi saizi-1"></i>
-            <div class="add-coin"><i class="chip chip-20"></i></div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-2"></i>
-            <i class="saizi saizi-2"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-3"></i>
-            <i class="saizi saizi-3"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-4"></i>
-            <i class="saizi saizi-4"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-5"></i>
-            <i class="saizi saizi-5"></i>
-          </div>
-          <div class="t-unit">
-            <i class="saizi saizi-6"></i>
-            <i class="saizi saizi-6"></i>
+          <div class="t-unit" *ngFor="let item of gameData.game5">
+            <i class="saizi saizi-{{item.p}}"></i>
+            <i class="saizi saizi-{{item.p}}"></i>
+            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
       </div>
-      <div class="t-game t-game-3 t-game-6 bg-black1 dicedicesantonghaotongxuan">
+      <div class="t-game t-game-3 t-game-6 bg-black1 dicedicesantonghaotongxuan" *ngFor="let a of [1,2,3]">
         <div class="t-tit">三同号 1:30</div>
-        <div class="t-list">
-          <div class="t-unit bdr-none">
+        <div class="t-list" *ngFor="let item of gameData.game6">
+          <div class="t-unit bdr-none" *ngFor="let num of item.p">
             <div class="t-unit-cow">
-              <i class="saizi saizi-1"></i>
+              <i class="saizi saizi-{{num}}"></i>
             </div>
             <div class="t-unit-cow">
-              <i class="saizi saizi-1"></i>
-              <i class="saizi saizi-1"></i>
-            </div>
-          </div>
-          <div class="t-unit bdr-none">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-2"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-2"></i>
-              <i class="saizi saizi-2"></i>
+              <i class="saizi saizi-{{num}}"></i>
+              <i class="saizi saizi-{{num}}"></i>
             </div>
           </div>
-          <div class="t-unit bdr-none">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-3"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-3"></i>
-              <i class="saizi saizi-3"></i>
-            </div>
-          </div>
-          <div class="t-unit bdr-none">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-4"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-4"></i>
-              <i class="saizi saizi-4"></i>
-            </div>
-          </div>
-          <div class="t-unit bdr-none">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-5"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-5"></i>
-              <i class="saizi saizi-5"></i>
-            </div>
-          </div>
-          <div class="t-unit bdr-none">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-6"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-6"></i>
-              <i class="saizi saizi-6"></i>
-            </div>
-          </div>
-          <div class="add-coin e-center"><i class="chip chip-20"></i></div>
-          <div class="bet-momey">20</div>
+          <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+          <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
         </div>
       </div>
       <div class="t-game t-game-3 t-game-6 dicedicesantonghao">
         <div class="t-tit">三同号单选1:180</div>
         <div class="t-list">
-          <div class="t-unit">
+          <div class="t-unit" *ngFor="let item of gameData.game7">
             <div class="t-unit-cow">
-              <i class="saizi saizi-1"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-1"></i>
-              <i class="saizi saizi-1"></i>
-            </div>
-            <div class="add-coin">
-              <i class="chip chip-20"></i>
-            </div>
-            <div class="bet-momey">20</div>
-          </div>
-          <div class="t-unit">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-2"></i>
+              <i class="saizi saizi-{{item.p}}"></i>
             </div>
             <div class="t-unit-cow">
-              <i class="saizi saizi-2"></i>
-              <i class="saizi saizi-2"></i>
+              <i class="saizi saizi-{{item.p}}"></i>
+              <i class="saizi saizi-{{item.p}}"></i>
             </div>
-          </div>
-          <div class="t-unit">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-3"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-3"></i>
-              <i class="saizi saizi-3"></i>
-            </div>
-          </div>
-          <div class="t-unit">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-4"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-4"></i>
-              <i class="saizi saizi-4"></i>
-            </div>
-          </div>
-          <div class="t-unit">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-5"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-5"></i>
-              <i class="saizi saizi-5"></i>
-            </div>
-          </div>
-          <div class="t-unit">
-            <div class="t-unit-cow">
-              <i class="saizi saizi-6"></i>
-            </div>
-            <div class="t-unit-cow">
-              <i class="saizi saizi-6"></i>
-              <i class="saizi saizi-6"></i>
-            </div>
+            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
       </div>
@@ -400,19 +157,8 @@
     </div>
     <div class="coin-list" *ngIf="chips.change">
       <div class="coin-list-container">
-        <div class="cow">
-          <i class="chip chip-1" (click)="selectChip(1)"></i>
-          <i class="chip chip-2" (click)="selectChip(2)"></i>
-          <i class="chip chip-5" (click)="selectChip(5)"></i>
-          <i class="chip chip-10" (click)="selectChip(10)"></i>
-          <i class="chip chip-20" (click)="selectChip(20)"></i>
-        </div>
-        <div class="cow">
-          <i class="chip chip-50" (click)="selectChip(50)"></i>
-          <i class="chip chip-100" (click)="selectChip(100)"></i>
-          <i class="chip chip-500" (click)="selectChip(500)"></i>
-          <i class="chip chip-1000" (click)="selectChip(1000)"></i>
-          <i class="chip chip-5000" (click)="selectChip(5000)"></i>
+        <div class="cow" *ngFor="let row of chips.show">
+          <div *ngFor="let num of row"><i class="chip chip-{{num}}" (click)="selectChip(num)"></i></div>
         </div>
       </div>
       <div class="e-triangle">
