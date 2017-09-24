@@ -187,7 +187,10 @@ export class SaibaoPage {
   }
 
   backSelect() {
-    if (this.gameData.last.length == 0) return;
+    if (this.gameData.last.length == 0) {
+      this.share.showToast('余额不足');
+      return;
+    }
     let r = this.gameData.last.pop();
     for (let item in this.gameData) {
       if (item == r.name) {
