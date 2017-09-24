@@ -7,13 +7,6 @@ import {BasketServiceProvider} from "../../../providers/service/games/basket-ser
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 import * as $ from 'jquery';
 
-/**
- * Generated class for the SaibaoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-saibao',
