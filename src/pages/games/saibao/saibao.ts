@@ -114,6 +114,7 @@ export class SaibaoPage {
     }
     for(let item in this.gameData){
       if(item==game){
+        if(this.gameData.money-this.gameData.chips.chip<0) return;
         this.gameData[item][i].g.push(this.gameData.chips.chip);
         this.gameData[item][i].t+=this.gameData.chips.chip;
         this.gameData.total+=this.gameData.chips.chip;
