@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 import {SubBusinessToolProvider} from "./sub-business-tool";
@@ -144,7 +144,8 @@ export class SaibaoPage {
     this.gameData.chips.chip = number;
   }
 
-  clickItem(game, i) {
+  clickItem(game, i,$event) {
+    console.log("$event:",$event);
     if (this.gameData.chips.change) {
       this.gameData.chips.change = 0;
       return;
@@ -207,7 +208,7 @@ export class SaibaoPage {
     var m = Math.pow(10, digit);
     return parseInt((f * m) + '', 10) / m;
   }
-
+  @ViewChild('saobaocontent') saobaocontent
   getvisableHeight(obj){
     var t = obj.offsetTop;
     var t2 = obj.offsetLeft;
@@ -217,7 +218,7 @@ export class SaibaoPage {
       t2 += obj.offsetLeft;
     }
 
-    var scrollTop = $('.scroll-content').scrollTop();
+    var scrollTop = $(this.saobaocontent.nativeElement).find('.scroll-content').scrollTop();
     return {top: t - scrollTop, left: t2};
   }
 }
