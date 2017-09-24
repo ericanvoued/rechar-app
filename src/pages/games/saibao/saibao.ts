@@ -168,11 +168,11 @@ export class SaibaoPage {
   }
 
   goBuyBasket(obj) {
+    console.log(this.basket.basketBall);
     if (this.gameData.total ==0) {
       this.share.showToast('请投注后再提交',1000);
     } else {
-      this.share.basketData.push(1);
-      this.basket.submit(this);
+      this.basket.saobaoSubmit(this.basket.basketBall);
     }
   }
 

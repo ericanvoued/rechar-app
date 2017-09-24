@@ -1,4 +1,3 @@
-
 import {Injectable} from '@angular/core';
 import {HttpClientProvider} from "../../../http-client/http-client";
 import {BusinessTool} from "../../../tools/business-tool";
@@ -24,7 +23,7 @@ var platformInstance = new PlatformDetected();
 export class BasketServiceProvider extends BusinessTool {
   ispk10: any;
   basketData = [];
-  basketBall=[];
+  basketBall = [];
   c = {name_cn: '', prize: 0};
 
   totalAllCount: number;
@@ -321,7 +320,7 @@ export class BasketServiceProvider extends BusinessTool {
   getBallsString(): string {
     if (this.ispk10) {
       return this.getStringGenertorispk10();
-    }else if(+(this.share.gameId)==71){
+    } else if (+(this.share.gameId) == 71) {
       return this.encrypt(JSON.stringify(this.basketBall));
     }
     return this.getStringGenertor();
@@ -417,6 +416,32 @@ export class BasketServiceProvider extends BusinessTool {
     return orderIssue;
   }
 
+  saobogetSubmitData(balls): Object {
+    let totalamont = 0;
+    balls.forEach((v) => {
+      totalamont += (0.2 * v.multiple * v.num);
+    });
+
+    let orderIssue = {};
+    for (let i = 0; i < 1; i++) {
+      orderIssue[this.gameconfigure.getIssuesList.data.trace_issues[i].number] = 1;
+    }
+
+    return {
+      "gameId": this.share.gameId,
+      "isTrace": 0,
+      "traceWinStop": 1,
+      "traceStopValue": 1,
+      "balls": this.encrypt(JSON.stringify(balls)),
+      "orders": orderIssue,
+      "amount": totalamont,
+      is_encoded: 1,
+      _token: this.share.user.token,
+      bet_source: platformInstance.isAndroid ? 'android' : (platformInstance.isIphoneOs ? 'ios' : 'h5')
+    }
+
+  }
+
   getSubmitData(): Object {
     return {
       "gameId": this.share.gameId,
@@ -432,7 +457,7 @@ export class BasketServiceProvider extends BusinessTool {
     }
   }
 
-  postData:any={
+  postData: any = {
     "gameId": "71",
     "isTrace": 0,
     "traceWinStop": 0,
@@ -442,8 +467,6 @@ export class BasketServiceProvider extends BusinessTool {
     "amount": "",
     "_token": "",
   };
-
-
 
 
   messages(obj): void {
@@ -475,6 +498,23 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
+  async saobaoSubmit(balls) {
+    if (this.submitProcessing) return;
+    this.submitProcessing = true;
+    this.share.showLoading();
+    this.gameconfigure.getIssuesList = await this.gameconfigure.outergetIssues();
+    this.loading && this.loading.dismiss();
+    let data = await this.saobodoSubmint(balls);
+    this.submitProcessing = false;
+
+    if (data.isSuccess) {
+      this.clearAll();
+    } else {
+      this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
+    }
+    this.userbalance.getBalaceAgain();
+  }
+
   async submit(goContent) {
     this.ispk10 = this.share.ispk10;
     if (!(this.share.basketData.length)) {
@@ -490,6 +530,10 @@ export class BasketServiceProvider extends BusinessTool {
 
       this.finishRequest(data, goContent);
     }
+  }
+
+  saobodoSubmint(balls) {
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.saobogetSubmitData(balls));
   }
 
   doSubmint() {
