@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<body>
+
+<style>
+  ul {
+    overflow: hidden;
+  }
+
+  li {
+    height: 100px;
+    width: 19%;
+    float: left;
+    list-style: none;
+    border: solid #ccc 1px;
+    position: relative;
+  }
+</style>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+
+<img class="chip" style="border: #136dff solid 1px;" src="src/assets/img/lottery-sort/saizi6.svg">
+<script>
+  var getvisableHeight = function (element) {
+    var obj = $('.centerpoint').get(0);
+    var t = obj.offsetTop;
+    var t2 = obj.offsetLeft;
+
+    while ((obj = obj.offsetParent)) {
+      t += obj.offsetTop;
+      t2 += obj.offsetLeft;
+    }
+
+    var scrollTop = $('.my-content').scrollTop();
+    return {top: t - scrollTop, left: t2};
+  }
+
+  $('ul li').click(function () {
+    var positionData = getvisableHeight(this);
+    $('.chip').clone().animate()
+  });
+</script>
+</body>
+</html>

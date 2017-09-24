@@ -1,0 +1,64 @@
+<body>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<div class="outside">
+  <div class="inside"></div>
+</div>
+<div class="outside">
+  <div class="inside"></div>
+</div>
+</body>
+<style type="text/css">
+  .outside {
+    position: relative;
+    border: 1px solid red;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #FF0;
+  }
+
+  .inside {
+    position: relative;
+    border: 1px solid #F00;
+    width: 50px;
+    height: 50px;
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    var p = {
+      create: function (outside, inside) {
+        p.outside = outside;
+        p.inside = inside
+      }, move: function (e, $obj) {
+        e = e
+        x = e.pageX - $obj.offset().left
+        y = e.pageY - $obj.offset().top
+        $(p.inside, $obj).css({left: x, top: y})//关键是这里解决了相同class会造成同时移动的情况
+      }
+    }
+
+    function New(obj, params) {
+      function _new() {
+        if (obj.create) {
+          obj.create.apply(this, params)
+        }
+      }
+
+      _new.prototype = obj
+      return new _new()
+    }
+
+    q = New(p, [$(".outside"), ".inside"])  //初始化对象分别为祖先jquery包装集，移动元素的class名
+    q.outside.mouseover(function () {
+      $obj = $(this)
+      $(document).bind("mousemove", function (e) {
+        q.move(e, $obj)
+      })
+    })
+
+
+  })
+</script>
+
+

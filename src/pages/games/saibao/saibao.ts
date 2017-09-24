@@ -119,6 +119,7 @@ export class SaibaoPage {
         this.gameData[item][i].t+=this.gameData.chips.chip;
         this.gameData.total+=this.gameData.chips.chip;
         this.gameData.money-=this.gameData.chips.chip;
+        this.gameData.money=this.formatFloat(this.gameData.money,4);
         this.gameData.last.push({name:game,id:i});
         this.setData();
         return;
@@ -166,10 +167,18 @@ export class SaibaoPage {
         this.gameData[item][r.id].t-=m;
         this.gameData.total-=m;
         this.gameData.money+=m;
+        this.gameData.money=this.formatFloat(this.gameData.money,4);
         return;
       }
     }
   }
+
+  formatFloat (f:number, digit) {
+  var m = Math.pow(10, digit);
+  return parseInt((f * m)+'', 10) / m;
+}
+
+
 }
 
 
