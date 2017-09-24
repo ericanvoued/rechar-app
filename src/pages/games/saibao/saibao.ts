@@ -205,20 +205,20 @@ export class SaibaoPage {
   }
 
   formatFloat(f: number, digit) {
-    var m = Math.pow(10, digit);
+    let m = Math.pow(10, digit);
     return parseInt((f * m) + '', 10) / m;
   }
   @ViewChild('saobaocontent') saobaocontent
   getvisableHeight(obj){
-    var t = obj.offsetTop;
-    var t2 = obj.offsetLeft;
+    let t = obj.offsetTop;
+    let t2 = obj.offsetLeft;
 
     while ((obj = obj.offsetParent)) {
       t += obj.offsetTop;
       t2 += obj.offsetLeft;
     }
 
-    var scrollTop = $(this.saobaocontent.nativeElement).find('.scroll-content').scrollTop();
+    let scrollTop = $(this.saobaocontent.nativeElement).find('.scroll-content').scrollTop();
     return {top: t - scrollTop, left: t2};
   }
 }
