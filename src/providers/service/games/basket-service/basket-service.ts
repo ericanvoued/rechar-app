@@ -24,6 +24,7 @@ var platformInstance = new PlatformDetected();
 export class BasketServiceProvider extends BusinessTool {
   ispk10: any;
   basketData = [];
+  basketBall=[];
   c = {name_cn: '', prize: 0};
 
   totalAllCount: number;
@@ -320,6 +321,8 @@ export class BasketServiceProvider extends BusinessTool {
   getBallsString(): string {
     if (this.ispk10) {
       return this.getStringGenertorispk10();
+    }else if(+(this.share.gameId)==71){
+      return this.encrypt(JSON.stringify(this.basketBall));
     }
     return this.getStringGenertor();
   }
@@ -415,7 +418,6 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   getSubmitData(): Object {
-debugger
     return {
       "gameId": this.share.gameId,
       "isTrace": +(this.share.globalData.trace > 1),
@@ -428,8 +430,21 @@ debugger
       _token: this.share.user.token,
       bet_source: platformInstance.isAndroid ? 'android' : (platformInstance.isIphoneOs ? 'ios' : 'h5')
     }
-
   }
+
+  postData:any={
+    "gameId": "71",
+    "isTrace": 0,
+    "traceWinStop": 0,
+    "traceStopValue": 0,
+    "balls": [],
+    "orders": {},
+    "amount": "",
+    "_token": "",
+  };
+
+
+
 
   messages(obj): void {
     if (obj.isRedudu)
@@ -465,9 +480,7 @@ debugger
     if (!(this.share.basketData.length)) {
       this.share.showToast('号码篮不能为空', 1000);
     } else {
-      if (this.submitProcessing) {
-        return;
-      }
+      if (this.submitProcessing) return;
       this.submitProcessing = true;
       this.share.showLoading();
       this.gameconfigure.getIssuesList = await this.gameconfigure.outergetIssues();

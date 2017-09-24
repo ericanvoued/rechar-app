@@ -28,7 +28,7 @@
       <div class="t-game t-game-1">
         <div class="t-tit">特殊玩法 1:1</div>
         <div class="t-list dicedicedaxiaodanshuang">
-          <div class="t-unit" *ngFor="let item of gameData.game1;let r=index" (click)="clickItem('game1',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game1.data;let r=index" (click)="clickItem('game1',r,$event)">
             <p>{{item.p1}}<span>{{item.s}}</span></p>
             <p>{{item.p2}}</p>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
@@ -39,7 +39,7 @@
       <div class="t-game t-game-2 bg-black1 dicedicedantiaoyishai">
         <div class="t-tit">猜一个号 单骰1:1 双骰1:2 三骰1:3</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game2;let r=index" (click)="clickItem('game2',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game2.data;let r=index" (click)="clickItem('game2',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
@@ -49,7 +49,7 @@
       <div class="t-game t-game-3 dicediceerbutonghao">
         <div class="t-tit">二不同号 1:5</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game3;let r=index" (click)="clickItem('game3',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game3.data;let r=index" (click)="clickItem('game3',r,$event)">
             <i class="saizi saizi-{{item.p1}}"></i>
             <i class="saizi saizi-{{item.p2}}"></i>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
@@ -60,9 +60,9 @@
       <div class="t-game-4 bg-black1">
         <div class="t-tit">和值</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game4;let r=index" (click)="clickItem('game4',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game4.data;let r=index" (click)="clickItem('game4',r,$event)">
             <p class="t-num">{{item.n}}</p>
-            <p>1:{{item.b}}</p>
+            <p>1:{{item.be}}</p>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
           </div>
@@ -71,7 +71,7 @@
       <div class="t-game t-game-3 t-game-5 dicediceertonghao">
         <div class="t-tit">二同号复选 1:10</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game5;let r=index" (click)="clickItem('game5',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game5.data;let r=index" (click)="clickItem('game5',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
             <i class="saizi saizi-{{item.p}}"></i>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
@@ -81,7 +81,7 @@
       </div>
       <div class="t-game t-game-3 t-game-6 bg-black1 dicedicesantonghaotongxuan">
         <div class="t-tit">三同号 1:30</div>
-        <div class="t-list" *ngFor="let item of gameData.game6;let r=index" (click)="clickItem('game6',r,$event)">
+        <div class="t-list" *ngFor="let item of gameData.game6.data;let r=index" (click)="clickItem('game6',r,$event)">
           <div class="t-unit bdr-none" *ngFor="let num of item.p">
             <div class="t-unit-cow">
               <i class="saizi saizi-{{num}}"></i>
@@ -98,7 +98,7 @@
       <div class="t-game t-game-3 t-game-6 dicedicesantonghao">
         <div class="t-tit">三同号单选1:180</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game7;let r=index" (click)="clickItem('game7',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game7.data;let r=index" (click)="clickItem('game7',r,$event)">
             <div class="t-unit-cow">
               <i class="saizi saizi-{{item.p}}"></i>
             </div>
@@ -146,7 +146,7 @@
         <a href="javascript:;" class="button button-outline" (click)="clearSelect()">清空</a><a href="javascript:;" class="button button-outline" (click)="backSelect()">撤销</a>
       </li>
       <li class="confirm-w">
-        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger" (touchstart)="goBuybasket(gameconfigdata?.defaultsMethodData?.c)">
+        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger" (touchstart)="goBuyBasket(gameconfigdata?.defaultsMethodData?.c)">
           <span>确认投注</span><span class="confirm-number" *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
         </a>
       </li>

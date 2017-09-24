@@ -181,14 +181,12 @@ export class Pk10Page extends Effect {
 
   goBuybasket(obj) {
     let isSucess = this.basket.addDataToBasketPK10(obj);
-
     if (isSucess || this.share.basketData.length) {
       this.clear(obj);
       this.navCtrl.push("BuyBasketPage", {nav: this.navParams.get('nav'), ispk10: true});
     } else {
       this.messages(obj);
     }
-
   }
 
   randomBall(obj) {

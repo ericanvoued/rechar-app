@@ -18,89 +18,69 @@ export class SaibaoPage {
     money: 0,
     chips: {change: 0, chip: 10, show: [[1, 2, 5, 10, 20], [50, 100, 500, 1000, 5000]]},
     last: [],
-    game1: [{p1: '大', s: '11~17', p2: '1:1', g: [], t: 0}, {p1: '小', s: '4~10', p2: '1:1', g: [], t: 0}, {
+    game1: {key:'daxiaodanshuang',id:'243',data:[{p1: '大', s: '11~17', p2: '1:1',b:'1', g: [], t: 0}, {p1: '小', s: '4~10', p2: '1:1',b:'0', g: [], t: 0}, {
       p1: '单',
       s: '',
       p2: '1:1',
+      b:'3',
       g: [],
       t: 0
-    }, {p1: '双', s: '', p2: '1:1', g: [], t: 0}],
-    game2: [{p: 1, g: [], t: 0}, {p: 2, g: [], t: 0}, {p: 3, g: [], t: 0}, {p: 4, g: [], t: 0}, {
+    }, {p1: '双', s: '', p2: '1:1', b:'2',g: [], t: 0}]},
+    game2: {key:'dantiaoyishai',id:'238',data:[{p: 1,b:'1', g: [], t: 0}, {p: 2,b:'2', g: [], t: 0}, {p: 3, b:'3',g: [], t: 0}, {p: 4,b:'4', g: [], t: 0}, {
       p: 5,
+      b:'5',
       g: [],
       t: 0
-    }, {p: 6, g: [], t: 0}],
-    game3: [{p1: 1, p2: 2, g: [], t: 0}, {p1: 1, p2: 3, g: [], t: 0}, {p1: 1, p2: 4, g: [], t: 0}, {
+    }, {p: 6,b:'6', g: [], t: 0}]},
+    game3: {key:'erbutonghao',id:'240',data:[{p1: 1, p2: 2,b:'12', g: [], t: 0}, {p1: 1, p2: 3, b:'13',g: [], t: 0}, {p1: 1, p2: 4,b:'14', g: [], t: 0}, {
       p1: 1,
       p2: 5,
+      b:'15',
       g: [],
       t: 0
-    }, {p1: 1, p2: 6, g: [], t: 0},
-      {p1: 2, p2: 3, g: [], t: 0}, {p1: 2, p2: 4, g: [], t: 0}, {p1: 2, p2: 5, g: [], t: 0}, {
+    }, {p1: 1, p2: 6, b:'16',g: [], t: 0},
+      {p1: 2, p2: 3, b:'23',g: [], t: 0}, {p1: 2, p2: 4, b:'24',g: [], t: 0}, {p1: 2, p2: 5, b:'25',g: [], t: 0}, {
         p1: 2,
         p2: 6,
+        b:'26',
         g: [],
         t: 0
-      }, {p1: 3, p2: 4, g: [], t: 0},
-      {p1: 3, p2: 5, g: [], t: 0}, {p1: 3, p2: 6, g: [], t: 0}, {p1: 4, p2: 5, g: [], t: 0}, {
+      }, {p1: 3, p2: 4, b:'34',g: [], t: 0},
+      {p1: 3, p2: 5, b:'35',g: [], t: 0}, {p1: 3, p2: 6, b:'36',g: [], t: 0}, {p1: 4, p2: 5, b:'45',g: [], t: 0}, {
         p1: 4,
         p2: 6,
+        b:'46',
         g: [],
         t: 0
-      }, {p1: 5, p2: 6, g: [], t: 0}],
-    game4: [{n: '04', b: '60', g: [], t: 0}, {n: '05', b: '30', g: [], t: 0}, {n: '06', b: '18', g: [], t: 0}, {
+      }, {p1: 5, p2: 6, b:'56',g: [], t: 0}]},
+    game4: {key:'hezhi',id:'242',data:[{n: '04', be: '60', b:'4',g: [], t: 0}, {n: '05', be: '30', b:'5',g: [], t: 0}, {n: '06', be: '18', b:'6',g: [], t: 0}, {
       n: '07',
-      b: '12',
+      be: '12',
+      b:'7',
       g: [],
       t: 0
-    }, {n: '08', b: '8', g: [], t: 0}, {n: '09', b: '6', g: [], t: 0}, {n: '10', b: '6', g: [], t: 0},
-      {n: '11', b: '6', g: [], t: 0}, {n: '12', b: '6', g: [], t: 0}, {n: '13', b: '8', g: [], t: 0}, {
+    }, {n: '08', be: '8', b:'8',g: [], t: 0}, {n: '09', be: '6', b:'9',g: [], t: 0}, {n: '10', be: '6', b:'10',g: [], t: 0},
+      {n: '11', be: '6', b:'11',g: [], t: 0}, {n: '12', be: '6', b:'12',g: [], t: 0}, {n: '13', be: '8', b:'13',g: [], t: 0}, {
         n: '14',
-        b: '12',
+        be: '12',
+        b:'14',
         g: [],
         t: 0
-      }, {n: '15', b: '18', g: [], t: 0}, {n: '16', b: '30', g: [], t: 0}, {n: '17', b: '60', g: [], t: 0}],
-    game5: [{p: 1, g: [], t: 0}, {p: 2, g: [], t: 0}, {p: 3, g: [], t: 0}, {p: 4, g: [], t: 0}, {
+      }, {n: '15', be: '18', b:'15',g: [], t: 0}, {n: '16', be: '30', b:'16',g: [], t: 0}, {n: '17', be: '60', b:'17',g: [], t: 0}]},
+    game5: {key:'ertonghao',id:'241',data:[{p: 1, b:'11',g: [], t: 0}, {p: 2, b:'22',g: [], t: 0}, {p: 3, b:'33',g: [], t: 0}, {p: 4, b:'44',g: [], t: 0}, {
       p: 5,
+      b:'55',
       g: [],
       t: 0
-    }, {p: 6, g: [], t: 0}],
-    game6: [{p: [1, 2, 3, 4, 5, 6], g: [], t: 0}],
-    game7: [{p: 1, g: [], t: 0}, {p: 2, g: [], t: 0}, {p: 3, g: [], t: 0}, {p: 4, g: [], t: 0}, {
+    }, {p: 6, b:'66',g: [], t: 0}]},
+    game6: {key:'santonghaotongxuan',id:'244',data:[{p: [1, 2, 3, 4, 5, 6], b:'0',g: [], t: 0}]},
+    game7: {key:'santonghao',id:'239',data:[{p: 1, b:'111',g: [], t: 0}, {p: 2, b:'222',g: [], t: 0}, {p: 3, b:'333',g: [], t: 0}, {p: 4, b:'444',g: [], t: 0}, {
       p: 5,
+      b:'555',
       g: [],
       t: 0
-    }, {p: 6, g: [], t: 0}]
+    }, {p: 6, b:'666',g: [], t: 0}]}
   };
-
-  // postData:any={
-  //   "gameId": "71",
-  //   "isTrace": 0,
-  //   "traceWinStop": 1,
-  //   "traceStopValue": 1,
-  //   "balls": [
-  //     {
-  //       "jsId": 0?,
-  //       "wayId": "69"?,
-  //       "ball": "2|7|7"?,
-  //       "position": [],
-  //       "viewBalls": "2|7|7"?,
-  //       "num": 1,
-  //       "type": "housan.zhixuan.fushi"?,
-  //       "onePrice": 2,
-  //       "prize_group": 1950,
-  //       "moneyunit": 0.1,
-  //       "multiple": 1?
-  //     }
-  //   ],
-  //   "orders": {
-  //     "?": 1
-  //   },
-  //   "amount": "?",
-  //   "is_encoded": 1,
-  //   "_token": "?",
-  //   "bet_source": "?"
-  // };
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     this.other();
@@ -120,6 +100,7 @@ export class SaibaoPage {
 
   ionViewDidLoad() {
     this.gameData.money = this.share.balance.available;
+    this.basket.totalAllCount=0;
     this.setData();
   }
 
@@ -129,7 +110,6 @@ export class SaibaoPage {
 
   private other() {
     this.menuCtrl.enable(false, 'unauthenticated');
-
   }
 
   changeChip() {
@@ -156,9 +136,10 @@ export class SaibaoPage {
           this.share.showToast('余额不足',1000);
           return;
         }
-        this.gameData[item][i].g.push(this.gameData.chips.chip);
-        this.gameData[item][i].t += this.gameData.chips.chip;
+        this.gameData[item].data[i].g.push(this.gameData.chips.chip);
+        this.gameData[item].data[i].t += this.gameData.chips.chip;
         this.gameData.total += this.gameData.chips.chip;
+        this.basket.totalAllCount=this.gameData.total*10;
         this.gameData.money -= this.gameData.chips.chip;
         this.gameData.money = this.formatFloat(this.gameData.money, 4);
         this.gameData.last.push({name: game, id: i});
@@ -169,24 +150,46 @@ export class SaibaoPage {
   }
 
   setData() {
-    //   let userAgent = navigator.userAgent.toLowerCase();
-    //   let userText=!!userAgent.match(/android/i)?'android':(!!userAgent.match(/iphone os/i)?'ios':'h5');
+    this.basket.basketBall=[];
+    let ball={"jsId": 2, "wayId": "", "ball": "", "position": [], "viewBalls": "", "num": 1, "type": "", "onePrice": 2, "prize_group": 1800, "moneyunit": 0.1, "multiple": 0};
+    for (let item in this.gameData) {
+      if (item.indexOf('game') > -1) {
+        ball.wayId=this.gameData[item].id;
+        ball.type=this.gameData[item].key;
+        for (let i = 0; i < this.gameData[item].data.length; i++) {
+          if(this.gameData[item].data[i].t>0){
+            ball.multiple=this.gameData[item].data[i].t*5;
+            ball.ball=this.gameData[item].data[i].b;
+            this.basket.basketBall.push(ball);
+          }
+        }
+      }
+    }
+  }
 
-
+  goBuyBasket(obj) {
+    if (this.gameData.total ==0) {
+      this.share.showToast('请投注后再提交',1000);
+    } else {
+      this.share.basketData.push(1);
+      this.basket.submit(this);
+    }
   }
 
   clearSelect() {
     for (let item in this.gameData) {
       if (item.indexOf('game') > -1) {
-        for (let i = 0; i < this.gameData[item].length; i++) {
-          this.gameData[item][i].g = [];
-          this.gameData[item][i].t = 0;
+        for (let i = 0; i < this.gameData[item].data.length; i++) {
+          this.gameData[item].data[i].g = [];
+          this.gameData[item].data[i].t = 0;
         }
       }
     }
     this.gameData.last = [];
     this.gameData.total = 0;
+    this.basket.totalAllCount=0;
     this.gameData.money = this.share.balance.available;
+    this.setData();
   }
 
   backSelect() {
@@ -194,11 +197,13 @@ export class SaibaoPage {
     let r = this.gameData.last.pop();
     for (let item in this.gameData) {
       if (item == r.name) {
-        let m = this.gameData[item][r.id].g.pop();
-        this.gameData[item][r.id].t -= m;
+        let m = this.gameData[item].data[r.id].g.pop();
+        this.gameData[item].data[r.id].t -= m;
         this.gameData.total -= m;
+        this.basket.totalAllCount=this.gameData.total*10;
         this.gameData.money += m;
         this.gameData.money = this.formatFloat(this.gameData.money, 4);
+        this.setData();
         return;
       }
     }
