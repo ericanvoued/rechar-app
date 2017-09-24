@@ -144,7 +144,8 @@ export class SaibaoPage {
     this.gameData.chips.chip = number;
   }
 
-  clickItem(game, i) {
+  clickItem(game, i,$event) {
+    console.log("$event:",$event);
     if (this.gameData.chips.change) {
       this.gameData.chips.change = 0;
       return;
@@ -204,7 +205,7 @@ export class SaibaoPage {
     var m = Math.pow(10, digit);
     return parseInt((f * m) + '', 10) / m;
   }
-
+  @ViewChild('myTabs') tabRef: Tabs;
   getvisableHeight(obj){
     var t = obj.offsetTop;
     var t2 = obj.offsetLeft;
