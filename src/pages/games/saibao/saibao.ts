@@ -152,7 +152,10 @@ export class SaibaoPage {
     }
     for (let item in this.gameData) {
       if (item == game) {
-        if (this.gameData.money - this.gameData.chips.chip < 0) return;
+        if (this.gameData.money - this.gameData.chips.chip < 0) {
+          this.share.showToast('余额不足');
+          return;
+        }
         this.gameData[item][i].g.push(this.gameData.chips.chip);
         this.gameData[item][i].t += this.gameData.chips.chip;
         this.gameData.total += this.gameData.chips.chip;
@@ -187,10 +190,7 @@ export class SaibaoPage {
   }
 
   backSelect() {
-    if (this.gameData.last.length == 0) {
-      this.share.showToast('余额不足');
-      return;
-    }
+    if (this.gameData.last.length == 0) return;
     let r = this.gameData.last.pop();
     for (let item in this.gameData) {
       if (item == r.name) {
