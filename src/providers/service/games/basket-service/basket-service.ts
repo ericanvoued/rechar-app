@@ -79,7 +79,7 @@ export class BasketServiceProvider extends BusinessTool {
       }
     });
     this.totalAllCount = totalAllCount;
-    console.log('richardgongaaaa totalAllCount:', totalAllCount);
+
 
     if (min) {
       this.share.MinMutiple.minmax_multiple = min.max_multiple;
