@@ -23,7 +23,7 @@ export class HttpClientProvider {
 
   autoLoginOutId: any;
 
-  async logout() {
+   logout() {
     this.share.store.remove('app_user');
     this.share.user = null;
     localStorage.expired = Date.now();
@@ -44,8 +44,6 @@ export class HttpClientProvider {
   }
 
   private doSubmitAction(url, data?): Promise<any> {
-    clearTimeout(this.autoLoginOutId);
-    this.autoLoginOutId = setTimeout(() => this.logout(), 1800000);
     return new Promise((resolve, reject) => {
       if (this.beforeRequest()) {
         reject({isSuccess: 0});
