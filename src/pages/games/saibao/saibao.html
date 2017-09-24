@@ -76,7 +76,7 @@
         <div class="t-list">
           <div class="t-unit" *ngFor="let item of gameData.game3;let r=index" (click)="clickItem('game3',r,$event)">
             <i class="saizi saizi-{{item.p1}}"></i>
-            <i class="saizi saizi-{{itep2}}"></i>
+            <i class="saizi saizi-{{item.p2}}"></i>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
           </div>
