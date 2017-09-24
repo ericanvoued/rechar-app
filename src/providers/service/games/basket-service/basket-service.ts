@@ -508,6 +508,7 @@ export class BasketServiceProvider extends BusinessTool {
     this.submitProcessing = false;
 
     if (data.isSuccess) {
+      this.share.showToast("投注成功");
       this.clearAll();
     } else {
       this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);

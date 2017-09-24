@@ -4,78 +4,104 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg" class="question-icon" alt="" (touchstart)="goHelpPage()">
+      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg"
+                                                                          class="question-icon" alt=""
+                                                                          (touchstart)="goHelpPage()">
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <div class="container js3-container">
-    <!--<div class="s-nav">-->
-    <!--<div class="s-nav-l">-->
-    <!--<p class="h-text"><span>{{gameconfigdata.defaultData.data?.current_number}}</span>期 截止时间</p>-->
-    <!--<div class="t"><span>{{gameconfigdata.clock.minutes}}</span>:<span>{{gameconfigdata.clock.seconds}}</span></div>-->
-    <!--</div>-->
-    <!--<div class="s-nav-r">-->
-    <!--<div class="h-text s-rText"><p>第<span>{{gameconfigdata.defaultData.data?.last_number}}</span>期</p><p>开奖记录</p></div>-->
-    <!--<div class="t">-->
-    <!--<i class="saizi saizi-4"></i><i class="saizi saizi-2"></i><i class="saizi saizi-2"></i>-->
-    <!--</div>-->
-    <!--<i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"-->
-    <!--class="saizi saizi-{{num}}"></i>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div class="s-nav">
+      <div class="s-nav-l">
+        <p class="h-text"><span>{{gameconfigdata.defaultData.data?.current_number}}</span>期 截止时间</p>
+        <div class="t"><span>{{gameconfigdata.clock.minutes}}</span>:<span>{{gameconfigdata.clock.seconds}}</span></div>
+      </div>
+      <div class="s-nav-r">
+        <div class="h-text s-rText" style="text-align: right;">
+          第<span>{{gameconfigdata.defaultData.data?.last_number}}</span>期
+          <p style="clear: both;overflow:hidden;">&nbsp;    &nbsp;    &nbsp;    </p>
+          <p style="    margin-top: 7px;"><!--开奖记录--> </p>
+        </div>
+        <!--<div class="t">-->
+        <!--<i class="saizi saizi-4"></i><i class="saizi saizi-2"></i><i class="saizi saizi-2"></i>-->
+        <!--</div>-->
+        <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"
+           class="saizi saizi-{{num}}"></i>
+      </div>
+    </div>
     <div class="game-table">
       <div class="t-game t-game-1">
         <div class="t-tit">特殊玩法 1:1</div>
         <div class="t-list dicedicedaxiaodanshuang">
-          <div class="t-unit" *ngFor="let item of gameData.game1.data;let r=index" (click)="clickItem('game1',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game1.data;let r=index"
+               (click)="clickItem('game1',r,$event)">
             <p>{{item.p1}}<span>{{item.s}}</span></p>
             <p>{{item.p2}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="t-game t-game-2 bg-black1 dicedicedantiaoyishai">
         <div class="t-tit">猜一个号 单骰1:1 双骰1:2 三骰1:3</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game2.data;let r=index" (click)="clickItem('game2',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game2.data;let r=index"
+               (click)="clickItem('game2',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="t-game t-game-3 dicediceerbutonghao">
         <div class="t-tit">二不同号 1:5</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game3.data;let r=index" (click)="clickItem('game3',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game3.data;let r=index"
+               (click)="clickItem('game3',r,$event)">
             <i class="saizi saizi-{{item.p1}}"></i>
             <i class="saizi saizi-{{item.p2}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="t-game-4 bg-black1">
         <div class="t-tit">和值</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game4.data;let r=index" (click)="clickItem('game4',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game4.data;let r=index"
+               (click)="clickItem('game4',r,$event)">
             <p class="t-num">{{item.n}}</p>
             <p>1:{{item.be}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="t-game t-game-3 t-game-5 dicediceertonghao">
         <div class="t-tit">二同号复选 1:10</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game5.data;let r=index" (click)="clickItem('game5',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game5.data;let r=index"
+               (click)="clickItem('game5',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,14 +117,18 @@
               <i class="saizi saizi-{{num}}"></i>
             </div>
           </div>
-          <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-          <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+          <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i>
+          </div>
+          <div class="bet-detail">
+            <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+          </div>
         </div>
       </div>
       <div class="t-game t-game-3 t-game-6 dicedicesantonghao">
         <div class="t-tit">三同号单选1:180</div>
         <div class="t-list">
-          <div class="t-unit" *ngFor="let item of gameData.game7.data;let r=index" (click)="clickItem('game7',r,$event)">
+          <div class="t-unit" *ngFor="let item of gameData.game7.data;let r=index"
+               (click)="clickItem('game7',r,$event)">
             <div class="t-unit-cow">
               <i class="saizi saizi-{{item.p}}"></i>
             </div>
@@ -106,8 +136,11 @@
               <i class="saizi saizi-{{item.p}}"></i>
               <i class="saizi saizi-{{item.p}}"></i>
             </div>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
-            <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
+                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="bet-detail">
+              <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -125,7 +158,7 @@
     <div class="eCurrunt" (click)="changeChip()">
       <p>当前选择筹码</p>
       <div class="eCurrunt-coin">
-        <i class="chip chip-{{gameData.chips.chip}}" ></i>
+        <i class="chip chip-{{gameData.chips.chip}}"></i>
       </div>
     </div>
     <div class="coin-list" *ngIf="gameData.chips.change">
@@ -143,11 +176,15 @@
   <div class="confirm-bet">
     <ul>
       <li class="e-clear">
-        <a href="javascript:;" class="button button-outline" (click)="clearSelect()">清空</a><a href="javascript:;" class="button button-outline" (click)="backSelect()">撤销</a>
+        <a href="javascript:;" class="button button-outline" (click)="clearSelect()">清空</a><a href="javascript:;"
+                                                                                              class="button button-outline"
+                                                                                              (click)="backSelect()">撤销</a>
       </li>
       <li class="confirm-w">
-        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger" (touchstart)="goBuyBasket(gameconfigdata?.defaultsMethodData?.c)">
-          <span>确认投注</span><span class="confirm-number" *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
+        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger"
+           (touchstart)="goBuyBasket(gameconfigdata?.defaultsMethodData?.c)">
+          <span>确认投注</span><span class="confirm-number"
+                                 *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
         </a>
       </li>
     </ul>
