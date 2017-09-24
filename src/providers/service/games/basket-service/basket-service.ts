@@ -419,7 +419,7 @@ export class BasketServiceProvider extends BusinessTool {
   saobogetSubmitData(balls): Object {
     let totalamont = 0;
     balls.forEach((v) => {
-      totalamont += (0.2 * v.multiple * v.num);
+      totalamont += (v.moneyunit * 2 * v.multiple * v.num);
     });
 
     let orderIssue = {};
@@ -430,8 +430,8 @@ export class BasketServiceProvider extends BusinessTool {
     return {
       "gameId": this.share.gameId,
       "isTrace": 0,
-      "traceWinStop": 1,
-      "traceStopValue": 1,
+      "traceWinStop": 0,
+      "traceStopValue": 0,
       "balls": this.encrypt(JSON.stringify(balls)),
       "orders": orderIssue,
       "amount": totalamont,

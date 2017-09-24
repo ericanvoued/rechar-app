@@ -151,15 +151,16 @@ export class SaibaoPage {
 
   setData() {
     this.basket.basketBall=[];
-    let ball={"jsId": 2, "wayId": "", "ball": "", "position": [], "viewBalls": "", "num": 1, "type": "", "onePrice": 2, "prize_group": 1800, "moneyunit": 0.1, "multiple": 0};
+    let ball={"jsId": 2, "wayId": "", "ball": null, "position": [], "viewBalls": "", "num": 1, "type": "", "onePrice": 2, "prize_group": 1950, "moneyunit": 0.01, "multiple": 0};
     for (let item in this.gameData) {
       if (item.indexOf('game') > -1) {
         ball.wayId=this.gameData[item].id;
+
         ball.type=this.gameData[item].key;
         for (let i = 0; i < this.gameData[item].data.length; i++) {
           if(this.gameData[item].data[i].t>0){
-            ball.multiple=this.gameData[item].data[i].t*5;
-            ball.ball=this.gameData[item].data[i].b;
+            ball.multiple=this.gameData[item].data[i].t*50;
+            ball.ball=+this.gameData[item].data[i].b;
             this.basket.basketBall.push(ball);
           }
         }
