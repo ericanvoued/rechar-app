@@ -125,7 +125,6 @@ export class SaibaoPage {
   }
 
   clickItem(game, i,$event) {
-    console.log("$event:",$event);
     if (this.gameData.chips.change) {
       this.gameData.chips.change = 0;
       return;
@@ -155,12 +154,11 @@ export class SaibaoPage {
     for (let item in this.gameData) {
       if (item.indexOf('game') > -1) {
         ball.wayId=this.gameData[item].id;
-
-        ball.type=this.gameData[item].key;
         for (let i = 0; i < this.gameData[item].data.length; i++) {
           if(this.gameData[item].data[i].t>0){
             ball.multiple=this.gameData[item].data[i].t*50;
             ball.ball=+this.gameData[item].data[i].b;
+            ball.type=this.gameData[item].key;
             this.basket.basketBall.push(ball);
           }
         }
