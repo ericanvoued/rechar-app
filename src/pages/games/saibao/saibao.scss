@@ -62,6 +62,41 @@
   .chip-index-#{$i}{bottom:#{$i*3}px;}
 }
 
+.t-unit {
+  position: relative;
+}
+
+.add-coin{
+  width: 31px;
+  height: 31px;
+  position: absolute;
+  bottom: -3px;
+  left: 48%;
+}
+
+.bet-detail{
+  width: 100%;
+  height: 25px;
+  position: absolute;
+  top: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bet-momey{
+  width: 45px;
+  height: 25px;
+  background-image: url("../assets/img/bet-money-bg.png");
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 25px;
+}
+
 .equal {
   width: 100%;
   flex: 1;
@@ -158,15 +193,14 @@
   width: 100%;
   margin-top: 6px;
   @extend .outer-border;
-
   .t-tit {
-    @extend .f14;
-    box-sizing: border-box;
-    line-height: 26px;
-    height: 27px;
-    @extend .thin-border-b;
-    text-align: center;
-  }
+     @extend .f14;
+     box-sizing: border-box;
+     line-height: 26px;
+     height: 27px;
+     @extend .thin-border-b;
+     text-align: center;
+   }
   .t-list {
     display: flex;
     position: relative;
@@ -179,8 +213,6 @@
       text-align: center;
       display: flex;
       flex-wrap: wrap;
-      position: relative;
-
       &:last-child {
         border-right-color: transparent;
       }
@@ -188,7 +220,6 @@
         @extend .f24;
         line-height: 24px;
         width: 100%;
-
         & span {
           @extend .f14;
         }
@@ -196,95 +227,35 @@
       p:last-of-type {
         @extend .rate-mYellow-text;
         @extend .f14;
-
       }
-
-      //下面筹码的样式
-      .add-coin{
-        width: 31px;
-        height: 31px;
-        position: absolute;
-        bottom: -3px;
-        right: 0;
-        .chip{
-          position: absolute;
-          right: 0px;
-          width: 31px;
-          height: 31px;
-        }
-      }
-      .bet-momey{
-        width: 36px;
-        height: 25px;
-        position: absolute;
-        background-image: url("../assets/img/bet-money-bg.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center top;
-        top: -15px;
-        font-size: 18px;
-        text-align: center;
-        color: #ffffff;
-        line-height: 22px;
-        left: 50%;
-        margin-left: -18px;
-      }
-
-    }
-    //下面筹码的样式
-    .e-center{
-      right: 50%!important;
-      margin-right: -15.5px!important;
-    }
-    .add-coin{
-      width: 31px;
-      height: 31px;
-      position: absolute;
-      bottom: -3px;
-
       .chip{
         position: absolute;
         right: 0px;
         width: 31px;
         height: 31px;
       }
-
     }
-    .bet-momey{
-      width: 36px;
-      height: 25px;
+    .chip{
       position: absolute;
-      background-image: url("../assets/img/bet-money-bg.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center top;
-      top: -15px;
-      font-size: 18px;
-      text-align: center;
-      color: #ffffff;
-      line-height: 22px;
-      left: 50%;
-      margin-left: -18px;
+      right: 0px;
+      width: 31px;
+      height: 31px;
+    }
+    .e-center{
+      right: 50%!important;
+      margin-right: -15.5px!important;
     }
   }
-
 }
 
 .t-game-1 {
   border-radius: 67px 67px 0 0;
   margin-top: 0;
-
   .t-list {
-
     .t-unit {
       padding: 6px 0;
-      //.bet-momey{
-      //  left: 50%;
-      //  margin-left: -18px;
-      //}
     }
   }
-
 }
 
 .t-game-2 {
@@ -300,11 +271,9 @@
 
 .t-game-3 {
   border-bottom-width: 2px;
-
   .t-list {
     display: flex;
     flex-wrap: wrap;
-
     .t-unit {
       display: flex;
       width: 20%;
@@ -316,7 +285,6 @@
       }
     }
   }
-
   .saizi {
     align-self: center;
     margin: 1px;
@@ -328,11 +296,12 @@
 .t-game-4 {
   border-bottom-width: 2px;
   .t-list {
-
-    @extend .thin-border-b;
-
+    flex-wrap:wrap;
     .t-unit {
+      width: 14.28%;
       padding: 6px 0;
+      border-right: 1px solid #159964;
+      border-bottom: 1px solid #159964;
     }
   }
 }
@@ -355,7 +324,7 @@
       width: 16.66%;
     }
     .t-unit-cow{
-       width: 100%;
+      width: 100%;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
