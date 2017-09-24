@@ -152,7 +152,7 @@ export class SaibaoPage {
     for (let item in this.gameData) {
       if (item == game) {
         if (this.gameData.money - this.gameData.chips.chip < 0) {
-          this.share.showToast('余额不足');
+          this.share.showToast('余额不足',1000);
           return;
         }
         this.gameData[item][i].g.push(this.gameData.chips.chip);
