@@ -6,13 +6,6 @@ import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 
-/**
- * Generated class for the SaibaoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-saibao',
@@ -174,11 +167,8 @@ export class SaibaoPage {
   }
 
   formatFloat (f:number, digit) {
-  var m = Math.pow(10, digit);
-  return parseInt((f * m)+'', 10) / m;
-}
-
-
+    return parseInt((f * Math.pow(10, digit))+'', 10) / Math.pow(10, digit);
+  }
 }
 
 

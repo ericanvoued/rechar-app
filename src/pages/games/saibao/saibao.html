@@ -82,12 +82,11 @@
           </div>
         </div>
       </div>
-      <div class="t-game t-game-4 bg-black1">
+      <div class="t-game-4 bg-black1">
         <div class="t-tit">和值</div>
         <div class="t-list">
           <div class="t-unit" *ngFor="let item of gameData.game4;let r=index" (click)="clickItem('game4',r)">
-            <p>{{item.n}}</p>
-            <p>1:{{item.b}}</p>
+            <p class="t-num">{{item.n}}</p><p>1:{{item.b}}</p>
             <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail"><div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div></div>
           </div>
