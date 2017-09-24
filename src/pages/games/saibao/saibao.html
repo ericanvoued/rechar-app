@@ -58,7 +58,7 @@
           <div class="t-unit" *ngFor="let item of gameData.game1">
             <p>{{item.p1}}<span>{{item.s}}</span></p>
             <p>{{item.p2}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="t-list">
           <div class="t-unit" *ngFor="let item of gameData.game2">
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
@@ -90,7 +90,7 @@
           <div class="t-unit" *ngFor="let item of class">
             <p>{{item.n}}</p>
             <p>1:{{item.b}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <div class="t-unit" *ngFor="let item of gameData.game5">
             <i class="saizi saizi-{{item.p}}"></i>
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
@@ -118,7 +118,7 @@
               <i class="saizi saizi-{{num}}"></i>
             </div>
           </div>
-          <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+          <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
           <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
         </div>
       </div>
@@ -133,7 +133,7 @@
               <i class="saizi saizi-{{item.p}}"></i>
               <i class="saizi saizi-{{item.p}}"></i>
             </div>
-            <div class="add-coin"><i *ngFor="let c of item.g" class="chip chip-{{c}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
           </div>
         </div>
