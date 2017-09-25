@@ -9,34 +9,34 @@ export class SubBusinessToolProvider extends BusinessTool {
   }
 
   initSetBussiness(c) {
-    // if (c.ok) {
-    //   return;
-    // }
-    // if (!c.ok) {
-    //   c.ok = true;
-    // }
-    // let betarr = [];
-    // let bet_numberArrObj = betarr;
-    // let selectareaPair = betarr;
-    // let selectarea = [];
-    //
-    // this.createLabelAndBall(c);
-    // this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj,c);
-    // c.isnotnumberSymble = /\.dragonwithtiger$/.test(c.fullName_en);
-    //
-    // c.modesArray = [1, 0.1, 0.01];
-    // let mutipleAndModeObj = {
-    //   mode: 1,
-    //   times: 1
-    // };
-    //
-    // c.mutipleAndModeObj = mutipleAndModeObj;
-    // c.bet_numberArrObj = bet_numberArrObj;
-    // c.selectarea = selectarea;
-    // c.selectareaPair = selectareaPair;
-    //
-    // c.count = 0;
-    // c.totals = 0
+    if (c.ok) {
+      return;
+    }
+    if (!c.ok) {
+      c.ok = true;
+    }
+    let betarr = [];
+    let bet_numberArrObj = betarr;
+    let selectareaPair = betarr;
+    let selectarea = [];
+
+    this.createLabelAndBall(c);
+    this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj,c);
+    c.isnotnumberSymble = /\.dragonwithtiger$/.test(c.fullName_en);
+
+    c.modesArray = [1, 0.1, 0.01];
+    let mutipleAndModeObj = {
+      mode: 1,
+      times: 1
+    };
+
+    c.mutipleAndModeObj = mutipleAndModeObj;
+    c.bet_numberArrObj = bet_numberArrObj;
+    c.selectarea = selectarea;
+    c.selectareaPair = selectareaPair;
+
+    c.count = 0;
+    c.totals = 0
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);
     });

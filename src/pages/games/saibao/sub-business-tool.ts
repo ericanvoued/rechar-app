@@ -16,8 +16,7 @@ export class SubBusinessToolProvider extends BusinessTool {
 
   initSetBussiness(c) {
     this.SetRenderData(c);
-    console.log(this.renderData);
-    c.mode=0.1;
+    c.mode=0.01;
     //是否和值
     this._.observe(c.selectarea, 'update', () => {
       this.mainBussiness(c);

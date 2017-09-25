@@ -282,47 +282,47 @@ page-cqssc .history-table {
 page-cqssc .saizi {
   width: 32px;
   height: 32px;
-  background-image: url("../../../assets/img/lottery-sort/saizi1.svg");
+  background-image: url("../assets/img/lottery-sort/saizi1.svg");
   background-repeat: no-repeat;
   background-size: cover; }
 page-cqssc .saizi-1 {
-  background-image: url("../../../assets/img/lottery-sort/saizi1.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi1.svg"); }
 page-cqssc .saizi-2 {
-  background-image: url("../../../assets/img/lottery-sort/saizi2.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi2.svg"); }
 page-cqssc .saizi-3 {
-  background-image: url("../../../assets/img/lottery-sort/saizi3.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi3.svg"); }
 page-cqssc .saizi-4 {
-  background-image: url("../../../assets/img/lottery-sort/saizi4.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi4.svg"); }
 page-cqssc .saizi-5 {
-  background-image: url("../../../assets/img/lottery-sort/saizi5.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi5.svg"); }
 page-cqssc .saizi-6 {
-  background-image: url("../../../assets/img/lottery-sort/saizi6.svg"); }
+  background-image: url("../assets/img/lottery-sort/saizi6.svg"); }
 page-cqssc .chip {
   width: 59px;
   height: 59px;
-  background-image: url("../../../assets/img/lottery-sort/chip-1.png");
+  background-image: url("../assets/img/lottery-sort/chip-1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 2px; }
 page-cqssc .chip-1 {
-  background-image: url("../../../assets/img/lottery-sort/chip-1.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-1.png"); }
 page-cqssc .chip-2 {
-  background-image: url("../../../assets/img/lottery-sort/chip-2.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-2.png"); }
 page-cqssc .chip-5 {
-  background-image: url("../../../assets/img/lottery-sort/chip-5.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-5.png"); }
 page-cqssc .chip-10 {
-  background-image: url("../../../assets/img/lottery-sort/chip-10.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-10.png"); }
 page-cqssc .chip-20 {
-  background-image: url("../../../assets/img/lottery-sort/chip-20.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-20.png"); }
 page-cqssc .chip-50 {
-  background-image: url("../../../assets/img/lottery-sort/chip-50.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-50.png"); }
 page-cqssc .chip-100 {
-  background-image: url("../../../assets/img/lottery-sort/chip-100.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-100.png"); }
 page-cqssc .chip-500 {
-  background-image: url("../../../assets/img/lottery-sort/chip-500.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-500.png"); }
 page-cqssc .chip-1000 {
-  background-image: url("../../../assets/img/lottery-sort/chip-1000.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-1000.png"); }
 page-cqssc .chip-5000 {
-  background-image: url("../../../assets/img/lottery-sort/chip-5000.png"); }
+  background-image: url("../assets/img/lottery-sort/chip-5000.png"); }
 
 /*# sourceMappingURL=cqssc.css.map */

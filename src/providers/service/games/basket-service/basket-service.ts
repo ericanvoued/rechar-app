@@ -498,7 +498,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async saobaoSubmit(balls) {
+  async saobaoSubmit(balls,content) {
     if (this.submitProcessing) return;
     this.submitProcessing = true;
     this.share.showLoading();
@@ -508,7 +508,7 @@ export class BasketServiceProvider extends BusinessTool {
     this.submitProcessing = false;
 
     if (data.isSuccess) {
-      this.share.showToast("投注成功");
+      content.submitSuccess(data);
       this.clearAll();
     } else {
       this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
