@@ -1,0 +1,21 @@
+{
+  "isSuccess": 1,
+  "type": "success",
+  "Msg": "\u6295\u6ce8\u6210\u529f",
+  "data": {
+    "available": "247954.7",
+    "balance": 247954.7322,
+    "tplData": {
+      "msg": "\u6295\u6ce8\u6210\u529f",
+      "successful": [
+        {
+          "id": 110785098,
+          "way": "69",
+          "ball": "1|1|1",
+          "position": ""
+        }
+      ],
+      "link": "http:\/\/180.178.42.214\/projects"
+    }
+  }
+}

@@ -49,6 +49,16 @@ let errortoken = {
   type: 'token'
 };
 
+
+app.post('/mobile-lotteries-h5/bet/:id', ({body}, res) => {
+  if (body._token == _token) {
+    res.json(require('./data/bet/1.json'));
+  } else {
+    res.json(errortoken);
+  }
+});
+
+
 app.post('/mobile-lotteries-h5/lottery-info', ({body}, res) => {
   if (body._token == _token) {
     res.json(require('./data/index/post/lottery-info.json'));
