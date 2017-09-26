@@ -13,7 +13,7 @@ export class MyPopOverComponent {
 
   async close(page,item?) {
     await this.navCtrl.push(page,item);
-    await this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
     this.share.moreType=0;
   }
 }

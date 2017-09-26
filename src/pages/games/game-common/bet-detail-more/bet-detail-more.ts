@@ -15,8 +15,6 @@ import {BetrecordDetailService} from "../../../../providers/service/betrecord-se
   templateUrl: 'bet-detail-more.html',
 })
 export class BetDetailMorePage {
-
-
   constructor(public navCtrl: NavController, public params: NavParams, public betrecordDetailService: BetrecordDetailService) {
     clearInterval(this.cccInterval);
     this.cccInterval = setInterval(()=>this.ccc = !this.ccc,1000);
