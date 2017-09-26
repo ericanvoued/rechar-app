@@ -16,11 +16,12 @@
             <div><span>{{data.title}}</span></div>
             <div><span>第{{data.issue}}期</span></div>
             <div><span>注单金额：</span><span class="gray">￥{{data.amount}}</span></div>
-            <div class="mt5" *ngIf="data.winning_number"><span>中奖金额：</span><span>￥{{data.winning_number }}</span></div>
+            <div class="mt5" *ngIf="data.total_prize"><span>中奖金额：</span><span>￥{{data.total_prize }}</span></div>
           </div>
           <div class="bet-l bet-r-font">
             <div class="" *ngIf="data.winning_number_group?.length">
-              <i class="num-green" *ngFor="let num of data.winning_number_group">{{num}}</i>
+              <div>中奖号码：</div>
+              <div><i class="num-green" *ngFor="let num of data.winning_number_group">{{num}}</i></div>
             </div>
             <div>下注时间：</div>
             <div>{{data.bought_at}}</div>

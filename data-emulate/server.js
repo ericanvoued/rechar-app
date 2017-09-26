@@ -140,6 +140,18 @@ app.get('/mobileh5-projects/batch-print-projects?project_ids=:parameter', (req, 
   }
 });
 
+/**
+ * 投注返回接口
+ */
+
+app.post('mobile-lotteries-h5/bet/:id', ({body}, res) => {
+  if (body._token == _token) {
+    res.json(require('./data/index/post/bet-pay.json'));
+  } else {
+    res.json(errortoken);
+  }
+});
+
 
 /**
  * 优惠接口
