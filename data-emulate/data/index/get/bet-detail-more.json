@@ -28,7 +28,7 @@
       "single_amount": "2.0000",
       "amount": "2.0000",
       "winning_number": "74596",
-      "total_prize": null,
+      "total_prize": 12345,
       "prize": null,
       "status": "2",
       "status_prize": "0",

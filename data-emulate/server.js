@@ -132,12 +132,8 @@ app.get('/mobileh5-projects/:id/view', (req, res) => {
  * 投注详情接口
  */
 
-app.get('/mobileh5-projects/batch-print-projects?project_ids=:parameter', (req, res) => {
-  if(req.params.parameter){
-    res.json(require('./data/index/get/bet-detail-more.json'));
-  } else {
-    res.json(error);
-  }
+app.get('/mobileh5-projects/batch-print-projects', (req, res) => {
+  res.json(require('./data/index/get/bet-detail-more.json'));
 });
 
 /**
