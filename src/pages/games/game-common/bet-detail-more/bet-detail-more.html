@@ -13,9 +13,9 @@
       <div class="bet-wrap">
         <div class="bet-detail-1">
           <div class="bet-l">
-            <div><span>{{data.title}}</span></div>
-            <div><span>第{{data.issue}}期</span></div>
-            <div><span>注单金额：</span><span class="gray">￥{{data.amount}}</span></div>
+            <div class="mt5 bet-title"><span>{{data.title}}</span></div>
+            <div class="mt5"><span>第{{data.issue}}期</span></div>
+            <div class="mt5"><span>注单金额：</span><span class="gray">￥{{data.amount}}</span></div>
             <div class="mt5" *ngIf="data.total_prize"><span>中奖金额：</span><span>￥{{data.total_prize }}</span></div>
           </div>
           <div class="bet-l bet-r-font">

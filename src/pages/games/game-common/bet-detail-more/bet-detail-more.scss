@@ -42,14 +42,16 @@ page-bet-detail-more {
     padding:8px 2%;
     line-height: 2;
   }
-
+  .bet-title{
+    font-weight: bold;
+    font-size: 16px;
+  }
   .num-green {
-    width: 24px;
+    width: 22px;
     line-height: 24px;
     font-size: 1.6rem;
-    margin: 1px;
+    margin: 1px 1px 3px 1px;
   }
-
   .bet-chase{
     line-height: 28px;
     padding:8px;
