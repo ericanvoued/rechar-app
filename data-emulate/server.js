@@ -49,16 +49,6 @@ let errortoken = {
   type: 'token'
 };
 
-
-app.post('/mobile-lotteries-h5/bet/:id', ({body}, res) => {
-  if (body._token == _token) {
-    res.json(require('./data/bet/1.json'));
-  } else {
-    res.json(errortoken);
-  }
-});
-
-
 app.post('/mobile-lotteries-h5/lottery-info', ({body}, res) => {
   if (body._token == _token) {
     res.json(require('./data/index/post/lottery-info.json'));
@@ -154,14 +144,9 @@ app.get('/mobileh5-projects/batch-print-projects?project_ids=:parameter', (req, 
  * 投注返回接口
  */
 
-app.post('mobile-lotteries-h5/bet/:id', ({body}, res) => {
-  if (body._token == _token) {
-    res.json(require('./data/index/post/bet-pay.json'));
-  } else {
-    res.json(errortoken);
-  }
+app.post('/mobile-lotteries-h5/bet/:id', (req, res)=> {
+  res.json(require('./data/bet/'+req.params.id+'.json'));
 });
-
 
 /**
  * 优惠接口
