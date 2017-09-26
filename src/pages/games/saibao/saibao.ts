@@ -267,9 +267,6 @@ export class SaibaoPage {
   }
 
   async goBuyBasket(obj) {
-    console.log(this.basket.basketBall);
-    debugger
-
     if (this.gameData.total == 0) {
       this.share.showToast('请投注后再提交', 1000);
     } else {
