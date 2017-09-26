@@ -35,8 +35,7 @@
                (click)="clickItem('game1',r,$event)">
             <p>{{item.p1}}<span>{{item.s}}</span></p>
             <p>{{item.p2}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -49,8 +48,7 @@
           <div class="t-unit" *ngFor="let item of gameData.game2.data;let r=index"
                (click)="clickItem('game2',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -64,8 +62,7 @@
                (click)="clickItem('game3',r,$event)">
             <i class="saizi saizi-{{item.p1}}"></i>
             <i class="saizi saizi-{{item.p2}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -79,8 +76,7 @@
                (click)="clickItem('game4',r,$event)">
             <p class="t-num">{{item.n}}</p>
             <p>1:{{item.be}}</p>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -94,8 +90,7 @@
                (click)="clickItem('game5',r,$event)">
             <i class="saizi saizi-{{item.p}}"></i>
             <i class="saizi saizi-{{item.p}}"></i>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -133,8 +128,7 @@
               <i class="saizi saizi-{{item.p}}"></i>
               <i class="saizi saizi-{{item.p}}"></i>
             </div>
-            <div class="add-coin"><i *ngFor="let c of item.g;let id=index"
-                                     class="chip chip-{{c}} chip-index-{{id}}"></i></div>
+            <div class="add-coin"><i *ngFor="let c of item.g;let id=index" class="chip chip-{{c}} chip-index-{{id}}"></i></div>
             <div class="bet-detail">
               <div class="bet-momey" *ngIf="item.t>0">{{item.t}}</div>
             </div>
@@ -172,15 +166,11 @@
   <div class="confirm-bet">
     <ul>
       <li class="e-clear">
-        <a href="javascript:;" class="button button-outline" (click)="clearSelect()">清空</a><a href="javascript:;"
-                                                                                              class="button button-outline"
-                                                                                              (click)="backSelect()">撤销</a>
+        <a href="javascript:;" class="button button-outline" (click)="clearSelect()">清空</a><a href="javascript:;" class="button button-outline" (click)="backSelect()">撤销</a>
       </li>
       <li class="confirm-w">
-        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger"
-           (touchstart)="goBuyBasket(gameconfigdata?.defaultsMethodData?.c)">
-          <span>确认投注</span><span class="confirm-number"
-                                 *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
+        <a class="confirm-btn" tabBadge="14" tabBadgeStyle="danger" (touchstart)="goBuyBasket(gameconfigdata?.defaultsMethodData?.c)">
+          <span>确认投注</span><span class="confirm-number" *ngIf="basket.basketData.length">{{basket.basketData?.length}}</span>
         </a>
       </li>
     </ul>
