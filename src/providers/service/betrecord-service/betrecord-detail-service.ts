@@ -4,9 +4,9 @@ import {GlobalShareProvider} from "../../global-share/global-share";
 
 @Injectable()
 export class BetrecordDetailService {
+  bet_winning_number=[];
 
-  constructor(public http: HttpClientProvider, public share: GlobalShareProvider) {
-  }
+  constructor(public http: HttpClientProvider, public share: GlobalShareProvider) {}
 
   postRemoteServer(): any {
     return this.http.get(`/mobileh5-projects/${this.getParameters().id}/view`);
@@ -25,6 +25,22 @@ export class BetrecordDetailService {
   async betDetailMoreRemoteServer() {
     let data = await this.http.get(`/mobileh5-projects/batch-print-projects?project_ids=${this.betMoreDetailParameters}`);
     this.betDetailParametersData = data;
+    for(let i=0;i< this.betDetailParametersData.projects.length;i++){
+      let str = this.betDetailParametersData.projects[i].winning_number;
+      this.bet_winning_number=[];
+      if (str) {
+        if (/[,\s]+/.test(str))
+          this.bet_winning_number= str.split(/[,\s]+/);
+        else
+          this.bet_winning_number = str.split('');
+      }
+      this.betDetailParametersData.projects[i].winning_number_group=JSON.parse(JSON.stringify(this.bet_winning_number));
+    }
+
+
+
+
+
 
   }
 

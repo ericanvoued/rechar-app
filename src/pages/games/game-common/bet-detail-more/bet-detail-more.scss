@@ -21,19 +21,24 @@ page-bet-detail-more {
     color: #808080;
     margin-top: 10px;
   }
-  .bet-detail{
+  .bet-detail-1{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
     padding:10px 2%;
     border-bottom: 1px solid #e5e5e5;
   }
   .bet-l{
-    float: left;
+    display: block;
   }
-  .bet-r{
-    float: right;
+  .bet-r-font{
     font-size: 1.3rem;
     padding-top: 6px;
   }
   .bet-list {
+    display: block;
+    width: 100%;
     padding:8px 2%;
     line-height: 2;
   }

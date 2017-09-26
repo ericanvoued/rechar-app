@@ -19,10 +19,7 @@ export class BetDetailMorePage {
 
   constructor(public navCtrl: NavController, public params: NavParams, public betrecordDetailService: BetrecordDetailService) {
     clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(()=>{
-      this.ccc = !this.ccc;
-    },1000);
-
+    this.cccInterval = setInterval(()=>this.ccc = !this.ccc,1000);
   }
   ccc:boolean;
   cccInterval:any;
@@ -36,5 +33,4 @@ export class BetDetailMorePage {
   getIDs(){
     return this.params.get('tplData') && this.params.get('tplData').successful && this.params.get('tplData').successful.map(v => v.id).join(',')
   }
-
 }

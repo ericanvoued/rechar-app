@@ -116,7 +116,7 @@ app.get('/mobileh5-station-letters/:id/view', ({body}, res) => {
 });
 
 /**
- * 投注详情接口
+ * 注单详情接口
  */
 
 app.get('/mobileh5-projects/:id/view', (req, res) => {
@@ -126,6 +126,20 @@ app.get('/mobileh5-projects/:id/view', (req, res) => {
     res.json(error);
   }
 });
+
+
+/**
+ * 投注详情接口
+ */
+
+app.get('/mobileh5-projects/batch-print-projects?project_ids=:parameter', (req, res) => {
+  if(req.params.parameter){
+    res.json(require('./data/index/get/bet-detail-more.json'));
+  } else {
+    res.json(error);
+  }
+});
+
 
 /**
  * 优惠接口
