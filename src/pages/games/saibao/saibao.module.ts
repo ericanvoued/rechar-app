@@ -8,12 +8,14 @@ import {BasketServiceProvider} from "../../../providers/service/games/basket-ser
 import {UserbalanceServiceProvider} from "../../../providers/service/userbalance-service/userbalance-service";
 import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
+import {ComponentsModule} from "../../../components/components.module";
 
 @NgModule({
   declarations: [
     SaibaoPage,
   ],
   imports: [
+    ComponentsModule,
     IonicPageModule.forChild(SaibaoPage),
   ],
   providers: [

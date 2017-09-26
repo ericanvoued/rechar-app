@@ -248,30 +248,33 @@ export class SaibaoPage {
       "type": "",
       "onePrice": 2,
       "prize_group": 1950,
-      "moneyunit": 0.01,
+      "moneyunit": 0.1,
       "multiple": 0
     };
     for (let item in this.gameData) {
       if (item.indexOf('game') > -1) {
         for (let i = 0; i < this.gameData[item].data.length; i++) {
           if (this.gameData[item].data[i].t > 0) {
-            ball.multiple = this.gameData[item].data[i].t * 50;
+            ball.multiple = this.gameData[item].data[i].t * 5;
             ball.ball = this.gameData[item].data[i].b;
             ball.type = this.gameData[item].key;
             ball.wayId = this.gameData[item].id;
-            this.basket.basketBall.push(ball);
+            this.basket.basketBall.push(JSON.parse(JSON.stringify(ball)));
           }
         }
       }
     }
   }
 
-  goBuyBasket(obj) {
+  async goBuyBasket(obj) {
     console.log(this.basket.basketBall);
+    debugger
+
     if (this.gameData.total == 0) {
       this.share.showToast('请投注后再提交', 1000);
     } else {
-      this.basket.saobaoSubmit(this.basket.basketBall, this);
+      await this.basket.saobaoSubmit(this.basket.basketBall, this);
+      this.clearSelect();
     }
   }
 
@@ -313,30 +316,15 @@ export class SaibaoPage {
     return parseInt((f * m) + '', 10) / m;
   }
 
-  showAlert(data) {
-    let alert = this.alertCtrl.create({
-      title: '投注成功',
-      message: "您可以通过”游戏记录“查询您的投注记录！"
-    });
-    alert.present();
-  }
-
-  submitSuccess(data) {
-    this.showAlert(data);
-    //this.navCtrl.push("BetDetailMorePage",data);
-  }
-
   @ViewChild('saobaocontent') saobaocontent
 
   getvisableHeight(obj) {
     let t = obj.offsetTop;
     let t2 = obj.offsetLeft;
-
     while ((obj = obj.offsetParent)) {
       t += obj.offsetTop;
       t2 += obj.offsetLeft;
     }
-
     let scrollTop = $(this.saobaocontent.nativeElement).find('.scroll-content').scrollTop();
     return {top: t - scrollTop, left: t2};
   }

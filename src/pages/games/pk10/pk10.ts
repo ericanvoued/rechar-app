@@ -8,13 +8,6 @@ import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 import {LableMap} from "../game-common/labelmap";
 
-/**
- * Generated class for the Pk10Page page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-pk10',
@@ -48,9 +41,7 @@ export class Pk10Page extends Effect {
   }
 
   tmpComformMethod(a, b, c) {
-    this.methodGroup = {
-      a, b, c
-    }
+    this.methodGroup = {a, b, c}
   }
 
   logDrag() {
@@ -68,10 +59,7 @@ export class Pk10Page extends Effect {
   private other() {
     this.menuCtrl.enable(false, 'unauthenticated');
     clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => {
-      this.ccc = !this.ccc;
-    }, 800);
-
+    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 800);
   }
 
   setGrounpChoose(name, arr, value) {
@@ -93,18 +81,14 @@ export class Pk10Page extends Effect {
   mindus(obj) {
     obj.mutipleAndModeObj.times--;
     obj.mutipleAndModeObj.times = Math.max(obj.mutipleAndModeObj.times, 1);
-
   }
 
   pluse(obj) {
     obj.mutipleAndModeObj.times++;
     obj.mutipleAndModeObj.times = Math.min(obj.mutipleAndModeObj.times, obj.max_multiple);
-
   }
 
-  pluseOrmindusOnInput = debounce((obj, e) => {
-    this.pluseOrmindus(obj, e);
-  }, 1000)
+  pluseOrmindusOnInput = debounce((obj, e) => this.pluseOrmindus(obj, e), 1000)
 
   pluseOrmindus(obj, e) {
     let v = +e.target.value;
@@ -119,63 +103,36 @@ export class Pk10Page extends Effect {
   }
 
   modeChange(obj, mode) {
-    if (!obj.oldmax_multiple) {
-      obj.oldmax_multiple = obj.max_multiple;
-    }
-
+    if (!obj.oldmax_multiple) obj.oldmax_multiple = obj.max_multiple;
     obj.mutipleAndModeObj.mode = mode;
     obj.max_multiple = obj.oldmax_multiple / mode;
     this.restTimesWhenChangeMode(obj);
   }
 
   restTimesWhenChangeMode(obj) {
-    if (obj.mutipleAndModeObj.times >= obj.max_multiple) {
+    if (obj.mutipleAndModeObj.times >= obj.max_multiple)
       obj.mutipleAndModeObj.times = obj.max_multiple;
-    }
   }
 
   messages(obj): void {
     let hasChoose = this.basket.hasChooseBall(obj.selectarea);
     if (hasChoose && (obj.count == 0)) {
-      let toast = this.toastCtrl.create({
-        message: obj.bet_note,
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast(obj.bet_note,1000,'middle');
     } else if (obj.isRedudu) {
-      let toast = this.toastCtrl.create({
-        message: '订单已经存在',
-        duration: 1000,
-        position: 'middle'
-      });
-
-      toast.present(toast);
+      this.share.showToast('订单已经存在',1000,'middle');
     } else {
-      let toast = this.toastCtrl.create({
-        message: '请选择注单',
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast('请选择注单',1000,'middle');
     }
   }
 
   addBall(obj): boolean {
     let isSucess = this.basket.addDataToBasketPK10(obj);
-
     if (isSucess) {
       this.clear(obj);
-      let toast = this.toastCtrl.create({
-        message: '注单添加成功',
-        duration: 1000,
-        position: 'bottom'
-      });
-      toast.present(toast);
+      this.share.showToast('注单添加成功',1000,'bottom');
     } else {
       this.messages(obj);
     }
-
     return isSucess;
   }
 
@@ -200,11 +157,8 @@ export class Pk10Page extends Effect {
 
   clearBall(arr: Array<any>) {
     arr.forEach(v => {
-      if (Array.isArray(v.value)) {
-        v.value.forEach((v1, k1, array) => {
-          array[k1] = false;
-        });
-      }
+      if (Array.isArray(v.value))
+        v.value.forEach((v1, k1, array) => array[k1] = false);
     });
   }
 }
@@ -212,10 +166,8 @@ export class Pk10Page extends Effect {
 
 function debounce(func, wait?, immediate?) {
   var timeout, args, context, timestamp, result;
-
   var later = function () {
     var last = new Date().getTime() - timestamp;
-
     if (last < wait && last >= 0) {
       timeout = setTimeout(later, wait - last);
     } else {
@@ -237,7 +189,6 @@ function debounce(func, wait?, immediate?) {
       result = func.apply(context, args);
       context = args = null;
     }
-
     return result;
   };
 }

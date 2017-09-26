@@ -5,6 +5,7 @@ import {AlertController, LoadingController, ToastController} from "ionic-angular
 
 @Injectable()
 export class GlobalShareProvider {
+  moreType=0;
   pid: string;
   basketData = [];
   basketDataValideArr=[];
@@ -91,4 +92,7 @@ export class GlobalShareProvider {
     return this.pid;
   }
 
+  setMore(num){
+    this.moreType=num;
+  }
 }

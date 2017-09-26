@@ -74,9 +74,7 @@ export class BasketServiceProvider extends BusinessTool {
       totalAllCount = +totalAllCount.toFixed(4);
 
       this.totalAllNum += v.count;
-      if (v.max_multiple < min.max_multiple) {
-        min = v;
-      }
+      if (v.max_multiple < min.max_multiple) min = v;
     });
     this.totalAllCount = totalAllCount;
 
@@ -418,10 +416,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   saobogetSubmitData(balls): Object {
     let totalamont = 0;
-    balls.forEach((v) => {
-      totalamont += (v.moneyunit * 2 * v.multiple * v.num);
-    });
-
+    balls.forEach((v) => totalamont += (v.moneyunit * 2 * v.multiple * v.num));
     let orderIssue = {};
     for (let i = 0; i < 1; i++) {
       orderIssue[this.gameconfigure.getIssuesList.data.trace_issues[i].number] = 1;
@@ -457,33 +452,18 @@ export class BasketServiceProvider extends BusinessTool {
     }
   }
 
-  postData: any = {
-    "gameId": "71",
-    "isTrace": 0,
-    "traceWinStop": 0,
-    "traceStopValue": 0,
-    "balls": [],
-    "orders": {},
-    "amount": "",
-    "_token": "",
-  };
-
-
   messages(obj): void {
-    if (obj.isRedudu)
-      this.share.showToast('订单已经存在', 1000);
+    if (obj.isRedudu) this.share.showToast('订单已经存在', 1000);
   }
 
   getRondomBall() {
     this.findRandom(this.c.name_cn, this.c);
     this.mainBussiness(this.c);
     let isSucess = this.addDataToBasket(this.c);
-    if (isSucess) {
+    if (isSucess)
       this.share.showToast('注单添加成功', 1000, 'bottom');
-    } else {
+    else
       this.messages(this.c);
-    }
-
   }
 
   finishRequest(data, goContent) {
@@ -506,9 +486,8 @@ export class BasketServiceProvider extends BusinessTool {
     this.loading && this.loading.dismiss();
     let data = await this.saobodoSubmint(balls);
     this.submitProcessing = false;
-
     if (data.isSuccess) {
-      content.submitSuccess(data);
+      this.share.showToast('投注成功');
       this.clearAll();
     } else {
       this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
@@ -528,7 +507,6 @@ export class BasketServiceProvider extends BusinessTool {
       this.loading && this.loading.dismiss();
       let data = await this.doSubmint();
       this.submitProcessing = false;
-
       this.finishRequest(data, goContent);
     }
   }

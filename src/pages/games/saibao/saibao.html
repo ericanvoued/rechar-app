@@ -4,10 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg"
-                                                                          class="question-icon" alt=""
-                                                                          (touchstart)="goHelpPage()">
+      <span>{{ gameconfigdata.defaultData.data?.game_name_cn}}</span><img src="assets/img/question.svg" class="question-icon" alt="" (touchstart)="goHelpPage()">
     </ion-title>
+    <button icon-only class="fr" (click)="share.setMore(1)">
+      <mores></mores>
+    </button>
   </ion-navbar>
 </ion-header>
 <ion-content>
@@ -23,11 +24,7 @@
           <p style="clear: both;overflow:hidden;">&nbsp;    &nbsp;    &nbsp;    </p>
           <p style="    margin-top: 7px;"><!--开奖记录--> </p>
         </div>
-        <!--<div class="t">-->
-        <!--<i class="saizi saizi-4"></i><i class="saizi saizi-2"></i><i class="saizi saizi-2"></i>-->
-        <!--</div>-->
-        <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls"
-           class="saizi saizi-{{num}}"></i>
+        <i *ngFor="let num of gameconfigdata.defaultData.data?.lottery_balls" class="saizi saizi-{{num}}" style="margin:0 1px"></i>
       </div>
     </div>
     <div class="game-table">
@@ -168,8 +165,7 @@
         </div>
       </div>
       <div class="e-triangle">
-        <div class="e-inner-triangle">
-        </div>
+        <div class="e-inner-triangle"></div>
       </div>
     </div>
   </div>
