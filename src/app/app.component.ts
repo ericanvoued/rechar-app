@@ -21,7 +21,7 @@ export class MyApp {
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
       if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot('LoginPage'), 500);
+        setTimeout(v => this.nav.setRoot('LoginPage'), 1000);
       }
       statusBar.styleDefault();
       splashScreen.hide();

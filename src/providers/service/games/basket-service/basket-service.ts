@@ -69,7 +69,9 @@ export class BasketServiceProvider extends BusinessTool {
     this.totalAllNum = 0;
     let totalAllCount = 0;
     this.share.basketData.forEach((v) => {
+
       totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.share.globalData.globalMutile * this.share.globalData.trace * v.count);
+      console.log(this.share.globalData.globalMutile, this.share.globalData.trace, v.count);
 
       totalAllCount = +totalAllCount.toFixed(4);
 
@@ -478,7 +480,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   submitProcessing = false;
 
-  async saobaoSubmit(balls,content) {
+  async saobaoSubmit(balls, content) {
     if (this.submitProcessing) return;
     this.submitProcessing = true;
     this.share.showLoading();

@@ -55,11 +55,11 @@
             <i>{{basket.customprizeGroupchoose}}-{{percent}}%</i><img
             src="assets/img/arrow-u.svg" alt=""></div>
           <ul class="money-menu">
-            <li (touchstart)="setPrizeGroup(share.defaultData.data.bet_min_prize_group,bet_min_prize_groupPercent)">
-              {{share.defaultData.data.bet_min_prize_group}}-{{bet_min_prize_groupPercent}}%
+            <li (touchstart)="setPrizeGroup(share.defaultData.data?.bet_min_prize_group,bet_min_prize_groupPercent)">
+              {{share.defaultData.data?.bet_min_prize_group}}-{{bet_min_prize_groupPercent}}%
             </li>
-            <li (touchstart)="setPrizeGroup(share.defaultData.data.bet_max_prize_group,bet_max_prize_groupPercent)">
-              {{share.defaultData.data.bet_max_prize_group}}-{{bet_max_prize_groupPercent}}%
+            <li (touchstart)="setPrizeGroup(share.defaultData.data?.bet_max_prize_group,bet_max_prize_groupPercent)">
+              {{share.defaultData.data?.bet_max_prize_group}}-{{bet_max_prize_groupPercent}}%
             </li>
           </ul>
         </div>
