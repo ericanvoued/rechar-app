@@ -26,7 +26,7 @@ export class BasketServiceProvider extends BusinessTool {
   basketBall = [];
   c = {name_cn: '', prize: 0};
 
-  totalAllCount: number;
+  totalAllCount: number=0;
   totalAllNum: number;
   gameId: any;
   traceWinStop: boolean = true;
@@ -69,17 +69,13 @@ export class BasketServiceProvider extends BusinessTool {
     this.totalAllNum = 0;
     let totalAllCount = 0;
     this.share.basketData.forEach((v) => {
-
       totalAllCount += (v.mutipleAndModeObj.mode * v.mutipleAndModeObj.times * v.price * this.share.globalData.globalMutile * this.share.globalData.trace * v.count);
-      console.log(this.share.globalData.globalMutile, this.share.globalData.trace, v.count);
-
       totalAllCount = +totalAllCount.toFixed(4);
 
       this.totalAllNum += v.count;
       if (v.max_multiple < min.max_multiple) min = v;
     });
-    this.totalAllCount = totalAllCount;
-
+    this.share.totalAllCount = totalAllCount;
 
     if (min) {
       this.share.MinMutiple.minmax_multiple = min.max_multiple;

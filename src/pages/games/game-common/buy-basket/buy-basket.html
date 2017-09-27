@@ -7,7 +7,7 @@
 
 <ion-content class="gray-bg">
   <ul class="buy-list">
-    <li class="buy-li clear" *ngFor="let items of share.basketData;let parantitemIndex =index;">
+    <li class="buy-li clear" *ngFor="let items of share.basketData;index as parantitemIndex;">
       <div class="buy-li-r"><i class="iconfont icon-cuowu" (touchstart)="basket.deleteItem(parantitemIndex)"></i></div>
       <div class="buy-con">
         <div class="number">
@@ -77,7 +77,7 @@
       <span class="footer-num">{{basket.totalAllNum}}</span>
       <span>注，</span>
       <span>共</span>
-      <span class="big-text"><i>¥</i><i class="col">{{basket.totalAllCount}}</i></span>
+      <span class="big-text"><i>¥</i><i class="col">{{share.totalAllCount}}</i></span>
     </div>
   </div>
   <div class="bet-btn" (touchstart)="submit()">立即下注</div>

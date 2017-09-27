@@ -27,7 +27,7 @@ export class HttpClientProvider {
     this.share.store.remove('app_user');
     this.share.user = null;
     localStorage.expired = Date.now();
-    this.share.showToast('您太久没有操作，帐号已自动退出', 3000);
+    //this.share.showToast('您太久没有操作，帐号已自动退出', 3000);
     setTimeout(() => location.reload(), 3000);
   }
 

@@ -314,6 +314,9 @@ export class SaibaoPage {
   }
 
   @ViewChild('saobaocontent') saobaocontent
+  goHelpPage() {
+    this.navCtrl.push("PlayHelpPage");
+  }
 
   getvisableHeight(obj) {
     let t = obj.offsetTop;

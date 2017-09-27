@@ -73,7 +73,9 @@ export class BuyBasketPage extends Effect {
       this.basket.submit(this);
     }
   }
-
+  trackByFn(a,b,c){
+    console.log(a,b,c);
+  }
   mutiplepluseOrmindusOnInput = debounce((e) => {
     this.mutiplepluseOrmindus(e);
   }, 1000);
