@@ -169,6 +169,7 @@ export class SaibaoPage {
       }, {p: 6, b: '666', g: [], t: 0}]
     }
   };
+  private cccInterval: number;
 
   constructor(public alertCtrl: AlertController, public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     this.other();
@@ -195,9 +196,12 @@ export class SaibaoPage {
   ionViewWillLeave() {
     this.menuCtrl.enable(true, 'unauthenticated');
   }
-
+  ccc:boolean;
   private other() {
     this.menuCtrl.enable(false, 'unauthenticated');
+    clearInterval(this.cccInterval);
+    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 800);
+
   }
 
   changeChip() {

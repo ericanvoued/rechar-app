@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController, ViewController} from "ionic-angular";
 import {GlobalShareProvider} from "../../providers/global-share/global-share";
 
@@ -8,12 +8,19 @@ import {GlobalShareProvider} from "../../providers/global-share/global-share";
 })
 export class MyPopOverComponent {
   text: string;
-  constructor(public viewCtrl: ViewController,public navCtrl: NavController,public share:GlobalShareProvider) {
+
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public share: GlobalShareProvider) {
   }
 
-  async close(page,item?) {
-    await this.navCtrl.push(page,item);
+  async close(page, item?) {
+    await this.navCtrl.push(page, item);
     this.viewCtrl.dismiss();
-    this.share.moreType=0;
+    this.share.moreType = 0;
+  }
+
+  async setRoot(page, item?) {
+    await this.navCtrl.setRoot(page, item);
+    this.viewCtrl.dismiss();
+    this.share.moreType = 0;
   }
 }

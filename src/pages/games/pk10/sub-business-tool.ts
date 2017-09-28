@@ -23,7 +23,7 @@ export class SubBusinessToolProvider extends BusinessTool {
     this.createLabelAndBall(c);
     this.createLabelAndBallPair(c.bet_number, selectarea, bet_numberArrObj,c);
     c.isnotnumberSymble = /\.dragonwithtiger$/.test(c.fullName_en);
-
+    c.isAnMingChi = /rate_daccording/.test(c.name_en);
     c.modesArray = [1, 0.1, 0.01];
     let mutipleAndModeObj = {
       mode: 1,

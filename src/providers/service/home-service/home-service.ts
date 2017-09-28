@@ -72,7 +72,9 @@ export class HomeServiceProvider {
 
   async postLotteryServer() {
     this.parameter= this.getParameters(0);
+    this.share.showLoading();
     let inData = await this.client.post('/mobile-lotteries-h5/lottery-info', this.parameter);
+    this.share.hideLoading();
     this.dataGroup = JSON.parse(JSON.stringify(dataGroup));
     this.setInData(inData);
     this.share.dataGroup = this.dataGroup;

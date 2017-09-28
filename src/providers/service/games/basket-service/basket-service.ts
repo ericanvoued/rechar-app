@@ -26,7 +26,7 @@ export class BasketServiceProvider extends BusinessTool {
   basketBall = [];
   c = {name_cn: '', prize: 0};
 
-  totalAllCount: number=0;
+  totalAllCount: number = 0;
   totalAllNum: number;
   gameId: any;
   traceWinStop: boolean = true;
@@ -142,10 +142,12 @@ export class BasketServiceProvider extends BusinessTool {
       obj.selectarea.forEach((v, k) => {
         if (Array.isArray(v.value)) {
           let tmp = [];
+
           v.value.forEach((v1, k1) => {
             if (obj.isnotnumberSymble) {
               v1 && tmp.push(obj.bet_numberArrObj[k].value[k1].join('-'));
-            } else {
+            }
+            else {
               v1 && tmp.push(obj.bet_numberArrObj[k].value[k1]);
             }
           });
@@ -337,12 +339,13 @@ export class BasketServiceProvider extends BusinessTool {
           if (Array.isArray(v3.value)) {
             let tmp = [];
             v3.value.forEach((v4, k4) => {
-              v4 && tmp.push(k4);
+              v4 && tmp.push(v.isAnMingChi ? ([1, 0, 3, 2][k4]) : k4);
             });
             ball.push(tmp.join(''));
           }
         });
       }
+
 
       balls.push({
         "jsId": 2,
@@ -466,6 +469,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   finishRequest(data, goContent) {
     if (data.isSuccess) {
+      data.data.istrace = +(this.share.globalData.trace > 1);
       goContent.navCtrl.push("BetSuccessPage", data);
       this.clearAll();
     } else {

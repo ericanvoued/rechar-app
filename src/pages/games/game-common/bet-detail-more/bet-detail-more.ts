@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {BetrecordDetailService} from "../../../../providers/service/betrecord-service/betrecord-detail-service";
 
 /**
@@ -17,10 +17,11 @@ import {BetrecordDetailService} from "../../../../providers/service/betrecord-se
 export class BetDetailMorePage {
   constructor(public navCtrl: NavController, public params: NavParams, public betrecordDetailService: BetrecordDetailService) {
     clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(()=>this.ccc = !this.ccc,1000);
+    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 1000);
   }
-  ccc:boolean;
-  cccInterval:any;
+
+  ccc: boolean;
+  cccInterval: any;
 
   statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
 
@@ -28,7 +29,12 @@ export class BetDetailMorePage {
     this.betrecordDetailService.betMoreDetailParameters = this.getIDs();
     this.betrecordDetailService.betDetailMoreRemoteServer();
   }
-  getIDs(){
-    return this.params.get('tplData') && this.params.get('tplData').successful && this.params.get('tplData').successful.map(v => v.id).join(',')
+
+  getIDs(): string {
+    if (this.params.get('tplData') && this.params.get('tplData').successful) {
+      let ids = this.params.get('tplData').successful.map(v => v.id);
+      return `${ids.join(',')}&istrace=${this.params.get('istrace')}`;
+    }
+    return "";
   }
 }

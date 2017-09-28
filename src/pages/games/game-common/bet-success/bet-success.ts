@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {GlobalShareProvider} from "../../../../providers/global-share/global-share";
 
 /**
  * Generated class for the BetSuccessPage page.
@@ -15,17 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BetSuccessPage {
 
-  constructor(public navCtrl: NavController, public  navParams: NavParams) {
+  constructor(public share: GlobalShareProvider, public navCtrl: NavController, public  navParams: NavParams) {
   }
 
   ionViewDidLoad() {
   }
+
   gosscpage() {
     this.navCtrl.pop();
     this.navCtrl.pop();
   }
-  go(a,b){
-    this.navCtrl.push(a,b);
+
+  go(a, b) {
+    this.navCtrl.push(a, b);
   }
 
 }
