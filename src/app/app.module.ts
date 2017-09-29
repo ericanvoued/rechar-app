@@ -10,6 +10,7 @@ import {GlobalShareProvider} from "../providers/global-share/global-share";
 import {MyExceptionHandler} from "./MyExceptionHandler";
 import {MyPopOverComponent} from "../components/my-pop-over/my-pop-over";
 import { SubBusinessToolProvider } from '../pages/games/jsks/sub-business-tool';
+import {BalanceProvider} from "../providers/global-share/balance";
 
 @NgModule({
   declarations: [
@@ -42,9 +43,8 @@ import { SubBusinessToolProvider } from '../pages/games/jsks/sub-business-tool';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: MyExceptionHandler},
-    SubBusinessToolProvider
+    SubBusinessToolProvider,
+    BalanceProvider
   ]
 })
-export class AppModule {
-
-}
+export class AppModule {}

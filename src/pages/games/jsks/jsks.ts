@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
-
 import {Config} from "../../../config/config";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
-import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
@@ -29,7 +27,7 @@ export class JsksPage extends Effect {
   ccc: boolean;
   yearReg = /[\d]{4}-/;
 
-  constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
     this.other();
     let nav = this.navParams.get('nav') || {};
@@ -40,7 +38,6 @@ export class JsksPage extends Effect {
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
-    this.gameinfo.getRecord();
     basket.clearAll();
     this.menuCtrl.enable(false, 'unauthenticated');
   }

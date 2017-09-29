@@ -3,8 +3,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 import {Config} from "../../config/config";
 import {Effect} from "./effect";
-import {BalanceProvider} from "../../providers/service/balance/balance";
 import {GlobalShareProvider} from "../../providers/global-share/global-share";
+import {BalanceProvider} from "../../providers/global-share/balance";
 
 @IonicPage()
 @Component({
@@ -17,9 +17,10 @@ export class HomePage {
   getRecord: any;
   gamelistIconMap = Config.gameiconMap;
 
-  constructor(public share: GlobalShareProvider, public balance: BalanceProvider, public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
+  constructor(public balance:BalanceProvider,public share: GlobalShareProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
     (new Effect()).initEffect();
-    this.balance.getUserBalance();
+    this.share.checkPlatform();
+    this.balance.getBalance();
     this.homeService.getRemoteServer();
     this.homeService.getBannerRemoteServer();
     this.homeService.postLotteryServer();

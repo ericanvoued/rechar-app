@@ -16,7 +16,6 @@ export class HomeServiceProvider {
   dataGroup: any;
   dataItems = [];
   banners: any;
-  balance: any;
   notice = {data: []};
   message = {data: []};
   messageDetail: any;
@@ -25,11 +24,6 @@ export class HomeServiceProvider {
   parameter:any;
 
   constructor(public client: HttpClientProvider, public share: GlobalShareProvider) {
-  }
-
-  async getUserBalance(): Promise<any> {
-    let balance = await this.client.get('/mobileh5-users/user-account-info');
-    this.balance = balance.data;
   }
 
   async postRecordServer(): Promise<any> {

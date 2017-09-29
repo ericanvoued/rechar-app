@@ -13,7 +13,7 @@
       <div id="qrCode" style="height: 100%;padding-top: 30px;" text-center justify-content-center></div>
     </div>
     <div *ngIf="!isCode">
-      <iframe *ngIf="!isIphoneOs" #webchatpaypage src="assets/wechatpay.html"></iframe>
+      <iframe *ngIf="share.plat!='ios'" #webchatpaypage src="assets/wechatpay.html"></iframe>
       <div class="sqCode" text-center><img src="{{data}}"/></div>
     </div>
   </div>

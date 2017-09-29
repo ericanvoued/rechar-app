@@ -3,21 +3,7 @@ import {HttpClientProvider} from "../../../http-client/http-client";
 import {BusinessTool} from "../../../tools/business-tool";
 import {GameconfigServiceProvider} from "../gameconfig-service/gameconfig-service";
 import {GlobalShareProvider} from "../../../global-share/global-share";
-import {UserbalanceServiceProvider} from "../../userbalance-service/userbalance-service";
-
-function PlatformDetected() {
-  var userAgent = navigator.userAgent.toLowerCase();
-  this.isIpad = !!userAgent.match(/ipad/i)
-  this.isIphoneOs = !!userAgent.match(/iphone os/i)
-  this.isAndroid = !!userAgent.match(/android/i);
-  this.isCE = !!userAgent.match(/windows ce/i);
-  this.isWM = !!userAgent.match(/windows mobile/i);
-  this.isPhone = this.isIpad || this.isIphoneOs || this.isMidp || this.isUc7 || this.isUc || this.isAndroid || this.isCE || this.isWM;
-
-}
-
-var platformInstance = new PlatformDetected();
-
+import {BalanceProvider} from "../../../global-share/balance";
 
 @Injectable()
 export class BasketServiceProvider extends BusinessTool {
@@ -31,7 +17,7 @@ export class BasketServiceProvider extends BusinessTool {
   gameId: any;
   traceWinStop: boolean = true;
 
-  constructor(public userbalance: UserbalanceServiceProvider, public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
+  constructor(public balance:BalanceProvider,public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
     super();
 
     this.share.globalData = {globalMutile: 1, trace: 1}
@@ -433,7 +419,7 @@ export class BasketServiceProvider extends BusinessTool {
       "amount": totalamont,
       is_encoded: 1,
       _token: this.share.user.token,
-      bet_source: platformInstance.isAndroid ? 'android' : (platformInstance.isIphoneOs ? 'ios' : 'h5')
+      bet_source: this.share.plat
     }
 
   }
@@ -449,7 +435,7 @@ export class BasketServiceProvider extends BusinessTool {
       "amount": this.totalAllCount,
       is_encoded: 1,
       _token: this.share.user.token,
-      bet_source: platformInstance.isAndroid ? 'android' : (platformInstance.isIphoneOs ? 'ios' : 'h5')
+      bet_source: this.share.plat
     }
   }
 
@@ -475,7 +461,7 @@ export class BasketServiceProvider extends BusinessTool {
     } else {
       this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
     }
-    this.userbalance.getBalaceAgain();
+    this.balance.getBalance();
   }
 
   submitProcessing = false;
@@ -494,7 +480,7 @@ export class BasketServiceProvider extends BusinessTool {
     } else {
       this.share.showAlert('', ['确定'], data.type && data.type == "bet-too-fast" ? "您投注太快了,请休息会再来" : data.Msg);
     }
-    this.userbalance.getBalaceAgain();
+    this.balance.getBalance();
   }
 
   async submit(goContent) {

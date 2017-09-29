@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
-
 import {Config} from "../../config/config";
 import {GlobalShareProvider} from "../global-share/global-share";
 
@@ -23,23 +22,20 @@ export class HttpClientProvider {
 
   autoLoginOutId: any;
 
-   logout() {
+  logout() {
     this.share.store.remove('app_user');
     this.share.user = null;
     localStorage.expired = Date.now();
-    //this.share.showToast('您太久没有操作，帐号已自动退出', 3000);
     setTimeout(() => location.reload(), 3000);
   }
 
   beforeRequest() {
     let a = localStorage.expired;
     let b = Date.now();
-    if ((b - a) > 1800000) {
-      this.logout()
-    } else {
-      localStorage.expired = Date.now()
-    }
-    ;
+    if ((b - a) > 1800000)
+      this.logout();
+    else
+      localStorage.expired = Date.now();
     return (b - a) > 1800000;
   }
 

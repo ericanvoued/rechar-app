@@ -37,11 +37,10 @@ export class MyApp {
         return;
       }
       let activeNav = this.app.getActiveNav();
-      if (activeNav.canGoBack()) {
+      if (activeNav.canGoBack())
         activeNav.pop();
-      } else {
+      else
         this.showExit();
-      }
     });
   }
 
@@ -74,11 +73,10 @@ export class MyApp {
   goPage(page, parameter, how?) {
     if (page) {
       this.menu.close();
-      if (how) {
+      if (how)
         this.nav.push(page, parameter);
-      } else {
+      else
         this.nav.setRoot(page, parameter);
-      }
     }
   }
 }

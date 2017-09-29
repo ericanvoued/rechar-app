@@ -4,9 +4,7 @@ import {CqsscPage} from './cqssc';
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {ComponentsModule} from "../../../components/components.module";
-import {UserbalanceServiceProvider} from "../../../providers/service/userbalance-service/userbalance-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
-import {Gamelist} from "../../../providers/service/games/gamelist-service";
 
 @NgModule({
   declarations: [
@@ -19,9 +17,7 @@ import {Gamelist} from "../../../providers/service/games/gamelist-service";
   providers: [
     GameconfigServiceProvider,
     BasketServiceProvider,
-    UserbalanceServiceProvider,
-    BusinessTool,
-    Gamelist
+    BusinessTool
   ]
 })
 export class CqsscPageModule {

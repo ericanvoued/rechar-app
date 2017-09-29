@@ -10,7 +10,6 @@ import {GlobalShareProvider} from "../../../providers/global-share/global-share"
 })
 export class CodeComfirmPage {
   userAgent: any;
-  isIphoneOs:boolean;
   data:any;
   title:any;
   isCode:boolean;
@@ -21,8 +20,6 @@ export class CodeComfirmPage {
   constructor(public share:GlobalShareProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    this.userAgent = navigator.userAgent.toLowerCase();
-    this.isIphoneOs = this.userAgent.match(/iphone os/i) == "iphone os";
     this.data = this.navParams.get('data');
     this.title = this.navParams.get('title');
     this.isCode = true;
@@ -32,7 +29,7 @@ export class CodeComfirmPage {
       this.formData();
     } else if(this.isCode) {
       this.codeData();
-    }else if(!this.isIphoneOs){
+    }else if(this.share.plat!='ios'){
       this.notPhone();
     }
   }

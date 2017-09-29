@@ -5,8 +5,6 @@ import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-import {UserbalanceServiceProvider} from "../../../providers/service/userbalance-service/userbalance-service";
-import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
 import {ComponentsModule} from "../../../components/components.module";
 
@@ -23,8 +21,6 @@ import {ComponentsModule} from "../../../components/components.module";
     SubCameconfigServiceProvider,
     GameconfigServiceProvider,
     BasketServiceProvider,
-    UserbalanceServiceProvider,
-    Gamelist,
     BusinessTool
   ]
 })
