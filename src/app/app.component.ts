@@ -17,7 +17,6 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
   yearReg = /[\d]{4}-/;
-
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
       if (!(/^#\/(login|tmp)/.test(location.hash))) {
