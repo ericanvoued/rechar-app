@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar class="clear">
+  <ion-navbar class="clear" text-left>
     <button ion-button menuToggle="left" class="side-icon">
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,12 +8,15 @@
         <img src="assets/img/home-logo.svg" width=90 alt="">
       </a>
       <div class="fr">
-        <span class="home-money">￥{{share?.balance?.available}}</span>
-        <a class="home-btn" (click)="pushPage('RechargePage')">存款</a>
+        <div>
+          <span class="home-money">￥{{share?.balance?.available}}</span>
+          <a class="home-btn" (click)="pushPage('RechargePage')">存款</a>
+        </div>
+
+        <div class="header-record" (click)="gameRecordFetch()" menuToggle="right">
+          <i class="iconfont icon-jilu"></i>
+        </div>
       </div>
-    </div>
-    <div class="header-record" (click)="gameRecordFetch()" menuToggle="right">
-      <i class="iconfont icon-jilu"></i>
     </div>
   </ion-navbar>
 </ion-header>

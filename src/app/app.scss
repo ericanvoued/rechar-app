@@ -435,7 +435,9 @@ a, a:hover, a:focus, a:visited {
     display: none;
   }
 }
-
+.tabbar{
+  z-index: 9999 !important;
+}
 .tabs .tabbar {
   background: #252943;
   border-top: none;
@@ -637,14 +639,12 @@ a, a:hover, a:focus, a:visited {
   padding-top: 0px;
   border-radius: 100%;
   text-align: center;
+  color: #387ef5;
   background: url("../assets/img/nav-main-active.svg") no-repeat !important;
   background-size: 100% 100%;
 
 }
 
-.tabs-md .tab-button[aria-selected=true] .tab-button-text {
-  margin: 0;
-}
 
 .tabs .ion-ios-home-icon {
   background: url("../assets/img/nav-main-active.svg") no-repeat !important;
@@ -699,7 +699,7 @@ a, a:hover, a:focus, a:visited {
 
 //头部样式
 .header-record {
-  position: absolute;
+
   top: 5px;
   right: 0;
   line-height: 36px;
@@ -712,10 +712,15 @@ a, a:hover, a:focus, a:visited {
 }
 
 .header-m {
+  position: relative;
   overflow: hidden;
-  white-space: nowrap;
+  vertical-align: middle;
+  *{
+    display: inline-block;
+    vertical-align: middle;
+  }
   .fr{
-    padding-right:40px;
+    padding-left:40px;
   }
 }
 
