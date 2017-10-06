@@ -3,8 +3,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Effect} from "./effect";
 import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../../providers/service/games/basket-service/basket-service";
-import {UserbalanceServiceProvider} from "../../../../providers/service/userbalance-service/userbalance-service";
 import {GlobalShareProvider} from "../../../../providers/global-share/global-share";
+import {BalanceProvider} from "../../../../providers/global-share/balance";
 
 /**
  * Generated class for the BuyBasketPage page.
@@ -19,14 +19,14 @@ import {GlobalShareProvider} from "../../../../providers/global-share/global-sha
   templateUrl: 'buy-basket.html',
 })
 export class BuyBasketPage extends Effect {
-  constructor( public navParams: NavParams,private share: GlobalShareProvider, public navCtrl: NavController, public basket: BasketServiceProvider, public userbalance: UserbalanceServiceProvider, public gameconfig: GameconfigServiceProvider) {
+  constructor(public balance:BalanceProvider, public navParams: NavParams,private share: GlobalShareProvider, public navCtrl: NavController, public basket: BasketServiceProvider, public gameconfig: GameconfigServiceProvider) {
     super();
   }
 
   ionViewDidLoad() {
     this.share.ispk10 = this.navParams.get('ispk10');
     this.initEffect();
-    this.userbalance.getBalaceAgain();
+    this.balance.getBalance();
     this.basket.setcustomprizeGroupchoose = this.basket.customprizeGroupchoose = this.share.defaultData.data.bet_max_prize_group;
     this.setPriceChooseOptions();
   }
@@ -49,9 +49,7 @@ export class BuyBasketPage extends Effect {
     this.share.globalData.globalMutile = Math.max(this.share.globalData.globalMutile, 1);
   }
 
-  tracepluseOrmindusOnInput = debounce((e) => {
-    this.tracepluseOrmindus(e);
-  }, 1000);
+  tracepluseOrmindusOnInput = debounce((e) => this.tracepluseOrmindus(e), 1000);
 
   tracepluseOrmindus(e) {
     let v = +e.target.value;
@@ -76,9 +74,7 @@ export class BuyBasketPage extends Effect {
   trackByFn(a,b,c){
     console.log(a,b,c);
   }
-  mutiplepluseOrmindusOnInput = debounce((e) => {
-    this.mutiplepluseOrmindus(e);
-  }, 1000);
+  mutiplepluseOrmindusOnInput = debounce((e) => this.mutiplepluseOrmindus(e), 1000);
 
   mutiplepluseOrmindus(e) {
     let v = +e.target.value;
@@ -129,7 +125,6 @@ function debounce(func, wait?, immediate?) {
 
   var later = function () {
     var last = new Date().getTime() - timestamp;
-
     if (last < wait && last >= 0) {
       timeout = setTimeout(later, wait - last);
     } else {
@@ -151,7 +146,6 @@ function debounce(func, wait?, immediate?) {
       result = func.apply(context, args);
       context = args = null;
     }
-
     return result;
   };
 }

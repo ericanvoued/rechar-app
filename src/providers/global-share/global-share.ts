@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {AlertController, LoadingController, ToastController} from "ionic-angular";
 
@@ -19,6 +18,7 @@ export class GlobalShareProvider {
   balance: any;
   gameRecord = {data: []};
   chargeRecord = {data: []};
+  plat='h5';
   parameters = {0:{
     _token: '',
     page: 1,
@@ -38,7 +38,17 @@ export class GlobalShareProvider {
   defaultData: any;
   ispk10: any;
   totalAllCount: number=0;
-  constructor(public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController) {}
+  constructor(private toastCtrl: ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController) {}
+
+  checkPlatform() {
+    let userAgent: any = navigator.userAgent.toLowerCase();
+    this.plat='h5';
+    if(userAgent.match(/iphone os/i) == "iphone os"){
+      this.plat='ios';
+    }else if(userAgent.match(/android/i) == "android"){
+      this.plat='android';
+    }
+  }
 
   showToast(msg,time?,position?) {
     let toast = this.toastCtrl.create({

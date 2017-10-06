@@ -16,7 +16,7 @@ export class LoginPage {
   debug = false;
   user: any;
 
-  constructor(private loginservice: LoginServiceProvider, private share: GlobalShareProvider, public modalCtrl: ModalController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private logins: LoginServiceProvider, private share: GlobalShareProvider, public modalCtrl: ModalController, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
     this.LoginForm = fb.group({
       username: ['', Validators.required],
       password: ['', Validators.pattern(/^[a-zA-Z0-9`\-=\[\];,./~!@#$%^*()_+}{:?]{6,16}$/)]
@@ -26,7 +26,7 @@ export class LoginPage {
 
   async login(localData) {
     this.share.showLoading("正在登陆中....");
-    let data = await this.loginservice.loginAction(localData);
+    let data = await this.logins.loginApp(localData);
     if (data.isSuccess) {
       this.share.user = data.data;
       this.clearAndStore(localData);

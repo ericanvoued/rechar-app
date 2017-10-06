@@ -4,7 +4,6 @@ import {Effect} from "../game-common/effect";
 import {Config} from "../../../config/config";
 import {GameconfigServiceProvider} from "../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BusinessTool} from "../../../providers/tools/business-tool";
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 
@@ -24,31 +23,23 @@ export class CqsscPage extends Effect {
   ccc: boolean;
   yearReg = /[\d]{4}-/;
 
-  constructor(private share: GlobalShareProvider, private util: BusinessTool, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
+  constructor(private share: GlobalShareProvider, private util: BusinessTool, public basket: BasketServiceProvider, private gameconfigdata: GameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams) {
     super();
-
     this.other();
     let nav = this.navParams.get('nav');
     let gamenav = nav;
     this.gameconfigdata.setPid(gamenav.pid);
     this.gameconfigdata.fetchMethedsList();
     this.share.gameId = nav && nav.pid;
-
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
-    this.gameinfo.getRecord();
     basket.clearAll();
-
     this.menuCtrl.enable(false, 'unauthenticated');
-
-
   }
 
   tmpComformMethod(a, b, c) {
-    this.methodGroup = {
-      a, b, c
-    }
+    this.methodGroup = {a, b, c}
   }
 
   logDrag() {
@@ -66,10 +57,7 @@ export class CqsscPage extends Effect {
   private other() {
     this.menuCtrl.enable(false, 'unauthenticated');
     clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => {
-      this.ccc = !this.ccc;
-    }, 800);
-
+    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 800);
   }
 
   setGrounpChoose(name, arr, value) {
@@ -91,18 +79,14 @@ export class CqsscPage extends Effect {
   mindus(obj) {
     obj.mutipleAndModeObj.times--;
     obj.mutipleAndModeObj.times = Math.max(obj.mutipleAndModeObj.times, 1);
-
   }
 
   pluse(obj) {
     obj.mutipleAndModeObj.times++;
     obj.mutipleAndModeObj.times = Math.min(obj.mutipleAndModeObj.times, obj.max_multiple);
-
   }
 
-  pluseOrmindusOnInput = debounce((obj, e) => {
-    this.pluseOrmindus(obj, e);
-  }, 1000)
+  pluseOrmindusOnInput = debounce((obj, e) => this.pluseOrmindus(obj, e), 1000)
 
   pluseOrmindus(obj, e) {
     let v = +e.target.value;
@@ -117,22 +101,15 @@ export class CqsscPage extends Effect {
   }
 
   modeChange(obj, mode) {
-    if (!obj.oldmax_multiple) {
-      obj.oldmax_multiple = obj.max_multiple;
-    }
-
+    if (!obj.oldmax_multiple) obj.oldmax_multiple = obj.max_multiple;
     obj.mutipleAndModeObj.mode = mode;
-
-    console.log('obj.mutipleAndModeObj.mode:', obj.mutipleAndModeObj.mode);
-
     obj.max_multiple = obj.oldmax_multiple / mode;
     this.restTimesWhenChangeMode(obj);
   }
 
   restTimesWhenChangeMode(obj) {
-    if (obj.mutipleAndModeObj.times >= obj.max_multiple) {
+    if (obj.mutipleAndModeObj.times >= obj.max_multiple)
       obj.mutipleAndModeObj.times = obj.max_multiple;
-    }
   }
 
   messages(obj): void {
@@ -159,14 +136,12 @@ export class CqsscPage extends Effect {
 
   goBuybasket(obj) {
     let isSucess = this.basket.addDataToBasket(obj);
-
     if (isSucess || this.share.basketData.length) {
       this.clear(obj);
       this.navCtrl.push("BuyBasketPage", {nav: this.navParams.get('nav')});
     } else {
       this.messages(obj);
     }
-
   }
 
   randomBall(obj) {
@@ -177,16 +152,12 @@ export class CqsscPage extends Effect {
     obj.mutipleAndModeObj.times = 1;
     this.util.clearBall(obj.selectarea);
   }
-
 }
-
 
 function debounce(func, wait?, immediate?) {
   var timeout, args, context, timestamp, result;
-
   var later = function () {
     var last = new Date().getTime() - timestamp;
-
     if (last < wait && last >= 0) {
       timeout = setTimeout(later, wait - last);
     } else {
@@ -197,7 +168,6 @@ function debounce(func, wait?, immediate?) {
       }
     }
   };
-
   return function () {
     context = this;
     args = arguments;
@@ -208,7 +178,6 @@ function debounce(func, wait?, immediate?) {
       result = func.apply(context, args);
       context = args = null;
     }
-
     return result;
-  };
+  }
 }

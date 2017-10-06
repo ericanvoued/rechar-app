@@ -20,16 +20,16 @@ export class MyApp {
 
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
-      if (!(/^#(\/login|\/tmp)/.test(location.hash) || /^#\/tmp/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot('LoginPage'), 1000);
+      if (!(/^#\/(login|tmp)/.test(location.hash))) {
+        setTimeout(v => this.nav.setRoot(this.rootPage), 1000);
       }
       statusBar.styleDefault();
       splashScreen.hide();
-      this.egisterBackButtonAction();
+      this.backButtonAction();
     });
   }
 
-  egisterBackButtonAction() {
+  backButtonAction() {
     this.platform.registerBackButtonAction(() => {
       let activePortal = this.ionicApp._modalPortal.getActive();
       if (activePortal) {
@@ -37,11 +37,10 @@ export class MyApp {
         return;
       }
       let activeNav = this.app.getActiveNav();
-      if (activeNav.canGoBack()) {
+      if (activeNav.canGoBack())
         activeNav.pop();
-      } else {
+      else
         this.showExit();
-      }
     });
   }
 
@@ -74,11 +73,10 @@ export class MyApp {
   goPage(page, parameter, how?) {
     if (page) {
       this.menu.close();
-      if (how) {
+      if (how)
         this.nav.push(page, parameter);
-      } else {
+      else
         this.nav.setRoot(page, parameter);
-      }
     }
   }
 }

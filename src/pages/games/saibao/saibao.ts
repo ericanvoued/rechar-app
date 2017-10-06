@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 import {SubBusinessToolProvider} from "./sub-business-tool";
-import {Gamelist} from "../../../providers/service/games/gamelist-service";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 import * as $ from 'jquery';
@@ -171,7 +170,7 @@ export class SaibaoPage {
   };
   private cccInterval: number;
 
-  constructor(public alertCtrl: AlertController, public share: GlobalShareProvider, public util: SubBusinessToolProvider, private  gameinfo: Gamelist, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public alertCtrl: AlertController, public share: GlobalShareProvider, public util: SubBusinessToolProvider, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     this.other();
     let nav = this.navParams.get('nav') || {};
     let gamenav = nav;
@@ -181,11 +180,9 @@ export class SaibaoPage {
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
-    this.gameinfo.getRecord();
     basket.clearAll();
     this.menuCtrl.enable(false, 'unauthenticated');
   }
-
 
   ionViewDidLoad() {
     this.gameData.money = this.share.balance.available;
