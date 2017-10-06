@@ -1,6 +1,6 @@
 export class Config {
-  static baseurl = "";
-  //static baseurl = "http://180.178.42.214";
+  //static baseurl = "";
+  static baseurl = "http://180.178.42.214";
   static autologin = !!(+localStorage.getItem('autologin'));
   static bankcardIconMap = {
     "中国工商银行": "assets/img/bank/gongshang.svg",

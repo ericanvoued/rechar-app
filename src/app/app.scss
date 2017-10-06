@@ -712,9 +712,11 @@ a, a:hover, a:focus, a:visited {
 }
 
 .header-m {
-  padding-left: 4px;
-  padding-right: 42px;
+  overflow: hidden;
   white-space: nowrap;
+  .fr{
+    padding-right:40px;
+  }
 }
 
 .question-icon {
