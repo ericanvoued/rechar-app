@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {GlobalShareProvider} from "../../../providers/global-share/global-share";
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
-import {Effect} from "../game-common/effect";
+import {Effect} from "../../effect";
 import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
 import {LableMap} from "../game-common/labelmap";
@@ -19,18 +19,11 @@ export class Pk10Page extends Effect {
     c: any;
   };
   ballLabelMap = LableMap.label;
-  private cccInterval: number;
-  ccc: boolean;
-  yearReg = /[\d]{4}-/;
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
-    this.other();
-    let nav = this.navParams.get('nav') || {};
-    let gamenav = nav;
-    this.gameconfigdata.setPid(gamenav.pid);
+    this.share.setTimer('divTimer',800);
     this.gameconfigdata.fetchMethedsList();
-    this.share.gameId = nav && nav.pid;
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
@@ -52,12 +45,6 @@ export class Pk10Page extends Effect {
 
   ionViewWillLeave() {
     this.menuCtrl.enable(true, 'unauthenticated');
-  }
-
-  private other() {
-    this.menuCtrl.enable(false, 'unauthenticated');
-    clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 800);
   }
 
   setGrounpChoose(name, arr, value) {
@@ -86,7 +73,7 @@ export class Pk10Page extends Effect {
     obj.mutipleAndModeObj.times = Math.min(obj.mutipleAndModeObj.times, obj.max_multiple);
   }
 
-  pluseOrmindusOnInput = debounce((obj, e) => this.pluseOrmindus(obj, e), 1000)
+  pluseOrmindusOnInput = this.debounce((obj, e) => this.pluseOrmindus(obj, e), 1000)
 
   pluseOrmindus(obj, e) {
     let v = +e.target.value;
@@ -159,34 +146,4 @@ export class Pk10Page extends Effect {
         v.value.forEach((v1, k1, array) => array[k1] = false);
     });
   }
-}
-
-
-function debounce(func, wait?, immediate?) {
-  var timeout, args, context, timestamp, result;
-  var later = function () {
-    var last = new Date().getTime() - timestamp;
-    if (last < wait && last >= 0) {
-      timeout = setTimeout(later, wait - last);
-    } else {
-      timeout = null;
-      if (!immediate) {
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
-      }
-    }
-  };
-
-  return function () {
-    context = this;
-    args = arguments;
-    timestamp = new Date().getTime();
-    var callNow = immediate && !timeout;
-    if (!timeout) timeout = setTimeout(later, wait);
-    if (callNow) {
-      result = func.apply(context, args);
-      context = args = null;
-    }
-    return result;
-  };
 }

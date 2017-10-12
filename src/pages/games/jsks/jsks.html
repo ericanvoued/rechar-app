@@ -33,7 +33,7 @@
             </li>
 
             <li class="history-row" *ngFor="let records of share?.gameRecord?.data;let i = index;">
-              <div class="history-cell">{{records.created_at?.replace(yearReg, '')}}</div>
+              <div class="history-cell">{{records.created_at?.replace(share.yearReg, '')}}</div>
               <div class="history-cell">{{records.friendly_name}}</div>
               <div class="history-cell">{{records.amount}}</div>
             </li>
@@ -43,8 +43,8 @@
     </ion-slides>
     <div class="wrap wrap-black" id="wrap">
       <div class="chonghui">
-        <div style="height: 1px;" [class.sscbg]="bbb"></div>
-        <div style="height: 1px;" [class.sscbg]="ccc"></div>
+        <div style="height: 1px;" [class.sscbg]="share?.timers?.divTimer?.show"></div>
+        <div style="height: 1px;" [class.sscbg]="share?.timers?.divTimer?.show"></div>
       </div>
       <div class="wrap-top clear">
         <div class="fl">

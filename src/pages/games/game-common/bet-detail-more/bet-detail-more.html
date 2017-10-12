@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="gray-bg">
-  <div style="height: 1px;" [class.sscbg]="ccc" ></div>
+  <div style="height: 1px;" [class.sscbg]="share?.timers?.divTimer?.show" ></div>
   <div class="betdetail-bg">
     <div *ngFor="let data of betrecordDetailService.betDetailParametersData.projects">
       <div class="bet-wrap">

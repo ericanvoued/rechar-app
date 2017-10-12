@@ -168,15 +168,10 @@ export class SaibaoPage {
       }, {p: 6, b: '666', g: [], t: 0}]
     }
   };
-  private cccInterval: number;
 
   constructor(public alertCtrl: AlertController, public share: GlobalShareProvider, public util: SubBusinessToolProvider, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
-    this.other();
-    let nav = this.navParams.get('nav') || {};
-    let gamenav = nav;
-    this.gameconfigdata.setPid(gamenav.pid);
+    this.share.setTimer('divTimer',800);
     this.gameconfigdata.fetchMethedsList();
-    this.share.gameId = nav && nav.pid;
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
@@ -192,13 +187,6 @@ export class SaibaoPage {
 
   ionViewWillLeave() {
     this.menuCtrl.enable(true, 'unauthenticated');
-  }
-  ccc:boolean;
-  private other() {
-    this.menuCtrl.enable(false, 'unauthenticated');
-    clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 800);
-
   }
 
   changeChip() {
@@ -229,7 +217,7 @@ export class SaibaoPage {
         this.gameData.total += this.gameData.chips.chip;
         this.basket.totalAllCount = this.gameData.total * 10;
         this.gameData.money -= this.gameData.chips.chip;
-        this.gameData.money = this.formatFloat(this.gameData.money, 4);
+        this.gameData.money = parseFloat(this.gameData.money.toFixed(4));
         this.gameData.last.push({name: game, id: i});
         this.setData();
         return;
@@ -254,15 +242,15 @@ export class SaibaoPage {
     };
     for (let item in this.gameData) {
       if (item.indexOf('game') > -1) {
-        for (let i = 0; i < this.gameData[item].data.length; i++) {
-          if (this.gameData[item].data[i].t > 0) {
-            ball.multiple = this.gameData[item].data[i].t * 5;
-            ball.ball = this.gameData[item].data[i].b;
-            ball.type = this.gameData[item].key;
-            ball.wayId = this.gameData[item].id;
-            this.basket.basketBall.push(JSON.parse(JSON.stringify(ball)));
+          for (let i = 0; i < this.gameData[item].data.length; i++) {
+            if (this.gameData[item].data[i].t > 0) {
+              ball.multiple = this.gameData[item].data[i].t * 5;
+              ball.ball = this.gameData[item].data[i].b;
+              ball.type = this.gameData[item].key;
+              ball.wayId = this.gameData[item].id;
+              this.basket.basketBall.push(JSON.parse(JSON.stringify(ball)));
+            }
           }
-        }
       }
     }
   }
@@ -302,16 +290,11 @@ export class SaibaoPage {
         this.gameData.total -= m;
         this.basket.totalAllCount = this.gameData.total * 10;
         this.gameData.money += m;
-        this.gameData.money = this.formatFloat(this.gameData.money, 4);
+        this.gameData.money = parseFloat(this.gameData.money.toFixed(4));
         this.setData();
         return;
       }
     }
-  }
-
-  formatFloat(f: number, digit) {
-    let m = Math.pow(10, digit);
-    return parseInt((f * m) + '', 10) / m;
   }
 
   @ViewChild('saobaocontent') saobaocontent
