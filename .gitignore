@@ -41,3 +41,6 @@ package-lock.json
 
 src/config/config.ts
 src/providers/http-client/http-client.ts
+src/app/app.component.ts
+*.css
+*.map
