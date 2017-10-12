@@ -16,11 +16,7 @@ export class MyApp {
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;
   statusName = {0: '待开奖', 1: '已撤销', 2: '未中奖', 3: '已中奖', 4: '已派奖', 5: '系统撤销'};
-<<<<<<< HEAD
 
-=======
-  yearReg = /[\d]{4}-/;
->>>>>>> 17182212dd26382bcc0c6281801a18e8d9799601
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
       if (!(/^#\/(login|tmp)/.test(location.hash))) {
