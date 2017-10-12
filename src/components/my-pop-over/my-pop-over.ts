@@ -13,7 +13,11 @@ export class MyPopOverComponent {
   }
 
   async close(page, item?) {
-    await this.navCtrl.push(page, item);
+    if ("GameRecordPage" == page) {
+      await this.navCtrl.push(page, {title: '投注记录'});
+    } else {
+      await this.navCtrl.push(page, item);
+    }
     this.viewCtrl.dismiss();
     this.share.moreType = 0;
   }
