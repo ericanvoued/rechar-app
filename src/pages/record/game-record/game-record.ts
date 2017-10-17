@@ -14,7 +14,6 @@ let _ = new observe();
 })
 export class GameRecordPage {
   eventOne = {timeStarts: '', timeEnds: '', id: null};
-  yearReg = /[\d]{4}-/;
   isTitle = false;
   gameData: any;
   backData: any;

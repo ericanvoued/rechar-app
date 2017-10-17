@@ -10,7 +10,6 @@ interface tokenOnly {
 
 @Injectable()
 export class GameconfigServiceProvider {
-  pid: string;
   data: any = {};
   defaultsMethodData = {a: {}, b: {}, c: {selectarea: [], mutipleAndModeObj: {}}};
   defaultData: any = {data: {lottery_balls: ''}};
@@ -39,8 +38,10 @@ export class GameconfigServiceProvider {
    * 1.获取总玩玩法列表
    */
   async fetchMethedsList() {
-    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/2/${this.share.getPid()}`, this.getParamaterToken());
+    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/2/${+this.share.pid}`, this.getParamaterToken());
     this.methedsList = data.data;
+    console.log('总玩玩法列表:'+JSON.stringify(this.methedsList));
+
     this.setdefaultsMethodData();
     this.data = data;
     this.methedsList
@@ -50,8 +51,9 @@ export class GameconfigServiceProvider {
    * 2.获取默认数据
    */
   async getDefaultsMethods() {
-    let gameID=+this.share.getPid();
-    let defaultData = this.share.defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${gameID}?_=${Math.random()}`, this.getParamaterToken());
+    let defaultData = this.share.defaultData = this.defaultData = await this.httpclient.post(`/mobile-lotteries-h5/load-data/1/${+this.share.pid}?_=${Math.random()}`, this.getParamaterToken());
+    console.log('默认数据:'+JSON.stringify(defaultData));
+
     let str = this.defaultData.data.lottery_balls;
     if (str) {
       if (/[,\s]+/.test(str)) {
@@ -78,12 +80,14 @@ export class GameconfigServiceProvider {
    */
 
   async getIssues() {
-    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
+    let data = await  this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${+this.share.pid}`, this.getParamaterToken());
     this.getIssuesList = data;
+
+    console.log('奖期:'+JSON.stringify(this.getIssuesList));
   }
 
   outergetIssues(): Promise<any> {
-    return this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${this.share.getPid()}`, this.getParamaterToken());
+    return this.httpclient.post(`/mobile-lotteries-h5/load-data/3/${+this.share.pid}`, this.getParamaterToken());
   }
 
   clock: {
@@ -155,15 +159,4 @@ export class GameconfigServiceProvider {
       'seconds': ('0' + seconds).slice(-2)
     };
   }
-
-  setPid(name: string) {
-    this.share.setPid(name);
-    this.pid = name;
-  }
-
-  getPid() {
-    return this.pid;
-  }
-
-
 }

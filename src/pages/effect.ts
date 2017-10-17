@@ -1,9 +1,3 @@
-/**
- * Created by richard.g on 17/08/2017.
- */
-/**
- * Created by apple on 2016/12/28.
- */
 import * as $ from 'jquery';
 
 class MoveShow {
@@ -130,35 +124,140 @@ class MoveShow {
     });
   }
 }
+
 export class Effect {
-  constructor() {
+  constructor() {}
+
+  initEffect(num?) {
+    if(num){
+      this.dropDown();
+      this.rechargeTab();
+      this.myModal();
+      this.sideDrop();
+      this.phoneClick('.j-btn','gray-on');
+      this.phoneClick('.s-btn','orange-on');
+      this.waterEffect('.bt');
+      this.waterEffect('.black-bt');
+    }else{
+      this.moneyDrop();
+      this.myTab();
+      this.handler = this.debounce(function () {
+        $('.side-right').each(function () {
+          let oText = $(this).find('.side-black');
+          oText.off('click').on('click', function () {
+            oText.removeClass('side-green');
+            $(this).addClass('side-green');
+          });
+        });
+      }, 500, false);
+      new MoveShow({wrap: $('#wrap'), outSide: $('#out-side'), inner: $('#inner-side')});
+    }
   }
 
-  initEffect() {
-    this.moneyDrop();
-    this.myTab();
-    this.handler = this.debounce(function () {
-      $('.side-right').each(function () {
-        let oText = $(this).find('.side-black');
-        oText.off('click').on('click', function () {
-          oText.removeClass('side-green');
-          $(this).addClass('side-green');
-        });
+  phoneClick(obj,cla){
+    $(document).on('touchstart',obj,function(){
+      $(this).addClass(cla);
+    });
+    $(document).on('touchend',obj,function(){
+      let This = $(this);
+      setTimeout(function () {
+        This.removeClass(cla);
+      },150)
+    });
+  }
+  //水波纹效果
+  waterEffect(obj){
+    $(document).on('touchstart', obj ,function (e) {
+      let newRound = document.createElement('div'),x,y;
+      newRound.className = 'circles';
+      this.appendChild(newRound);
+      x = e.pageX - $(this).offset().left;
+      y = e.pageY - $(this).offset().top;
+      newRound.style.left = x + "px";
+      newRound.style.top = y + "px";
+      newRound.className += " animations";
+      setTimeout(function() {
+        newRound.remove();
+      }, 400);
+    });
+  }
+
+  //左侧彩种下拉
+  sideDrop() {
+    $(document).on('touchstart', '.side-li', drop);
+    function drop() {
+      $(this).find('.side-drop').slideToggle(200);
+      $(this).siblings().find('.side-drop').slideUp(200);
+      return false;
+    }
+    $(document).on('touchstart',function () {
+      $('.side-drop').slideUp(200);
+    });
+  }
+
+  //首页彩种下拉
+  dropDown() {
+    $(document).on('touchstart', '.sort-li', drop);
+    function drop() {
+      let oSort = $('.sort-li');
+      let len = oSort.length;
+      function aaa() {
+        for (var i = 0; i < len; i++) {
+          if ($('.sort-list').find('.sort-drop').eq(i).css('display') == 'block') return true;
+        }
+        return false;
+      }
+      if (aaa()) {
+        oSort.find('.sort-a').removeClass('sort-col');
+        oSort.find('.definite-sort').removeClass('sort-col');
+        oSort.find('.sort-drop').hide()
+      } else {
+        $(this).find('.sort-a').addClass('sort-col');
+        $(this).find('.definite-sort').addClass('sort-col');
+        $(this).find('.sort-drop').slideDown();
+      }
+      return false;
+    }
+
+    $(document).on('touchstart',function () {
+      $('.sort-li').find('.sort-a').removeClass('sort-col');
+      $('.sort-li').find('.definite-sort').removeClass('sort-col');
+      $('.sort-drop').slideUp(0);
+    });
+  }
+
+  //tab切换
+  rechargeTab() {
+    $(document).on('touchstart', '.recharge-tab li', recharge);
+    function recharge() {
+      let oDiv = $('.recharge');
+      let i = $(this).index();
+      $('.recharge-tab li').removeClass('active');
+      $(this).addClass('active');
+      oDiv.each(function () {
+        $(this).find('.recharge-con').hide().eq(i).show();
       });
+    }
+  }
 
-    }, 500, false);
-
-    new MoveShow({wrap: $('#wrap'), outSide: $('#out-side'), inner: $('#inner-side')});
+  //从下往上的弹出框
+  myModal() {
+    $(document).on('touchstart', '.open-modal', function () {
+      $('.body-bg').fadeIn(300);
+      $('.alert-con').addClass('alert-show');
+    });
+    $(document).on('touchstart', '.body-bg,.close-modal', function () {
+      $('.body-bg').fadeOut(300);
+      $('.alert-con').removeClass('alert-show');
+    });
   }
 
   handler: any;
   //函数节流
-  debounce(func, wait, immediate) {
+  debounce(func, wait, immediate?) {
     let timeout, args, context, timestamp, result;
-
     let later = function () {
       let last = new Date().getTime() - timestamp;
-
       if (last < wait && last >= 0) {
         timeout = setTimeout(later, wait - last);
       } else {
@@ -169,7 +268,6 @@ export class Effect {
         }
       }
     };
-
     return function () {
       context = this;
       args = arguments;
@@ -180,7 +278,6 @@ export class Effect {
         result = func.apply(context, args);
         context = args = null;
       }
-
       return result;
     };
   }
@@ -196,7 +293,6 @@ export class Effect {
       oDiv.eq(i).siblings().removeClass('active');
       oDiv.eq(i).addClass('active');
     }
-
     $(document).on('touchstart', '.play-opacity', select);
     function select() {
       $('.play-opacity').removeClass('play-yellow');
@@ -205,15 +301,13 @@ export class Effect {
   }
 
   moneyDrop() {
-
-    $('.money-btn-2').each(function () {
+    $('.money-btn-1,.money-btn-2').each(function () {
       let This = $(this);
       let oLi = This.next('.money-menu').find('li');
       This.click(function () {
         $(this).next('.money-menu').slideDown(200);
         return false;
       });
-
       oLi.click(function () {
         oLi.removeClass('active');
         $(this).addClass('active');
@@ -224,6 +318,24 @@ export class Effect {
     });
   }
 
+  writeInput=this.debounce((obj,e)=>this.changeInput(obj,e), 500);
+
+  changeInput(obj,e){
+    let num= +e.target.value;
+    num=num<obj.min?obj.min:(num>obj.max?obj.max:num);
+    e.target.value=num;
+    obj.num=num;
+  }
+
+  numChange(obj,type){
+    let num=obj.num;
+    if(type=='+'){
+      if(num<obj.max) num++;
+    }else if(type=='-'){
+      if(num>obj.min) num--;
+    }
+    obj.num=num;
+  }
 }
 
 

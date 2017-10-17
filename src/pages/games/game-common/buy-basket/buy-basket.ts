@@ -1,17 +1,10 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {Effect} from "./effect";
 import {GameconfigServiceProvider} from "../../../../providers/service/games/gameconfig-service/gameconfig-service";
 import {BasketServiceProvider} from "../../../../providers/service/games/basket-service/basket-service";
 import {GlobalShareProvider} from "../../../../providers/global-share/global-share";
 import {BalanceProvider} from "../../../../providers/global-share/balance";
-
-/**
- * Generated class for the BuyBasketPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {Effect} from "../../../effect";
 
 @IonicPage()
 @Component({
@@ -31,38 +24,37 @@ export class BuyBasketPage extends Effect {
     this.setPriceChooseOptions();
   }
 
-  mutiplePluse() {
-    this.share.globalData.globalMutile++;
+
+
+
+  writeInput=this.debounce((name,e)=>this.changeInput(name,e), 1000);
+
+  changeInput(name,e){
+    let num= +e.target.value;
+    num=num<1?1:(num>999?999:num);
+    e.target.value=num;
+    if(name=='trace')
+      this.share.globalData.trace=num;
+    else if(name=='mutiple')
+      this.share.globalData.globalMutile=num;
   }
 
-  tracePluse() {
-    this.share.globalData.trace++;
-  }
-
-  traceReduce() {
-    this.share.globalData.trace--;
-    this.share.globalData.trace = Math.max(this.share.globalData.trace, 1);
-  }
-
-  mutipleReduce() {
-    this.share.globalData.globalMutile--;
-    this.share.globalData.globalMutile = Math.max(this.share.globalData.globalMutile, 1);
-  }
-
-  tracepluseOrmindusOnInput = debounce((e) => this.tracepluseOrmindus(e), 1000);
-
-  tracepluseOrmindus(e) {
-    let v = +e.target.value;
-    if (v <= 1) {
-      this.share.globalData.trace = 1;
-    } else if (v >= 999) {
-      this.share.globalData.trace = 999;
-    } else {
-      this.share.globalData.trace = v;
+  numChange(name,type){
+    let num=this.share.globalData.trace;
+    if(name=='mutiple') num=this.share.globalData.globalMutile;
+    if(type=='+'){
+      if(num<999) num++;
+    }else if(type=='-'){
+      if(num>1) num--;
     }
-    e.target.value = this.share.globalData.trace;
-
+    if(name=='trace')
+      this.share.globalData.trace=num;
+    else if(name=='mutiple')
+      this.share.globalData.globalMutile=num;
   }
+
+
+
 
   async submit() {
     if (this.share.balance.available < this.basket.totalAllCount) {
@@ -71,39 +63,13 @@ export class BuyBasketPage extends Effect {
       this.basket.submit(this);
     }
   }
-  trackByFn(a,b,c){
-    console.log(a,b,c);
-  }
-  mutiplepluseOrmindusOnInput = debounce((e) => this.mutiplepluseOrmindus(e), 1000);
-
-  mutiplepluseOrmindus(e) {
-    let v = +e.target.value;
-    if (v <= 1) {
-      this.share.globalData.globalMutile = 1;
-    } else if (v >= 999) {
-      this.share.globalData.globalMutile = 999;
-    } else {
-      this.share.globalData.globalMutile = v;
-    }
-    e.target.value = this.share.globalData.globalMutile;
-  }
 
   bet_max_prize_groupPercent: any;
   bet_min_prize_groupPercent: any;
 
   setPriceChooseOptions() {
-    this.bet_max_prize_groupPercent = this.filterIndex(+(((+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_max_prize_group) / this.share.defaultData.data.series_amount).toFixed(3)) * 100);
-    this.bet_min_prize_groupPercent = this.filterIndex(+(((+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_min_prize_group) / this.share.defaultData.data.series_amount).toFixed(3)) * 100);
-  }
-
-  filterIndex(num) {
-    var r = /\.0{7}/;
-    var a = String(num);
-    if (r.test(a)) {
-      return num.toFixed(0);
-    }
-
-    return num;
+    this.bet_max_prize_groupPercent = parseFloat((100*(+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_max_prize_group) / this.share.defaultData.data.series_amount).toFixed(4));
+    this.bet_min_prize_groupPercent = parseFloat((100*(+this.share.defaultData.data.user_prize_group - this.share.defaultData.data.bet_min_prize_group) / this.share.defaultData.data.series_amount).toFixed(4));
   }
 
   goHelpPage() {
@@ -116,36 +82,6 @@ export class BuyBasketPage extends Effect {
     this.percent = percent;
     this.basket.setcustomprizeGroupchoose = this.basket.customprizeGroupchoose = prize;
   }
-
   //奖金组-选择的奖金组，再除以2000
 }
 
-function debounce(func, wait?, immediate?) {
-  var timeout, args, context, timestamp, result;
-
-  var later = function () {
-    var last = new Date().getTime() - timestamp;
-    if (last < wait && last >= 0) {
-      timeout = setTimeout(later, wait - last);
-    } else {
-      timeout = null;
-      if (!immediate) {
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
-      }
-    }
-  };
-
-  return function () {
-    context = this;
-    args = arguments;
-    timestamp = new Date().getTime();
-    var callNow = immediate && !timeout;
-    if (!timeout) timeout = setTimeout(later, wait);
-    if (callNow) {
-      result = func.apply(context, args);
-      context = args = null;
-    }
-    return result;
-  };
-}

@@ -27,23 +27,19 @@
       <div class="fl">
         <span class="multiple-num">倍数:</span>
         <div class="multiple">
-          <img src="assets/img/reduce-1.svg" (touchstart)="mutipleReduce()" alt=""><input type="tel"
-                                                                                          (input)="mutiplepluseOrmindusOnInput($event)"
-                                                                                          (change)="mutiplepluseOrmindus($event)"
-                                                                                          value="{{share.globalData.globalMutile}}"
-                                                                                          maxlength="6"><img
-          src="assets/img/plus-1.svg" (touchstart)="mutiplePluse()" alt="">
+          <img src="assets/img/reduce-1.svg" (touchstart)="numChange('mutiple','-')" alt="">
+          <input type="tel" (input)="writeInput('mutiple',$event)" (change)="changeInput('mutiple',$event)"
+                 value="{{share.globalData.globalMutile}}" maxlength="6">
+          <img src="assets/img/plus-1.svg" (touchstart)="numChange('mutiple','+')" alt="">
         </div>
       </div>
       <div class="fr">
         <span class="multiple-num">追号: </span>
         <div class="multiple">
-          <img src="assets/img/reduce-1.svg" (touchstart)="traceReduce()" alt=""><input type="tel"
-                                                                                        (input)="tracepluseOrmindusOnInput($event)"
-                                                                                        (change)="tracepluseOrmindus($event)"
-                                                                                        value="{{share.globalData.trace}}"
-                                                                                        maxlength="6"><img
-          src="assets/img/plus-1.svg" (touchstart)="tracePluse()" alt="">
+          <img src="assets/img/reduce-1.svg" (touchstart)="numChange('trace','-')" alt="">
+          <input type="tel" (input)="writeInput('trace',$event)" (change)="changeInput('trace',$event)"
+                 value="{{share.globalData.trace}}" maxlength="6">
+          <img src="assets/img/plus-1.svg" (touchstart)="numChange('trace','+')" alt="">
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div style="height: 1px;" [class.sscbg]="ccc"></div>
+  <div style="height: 1px;" [class.sscbg]="share?.timers?.divTimer?.show"></div>
   <div class="notice" (touchstart)="pushPage('NoticeListPage')">
     <img src="assets/img/notice-icon.svg" alt=""><span>{{homeService.notice.data[0]?.title}}</span></div>
   <ion-slides>

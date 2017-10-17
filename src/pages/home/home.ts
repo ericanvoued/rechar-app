@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomeServiceProvider} from "../../providers/service/home-service/home-service";
 import {Config} from "../../config/config";
-import {Effect} from "./effect";
+import {Effect} from "../effect";
 import {GlobalShareProvider} from "../../providers/global-share/global-share";
 import {BalanceProvider} from "../../providers/global-share/balance";
 
@@ -12,20 +12,18 @@ import {BalanceProvider} from "../../providers/global-share/balance";
   templateUrl: 'home.html',
 })
 export class HomePage {
-  ccc: boolean;
-  cccInterval: any;
   getRecord: any;
   gamelistIconMap = Config.gameiconMap;
 
-  constructor(public balance:BalanceProvider,public share: GlobalShareProvider,public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
-    (new Effect()).initEffect();
+  constructor(public balance: BalanceProvider, public share: GlobalShareProvider, public navCtrl: NavController, public navParams: NavParams, public homeService: HomeServiceProvider) {
+    (new Effect()).initEffect(1);
     this.share.checkPlatform();
     this.balance.getBalance();
     this.homeService.getRemoteServer();
     this.homeService.getBannerRemoteServer();
     this.homeService.postLotteryServer();
-    clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => this.ccc = !this.ccc, 1000);
+    this.share.clearTimer();
+    this.share.setTimer('divTimer',1000);
   }
 
   gameRecordFetch() {
@@ -48,6 +46,7 @@ export class HomePage {
         toPage = 'SaibaoPage';
       }
       this.navCtrl.push(toPage, {nav: gameNav});
+      this.share.pid = gameNav.pid;
       this.getRecord = await this.homeService.postRemoteServer();
     }
   }

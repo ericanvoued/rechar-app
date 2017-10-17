@@ -5,7 +5,7 @@ import {GlobalShareProvider} from "../../../providers/global-share/global-share"
 import {BasketServiceProvider} from "../../../providers/service/games/basket-service/basket-service";
 import {SubBusinessToolProvider} from "./sub-business-tool";
 import {SubCameconfigServiceProvider} from "./subCameconfigServiceProvider";
-import {Effect} from "../game-common/effect";
+import {Effect} from "../../effect";
 
 @IonicPage()
 @Component({
@@ -23,18 +23,11 @@ export class JsksPage extends Effect {
     c: any;
   };
   ballLabelMap = Config.ballLabelMap;
-  private cccInterval: number;
-  ccc: boolean;
-  yearReg = /[\d]{4}-/;
 
   constructor(public share: GlobalShareProvider, public util: SubBusinessToolProvider, public basket: BasketServiceProvider, private gameconfigdata: SubCameconfigServiceProvider, public menuCtrl: MenuController, public navCtrl: NavController, public  navParams: NavParams, public toastCtrl: ToastController) {
     super();
-    this.other();
-    let nav = this.navParams.get('nav') || {};
-    let gamenav = nav;
-    this.gameconfigdata.setPid(gamenav.pid);
+    this.share.setTimer('divTimer',800);
     this.gameconfigdata.fetchMethedsList();
-    this.share.gameId = nav && nav.pid;
     gameconfigdata.getDefaultsMethods();
     gameconfigdata.isInit = true;
     gameconfigdata.getIssues();
@@ -63,15 +56,6 @@ export class JsksPage extends Effect {
 
   ionViewWillLeave() {
     this.menuCtrl.enable(true, 'unauthenticated');
-  }
-
-  private other() {
-    this.menuCtrl.enable(false, 'unauthenticated');
-    clearInterval(this.cccInterval);
-    this.cccInterval = setInterval(() => {
-      this.ccc = !this.ccc;
-    }, 800);
-
   }
 
   setGrounpChoose(name, arr, value) {
@@ -103,9 +87,7 @@ export class JsksPage extends Effect {
 
   }
 
-  pluseOrmindusOnInput = debounce((obj, e) => {
-    this.pluseOrmindus(obj, e);
-  }, 1000)
+  pluseOrmindusOnInput = this.debounce((obj, e) => this.pluseOrmindus(obj, e), 1000)
 
   pluseOrmindus(obj, e) {
     let v = +e.target.value;
@@ -138,27 +120,11 @@ export class JsksPage extends Effect {
   messages(obj): void {
     let hasChoose = this.basket.hasChooseBall(obj.selectarea);
     if (hasChoose && (obj.count == 0)) {
-      let toast = this.toastCtrl.create({
-        message: obj.bet_note,
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast(obj.bet_note, 1000);
     } else if (obj.isRedudu) {
-      let toast = this.toastCtrl.create({
-        message: '订单已经存在',
-        duration: 1000,
-        position: 'middle'
-      });
-
-      toast.present(toast);
+      this.share.showToast('订单已经存在', 1000);
     } else {
-      let toast = this.toastCtrl.create({
-        message: '请选择注单',
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present(toast);
+      this.share.showToast('请选择注单', 1000);
     }
   }
 
@@ -167,12 +133,7 @@ export class JsksPage extends Effect {
 
     if (isSucess) {
       this.clear(obj);
-      let toast = this.toastCtrl.create({
-        message: '注单添加成功',
-        duration: 1000,
-        position: 'bottom'
-      });
-      toast.present(toast);
+      this.share.showToast('注单添加成功', 1000);
     } else {
       this.messages(obj);
     }
@@ -200,39 +161,4 @@ export class JsksPage extends Effect {
     obj.mutipleAndModeObj.times = 1;
     this.util.clearBall(obj.selectarea);
   }
-
-}
-
-
-function debounce(func, wait?, immediate?) {
-  var timeout, args, context, timestamp, result;
-
-  var later = function () {
-    var last = new Date().getTime() - timestamp;
-
-    if (last < wait && last >= 0) {
-      timeout = setTimeout(later, wait - last);
-    } else {
-      timeout = null;
-      if (!immediate) {
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
-      }
-    }
-  };
-
-  return function () {
-    context = this;
-    args = arguments;
-    timestamp = new Date().getTime();
-    var callNow = immediate && !timeout;
-    if (!timeout) timeout = setTimeout(later, wait);
-    if (callNow) {
-      result = func.apply(context, args);
-      context = args = null;
-    }
-
-    return result;
-  };
-
 }

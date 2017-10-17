@@ -14,7 +14,6 @@ export class BasketServiceProvider extends BusinessTool {
 
   totalAllCount: number = 0;
   totalAllNum: number;
-  gameId: any;
   traceWinStop: boolean = true;
 
   constructor(public balance:BalanceProvider,public share: GlobalShareProvider, public gameconfigure: GameconfigServiceProvider, private httpclient: HttpClientProvider) {
@@ -304,7 +303,7 @@ export class BasketServiceProvider extends BusinessTool {
   getBallsString(): string {
     if (this.ispk10) {
       return this.getStringGenertorispk10();
-    } else if (+(this.share.gameId) == 71) {
+    } else if (+(this.share.pid) == 71) {
       return this.encrypt(JSON.stringify(this.basketBall));
     }
     return this.getStringGenertor();
@@ -348,7 +347,6 @@ export class BasketServiceProvider extends BusinessTool {
       });
 
     });
-
     return this.encrypt(JSON.stringify(balls));
   }
 
@@ -408,9 +406,8 @@ export class BasketServiceProvider extends BusinessTool {
     for (let i = 0; i < 1; i++) {
       orderIssue[this.gameconfigure.getIssuesList.data.trace_issues[i].number] = 1;
     }
-
     return {
-      "gameId": this.share.gameId,
+      "gameId": this.share.pid,
       "isTrace": 0,
       "traceWinStop": 0,
       "traceStopValue": 0,
@@ -426,7 +423,7 @@ export class BasketServiceProvider extends BusinessTool {
 
   getSubmitData(): Object {
     return {
-      "gameId": this.share.gameId,
+      "gameId": this.share.pid,
       "isTrace": +(this.share.globalData.trace > 1),
       "traceWinStop": +this.traceWinStop,
       "traceStopValue": 1,
@@ -500,11 +497,11 @@ export class BasketServiceProvider extends BusinessTool {
   }
 
   saobodoSubmint(balls) {
-    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.saobogetSubmitData(balls));
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${+this.share.pid}`, this.saobogetSubmitData(balls));
   }
 
   doSubmint() {
-    return this.httpclient.post(`/mobile-lotteries-h5/bet/${this.share.getPid()}`, this.getSubmitData());
+    return this.httpclient.post(`/mobile-lotteries-h5/bet/${+this.share.pid}`, this.getSubmitData());
   }
 
   loading: any;

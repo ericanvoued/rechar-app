@@ -3,7 +3,6 @@ import 'rxjs/add/operator/map';
 import {HttpClientProvider} from "../../http-client/http-client";
 import {GlobalShareProvider} from "../../global-share/global-share";
 
-
 let dataGroup = [{name: "时时彩系列", nav: "SSC|60", time: null, group: []},
   {name: "11选5系列", nav: "11Y", time: null, group: []},
   {name: "六合彩系列", nav: "LHC", time: null, group: []},

@@ -4,6 +4,7 @@ import {AlertController, LoadingController, ToastController} from "ionic-angular
 
 @Injectable()
 export class GlobalShareProvider {
+  timers={divTimer:{timer:null,show:false},titleTimer:{timer:null,show:false}};
   moreType=0;
   pid: string;
   basketData = [];
@@ -19,6 +20,7 @@ export class GlobalShareProvider {
   gameRecord = {data: []};
   chargeRecord = {data: []};
   plat='h5';
+  yearReg = /[\d]{4}-/;
   parameters = {0:{
     _token: '',
     page: 1,
@@ -34,7 +36,6 @@ export class GlobalShareProvider {
     bet_status: 1,
     lottery_id: ''
   }};
-  gameId: any | string | number;
   defaultData: any;
   ispk10: any;
   totalAllCount: number=0;
@@ -96,11 +97,21 @@ export class GlobalShareProvider {
     }
   };
 
-  setPid(name: string) {
-    this.pid = name;
+  setTimer(name,time,fun?){
+    for(let k in this.timers){
+      if(k==name){
+        clearInterval(this.timers[k].timer);
+        this.timers[k].timer = setInterval(() => {
+          this.timers[k].show = !this.timers[k].show;
+          if(fun) fun;
+        }, time);
+        return;
+      }
+    }
   }
-  getPid() {
-    return this.pid;
+
+  clearTimer(){
+    for(let k in this.timers) {clearInterval(this.timers[k].timer);}
   }
 
   setMore(num){

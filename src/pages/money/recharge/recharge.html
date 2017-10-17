@@ -53,7 +53,7 @@
       </div>
       <div class="recharge-money">
         <span class="recharge-l fl">充值金额：</span>
-        <div class="recharge-r clear"><input [(ngModel)]="money.payClass.post.amount" type="text" class="money-input"></div>
+        <div class="recharge-r clear"><input [(ngModel)]="money.payClass.post.amount" type="number" class="money-input"></div>
       </div>
       <div class="remind" *ngIf="money?.payClass?.remind">单次最低充值10元，最高{{money.payClass.max}}元</div>
       <div class="save-btn">
