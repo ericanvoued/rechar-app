@@ -1,0 +1,829 @@
+page-lhc {
+  page-cqssc {
+    @import "../game-common/game";
+  }
+}
+
+$theme-color: #95A7BB;
+.red-ball {
+  background-color: rgba(255, 80, 115, .4);
+}
+
+.red-ball.currunt {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5073), to(#EA4868));
+  background-image: linear-gradient(-180deg, #FF5073 0%, #EA4868 100%);
+  border-color: #C7314E !important;
+}
+
+.purple-ball {
+  background-color: rgba(66, 128, 209, .4);
+}
+
+.purple-ball.currunt {
+  border-color: #326EBC !important;
+  background-image: linear-gradient(-180deg, #67A9FF 0%, #3D7CCF 100%);
+  border: 2px solid #326EBC;
+}
+
+.green-ball {
+  background-color: rgba(71, 159, 162, .4);
+}
+
+.green-ball.currunt {
+  border-color: #0DA89A !important;
+  background-image: linear-gradient(-180deg, #64DDE1 2%, #4DACAF 100%);
+}
+
+.cl:after, .clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden
+}
+
+.cl, .clearfix {
+  zoom: 1
+}
+
+.lhc-container {
+  background-color: #1E2135;
+  height: 100%;
+  padding: 0 8px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.lhc-header {
+  color: $theme-color;
+}
+
+.lhc-header {
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  margin: 7px auto;
+  .status-box {
+    width: 320px;
+    margin: 7px auto;
+    padding-top: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    line-height: 24px;
+    text-align: center;
+
+  }
+  .status-unit {
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    font-family: PingFangTC-Regular;
+    span {
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+  }
+  .status-number {
+    width: 24px;
+    span {
+      display: block;
+      width: 100%;
+      height: 24px;
+      line-height: 26px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+
+  }
+  .status-plus {
+    width: 16px;
+    height: 24px;
+    line-height: 26px;
+  }
+  .status-time {
+    .l {
+      width: 52%;
+      line-height: 26px;
+      text-align: right;
+      padding-right: 30px;
+      float: left;
+      font-size: 12px;
+    }
+    .r {
+      float: left;
+      font-weight: bold;
+      span {
+        display: inline-block;
+        padding: 1px 3px;
+        font-size: 24px;
+        height: 26px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: PingFangTC-Regular;
+        color: #95A7BB;
+        line-height: 24px;
+        background: #28324E;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.50);
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+//特码区域样式
+.lhc-tm {
+  .t-box {
+    padding: 14px 22px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #2E324E;
+    border-radius: 8px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.30);
+    ul {
+      width: 83.6vw;
+      margin: 0 auto;
+      height: 100%;
+      li {
+        width: 18.1vw;
+        background-color: #1F2237;
+        //background-image: linear-gradient(-180deg, #252943 0%, #1E2135 100%);
+        border: 1px solid #05756B;
+        border-radius: 4px;
+        height: 26px;
+        line-height: 24px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        text-align: center;
+        float: left;
+        color: #95A7BB;
+        margin-bottom: 14px;
+        font-size: 16px;
+        margin-right: 3.733vw;
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+
+      }
+      .current {
+        background-color: #FFBE00 !important;
+        border-color: #FFBE00;
+        color: #2D3142;
+      }
+    }
+  }
+  .b-box {
+    background: #2E324E;
+    border-radius: 8px;
+    padding: 7px;
+    margin-top: 7px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.30);
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .tm-unit {
+        width: 19.5%;
+        height: 40px;
+        margin: 0 0 15px;
+        float: left;
+        text-align: center;
+        font-family: PingFangTC-Regular;
+        font-size: 25px;
+        color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        .ball {
+          width: 40px;
+          height: 40px;
+          line-height: 36px;
+          border-radius: 50%;
+          display: block;
+          border-width: 2px;
+          border-style: solid;
+          border-color: transparent;
+          transition: all .35s;
+        }
+      }
+    }
+  }
+}
+
+//半波彩种
+.lhc-bb {
+  .bb-unit {
+    background: #2E324E;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 7px;
+    font-family: PingFangTC-Regular;
+    position: relative;
+    .bet-money {
+      background: #EA4868;
+      font-size: 12px;
+      color: #ffffff;
+      right: 0;
+      top: 0;
+      position: absolute;
+      text-align: center;
+      line-height: 17px;
+      padding: 4px;
+      border-radius: 0 8px 0 8px;
+      display: none;
+    }
+    h2 {
+      height: 48px;
+      padding: 0 22px;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      line-height: 60px;
+      margin: 0;
+      background: url("../assets/img/underline.png") 22px bottom no-repeat;
+      span {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 12px;
+        color: #EA4868;
+      }
+    }
+    .ball-box {
+      padding: 0 19px;
+      box-sizing: border-box;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 0;
+        .bb {
+          width: 16.6%;
+          height: 40px;
+          margin-bottom: 10px;
+          color: #ffffff;
+          font-size: 25px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          span {
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 36px;
+            border-radius: 50%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    &.currunt {
+      background: #404461;
+      .bet-money {
+        display: block;
+      }
+      .red-ball {
+        background-image: linear-gradient(-180deg, #FF5073 0%, #EA4868 100%);
+        border-color: #C7314E !important;
+      }
+      .purple-ball {
+        border-color: #326EBC !important;
+        background-image: linear-gradient(-180deg, #67A9FF 0%, #3D7CCF 100%);
+        border: 2px solid #326EBC;
+      }
+      .green-ball {
+        border-color: #0DA89A !important;
+        background-image: linear-gradient(-180deg, #64DDE1 2%, #4DACAF 100%);
+      }
+    }
+  }
+}
+
+//12生肖
+.lhc-animals {
+  font-family: PingFangTC-Regular;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .animals-unit {
+    width: 47vw;
+    background: #2E324E;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 7px;
+    position: relative;
+    h2 {
+      height: 48px;
+      padding: 0 22px;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      line-height: 60px;
+      margin: 0;
+      background: url("../assets/img/underline.png") 22px bottom no-repeat;
+      span {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 12px;
+        color: #EA4868;
+      }
+    }
+    .bet-money {
+      background: #EA4868;
+      font-size: 12px;
+      color: #ffffff;
+      right: 0;
+      top: 0;
+      position: absolute;
+      text-align: center;
+      line-height: 17px;
+      padding: 4px;
+      border-radius: 0 8px 0 8px;
+      display: none;
+    }
+    .ball-box {
+      ul {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        li {
+          width: 30px;
+          height: 26px;
+          margin-bottom: 10px;
+          color: #ffffff;
+          font-size: 14px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          span {
+            display: block;
+            width: 26px;
+            height: 26px;
+            line-height: 22px;
+            border-radius: 50%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    &.currunt {
+      background: #404461;
+      .bet-money {
+        display: block;
+      }
+      .red-ball {
+        background-image: linear-gradient(-180deg, #FF5073 0%, #EA4868 100%);
+        border-color: #C7314E !important;
+      }
+      .purple-ball {
+        border-color: #326EBC !important;
+        background-image: linear-gradient(-180deg, #67A9FF 0%, #3D7CCF 100%);
+        border: 2px solid #326EBC;
+      }
+      .green-ball {
+        border-color: #0DA89A !important;
+        background-image: linear-gradient(-180deg, #64DDE1 2%, #4DACAF 100%);
+      }
+    }
+
+  }
+}
+
+//总分
+.lhc-points {
+  font-family: PingFangTC-Regular;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  .points-unit {
+    width: 47vw;
+    background: #2E324E;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 7px;
+    position: relative;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    h2 {
+      text-align: center;
+      padding: 22px 0 0 0;
+      box-sizing: border-box;
+      font-size: 24px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      line-height: 34px;
+      margin: 0;
+      span {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 12px;
+        color: #EA4868;
+        position: relative;
+        top: 4px;
+      }
+    }
+    p {
+      font-size: 12px;
+      text-align: center;
+      color: #9EA2BC;
+      letter-spacing: 0;
+    }
+    .bet-money {
+      background: #EA4868;
+      font-size: 12px;
+      color: #ffffff;
+      right: 0;
+      top: 0;
+      position: absolute;
+      text-align: center;
+      line-height: 17px;
+      padding: 4px;
+      border-radius: 0 8px 0 8px;
+      display: none;
+    }
+    &.current {
+      background: #404461;
+      .bet-money {
+        display: block;
+      }
+    }
+  }
+  .points-big {
+    width: 100%;
+  }
+}
+
+//确认投注
+.lhc-popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000000;
+  background: rgba(0, 0, 0, .8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangTC-Regular;
+  .pupop-container {
+    padding: 10px 0 0 0;
+    background: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    width: 354px;
+    h2 {
+      font-size: 18px;
+      color: #4A4A4A;
+      letter-spacing: -0.29px;
+      line-height: 26px;
+      margin: 0;
+    }
+    h4 {
+      font-size: 16px;
+      color: #808080;
+      letter-spacing: -0.22px;
+      span {
+        color: #FE5600;
+      }
+    }
+    .offhand-btn {
+      height: 40px;
+      line-height: 40px;
+      outline: none;
+      border: none;
+      text-align: center;
+      color: #FE5600;
+      font-size: 16px;
+      width: 100%;
+    }
+    .popup-list {
+      border-top: 1px solid #D2D2D2;
+      border-bottom: 1px solid #D2D2D2;
+      padding-bottom: 10px;
+      font-size: 14px;
+      ul {
+        li {
+          border-bottom: 1px dashed #F3F3F3;
+          display: flex;
+          padding: 0 18px;
+          box-sizing: border-box;
+          line-height: 36px;
+          display: flex;
+          justify-content: center;
+          color: #808080;
+          .bet-unit {
+            margin: 0 3px;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+//脚部样式
+.lhc-footer {
+  height: 100px;
+  background-color: #1E2135;
+  .t-box {
+    height: 48px;
+    background-color: #323758;
+    padding: 8px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #C6C6C6;
+    .l {
+      float: left;
+      width: 40vw;
+      height: 100%;
+      line-height: 32px;
+      text-align: left;
+    }
+    .r {
+      width: 152px;
+      height: 100%;
+      float: right;
+      line-height: 32px;
+      text-indent: 5px;
+      .bet-money {
+        background: #252943;
+        border-radius: 16px;
+        width: 128px;
+        height: 100%;
+        float: left;
+      }
+      input {
+        float: left;
+      }
+      input[type="button"] {
+        width: 28px;
+        height: 28px;
+        margin: 2px;
+        background: #1A1D2E;
+        border-radius: 14px;
+        border: none;
+        outline: none;
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 28px;
+        text-align: center;
+        color: #24867F;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        background-color: #252943;
+        color: $theme-color;
+        text-align: center;
+        border: none;
+        outline: none;
+        height: 31px;
+        line-height: 30px;
+        width: 64px;
+      }
+    }
+  }
+  .b-box {
+    height: 48px;
+    padding: 0 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    .l {
+      width: 50%;
+      height: 100%;
+      float: left;
+      display: flex;
+      align-items: center;
+      a {
+        display: block;
+        border: 1px solid #686990;
+        border-radius: 2px;
+        color: #686990;
+        text-align: center;
+        width: 58px;
+        height: 32px;
+        margin-right: 5px;
+        font-size: 14px;
+        line-height: 30px;
+
+      }
+    }
+    .r {
+      width: 50%;
+      height: 100%;
+      float: left;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-family: PingFangSC-Regular;
+      a {
+        background: #FE5600;
+        border-radius: 2px;
+        color: #ffffff;
+        width: 107px;
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.view-myHistory {
+  display: block;
+  height: 32px;
+  font-size: 14px;
+  width: 100%;
+  line-height: 32px;
+  color: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 5px;
+  background: #488aff;
+}
+
+@media screen and(max-width: 750px) {
+  .lhc-tm {
+    .b-box {
+      ul {
+        .tm-unit {
+          width: 10%;
+        }
+      }
+    }
+  }
+  .lhc-bb {
+    .bb-unit {
+      .ball-box {
+        ul {
+          .bb {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 680px) {
+  .lhc-tm {
+    .b-box {
+      ul {
+        .tm-unit {
+          width: 10%;
+        }
+      }
+    }
+  }
+  .lhc-bb {
+    .bb-unit {
+      .ball-box {
+        ul {
+          .bb {
+            width: 8.33%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .lhc-tm {
+    .b-box {
+      ul {
+        .tm-unit {
+          width: 14.2%;
+        }
+      }
+    }
+  }
+  .lhc-bb {
+    .bb-unit {
+      .ball-box {
+        ul {
+          .bb {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 500px) {
+  .lhc-tm {
+    .b-box {
+      ul {
+        .tm-unit {
+          width: 20%;
+        }
+      }
+    }
+  }
+  .lhc-bb {
+    .bb-unit {
+      .ball-box {
+        ul {
+          .bb {
+            width: 14.27%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 375px) {
+  .lhc-header {
+    .status-time {
+      .l {
+        padding-right: 20px;
+
+      }
+    }
+  }
+
+  .lhc-tm {
+    .t-box {
+      ul {
+        li {
+          margin-right: 2.9vw;
+        }
+      }
+    }
+    .b-box {
+      ul {
+        .tm-unit {
+          width: 24.5%;
+        }
+      }
+    }
+  }
+  .lhc-bb {
+    .bb-unit {
+      .ball-box {
+        ul {
+          .bb {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+
+  .lhc-popup {
+    .pupop-container {
+      width: 90vw;
+
+      .popup-list {
+        font-size: 12px;
+        ul {
+
+          li {
+            padding: 0 2.3vw;
+          }
+        }
+      }
+
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

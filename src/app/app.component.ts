@@ -11,7 +11,7 @@ import {DateFormat} from "../providers/tools/date";
 })
 export class MyApp {
   ft = DateFormat.FormatTime;
-  rootPage: any = "LoginPage";
+  rootPage: any = "LhcPage";
   userTypeMap = Config.userTypeMap;
   gamelistIconMap = Config.gameiconMap;
   @ViewChild(Nav) nav: Nav;
@@ -19,9 +19,9 @@ export class MyApp {
   yearReg = /[\d]{4}-/;
   constructor(public share: GlobalShareProvider, public app: App, public  ionicApp: IonicApp, public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController) {
     platform.ready().then(() => {
-      if (!(/^#\/(login|tmp)/.test(location.hash))) {
-        setTimeout(v => this.nav.setRoot(this.rootPage), 1000);
-      }
+      // if (!(/^#\/(login|tmp)/.test(location.hash))) {
+      //   setTimeout(v => this.nav.setRoot(this.rootPage), 1000);
+      // }
       statusBar.styleDefault();
       splashScreen.hide();
       this.backButtonAction();
