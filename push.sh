@@ -6,6 +6,3 @@ git pull
 
 git push origin master
 
-ionic cordova build android --prod
-
-ionic cordova build ios --prod
